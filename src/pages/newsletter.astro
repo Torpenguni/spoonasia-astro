@@ -3,20 +3,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const bullets = [
   {
-    head: 'Unit economics, not vibes.',
-    body: 'Every Sunday brief includes at least one P&L breakdown — rent, COGS, labor, payback — drawn from real operators across Asia.',
+    head: 'Sunday morning analysis',
+    body: 'One thing worth your time. Unit economics, a neighborhood read, or a pitch-deck assumption worth questioning.',
   },
   {
-    head: 'Neighborhood alpha.',
-    body: 'Which Bangkok soi is moving. Which Tokyo block is saturated. Which Singapore corridor a family office just walked into.',
+    head: 'Monthly intelligence brief',
+    body: 'Market shifts and data points across Bangkok, Tokyo, and Singapore. Compact format, dense signal.',
   },
   {
-    head: 'Supply-chain signal.',
-    body: 'Importer duopolies, ingredient cost movements, and the cross-border supplier dynamics that reshape menus before headline prices catch up.',
+    head: 'Member-only Decoded reports',
+    body: 'Exclusive long-form analysis released to subscribers first. The reports that do not make it onto the public site.',
+  },
+];
+
+const pastIssues = [
+  {
+    date: '11 May 2026',
+    headline: "Bangkok rent is up 12%. Three concepts that survive it.",
+    desc: 'CBRE Q1 numbers and the three operator playbooks that still clear the math.',
+    slug: 'issue-bangkok-rent-12-percent',
   },
   {
-    head: 'No fluff. No PR.',
-    body: 'We do not run sponsored coverage. We do not source from press releases. If we cannot verify it, we do not publish it.',
+    date: '04 May 2026',
+    headline: 'Why Ari is winning, in one chart.',
+    desc: 'The neighborhood rent curve that explains why independents outperform chains in the same zone.',
+    slug: 'issue-ari-winning-chart',
+  },
+  {
+    date: '27 Apr 2026',
+    headline: 'The Penguin Eat Shabu unit economics, broken down.',
+    desc: 'How a Thai shabu chain hit 40 outlets without venture capital. Supplier consolidation as moat.',
+    slug: 'issue-penguin-eat-shabu',
+  },
+  {
+    date: '20 Apr 2026',
+    headline: 'Three foreign coffee chains, three outcomes.',
+    desc: 'Same capital, same brand strength, different rent burden. The story is in the lease terms.',
+    slug: 'issue-three-coffee-chains',
+  },
+  {
+    date: '13 Apr 2026',
+    headline: 'Tokyo standing bars and what Bangkok can learn.',
+    desc: 'High-density F&B economics from Shimbashi. Why the format does not travel cleanly.',
+    slug: 'issue-tokyo-standing-bars',
+  },
+  {
+    date: '06 Apr 2026',
+    headline: 'Singapore family offices and Thai F&B exposure.',
+    desc: 'Where lifestyle capital is flowing in 2026. Five themes worth tracking.',
+    slug: 'issue-singapore-family-offices',
   },
 ];
 ---
@@ -27,14 +62,14 @@ const bullets = [
 >
   <section class="news-hero">
     <div class="container-narrow">
-      <div class="news-eyebrow">The Dispatch</div>
+      <div class="section-tag">▍ The Dispatch</div>
       <h1 class="news-title">
-        F&B intelligence on Asia,<br />every Sunday.
+        F&B intelligence on Asia, every <em>Sunday</em>
       </h1>
       <p class="news-dek">
-        Unit economics, neighborhood alpha, and the gaps in pitch decks.
-        Read by operators across Singapore, Japan, Korea, the UK, and China.
-        No fluff. Free.
+        <em>
+          Unit economics, neighborhood alpha, and the gaps in pitch decks. Free.
+        </em>
       </p>
 
       <form class="news-form" onsubmit="event.preventDefault()">
@@ -47,17 +82,19 @@ const bullets = [
         />
         <button type="submit" class="news-btn">Subscribe →</button>
       </form>
-      <p class="news-note">Unsubscribe anytime. Two-click signup. Zero spam.</p>
+      <p class="news-readers">
+        Read by operators across SG · JP · KR · UK · CN
+      </p>
     </div>
   </section>
 
   <section class="news-what">
     <div class="container-narrow">
-      <div class="what-head">
-        <h2 class="section-h">What you get</h2>
+      <div class="sec-head">
+        <div class="section-tag">▍ What you get</div>
       </div>
 
-      <ul class="bullets">
+      <ol class="bullet-list">
         {
           bullets.map((b, i) => (
             <li class="bullet">
@@ -69,62 +106,85 @@ const bullets = [
             </li>
           ))
         }
-      </ul>
+      </ol>
     </div>
   </section>
 
-  <section class="news-readers">
+  <section class="news-archive">
     <div class="container-narrow">
-      <div class="readers-tag">Who reads The Dispatch</div>
-      <p class="readers-list">
-        Family-office principals · F&B chain operators · QSR development directors · Specialty importers · ASEAN private equity associates · Hospitality REIT analysts · International restaurant groups · Bangkok-based operators planning regional expansion.
-      </p>
+      <div class="sec-head">
+        <div class="section-tag">▍ Past issues</div>
+      </div>
+
+      <ul class="issue-list">
+        {
+          pastIssues.map((issue) => (
+            <li class="issue-item">
+              <a href="#" class="issue-link">
+                <div class="issue-date">{issue.date}</div>
+                <h3 class="issue-h">{issue.headline}</h3>
+                <p class="issue-desc">{issue.desc}</p>
+                <div class="issue-cta">Read past issue →</div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .news-hero {
-    padding: 96px 0 64px;
-    text-align: left;
-    border-bottom: 0.5px solid var(--hairline);
-  }
-
-  .news-eyebrow {
+  .section-tag {
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 18px;
   }
 
+  /* ========== HERO ========== */
+  .news-hero {
+    padding: 96px 0 72px;
+    text-align: center;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .news-hero .section-tag {
+    text-align: center;
+  }
   .news-title {
     font-family: var(--font-sans);
-    font-size: clamp(40px, 6vw, 72px);
-    font-weight: 800;
+    font-size: clamp(40px, 6.5vw, 76px);
+    font-weight: 500;
     letter-spacing: -0.035em;
-    line-height: 1;
+    line-height: 1.02;
     color: var(--ink);
-    margin-bottom: 24px;
+    margin: 0 auto 24px;
+    max-width: 760px;
   }
-
+  .news-title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
   .news-dek {
     font-family: var(--font-serif);
     font-size: clamp(18px, 2vw, 22px);
     line-height: 1.5;
     color: var(--ink-soft);
-    margin-bottom: 36px;
-    max-width: 580px;
+    margin: 0 auto 36px;
+    max-width: 560px;
   }
+  .news-dek em { font-style: italic; }
 
   .news-form {
     display: flex;
     gap: 8px;
     max-width: 480px;
-    margin-bottom: 12px;
+    margin: 0 auto 14px;
   }
-
   .news-input {
     flex: 1;
     font-family: var(--font-serif);
@@ -140,9 +200,10 @@ const bullets = [
   .news-input::placeholder { color: var(--ink-faint); }
 
   .news-btn {
-    font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     padding: 14px 22px;
     background: var(--ink);
     color: var(--paper);
@@ -154,68 +215,58 @@ const bullets = [
     background: var(--accent);
   }
 
-  .news-note {
+  .news-readers {
     font-family: var(--font-mono);
     font-size: 10px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--ink-faint);
   }
 
+  /* ========== SECTION HEAD ========== */
+  .sec-head {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .sec-head .section-tag { margin-bottom: 0; }
+
+  /* ========== WHAT YOU GET ========== */
   .news-what {
     padding: 64px 0;
     border-bottom: 0.5px solid var(--hairline);
   }
 
-  .what-head {
-    border-top: 2px solid var(--ink);
-    padding-top: 16px;
-    margin-bottom: 36px;
-  }
-
-  .section-h {
-    font-family: var(--font-sans);
-    font-size: clamp(28px, 3vw, 36px);
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    color: var(--ink);
-  }
-
-  .bullets {
+  .bullet-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-
   .bullet {
     display: flex;
-    gap: 28px;
-    align-items: flex-start;
-    padding: 28px 0;
+    gap: 24px;
+    padding: 24px 0;
     border-bottom: 0.5px solid var(--hairline);
   }
   .bullet:last-child { border-bottom: none; }
 
   .bullet-num {
-    font-family: var(--font-sans);
-    font-size: 36px;
-    font-weight: 800;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
     color: var(--accent);
-    letter-spacing: -0.02em;
     flex-shrink: 0;
-    min-width: 56px;
-    line-height: 1;
+    min-width: 30px;
+    padding-top: 4px;
   }
-
   .bullet-head {
-    font-family: var(--font-sans);
+    font-family: var(--font-serif);
     font-size: 22px;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: -0.015em;
     color: var(--ink);
     margin-bottom: 8px;
   }
-
   .bullet-text {
     font-family: var(--font-serif);
     font-size: 16px;
@@ -223,31 +274,67 @@ const bullets = [
     color: var(--ink-soft);
   }
 
-  .news-readers {
-    padding: 56px 0 80px;
+  /* ========== ARCHIVE ========== */
+  .news-archive {
+    padding: 64px 0 96px;
   }
 
-  .readers-tag {
+  .issue-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .issue-item {
+    border-top: 0.5px solid var(--hairline);
+  }
+  .issue-item:last-child {
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .issue-link {
+    display: block;
+    padding: 22px 0;
+    text-decoration: none;
+    border-bottom: none;
+    color: inherit;
+  }
+  .issue-date {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-bottom: 16px;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
   }
-
-  .readers-list {
+  .issue-h {
     font-family: var(--font-serif);
-    font-size: clamp(18px, 2vw, 22px);
-    line-height: 1.6;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--ink);
+    margin: 0 0 8px;
+    transition: color 0.15s ease;
+  }
+  .issue-link:hover .issue-h { color: var(--accent); }
+  .issue-desc {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .issue-cta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     color: var(--ink);
   }
+  .issue-link:hover .issue-cta { color: var(--accent); }
 
-  @media (max-width: 768px) {
-    .news-hero { padding: 56px 0 40px; }
+  @media (max-width: 900px) {
+    .news-hero { padding: 56px 0 48px; }
     .news-form { flex-direction: column; }
-    .bullet { gap: 16px; padding: 20px 0; }
-    .bullet-num { font-size: 26px; min-width: 40px; }
-    .bullet-head { font-size: 18px; }
+    .bullet { gap: 14px; padding: 18px 0; }
+    .bullet-head { font-size: 19px; }
   }
 </style>

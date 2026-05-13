@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { videos } from '../../data/content';
+import { videos, articles, type Video } from '../../data/content';
 
 export function getStaticPaths() {
   return videos.map((v) => ({
@@ -9,263 +9,523 @@ export function getStaticPaths() {
   }));
 }
 
-const { video } = Astro.props;
+interface Props {
+  video: Video;
+}
+
+const { video } = Astro.props as Props;
+const isFlagship = video.slug === 'bangkok-rent-prices-brand-out';
+
+// Flagship-only data
+const learnBullets = [
+  'How rent burden compounds with Thai dwell-time patterns',
+  'Why $95/sqm Sukhumvit costs you 22 margin points',
+  'The three questions to ask before any Bangkok lease',
+  'Which neighborhoods actually support coffee unit economics',
+];
+
+const numbersTable = [
+  { label: 'Sukhumvit (BTS Asok) rent', value: '$95/sqm', burden: '34%', impact: '−22 pts', danger: true },
+  { label: 'Thonglor rent', value: '$78/sqm', burden: '28%', impact: '−18 pts', danger: true },
+  { label: 'Silom CBD rent', value: '$110/sqm', burden: '41%', impact: '−27 pts', danger: true },
+  { label: 'Ari (residential) rent', value: '$42/sqm', burden: '15%', impact: '−6 pts', danger: false },
+  { label: 'Avg Thai dwell time', value: '90 min', burden: '—', impact: '1.2× turns', danger: false },
+  { label: 'Revenue per seat vs deck', value: '−65%', burden: '—', impact: '—', danger: true },
+];
+
+const transcript = [
+  { ts: '00:00', text: "Welcome back. Today we're going to talk about why three foreign coffee chains entered Thailand in 2023 and why two of them are closing outlets in 2025. The difference isn't the coffee — it's a single line in their pitch deck." },
+  { ts: '00:42', text: "Let's start with the math nobody wants to look at: rent burden as a percentage of revenue. In Singapore, healthy F&B operates at 12–18% rent burden. In Bangkok premium retail, the same square meter pulls you into 28–40%. Same brand, different math." },
+  { ts: '01:35', text: "Walk down Sukhumvit at 9 AM and you see foot traffic — thousands of people moving past the storefront. The mistake is assuming foot traffic equals customer traffic. In Bangkok, it doesn't. Productivity-mode workers don't convert at the same rate as in Singapore or Tokyo." },
+  { ts: '02:48', text: "Now walk down Ari at 2 PM. Lower foot traffic, much higher intent. The people walking are walking to the cafés. This is the part the pitch deck can't show you because it doesn't fit on a slide." },
+  { ts: '04:12', text: "Let's run the model on three real Bangkok lease comps from CBRE's Q1 2026 report. Sukhumvit Asok: $95 USD per square meter. Thonglor: $78. Silom CBD: $110. Ari: $42. Now overlay realistic Thai revenue per seat at 1.2× table turn, not 4×." },
+  { ts: '06:30', text: "The chain that opened in Ari? They observed for nine months before signing. The chains that opened in Sukhumvit and Silom signed within 90 days of board approval. Time in market is the cheapest due diligence you can buy and most foreign operators skip it entirely." },
+  { ts: '08:55', text: "Three questions to ask before any Bangkok lease. One: what's your dwell-time-adjusted revenue per seat? Two: what's your rent burden at 1.2× table turn? Three: are you optimizing for foot traffic or intent traffic?" },
+  { ts: '11:20', text: "If you're evaluating Thailand and the answer to any of these makes you uncomfortable, don't sign. The successful entrants we've tracked all said no to multiple Sukhumvit leases before saying yes to a B-tier location that actually worked." },
+  { ts: '13:00', text: "That's the episode. If you found this useful, the full Decoded report goes deeper into the rent-burden math and the operator interviews. Link in description. Subscribe to The Dispatch for the supporting analysis. See you next Tuesday." },
+];
+
+const entityTags = [
+  'Sukhumvit',
+  'Thonglor',
+  'Ari',
+  'CBRE Thailand',
+  'Unit economics',
+  'Rent burden',
+];
 
 const otherEpisodes = videos.filter((v) => v.slug !== video.slug);
+const relatedReads = articles
+  .filter((a) => ['unit-economics', 'neighborhood-alpha'].includes(a.category))
+  .slice(0, 2);
 ---
 
 <BaseLayout
-  title={`${video.title} — SpoonAsia Watch`}
+  title={`EP. ${video.episode} — ${video.title} — SpoonAsia Watch`}
   description={video.description}
 >
-  <section class="watch-hero">
-    <div class="container">
-      <div class="watch-eyebrow">Watch · Episode {video.episode}</div>
-      <h1 class="watch-title">{video.title}</h1>
-
-      <div class="player-wrap">
-        <div class="player">
-          <div class="play-btn" aria-hidden="true">▶</div>
-          <div class="player-meta">
-            <div class="player-ep">EP. {video.episode}</div>
-            <div class="player-duration">{video.duration}</div>
+  {isFlagship ? (
+    <>
+      <!-- HEADER -->
+      <section class="ep-head">
+        <div class="container-narrow">
+          <div class="section-tag">▍ EP. {video.episode} · Watch</div>
+          <h1 class="ep-h1">{video.title}</h1>
+          <div class="ep-meta">
+            <span>{video.date}</span>
+            <span class="sep">·</span>
+            <span>{video.views} views</span>
+            <span class="sep">·</span>
+            <span>{video.duration}</span>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="watch-byline">
-        <span class="byline-author">SpoonAsia Video Desk</span>
-        <span class="byline-sep">·</span>
-        <span>{video.date}</span>
-        <span class="byline-sep">·</span>
-        <span>{video.duration}</span>
-        <span class="byline-sep">·</span>
-        <span>{video.views} views</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="watch-body">
-    <div class="container-narrow">
-      <h2 class="watch-h">About this episode</h2>
-      <p class="watch-desc">{video.description}</p>
-
-      <div class="watch-notes">
-        <h3 class="watch-h-small">Notes</h3>
-        <ul class="notes-list">
-          <li>Show notes, references, and links coming soon.</li>
-          <li>Episode transcript will be published 7 days after release.</li>
-          <li>Subscribe to The Dispatch newsletter for the supporting analysis.</li>
-        </ul>
-      </div>
-
-      <a href="/newsletter" class="watch-cta">
-        <div class="cta-tag">The Dispatch</div>
-        <div class="cta-head">Get the analysis behind every episode.</div>
-        <div class="cta-arrow">Subscribe →</div>
-      </a>
-    </div>
-  </section>
-
-  {
-    otherEpisodes.length > 0 && (
-      <section class="more-episodes">
+      <!-- VIDEO EMBED -->
+      <section class="ep-embed-wrap">
         <div class="container">
-          <div class="more-head">
-            <h2 class="watch-h">More Episodes</h2>
-            <a href="/watch" class="more-link">All Episodes →</a>
+          <div class="ep-embed">
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title={video.title}
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
           </div>
-          <div class="more-grid">
-            {otherEpisodes.map((v) => (
-              <a href={`/watch/${v.slug}`} class="ep-card">
-                <div class="ep-thumb">
-                  <div class="ep-play">▶</div>
-                  <div class="ep-duration">{v.duration}</div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU'LL LEARN -->
+      <section class="ep-learn-wrap">
+        <div class="container-narrow">
+          <aside class="learn">
+            <div class="learn-label">What you'll learn</div>
+            <ul class="learn-list">
+              {learnBullets.map((b) => (
+                <li class="learn-item">
+                  <span class="learn-arrow">→</span>
+                  <span class="learn-text">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- NUMBERS COVERED -->
+      <section class="ep-numbers">
+        <div class="container-narrow">
+          <div class="section-tag">▍ Numbers covered</div>
+          <div class="table-wrap">
+            <div class="table-head-bar">
+              <span class="tab-num">Tab. 01 — Key data from EP. {video.episode}</span>
+              <span class="tab-src">Source: CBRE Thailand · Operator interviews</span>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th class="cell-th">Metric</th>
+                  <th class="cell-th cell-num">Value</th>
+                  <th class="cell-th cell-num">Rent burden</th>
+                  <th class="cell-th cell-num">Margin impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                {numbersTable.map((r) => (
+                  <tr>
+                    <td class="cell-td">{r.label}</td>
+                    <td class="cell-td cell-num">{r.value}</td>
+                    <td class="cell-td cell-num">{r.burden}</td>
+                    <td class={r.danger ? 'cell-td cell-num cell-danger' : 'cell-td cell-num'}>
+                      {r.impact}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRANSCRIPT -->
+      <section class="ep-transcript">
+        <div class="container-narrow">
+          <details class="transcript">
+            <summary class="transcript-summary">Read full transcript</summary>
+            <div class="transcript-body">
+              {transcript.map((t) => (
+                <div class="ts-row">
+                  <div class="ts-time">[{t.ts}]</div>
+                  <p class="ts-text">{t.text}</p>
                 </div>
-                <div class="ep-num">EP. {v.episode}</div>
-                <h3 class="ep-title">{v.title}</h3>
-                <div class="ep-meta">{v.views} views</div>
-              </a>
+              ))}
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ENTITY TAGS -->
+      <section class="ep-entities">
+        <div class="container-narrow">
+          <div class="section-tag">▍ Discussed in this episode</div>
+          <div class="pill-row">
+            {entityTags.map((t) => (
+              <span class="pill">{t}</span>
             ))}
           </div>
         </div>
       </section>
-    )
-  }
+
+      <!-- RELATED -->
+      <section class="ep-related">
+        <div class="container-narrow">
+          <div class="section-tag">▍ Related reading</div>
+          <div class="rel-grid">
+            {relatedReads.map((a) => (
+              <article class="rel-card">
+                <div class="rel-tag">{a.tag}</div>
+                <h3 class="rel-h">
+                  <a href={`/decoded/${a.slug}`}>{a.title}</a>
+                </h3>
+              </article>
+            ))}
+            {otherEpisodes.slice(0, 1).map((v) => (
+              <article class="rel-card">
+                <div class="rel-tag">EP. {v.episode} · Watch</div>
+                <h3 class="rel-h">
+                  <a href={`/watch/${v.slug}`}>{v.title}</a>
+                </h3>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  ) : (
+    <!-- PLACEHOLDER FOR OTHER EPISODES -->
+    <section class="ep-placeholder">
+      <div class="container-narrow">
+        <div class="section-tag">▍ EP. {video.episode} · Watch</div>
+        <h1 class="ep-h1">{video.title}</h1>
+        <div class="ep-meta">
+          <span>{video.date}</span>
+          <span class="sep">·</span>
+          <span>{video.views} views</span>
+          <span class="sep">·</span>
+          <span>{video.duration}</span>
+        </div>
+
+        <div class="ep-embed-placeholder" aria-hidden="true">
+          <div class="play-btn">▶</div>
+        </div>
+
+        <div class="ph-notice">
+          <div class="ph-label">In Production</div>
+          <p class="ph-text">
+            Full episode page in progress. Watch on <a href="https://youtube.com/@spoonasia" target="_blank" rel="noopener">YouTube</a>,
+            subscribe to <a href="/newsletter">The Dispatch</a>, or return to <a href="/watch">all episodes</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  )}
 </BaseLayout>
 
 <style>
-  .watch-hero {
-    padding: 48px 0 32px;
-    border-bottom: 0.5px solid var(--hairline);
-  }
-
-  .watch-eyebrow {
+  .section-tag {
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
 
-  .watch-title {
+  /* ========== HEADER ========== */
+  .ep-head {
+    padding: 64px 0 32px;
+  }
+  .ep-h1 {
     font-family: var(--font-sans);
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 800;
-    line-height: 1.05;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 500;
+    line-height: 1.1;
     letter-spacing: -0.025em;
     color: var(--ink);
-    margin-bottom: 32px;
+    margin-bottom: 22px;
     max-width: 880px;
   }
-
-  .player-wrap {
-    margin-bottom: 24px;
-  }
-
-  .player {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: linear-gradient(135deg, var(--ink) 0%, #2A2825 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: opacity 0.15s ease;
-  }
-  .player:hover { opacity: 0.92; }
-
-  .play-btn {
-    width: 88px;
-    height: 88px;
-    background: var(--paper);
-    color: var(--ink);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    padding-left: 6px;
-    transition: transform 0.15s ease;
-  }
-  .player:hover .play-btn { transform: scale(1.08); }
-
-  .player-meta {
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .player-ep {
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--paper);
-    background: var(--accent);
-    padding: 6px 12px;
-  }
-
-  .player-duration {
+  .ep-meta {
     font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--paper);
-    background: rgba(0, 0, 0, 0.7);
-    padding: 5px 9px;
-  }
-
-  .watch-byline {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    font-family: var(--font-sans);
-    font-size: 13px;
-    color: var(--ink-faint);
-    font-weight: 500;
   }
-  .byline-author { color: var(--ink); font-weight: 600; }
-  .byline-sep { color: var(--ink-mute); }
+  .ep-meta .sep { color: var(--ink-mute); }
 
-  .watch-body {
-    padding: 48px 0;
-    border-bottom: 0.5px solid var(--hairline);
+  /* ========== EMBED ========== */
+  .ep-embed-wrap {
+    padding: 16px 0 36px;
   }
-
-  .watch-h {
-    font-family: var(--font-sans);
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 16px;
+  .ep-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--ink);
   }
-
-  .watch-h-small {
-    font-family: var(--font-sans);
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin-bottom: 12px;
+  .ep-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
-  .watch-desc {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    line-height: 1.65;
-    color: var(--ink);
-    margin-bottom: 36px;
+  /* ========== LEARN BOX ========== */
+  .ep-learn-wrap {
+    padding: 16px 0 32px;
   }
-
-  .watch-notes {
-    padding: 24px 0;
-    border-top: 0.5px solid var(--hairline);
-    border-bottom: 0.5px solid var(--hairline);
-    margin-bottom: 36px;
+  .learn {
+    background: var(--paper-warm);
+    border-left: 2px solid var(--accent);
+    padding: 22px 26px;
   }
-
-  .notes-list {
+  .learn-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .learn-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-
-  .notes-list li {
+  .learn-item {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+  }
+  .learn-arrow {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+  .learn-text {
     font-family: var(--font-serif);
     font-size: 15px;
     line-height: 1.55;
-    color: var(--ink-soft);
-    padding: 8px 0 8px 18px;
-    position: relative;
-  }
-  .notes-list li::before {
-    content: '·';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: 700;
+    color: var(--ink);
   }
 
-  .watch-cta {
-    display: block;
-    padding: 28px;
-    background: var(--ink);
-    color: var(--paper);
+  /* ========== DATA TABLE ========== */
+  .ep-numbers {
+    padding: 32px 0;
+  }
+  .table-wrap {
+    margin-top: 4px;
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .table-head-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .tab-num { color: var(--ink); }
+  .tab-src { color: var(--ink-soft); }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .cell-th {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    text-align: left;
+    padding: 14px 12px 14px 0;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .cell-num {
+    text-align: right;
+    padding-right: 0;
+  }
+  .cell-td {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    color: var(--ink);
+    padding: 14px 12px 14px 0;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .cell-td.cell-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .cell-danger { color: var(--accent) !important; }
+  tbody tr:last-child .cell-td { border-bottom: none; }
+
+  /* ========== TRANSCRIPT ========== */
+  .ep-transcript {
+    padding: 24px 0;
+  }
+  .transcript {
+    border-top: 0.5px solid var(--hairline);
+    border-bottom: 0.5px solid var(--hairline);
+    padding: 0;
+  }
+  .transcript-summary {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 18px 0;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .transcript-summary::-webkit-details-marker { display: none; }
+  .transcript-summary::after {
+    content: '+';
+    color: var(--accent);
+    font-size: 16px;
+  }
+  .transcript[open] .transcript-summary::after { content: '−'; }
+  .transcript-summary:hover { color: var(--accent); }
+
+  .transcript-body {
+    padding: 0 0 24px;
+  }
+  .ts-row {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 16px;
+    padding: 10px 0;
+    align-items: baseline;
+  }
+  .ts-time {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  .ts-text {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  /* ========== ENTITY PILLS ========== */
+  .ep-entities {
+    padding: 32px 0;
+  }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pill {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 0.5px solid var(--hairline-strong);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  /* ========== RELATED ========== */
+  .ep-related {
+    padding: 32px 0 64px;
+  }
+  .rel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .rel-card {
+    border-top: 0.5px solid var(--hairline);
+    padding-top: 16px;
+  }
+  .rel-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .rel-h {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0;
+  }
+  .rel-h a {
+    color: inherit;
     text-decoration: none;
     border-bottom: none;
-    transition: background 0.15s ease;
+    transition: color 0.15s ease;
   }
-  .watch-cta:hover {
-    background: var(--accent-deep);
+  .rel-h a:hover { color: var(--accent); }
+
+  /* ========== PLACEHOLDER ========== */
+  .ep-placeholder {
+    padding: 64px 0 96px;
   }
-  .cta-tag {
+  .ep-embed-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--ink) 0%, #2A2825 100%);
+    margin: 32px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ep-embed-placeholder .play-btn {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    padding-left: 5px;
+  }
+  .ph-notice {
+    margin-top: 24px;
+    background: var(--paper-warm);
+    border-left: 2px solid var(--accent);
+    padding: 22px 26px;
+  }
+  .ph-label {
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.15em;
@@ -273,128 +533,29 @@ const otherEpisodes = videos.filter((v) => v.slug !== video.slug);
     color: var(--accent);
     margin-bottom: 10px;
   }
-  .cta-head {
-    font-family: var(--font-sans);
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.015em;
-    margin-bottom: 12px;
-    color: var(--paper);
-  }
-  .cta-arrow {
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--paper);
-  }
-
-  .more-episodes {
-    padding: 48px 0 64px;
-    background: var(--paper-mute);
-  }
-
-  .more-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-top: 2px solid var(--ink);
-    padding-top: 16px;
-    margin-bottom: 28px;
-  }
-
-  .more-link {
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink-soft);
-    text-decoration: none;
-    border-bottom: none;
-  }
-  .more-link:hover { color: var(--accent); }
-
-  .more-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-
-  .ep-card {
-    display: block;
-    text-decoration: none;
-    border-bottom: none;
-    color: inherit;
-  }
-
-  .ep-thumb {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: linear-gradient(135deg, var(--ink) 0%, #2A2825 100%);
-    position: relative;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .ep-play {
-    width: 56px;
-    height: 56px;
-    background: var(--paper);
+  .ph-text {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.6;
     color: var(--ink);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    padding-left: 4px;
-    transition: transform 0.15s ease;
   }
-  .ep-card:hover .ep-play { transform: scale(1.1); }
-
-  .ep-duration {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--paper);
-    background: rgba(0, 0, 0, 0.7);
-    padding: 3px 7px;
+  .ph-text a {
+    color: var(--ink);
+    border-bottom: 0.5px solid var(--ink-faint);
+    text-decoration: none;
   }
-
-  .ep-num {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 700;
+  .ph-text a:hover {
     color: var(--accent);
-    letter-spacing: 0.08em;
-    margin-bottom: 6px;
+    border-bottom-color: var(--accent);
   }
 
-  .ep-title {
-    font-family: var(--font-sans);
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-    margin-bottom: 8px;
-    transition: color 0.15s ease;
-  }
-  .ep-card:hover .ep-title { color: var(--accent); }
-
-  .ep-meta {
-    font-family: var(--font-sans);
-    font-size: 12px;
-    color: var(--ink-faint);
-  }
-
-  @media (max-width: 1024px) {
-    .more-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (max-width: 768px) {
-    .play-btn { width: 64px; height: 64px; font-size: 22px; }
-    .more-grid { grid-template-columns: 1fr; }
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .ep-head { padding: 48px 0 24px; }
+    .rel-grid { grid-template-columns: 1fr; }
+    .data-table { font-size: 13px; }
+    .cell-th, .cell-td { padding: 10px 8px 10px 0; }
+    .ts-row { grid-template-columns: 52px 1fr; gap: 10px; }
+    .ts-text { font-size: 14px; }
   }
 </style>

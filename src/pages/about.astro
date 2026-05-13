@@ -1,19 +1,418 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const audiences = [
+  {
+    tag: 'Investor / Operator',
+    head: 'For F&B operators considering Thailand.',
+    body: 'You have a concept that works in Singapore, Tokyo, or London. You want to know if it survives Thai dwell-time economics before you sign a lease. We give you the math the broker memo leaves out.',
+  },
+  {
+    tag: 'Supplier / Manufacturer',
+    head: 'For suppliers selling into Thai F&B.',
+    body: 'You sell ingredients, equipment, or packaging into Thailand. You want to understand which chains are growing, which categories are consolidating, and which procurement decisions are about to move.',
+  },
+  {
+    tag: 'Strategic Investor',
+    head: 'For family offices and growth equity.',
+    body: 'You allocate to ASEAN F&B as part of a brand-portfolio thesis. You need ground-truth on which operators are building durable unit economics versus chasing scale.',
+  },
+];
+
+const frameworks = [
+  {
+    label: 'Program A',
+    head: 'Unit Economics',
+    body: 'Rent, labor, COGS, payback period — read at the outlet level. Most pro formas assume Singapore throughput against Thai cost structure. We tear that apart and show what survives.',
+  },
+  {
+    label: 'Program B',
+    head: 'Neighborhood Alpha',
+    body: 'Why one block becomes a dining destination and the next stays empty. We map rent curves, foot traffic, and the social capital that prices a corner — the part the CBRE report does not show.',
+  },
+];
 ---
+
 <BaseLayout
   title="About — SpoonAsia"
-  description="The analyst, the methodology, and why SpoonAsia exists."
+  description="SpoonAsia decodes Thailand's F&B landscape for international investors, suppliers, and operators evaluating market entry."
 >
-  <section class="section">
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow">— About</div>
-        <h2 class="section-title">One analyst, two <em>lenses</em></h2>
+  <section class="about-head">
+    <div class="container-narrow">
+      <div class="section-tag">▍ About</div>
+      <h1 class="about-h1">
+        F&B intelligence for foreign <em>operators</em>
+      </h1>
+      <p class="about-dek">
+        <em>
+          SpoonAsia decodes Thailand's F&B landscape for international investors,
+          suppliers, and operators evaluating market entry. Not pitch decks.
+          Not broker copy. The numbers and context most market-entry reports leave out.
+        </em>
+      </p>
+    </div>
+  </section>
+
+  <section class="about-audiences">
+    <div class="container">
+      <div class="sec-head">
+        <div class="section-tag">▍ Who we serve</div>
+        <h2 class="sec-h">Three audiences. One framework.</h2>
+      </div>
+
+      <div class="aud-grid">
+        {
+          audiences.map((a) => (
+            <div class="aud-col">
+              <div class="aud-tag">{a.tag}</div>
+              <h3 class="aud-head">{a.head}</h3>
+              <p class="aud-body">{a.body}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
-    <p style="color: var(--paper-mute); font-size: 18px; max-width: 60ch;">
-      About page coming soon. SpoonAsia is the English-language F&amp;B intelligence channel of Torpenguin, a Thailand-based F&amp;B media and advisory practice.
-    </p>
+  </section>
+
+  <section class="about-frameworks">
+    <div class="container">
+      <div class="sec-head">
+        <div class="section-tag">▍ The Frameworks</div>
+        <h2 class="sec-h">Two lenses we use to read every market.</h2>
+      </div>
+
+      <div class="fw-grid">
+        {
+          frameworks.map((f) => (
+            <div class="fw-col">
+              <div class="fw-label">{f.label}</div>
+              <h3 class="fw-head">{f.head}</h3>
+              <p class="fw-body">{f.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="about-behind">
+    <div class="container">
+      <div class="sec-head">
+        <div class="section-tag">▍ Behind SpoonAsia</div>
+      </div>
+
+      <div class="behind-grid">
+        <div class="behind-text">
+          <h2 class="behind-h">
+            Eight years running F&B in Thailand. <em>One publication.</em>
+          </h2>
+          <p class="behind-p">
+            SpoonAsia is a Torpenguin publication. It exists because the international
+            investors and operators evaluating Thailand kept asking the same questions —
+            and kept reading reports that did not answer them.
+          </p>
+          <p class="behind-p">
+            We built Penguin Eat Shabu from a single outlet to a 40-outlet shabu chain
+            across Thailand. Along the way, we learned which numbers in the broker memo
+            were structurally optimistic, which neighborhoods compounded into alpha, and
+            which pitch-deck assumptions broke first when they met Thai dwell-time
+            patterns.
+          </p>
+          <p class="behind-p">
+            SpoonAsia decodes that operational reality for international readers.
+            The newsletter is free. The Decoded reports are free. The Penguin X advisory
+            is paid, and that is what funds the publication.
+          </p>
+          <p class="behind-origin">A Torpenguin publication · Bangkok</p>
+        </div>
+
+        <div class="behind-photo" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-cta-wrap">
+    <div class="container-narrow">
+      <aside class="px-cta">
+        <div class="px-label">Penguin X — Advisory</div>
+        <h3 class="px-head">Evaluating Thailand for a new outlet?</h3>
+        <p class="px-sub">
+          Penguin X provides ground-truth due diligence for international F&B
+          operators. Unit economics audits, neighborhood selection, partner introductions.
+        </p>
+        <a href="/penguin-x" class="px-btn">Request a Briefing →</a>
+      </aside>
+
+      <div class="news-tease">
+        <p class="news-line">
+          Or start with the Sunday newsletter.
+        </p>
+        <a href="/newsletter" class="news-link">Subscribe to The Dispatch →</a>
+      </div>
+    </div>
   </section>
 </BaseLayout>
+
+<style>
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .about-head {
+    padding: 72px 0 48px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .about-h1 {
+    font-family: var(--font-sans);
+    font-size: clamp(40px, 5.4vw, 60px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .about-h1 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .about-dek {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 680px;
+  }
+  .about-dek em { font-style: italic; }
+
+  .sec-head {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .sec-head .section-tag { margin-bottom: 10px; }
+  .sec-h {
+    font-family: var(--font-sans);
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* ========== AUDIENCES ========== */
+  .about-audiences {
+    padding: 56px 0;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .aud-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+  }
+  .aud-col { }
+  .aud-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .aud-head {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .aud-body {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ========== FRAMEWORKS ========== */
+  .about-frameworks {
+    padding: 56px 0;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .fw-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .fw-col {
+    border-top: 0.5px solid var(--ink);
+    padding-top: 20px;
+  }
+  .fw-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .fw-head {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .fw-body {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ========== BEHIND ========== */
+  .about-behind {
+    padding: 56px 0;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .behind-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .behind-h {
+    font-family: var(--font-sans);
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .behind-h em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .behind-p {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .behind-origin {
+    margin-top: 18px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .behind-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--hairline), var(--paper-warm));
+  }
+
+  /* ========== CTA ========== */
+  .about-cta-wrap {
+    padding: 48px 0 80px;
+  }
+  .px-cta {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 40px 32px;
+  }
+  .px-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .px-head {
+    font-family: var(--font-sans);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--paper);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .px-sub {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.6;
+    color: #B8B5AC;
+    margin-bottom: 22px;
+    max-width: 540px;
+  }
+  .px-btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    background: var(--paper);
+    color: var(--ink);
+    text-decoration: none;
+    border: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .px-btn:hover {
+    background: var(--accent);
+    color: var(--paper);
+  }
+
+  .news-tease {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 0.5px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .news-line {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    color: var(--ink);
+  }
+  .news-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--accent);
+    padding-bottom: 2px;
+  }
+  .news-link:hover { color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .about-head { padding: 48px 0 32px; }
+    .aud-grid,
+    .fw-grid,
+    .behind-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .behind-photo { aspect-ratio: 16/10; order: -1; }
+    .px-cta { padding: 28px 22px; }
+    .px-head { font-size: 20px; }
+  }
+</style>

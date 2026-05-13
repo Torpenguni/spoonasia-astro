@@ -9,7 +9,7 @@ export default defineConfig({
   },
   vite: {
     preview: {
-      allowedHosts: ['.railway.app', '.spoonasia.com'],
+      allowedHosts: true,
     },
   },
 });

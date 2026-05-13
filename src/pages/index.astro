@@ -1,238 +1,695 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const featuredTout = {
+  tag: 'Unit Economics',
+  headline: "Why foreign coffee chains keep failing in Thailand",
+  dek: "Three international chains entered in 2023. Two are closing outlets in 2025. The difference wasn't the coffee — it was the rent escalator, the staff turnover, and the math no broker shows you.",
+  author: 'SpoonAsia Desk',
+  date: '13 May 2026',
+  readTime: '12 min read',
+  slug: 'why-foreign-coffee-chains-fail-thailand',
+};
+
+const fascinatingReads = [
+  { tag: 'Neighborhood', headline: "Why Ari became Bangkok's most underrated F&B zone", slug: 'ari-bangkok-fb-zone' },
+  { tag: 'Market Entry', headline: "The hidden costs no Thai broker will tell you about", slug: 'hidden-costs-thai-market-entry' },
+  { tag: 'Operator', headline: "Penguin Eat Shabu: anatomy of a 40-outlet rollout", slug: 'penguin-eat-shabu-rollout' },
+];
+
+const quickLinks = [
+  'Thai REIT yields are bottoming — and F&B operators should care',
+  'Why Japanese chains are quietly winning Bangkok malls',
+  'The shrinking margin on bubble tea, in one chart',
+  'Sukhumvit 31 is the new 49. Here\'s why',
+  '7-Eleven\'s F&B push reshapes supplier dynamics',
+];
+
+const floodArticles = [
+  {
+    tag: 'Markets',
+    headline: 'Bangkok mall F&B vacancy hits 7-year high as anchor tenants exit',
+    dek: 'EmQuartier, ICONSIAM, and Central Embassy all report double-digit F&B turnover.',
+    date: '13 May 2026',
+    slug: 'bangkok-mall-fb-vacancy',
+  },
+  {
+    tag: 'Operators',
+    headline: 'After Inflation: how three Bangkok chains rewrote their menus to survive',
+    dek: 'A close read of menu engineering, portion calibration, and price-tier strategy.',
+    date: '12 May 2026',
+    slug: 'menu-engineering-bangkok',
+  },
+  {
+    tag: 'Suppliers',
+    headline: 'The hidden duopoly behind Thailand\'s coffee bean trade',
+    dek: 'Two importers control 78% of specialty bean flow into Bangkok cafés.',
+    date: '11 May 2026',
+    slug: 'coffee-duopoly-thailand',
+  },
+  {
+    tag: 'Investment',
+    headline: 'Why Singaporean family offices keep funding Thai F&B — even when it loses money',
+    dek: 'Lifestyle capital, brand portfolios, and the ASEAN halo trade.',
+    date: '10 May 2026',
+    slug: 'singapore-family-office-thai-fb',
+  },
+  {
+    tag: 'Neighborhood',
+    headline: 'Phra Khanong is quietly becoming Bangkok\'s next F&B frontier',
+    dek: 'Three signals: rents up 18%, BTS upgrades, and Gen Z creator clusters.',
+    date: '09 May 2026',
+    slug: 'phra-khanong-frontier',
+  },
+  {
+    tag: 'Operators',
+    headline: 'Thai cloud kitchens are pivoting hard — and most won\'t survive',
+    dek: 'GrabFood data shows the order curve flattening for the first time since 2019.',
+    date: '08 May 2026',
+    slug: 'thai-cloud-kitchens-pivot',
+  },
+];
+
+const popularStories = [
+  'Why every Japanese ramen chain in Bangkok looks the same now',
+  'The unit economics of a 60-seat Sukhumvit izakaya',
+  'How CentralWorld broke its own F&B floor plan',
+  'A field guide to Thai partner contracts (and the clauses that ruin foreigners)',
+  'The case for buying — not opening — your first Thai F&B outlet',
+];
+
+const greatRead = {
+  tag: 'Long Read',
+  headline: 'Bangkok rent is not a number — it is a story about who the city is becoming',
+  dek: 'A five-month investigation into how landlords price retail F&B space across nine Bangkok neighborhoods. What we found rewrites the standard market-entry playbook.',
+  author: 'SpoonAsia Editorial',
+  date: '07 May 2026',
+  readTime: '24 min read',
+  slug: 'bangkok-rent-story',
+};
+
+const videos = [
+  { number: '03', title: 'How Bangkok rent prices a brand out of existence', duration: '13:42', views: '24K', slug: 'bangkok-rent-prices-brand-out' },
+  { number: '02', title: 'Reading Ari like an urban architect', duration: '11:08', views: '18K', slug: 'reading-ari' },
+  { number: '01', title: 'The Penguin Eat Shabu unit economics walkthrough', duration: '16:21', views: '32K', slug: 'penguin-eat-shabu-walkthrough' },
+];
 ---
 
 <BaseLayout
-  title="SpoonAsia — Decoding Thai F&B for International Investors"
-  description="F&B investment intelligence for the Thailand market. Unit economics, neighborhood alpha, and decision frameworks for foreign operators evaluating Thailand."
+  title="SpoonAsia — F&B Investment Intelligence for Asia"
+  description="Decoding Thailand's F&B landscape for international investors, suppliers, and operators. Unit economics, neighborhood alpha, and the gaps in pitch decks."
 >
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="hero-slug">
-        <span>Dispatch № 047</span>
-        <span class="rule"></span>
-        <span>13 May 2026 · Bangkok</span>
-      </div>
+  <section class="top-grid">
+    <div class="container">
+      <div class="top-grid-inner">
 
-      <span class="hero-eyebrow">F&amp;B Investment Intelligence</span>
+        <article class="featured-tout">
+          <div class="featured-image" aria-hidden="true"></div>
+          <div class="featured-content">
+            <a href={`/decoded/${featuredTout.tag.toLowerCase().replace(' ', '-')}`} class="tag-link">
+              {featuredTout.tag}
+            </a>
+            <h2 class="featured-headline">
+              <a href={`/decoded/${featuredTout.slug}`}>{featuredTout.headline}</a>
+            </h2>
+            <p class="featured-dek">{featuredTout.dek}</p>
+            <div class="featured-byline">
+              <span class="byline-author">{featuredTout.author}</span>
+              <span class="byline-sep">·</span>
+              <span>{featuredTout.date}</span>
+              <span class="byline-sep">·</span>
+              <span>{featuredTout.readTime}</span>
+            </div>
+          </div>
+        </article>
 
-      <h1 class="hero-title">
-        Decoding Thai F&amp;B for foreign <em>operators</em>
-      </h1>
+        <aside class="fascinating-reads">
+          <h3 class="sidebar-title">Fascinating Reads</h3>
+          <ul class="fascinating-list">
+            {fascinatingReads.map(item => (
+              <li class="fascinating-item">
+                <a href={`/decoded/${item.slug}`}>
+                  <span class="fascinating-tag">{item.tag}</span>
+                  <span class="fascinating-headline">{item.headline}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
 
-      <p class="hero-deck">
-        Unit economics, neighborhood alpha, and decision frameworks for international investors, suppliers, and operators evaluating Thailand. Not pitch decks. Not broker copy. The numbers and context most market-entry reports leave out.
-      </p>
+        <aside class="quick-links">
+          <h3 class="sidebar-title">Quick Links</h3>
+          <ul class="quick-list">
+            {quickLinks.map(link => (
+              <li class="quick-item">
+                <a href="#">{link}</a>
+              </li>
+            ))}
+          </ul>
+        </aside>
 
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num">$32<span class="unit">B</span></div>
-          <div class="hero-stat-label">Thai F&amp;B Market<br>Krungsri Research 2025</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">68<span class="unit">%</span></div>
-          <div class="hero-stat-label">Independent<br>Operator Share</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">7.4<span class="unit">%</span></div>
-          <div class="hero-stat-label">CAGR Casual<br>Dining 2024–28</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">3<span class="unit">/10</span></div>
-          <div class="hero-stat-label">Foreign Chains<br>Profitable Y3</div>
-        </div>
-      </div>
-
-      <div class="hero-cta-row">
-        <a href="/decoded" class="btn-primary">
-          <span>Read the latest Decoded</span>
-          <span>→</span>
-        </a>
-        <a href="/watch" class="btn-secondary">Watch episode 04 →</a>
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- DECODED -->
-  <section class="section" id="decoded">
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow">— Decoded · Long-form analysis</div>
-        <h2 class="section-title">Reports built for <em>investment decisions</em></h2>
+  <section class="flood-zone">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Today's Coverage</h2>
+        <a href="/decoded" class="section-more">All Coverage →</a>
       </div>
-      <a href="/decoded" class="section-link">All Decoded reports →</a>
+
+      <div class="flood-grid">
+        {floodArticles.map(article => (
+          <article class="flood-card">
+            <div class="flood-image" aria-hidden="true"></div>
+            <a href={`/decoded/${article.tag.toLowerCase()}`} class="tag-link">{article.tag}</a>
+            <h3 class="flood-headline">
+              <a href={`/decoded/${article.slug}`}>{article.headline}</a>
+            </h3>
+            <p class="flood-dek">{article.dek}</p>
+            <div class="flood-meta">{article.date}</div>
+          </article>
+        ))}
+      </div>
     </div>
+  </section>
 
-    <div class="decoded-grid">
-      <article class="decoded-card featured">
-        <div class="decoded-meta">
-          <span class="tag">Unit Economics</span>
-          <span>13 May 2026 · 18 min read</span>
-        </div>
-        <h3>Why three foreign coffee chains lost money in Bangkok — and one didn't</h3>
-        <p>The pitch deck shows $4.50 ticket size, 220 covers a day, 28% gross margin. The P&amp;L shows tea money, BOI compliance, GP loss on delivery, and a landlord ratchet that nobody mentioned. Strip away branding. Look at the skeleton.</p>
-        <div class="stat-strip">
-          <div><strong>4 chains</strong>Analysed</div>
-          <div><strong>$1.2M</strong>Avg. Y1 burn</div>
-          <div><strong>27 mo.</strong>To breakeven</div>
-        </div>
-      </article>
+  <section class="most-popular">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Most Popular</h2>
+      </div>
 
-      <article class="decoded-card">
-        <div class="decoded-meta">
-          <span class="tag">Neighborhood</span>
-          <span>06 May 2026</span>
-        </div>
-        <h3>Thonglor looks like Brooklyn. It behaves like Roppongi.</h3>
-        <p>Foot traffic is not customer traffic. What you're really paying for in a 600 baht-per-sqm lease.</p>
-        <div class="stat-strip">
-          <div><strong>฿580/sqm</strong>Median rent</div>
-          <div><strong>3.2×</strong>vs. Ari</div>
-        </div>
-      </article>
+      <ol class="popular-list">
+        {popularStories.map((story, i) => (
+          <li class="popular-item">
+            <span class="popular-num">{String(i + 1).padStart(2, '0')}</span>
+            <a href="#" class="popular-headline">{story}</a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
 
-      <article class="decoded-card">
-        <div class="decoded-meta">
-          <span class="tag">Market Entry</span>
-          <span>29 Apr 2026</span>
-        </div>
-        <h3>Master franchise or wholly-owned? The 2026 decision matrix</h3>
-        <p>BOI changes shifted the math. Three structural questions to ask before committing capital.</p>
-        <div class="stat-strip">
-          <div><strong>4 paths</strong>Compared</div>
-          <div><strong>11 risks</strong>Mapped</div>
-        </div>
-      </article>
+  <section class="great-reads">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Great Reads</h2>
+      </div>
 
-      <article class="decoded-card">
-        <div class="decoded-meta">
-          <span class="tag">Supply Chain</span>
-          <span>22 Apr 2026</span>
-        </div>
-        <h3>Why Japanese suppliers underprice for Thailand — and overlose</h3>
-        <p>The distributor margin stack in Thailand has three layers most foreign manufacturers never see.</p>
-        <div class="stat-strip">
-          <div><strong>17–24%</strong>Hidden margin</div>
-        </div>
-      </article>
-
-      <article class="decoded-card">
-        <div class="decoded-meta">
-          <span class="tag">Consumer</span>
-          <span>15 Apr 2026</span>
-        </div>
-        <h3>Thai middle class is bigger than the deck says — and smaller than it spends</h3>
-        <p>Real disposable income data, not "rising middle class" platitudes from 2018 reports.</p>
-        <div class="stat-strip">
-          <div><strong>23.4M</strong>Households</div>
-          <div><strong>฿38k</strong>Median income</div>
+      <article class="great-read-card">
+        <div class="great-image" aria-hidden="true"></div>
+        <div class="great-content">
+          <a href="#" class="tag-link long-read">{greatRead.tag}</a>
+          <h3 class="great-headline">
+            <a href={`/decoded/${greatRead.slug}`}>{greatRead.headline}</a>
+          </h3>
+          <p class="great-dek">{greatRead.dek}</p>
+          <div class="great-byline">
+            <span class="byline-author">{greatRead.author}</span>
+            <span class="byline-sep">·</span>
+            <span>{greatRead.date}</span>
+            <span class="byline-sep">·</span>
+            <span>{greatRead.readTime}</span>
+          </div>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- EPISODE -->
-  <section class="episode" id="episodes">
-    <div class="episode-inner">
-      <div class="episode-visual">
-        <span class="episode-corner tl">EP.04 · REC ●</span>
-        <span class="episode-corner br">14:32</span>
-        <div class="episode-play" aria-label="Play episode 4"></div>
+  <section class="videos-section">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Videos</h2>
+        <a href="/watch" class="section-more">All Episodes →</a>
       </div>
 
-      <div>
-        <span class="episode-tag">Episode 04 · Now Playing</span>
-        <h2>The shabu math: $6 a head and 25% gross margin, explained</h2>
-        <p class="episode-deck">
-          A Bangkok shabu chain charges what a Singapore operator would call suicide pricing — and clears margin a Tokyo operator would envy. The variable nobody puts in slide one.
-        </p>
-        <ul class="episode-bullets">
-          <li>Why ฿299 buffet pricing isn't the unit-economics story</li>
-          <li>The hidden labor arbitrage built into Thai casual dining</li>
-          <li>What happens to this model when minimum wage hits ฿450</li>
-        </ul>
-        <div class="episode-meta">
-          <span>14 min · Long-form</span>
-          <span>Segment A · Investor</span>
-          <span>Program A · Unit Economics</span>
-        </div>
-        <a href="#" class="btn-primary">
-          <span>Watch on YouTube</span>
-          <span>→</span>
-        </a>
+      <div class="videos-grid">
+        {videos.map(video => (
+          <a href={`/watch/${video.slug}`} class="video-card">
+            <div class="video-thumb">
+              <div class="video-play">▶</div>
+              <div class="video-duration">{video.duration}</div>
+            </div>
+            <div class="video-num">EP. {video.number}</div>
+            <h3 class="video-headline">{video.title}</h3>
+            <div class="video-meta">{video.views} views</div>
+          </a>
+        ))}
       </div>
-    </div>
-  </section>
-
-  <!-- FRAMEWORK -->
-  <section class="section">
-    <div class="section-head">
-      <div>
-        <div class="section-eyebrow">— How I read this market</div>
-        <h2 class="section-title">Two lenses, one <em>analyst</em></h2>
-      </div>
-    </div>
-
-    <div class="framework">
-      <div class="framework-col">
-        <div class="framework-num">PROGRAM A</div>
-        <h3>The <em>Unit Economics</em></h3>
-        <p>I look at F&amp;B brands the way a CFO does due diligence — strip away marketing narrative, founder charisma, brand glow. The skeleton either holds weight or it doesn't.</p>
-        <div class="framework-quote">
-          "The pitch deck shows revenue. The P&amp;L shows reality. The variance is your due-diligence question."
-        </div>
-      </div>
-
-      <div class="framework-col">
-        <div class="framework-num">PROGRAM B</div>
-        <h3>The <em>Neighborhood Alpha</em></h3>
-        <p>Neighborhoods are organisms. Rent is a price tag on a specific kind of human traffic. Two locations on the same street can be running completely different businesses.</p>
-        <div class="framework-quote">
-          "The rent isn't for the space. It's for the access. And access is not foot traffic."
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PENGUIN X -->
-  <section class="penguin-x" id="penguin-x">
-    <div class="penguin-x-inner">
-      <div>
-        <div class="penguin-x-eyebrow">— Penguin X · Advisory</div>
-        <h2>When reading isn't <em>enough</em>.</h2>
-        <p>
-          For operators past the research phase. Site validation in Bangkok and three secondary cities, P&amp;L stress-testing against Thai operating reality, and the conversations local partners won't have on a Zoom call.
-        </p>
-        <a href="/penguin-x" class="btn-dark">
-          <span>Request a briefing</span>
-          <span class="arrow">→</span>
-        </a>
-      </div>
-
-      <ul class="penguin-x-services">
-        <li><span>Market entry brief</span><span class="price">5 days</span></li>
-        <li><span>Site validation visit</span><span class="price">2 weeks</span></li>
-        <li><span>Unit economics audit</span><span class="price">10 days</span></li>
-        <li><span>Partner shortlist</span><span class="price">3 weeks</span></li>
-        <li><span>Quarterly retainer</span><span class="price">By case</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section class="newsletter" id="newsletter">
-    <div class="newsletter-inner">
-      <div class="newsletter-mono">The Weekly Dispatch</div>
-      <h2>One report. Every <em>Tuesday</em>. No filler.</h2>
-      <p>What I'm watching in Thai F&amp;B this week — one chart, one observation, one decision question. Read by operators in 24 countries.</p>
-      <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Sent ✓';">
-        <input type="email" placeholder="you@company.com" required />
-        <button type="submit">Subscribe →</button>
-      </form>
-      <div class="newsletter-fine">Free · 4-min read · Unsubscribe anytime</div>
     </div>
   </section>
 
 </BaseLayout>
+
+<style>
+  .tag-link {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: none;
+    margin-bottom: 8px;
+    transition: color 0.15s ease;
+  }
+  .tag-link:hover { color: var(--accent-deep); }
+  .tag-link.long-read { color: var(--ink); }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+    margin-bottom: 28px;
+  }
+
+  .section-title {
+    font-family: var(--font-sans);
+    font-size: clamp(28px, 3vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .section-more {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.15s ease;
+  }
+  .section-more:hover { color: var(--accent); }
+
+  .top-grid {
+    padding: 32px 0 48px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .top-grid-inner {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .featured-tout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .featured-image {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, var(--paper-mute) 0%, var(--paper-warm) 100%);
+    margin-bottom: 20px;
+  }
+
+  .featured-headline {
+    font-family: var(--font-sans);
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 4px 0 14px;
+  }
+  .featured-headline a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.15s ease;
+  }
+  .featured-headline a:hover { color: var(--accent); }
+
+  .featured-dek {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    max-width: 620px;
+  }
+
+  .featured-byline,
+  .great-byline {
+    display: flex;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+  .byline-author { color: var(--ink); font-weight: 600; }
+  .byline-sep { color: var(--ink-mute); }
+
+  .sidebar-title {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+
+  .fascinating-list,
+  .quick-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .fascinating-item {
+    border-bottom: 1px solid var(--hairline);
+    padding: 14px 0;
+  }
+  .fascinating-item:last-child { border-bottom: none; }
+  .fascinating-item a {
+    display: block;
+    text-decoration: none;
+    border-bottom: none;
+    color: inherit;
+  }
+  .fascinating-tag {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .fascinating-headline {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    transition: color 0.15s ease;
+  }
+  .fascinating-item a:hover .fascinating-headline { color: var(--accent); }
+
+  .quick-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .quick-item:last-child { border-bottom: none; }
+  .quick-item a {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: none;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    transition: color 0.15s ease;
+    display: block;
+  }
+  .quick-item a:hover { color: var(--accent); }
+
+  .flood-zone {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .flood-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 28px;
+  }
+
+  .flood-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flood-image {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, var(--paper-mute) 0%, var(--paper-warm) 100%);
+    margin-bottom: 14px;
+  }
+
+  .flood-headline {
+    font-family: var(--font-sans);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 4px 0 8px;
+  }
+  .flood-headline a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.15s ease;
+  }
+  .flood-headline a:hover { color: var(--accent); }
+
+  .flood-dek {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+
+  .flood-meta {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+    margin-top: auto;
+  }
+
+  .most-popular {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .popular-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 32px;
+  }
+
+  .popular-item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--hairline);
+    padding: 18px 0;
+  }
+
+  .popular-num {
+    font-family: var(--font-sans);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+    min-width: 36px;
+  }
+
+  .popular-headline {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.15s ease;
+  }
+  .popular-headline:hover { color: var(--accent); }
+
+  .great-reads {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .great-read-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .great-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--ink) 0%, #2A2825 100%);
+  }
+
+  .great-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3.2vw, 42px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 4px 0 16px;
+  }
+  .great-headline a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.15s ease;
+  }
+  .great-headline a:hover { color: var(--accent); }
+
+  .great-dek {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+
+  .videos-section {
+    padding: 48px 0 64px;
+    background: var(--paper-mute);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .video-card {
+    display: block;
+    text-decoration: none;
+    border-bottom: none;
+    color: inherit;
+  }
+
+  .video-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--ink) 0%, #2A2825 100%);
+    position: relative;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-play {
+    width: 56px;
+    height: 56px;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    padding-left: 4px;
+    transition: transform 0.15s ease;
+  }
+  .video-card:hover .video-play { transform: scale(1.1); }
+
+  .video-duration {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--paper);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 3px 7px;
+    border-radius: 2px;
+  }
+
+  .video-num {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  .video-headline {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 8px;
+    transition: color 0.15s ease;
+  }
+  .video-card:hover .video-headline { color: var(--accent); }
+
+  .video-meta {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 1024px) {
+    .top-grid-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+    .featured-tout { grid-column: 1 / -1; }
+
+    .flood-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .top-grid-inner {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .featured-headline { font-size: 28px; }
+    .featured-dek { font-size: 16px; }
+
+    .flood-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .popular-list {
+      grid-template-columns: 1fr;
+    }
+    .popular-num { font-size: 22px; }
+    .popular-headline { font-size: 15px; }
+
+    .great-read-card {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .great-headline { font-size: 26px; }
+
+    .videos-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,16 +1,130 @@
 ---
-// Top dispatch ribbon
+const tickers = [
+  { label: 'SET F&B', value: '1,247.32', change: '+0.84%', positive: true },
+  { label: 'CRB Food', value: '512.18', change: '-0.31%', positive: false },
+  { label: 'USD/THB', value: '34.82', change: '+0.12%', positive: true },
+  { label: 'Coffee C', value: '$2.18', change: '+1.24%', positive: true },
+  { label: 'Wheat', value: '$5.43', change: '-0.42%', positive: false },
+  { label: 'Sugar #11', value: '$0.21', change: '+0.18%', positive: true },
+];
 ---
-<div class="ribbon">
-  <div class="ribbon-inner">
-    <div class="ribbon-left">
-      <span><span class="accent">VOL. I</span> · Issue 04</span>
-      <span class="hide-sm">F&amp;B Investment Intelligence</span>
-    </div>
-    <div class="ribbon-right">
-      <span class="hide-sm">Bangkok · Tokyo · Singapore</span>
-      <span class="dot"></span>
-      <span>EST. 2026</span>
+
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <div class="ticker-label">F&B Markets</div>
+    <div class="ticker-track">
+      <div class="ticker-content">
+        {tickers.map(t => (
+          <div class="ticker-item">
+            <span class="ticker-name">{t.label}</span>
+            <span class="ticker-value">{t.value}</span>
+            <span class={`ticker-change ${t.positive ? 'positive' : 'negative'}`}>
+              {t.change}
+            </span>
+          </div>
+        ))}
+        {tickers.map(t => (
+          <div class="ticker-item">
+            <span class="ticker-name">{t.label}</span>
+            <span class="ticker-value">{t.value}</span>
+            <span class={`ticker-change ${t.positive ? 'positive' : 'negative'}`}>
+              {t.change}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </div>
+
+<style>
+  .ticker-bar {
+    background: var(--ink);
+    color: var(--paper);
+    border-bottom: 1px solid var(--ink);
+    overflow: hidden;
+  }
+
+  .ticker-inner {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    max-width: 100%;
+  }
+
+  .ticker-label {
+    flex-shrink: 0;
+    padding: 0 16px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .ticker-track {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ticker-content {
+    display: flex;
+    gap: 0;
+    animation: ticker-scroll 60s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+  }
+
+  .ticker-name {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--paper);
+    letter-spacing: 0.02em;
+  }
+
+  .ticker-value {
+    font-family: var(--font-mono);
+    color: var(--paper);
+    font-weight: 500;
+  }
+
+  .ticker-change {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 11px;
+  }
+
+  .ticker-change.positive { color: var(--signal-positive); }
+  .ticker-change.negative { color: var(--signal-negative); }
+
+  @media (max-width: 768px) {
+    .ticker-label {
+      padding: 0 12px;
+      font-size: 10px;
+    }
+    .ticker-item {
+      padding: 0 14px;
+      font-size: 11px;
+    }
+  }
+</style>

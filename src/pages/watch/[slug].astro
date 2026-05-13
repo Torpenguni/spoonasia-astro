@@ -1,0 +1,400 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { videos } from '../../data/content';
+
+export function getStaticPaths() {
+  return videos.map((v) => ({
+    params: { slug: v.slug },
+    props: { video: v },
+  }));
+}
+
+const { video } = Astro.props;
+
+const otherEpisodes = videos.filter((v) => v.slug !== video.slug);
+---
+
+<BaseLayout
+  title={`${video.title} — SpoonAsia Watch`}
+  description={video.description}
+>
+  <section class="watch-hero">
+    <div class="container">
+      <div class="watch-eyebrow">Watch · Episode {video.episode}</div>
+      <h1 class="watch-title">{video.title}</h1>
+
+      <div class="player-wrap">
+        <div class="player">
+          <div class="play-btn" aria-hidden="true">▶</div>
+          <div class="player-meta">
+            <div class="player-ep">EP. {video.episode}</div>
+            <div class="player-duration">{video.duration}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="watch-byline">
+        <span class="byline-author">SpoonAsia Video Desk</span>
+        <span class="byline-sep">·</span>
+        <span>{video.date}</span>
+        <span class="byline-sep">·</span>
+        <span>{video.duration}</span>
+        <span class="byline-sep">·</span>
+        <span>{video.views} views</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="watch-body">
+    <div class="container-narrow">
+      <h2 class="watch-h">About this episode</h2>
+      <p class="watch-desc">{video.description}</p>
+
+      <div class="watch-notes">
+        <h3 class="watch-h-small">Notes</h3>
+        <ul class="notes-list">
+          <li>Show notes, references, and links coming soon.</li>
+          <li>Episode transcript will be published 7 days after release.</li>
+          <li>Subscribe to The Dispatch newsletter for the supporting analysis.</li>
+        </ul>
+      </div>
+
+      <a href="/newsletter" class="watch-cta">
+        <div class="cta-tag">The Dispatch</div>
+        <div class="cta-head">Get the analysis behind every episode.</div>
+        <div class="cta-arrow">Subscribe →</div>
+      </a>
+    </div>
+  </section>
+
+  {
+    otherEpisodes.length > 0 && (
+      <section class="more-episodes">
+        <div class="container">
+          <div class="more-head">
+            <h2 class="watch-h">More Episodes</h2>
+            <a href="/watch" class="more-link">All Episodes →</a>
+          </div>
+          <div class="more-grid">
+            {otherEpisodes.map((v) => (
+              <a href={`/watch/${v.slug}`} class="ep-card">
+                <div class="ep-thumb">
+                  <div class="ep-play">▶</div>
+                  <div class="ep-duration">{v.duration}</div>
+                </div>
+                <div class="ep-num">EP. {v.episode}</div>
+                <h3 class="ep-title">{v.title}</h3>
+                <div class="ep-meta">{v.views} views</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .watch-hero {
+    padding: 48px 0 32px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+
+  .watch-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .watch-title {
+    font-family: var(--font-sans);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 32px;
+    max-width: 880px;
+  }
+
+  .player-wrap {
+    margin-bottom: 24px;
+  }
+
+  .player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--ink) 0%, #2A2825 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  .player:hover { opacity: 0.92; }
+
+  .play-btn {
+    width: 88px;
+    height: 88px;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    padding-left: 6px;
+    transition: transform 0.15s ease;
+  }
+  .player:hover .play-btn { transform: scale(1.08); }
+
+  .player-meta {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .player-ep {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--accent);
+    padding: 6px 12px;
+  }
+
+  .player-duration {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--paper);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 5px 9px;
+  }
+
+  .watch-byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+  .byline-author { color: var(--ink); font-weight: 600; }
+  .byline-sep { color: var(--ink-mute); }
+
+  .watch-body {
+    padding: 48px 0;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+
+  .watch-h {
+    font-family: var(--font-sans);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .watch-h-small {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .watch-desc {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 36px;
+  }
+
+  .watch-notes {
+    padding: 24px 0;
+    border-top: 0.5px solid var(--hairline);
+    border-bottom: 0.5px solid var(--hairline);
+    margin-bottom: 36px;
+  }
+
+  .notes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .notes-list li {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding: 8px 0 8px 18px;
+    position: relative;
+  }
+  .notes-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .watch-cta {
+    display: block;
+    padding: 28px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    border-bottom: none;
+    transition: background 0.15s ease;
+  }
+  .watch-cta:hover {
+    background: var(--accent-deep);
+  }
+  .cta-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .cta-head {
+    font-family: var(--font-sans);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+    color: var(--paper);
+  }
+  .cta-arrow {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--paper);
+  }
+
+  .more-episodes {
+    padding: 48px 0 64px;
+    background: var(--paper-mute);
+  }
+
+  .more-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+    margin-bottom: 28px;
+  }
+
+  .more-link {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: none;
+  }
+  .more-link:hover { color: var(--accent); }
+
+  .more-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .ep-card {
+    display: block;
+    text-decoration: none;
+    border-bottom: none;
+    color: inherit;
+  }
+
+  .ep-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--ink) 0%, #2A2825 100%);
+    position: relative;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ep-play {
+    width: 56px;
+    height: 56px;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    padding-left: 4px;
+    transition: transform 0.15s ease;
+  }
+  .ep-card:hover .ep-play { transform: scale(1.1); }
+
+  .ep-duration {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--paper);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 3px 7px;
+  }
+
+  .ep-num {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  .ep-title {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 8px;
+    transition: color 0.15s ease;
+  }
+  .ep-card:hover .ep-title { color: var(--accent); }
+
+  .ep-meta {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 1024px) {
+    .more-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .play-btn { width: 64px; height: 64px; font-size: 22px; }
+    .more-grid { grid-template-columns: 1fr; }
+  }
+</style>

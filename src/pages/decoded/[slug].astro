@@ -1,0 +1,513 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  articles,
+  categories,
+  articlesByCategory,
+  relatedArticles,
+  type Article,
+  type Category,
+} from '../../data/content';
+
+type ArticleProps = { type: 'article'; data: Article };
+type CategoryProps = { type: 'category'; data: Category };
+type Props = ArticleProps | CategoryProps;
+
+export function getStaticPaths() {
+  const articlePaths = articles.map((a) => ({
+    params: { slug: a.slug },
+    props: { type: 'article' as const, data: a },
+  }));
+  const categoryPaths = categories.map((c) => ({
+    params: { slug: c.slug },
+    props: { type: 'category' as const, data: c },
+  }));
+  return [...categoryPaths, ...articlePaths];
+}
+
+const props = Astro.props as Props;
+
+const paragraphs =
+  props.type === 'article' ? props.data.body.split('\n\n') : [];
+
+const categoryArticles =
+  props.type === 'category' ? articlesByCategory(props.data.slug) : [];
+
+const related =
+  props.type === 'article' ? relatedArticles(props.data.slug, 3) : [];
+
+const pageTitle =
+  props.type === 'article'
+    ? `${props.data.title} — SpoonAsia`
+    : `${props.data.label} — SpoonAsia`;
+
+const pageDescription =
+  props.type === 'article' ? props.data.dek : props.data.description;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  {
+    props.type === 'article' && (
+      <>
+        <article class="article">
+          <div class="container-narrow">
+            <header class="article-head">
+              <a href={`/decoded/${props.data.category}`} class="article-tag">
+                {props.data.tag}
+              </a>
+              <h1 class="article-title">{props.data.title}</h1>
+              <p class="article-dek">{props.data.dek}</p>
+              <div class="article-byline">
+                <span class="byline-author">{props.data.author}</span>
+                <span class="byline-sep">·</span>
+                <span>{props.data.date}</span>
+                <span class="byline-sep">·</span>
+                <span>{props.data.readTime}</span>
+              </div>
+            </header>
+
+            <div class="article-hero" aria-hidden="true"></div>
+
+            <div class="article-body">
+              {paragraphs.map((p) => <p>{p}</p>)}
+            </div>
+
+            <footer class="article-footer">
+              <a href="/newsletter" class="cta-card">
+                <div class="cta-tag">The Dispatch</div>
+                <div class="cta-head">F&B intelligence on Asia, every Sunday.</div>
+                <div class="cta-arrow">Subscribe →</div>
+              </a>
+            </footer>
+          </div>
+        </article>
+
+        {related.length > 0 && (
+          <section class="related">
+            <div class="container">
+              <h2 class="related-title">Related</h2>
+              <div class="related-grid">
+                {related.map((r) => (
+                  <article class="related-card">
+                    <a href={`/decoded/${r.category}`} class="related-tag">
+                      {r.tag}
+                    </a>
+                    <h3 class="related-headline">
+                      <a href={`/decoded/${r.slug}`}>{r.title}</a>
+                    </h3>
+                    <p class="related-dek">{r.dek}</p>
+                    <div class="related-meta">{r.date}</div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+      </>
+    )
+  }
+
+  {
+    props.type === 'category' && (
+      <>
+        <section class="cat-hero">
+          <div class="container-narrow">
+            <div class="cat-eyebrow">Decoded</div>
+            <h1 class="cat-title">{props.data.label}</h1>
+            <p class="cat-dek">{props.data.description}</p>
+          </div>
+        </section>
+
+        <section class="cat-list">
+          <div class="container">
+            <div class="cat-list-head">
+              <h2 class="cat-list-title">
+                {categoryArticles.length}{' '}
+                {categoryArticles.length === 1 ? 'Story' : 'Stories'}
+              </h2>
+              <a href="/decoded" class="cat-list-more">All Coverage →</a>
+            </div>
+
+            {categoryArticles.length === 0 ? (
+              <p class="cat-empty">No stories yet in this category. Check back soon.</p>
+            ) : (
+              <div class="cat-grid">
+                {categoryArticles.map((a) => (
+                  <article class="cat-card">
+                    <div class="cat-card-image" aria-hidden="true"></div>
+                    <a href={`/decoded/${a.category}`} class="cat-card-tag">
+                      {a.tag}
+                    </a>
+                    <h3 class="cat-card-headline">
+                      <a href={`/decoded/${a.slug}`}>{a.title}</a>
+                    </h3>
+                    <p class="cat-card-dek">{a.dek}</p>
+                    <div class="cat-card-meta">
+                      {a.date} · {a.readTime}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      </>
+    )
+  }
+</BaseLayout>
+
+<style>
+  /* ========== ARTICLE ========== */
+  .article {
+    padding: 48px 0 32px;
+  }
+
+  .article-head {
+    margin-bottom: 32px;
+  }
+
+  .article-tag {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: none;
+    margin-bottom: 18px;
+  }
+  .article-tag:hover { color: var(--accent-deep); }
+
+  .article-title {
+    font-family: var(--font-sans);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+
+  .article-dek {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+
+  .article-byline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--ink-faint);
+    font-weight: 500;
+    padding-bottom: 24px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .byline-author { color: var(--ink); font-weight: 600; }
+  .byline-sep { color: var(--ink-mute); }
+
+  .article-hero {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--paper-mute) 0%, var(--paper-warm) 100%);
+    margin: 32px 0;
+  }
+
+  .article-body {
+    font-family: var(--font-serif);
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  .article-body p {
+    margin-bottom: 24px;
+  }
+
+  .article-body p:first-of-type::first-letter {
+    font-size: 64px;
+    line-height: 1;
+    float: left;
+    font-weight: 700;
+    margin: 4px 8px 0 0;
+    color: var(--accent);
+    font-family: var(--font-sans);
+  }
+
+  .article-footer {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 0.5px solid var(--hairline);
+  }
+
+  .cta-card {
+    display: block;
+    padding: 32px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    border-bottom: none;
+    transition: background 0.15s ease;
+  }
+  .cta-card:hover {
+    background: var(--accent-deep);
+    color: var(--paper);
+  }
+  .cta-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .cta-head {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 16px;
+    color: var(--paper);
+  }
+  .cta-arrow {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--paper);
+  }
+
+  /* ========== RELATED ========== */
+  .related {
+    padding: 48px 0 64px;
+    border-top: 0.5px solid var(--hairline);
+    background: var(--paper-mute);
+  }
+
+  .related-title {
+    font-family: var(--font-sans);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .related-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .related-tag {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: none;
+    margin-bottom: 8px;
+  }
+
+  .related-headline {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+  }
+  .related-headline a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.15s ease;
+  }
+  .related-headline a:hover { color: var(--accent); }
+
+  .related-dek {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+
+  .related-meta {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-faint);
+    margin-top: auto;
+  }
+
+  /* ========== CATEGORY ========== */
+  .cat-hero {
+    padding: 64px 0 40px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+
+  .cat-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .cat-title {
+    font-family: var(--font-sans);
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+
+  .cat-dek {
+    font-family: var(--font-serif);
+    font-size: clamp(17px, 1.8vw, 20px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 640px;
+  }
+
+  .cat-list {
+    padding: 48px 0 64px;
+  }
+
+  .cat-list-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  .cat-list-title {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .cat-list-more {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: none;
+  }
+  .cat-list-more:hover { color: var(--accent); }
+
+  .cat-empty {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    color: var(--ink-soft);
+    padding: 32px 0;
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px 28px;
+  }
+
+  .cat-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cat-card-image {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, var(--paper-mute) 0%, var(--paper-warm) 100%);
+    margin-bottom: 14px;
+  }
+
+  .cat-card-tag {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: none;
+    margin-bottom: 8px;
+  }
+
+  .cat-card-headline {
+    font-family: var(--font-sans);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+  }
+  .cat-card-headline a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.15s ease;
+  }
+  .cat-card-headline a:hover { color: var(--accent); }
+
+  .cat-card-dek {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+
+  .cat-card-meta {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: auto;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .related-grid,
+    .cat-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .article-body p:first-of-type::first-letter {
+      font-size: 48px;
+    }
+
+    .related-grid,
+    .cat-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-card {
+      padding: 24px;
+    }
+    .cta-head {
+      font-size: 18px;
+    }
+  }
+</style>

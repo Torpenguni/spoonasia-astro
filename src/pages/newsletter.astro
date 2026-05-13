@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const bullets = [
+  {
+    head: 'Unit economics, not vibes.',
+    body: 'Every Sunday brief includes at least one P&L breakdown — rent, COGS, labor, payback — drawn from real operators across Asia.',
+  },
+  {
+    head: 'Neighborhood alpha.',
+    body: 'Which Bangkok soi is moving. Which Tokyo block is saturated. Which Singapore corridor a family office just walked into.',
+  },
+  {
+    head: 'Supply-chain signal.',
+    body: 'Importer duopolies, ingredient cost movements, and the cross-border supplier dynamics that reshape menus before headline prices catch up.',
+  },
+  {
+    head: 'No fluff. No PR.',
+    body: 'We do not run sponsored coverage. We do not source from press releases. If we cannot verify it, we do not publish it.',
+  },
+];
+---
+
+<BaseLayout
+  title="The Dispatch — SpoonAsia Newsletter"
+  description="F&B intelligence on Asia, every Sunday. Unit economics, neighborhood alpha, and the gaps in pitch decks. Free."
+>
+  <section class="news-hero">
+    <div class="container-narrow">
+      <div class="news-eyebrow">The Dispatch</div>
+      <h1 class="news-title">
+        F&B intelligence on Asia,<br />every Sunday.
+      </h1>
+      <p class="news-dek">
+        Unit economics, neighborhood alpha, and the gaps in pitch decks.
+        Read by operators across Singapore, Japan, Korea, the UK, and China.
+        No fluff. Free.
+      </p>
+
+      <form class="news-form" onsubmit="event.preventDefault()">
+        <input
+          type="email"
+          class="news-input"
+          placeholder="your@email.com"
+          aria-label="Email address"
+          required
+        />
+        <button type="submit" class="news-btn">Subscribe →</button>
+      </form>
+      <p class="news-note">Unsubscribe anytime. Two-click signup. Zero spam.</p>
+    </div>
+  </section>
+
+  <section class="news-what">
+    <div class="container-narrow">
+      <div class="what-head">
+        <h2 class="section-h">What you get</h2>
+      </div>
+
+      <ul class="bullets">
+        {
+          bullets.map((b, i) => (
+            <li class="bullet">
+              <span class="bullet-num">{String(i + 1).padStart(2, '0')}</span>
+              <div class="bullet-body">
+                <div class="bullet-head">{b.head}</div>
+                <p class="bullet-text">{b.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="news-readers">
+    <div class="container-narrow">
+      <div class="readers-tag">Who reads The Dispatch</div>
+      <p class="readers-list">
+        Family-office principals · F&B chain operators · QSR development directors · Specialty importers · ASEAN private equity associates · Hospitality REIT analysts · International restaurant groups · Bangkok-based operators planning regional expansion.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .news-hero {
+    padding: 96px 0 64px;
+    text-align: left;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+
+  .news-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  .news-title {
+    font-family: var(--font-sans);
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .news-dek {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+    max-width: 580px;
+  }
+
+  .news-form {
+    display: flex;
+    gap: 8px;
+    max-width: 480px;
+    margin-bottom: 12px;
+  }
+
+  .news-input {
+    flex: 1;
+    font-family: var(--font-serif);
+    font-size: 16px;
+    padding: 14px 18px;
+    border: 0.5px solid var(--hairline-strong);
+    background: var(--paper);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  .news-input:focus { border-color: var(--ink); }
+  .news-input::placeholder { color: var(--ink-faint); }
+
+  .news-btn {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 22px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .news-btn:hover {
+    background: var(--accent);
+  }
+
+  .news-note {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .news-what {
+    padding: 64px 0;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+
+  .what-head {
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+    margin-bottom: 36px;
+  }
+
+  .section-h {
+    font-family: var(--font-sans);
+    font-size: clamp(28px, 3vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+
+  .bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .bullet {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    padding: 28px 0;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .bullet:last-child { border-bottom: none; }
+
+  .bullet-num {
+    font-family: var(--font-sans);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+    min-width: 56px;
+    line-height: 1;
+  }
+
+  .bullet-head {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .bullet-text {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .news-readers {
+    padding: 56px 0 80px;
+  }
+
+  .readers-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .readers-list {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  @media (max-width: 768px) {
+    .news-hero { padding: 56px 0 40px; }
+    .news-form { flex-direction: column; }
+    .bullet { gap: 16px; padding: 20px 0; }
+    .bullet-num { font-size: 26px; min-width: 40px; }
+    .bullet-head { font-size: 18px; }
+  }
+</style>

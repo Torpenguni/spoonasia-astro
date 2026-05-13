@@ -7,4 +7,9 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'auto',
   },
+  vite: {
+    preview: {
+      allowedHosts: ['.railway.app', '.spoonasia.com'],
+    },
+  },
 });

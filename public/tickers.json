@@ -73,6 +73,54 @@
       "positive": false
     },
     {
+      "label": "TFMAMA",
+      "value": "฿187.50",
+      "change": "+0.00%",
+      "positive": true
+    },
+    {
+      "label": "CPF",
+      "value": "฿18.80",
+      "change": "+0.00%",
+      "positive": true
+    },
+    {
+      "label": "CPALL",
+      "value": "฿43.75",
+      "change": "+0.00%",
+      "positive": true
+    },
+    {
+      "label": "TU",
+      "value": "฿11.50",
+      "change": "+0.88%",
+      "positive": true
+    },
+    {
+      "label": "CPAXT",
+      "value": "฿14.60",
+      "change": "+0.00%",
+      "positive": true
+    },
+    {
+      "label": "GFPT",
+      "value": "฿8.75",
+      "change": "+0.00%",
+      "positive": true
+    },
+    {
+      "label": "NRF",
+      "value": "฿0.25",
+      "change": "+4.17%",
+      "positive": true
+    },
+    {
+      "label": "PB",
+      "value": "฿47.25",
+      "change": "-3.57%",
+      "positive": false
+    },
+    {
       "label": "Coffee C",
       "value": "$280.70",
       "change": "-0.02%",
@@ -80,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$681.00",
-      "change": "+0.81%",
+      "value": "$683.50",
+      "change": "+1.18%",
       "positive": true
     },
     {
@@ -91,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "14 May, 09:27",
+  "asOf": "14 May, 10:24",
   "live": true,
-  "updatedAt": "2026-05-14T02:27:18.917Z"
+  "updatedAt": "2026-05-14T03:24:22.527Z"
 }

@@ -1,21 +1,39 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { articles, relatedArticles, type Article } from '../../data/content';
+import {
+  articles,
+  categories,
+  articlesByCategory,
+  relatedArticles,
+  type Article,
+  type Category,
+} from '../../data/content';
 
 export function getStaticPaths() {
-  return articles.map((a) => ({
-    params: { slug: a.slug },
-    props: { article: a },
+  const categoryPaths = categories.map((c) => ({
+    params: { slug: c.slug },
+    props: { kind: 'category' as const, category: c, article: null },
   }));
+  const articlePaths = articles.map((a) => ({
+    params: { slug: a.slug },
+    props: { kind: 'article' as const, article: a, category: null },
+  }));
+  return [...categoryPaths, ...articlePaths];
 }
 
-interface Props {
-  article: Article;
-}
+type Props =
+  | { kind: 'article'; article: Article; category: null }
+  | { kind: 'category'; category: Category; article: null };
 
-const { article } = Astro.props as Props;
-const isFlagship = article.slug === 'why-foreign-coffee-chains-fail-thailand';
-const related = relatedArticles(article.slug, 2);
+const props = Astro.props as Props;
+const isCategory = props.kind === 'category';
+const article = props.kind === 'article' ? props.article : null;
+const category = props.kind === 'category' ? props.category : null;
+const categoryArticles = isCategory ? articlesByCategory(category!.slug) : [];
+
+const isFlagship =
+  !isCategory && article!.slug === 'why-foreign-coffee-chains-fail-thailand';
+const related = !isCategory ? relatedArticles(article!.slug, 2) : [];
 
 // Flagship-only data
 const tldrBullets = [
@@ -77,10 +95,58 @@ const sources = [
 ---
 
 <BaseLayout
-  title={`${article.title} — SpoonAsia Analysis`}
-  description={article.dek}
+  title={isCategory
+    ? `${category!.label} — SpoonAsia Analysis`
+    : `${article!.title} — SpoonAsia Analysis`}
+  description={isCategory ? category!.description : article!.dek}
 >
-  {isFlagship ? (
+  {isCategory ? (
+    <>
+      <section class="cat-hero">
+        <div class="container-narrow">
+          <div class="section-tag">▍ Analysis</div>
+          <h1 class="cat-title">{category!.label}</h1>
+          <p class="cat-dek">{category!.description}</p>
+        </div>
+      </section>
+
+      <section class="cat-list">
+        <div class="container">
+          <div class="cat-list-head">
+            <h2 class="cat-list-title">
+              {categoryArticles.length}{' '}
+              {categoryArticles.length === 1 ? 'Report' : 'Reports'}
+            </h2>
+            <a href="/analysis" class="cat-list-more">All Analysis →</a>
+          </div>
+
+          {categoryArticles.length === 0 ? (
+            <p class="cat-empty">
+              No reports yet in this category. <a href="/newsletter">Subscribe to The Dispatch</a> for updates.
+            </p>
+          ) : (
+            <div class="cat-grid">
+              {categoryArticles.map((a) => (
+                <article class="cat-card">
+                  <div class="cat-card-image" aria-hidden="true"></div>
+                  <a href={`/analysis/${a.category}`} class="cat-card-tag">
+                    {a.tag}
+                  </a>
+                  <h3 class="cat-card-headline">
+                    <a href={`/analysis/${a.slug}`}>{a.title}</a>
+                  </h3>
+                  <p class="cat-card-dek">{a.dek}</p>
+                  <div class="cat-card-meta">
+                    {a.date} · {a.readTime}
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </>
+  ) : isFlagship ? (
     <>
       <!-- ARTICLE HEADER -->
       <section class="art-head">
@@ -889,6 +955,131 @@ const sources = [
   .ph-text a:hover {
     color: var(--accent);
     border-bottom-color: var(--accent);
+  }
+
+  /* ========== CATEGORY ========== */
+  .cat-hero {
+    padding: 64px 0 40px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .cat-title {
+    font-family: var(--font-sans);
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .cat-dek {
+    font-family: var(--font-serif);
+    font-size: clamp(17px, 1.8vw, 20px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 640px;
+  }
+
+  .cat-list {
+    padding: 48px 0 64px;
+  }
+  .cat-list-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 2px solid var(--ink);
+    padding-top: 16px;
+    margin-bottom: 32px;
+  }
+  .cat-list-title {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .cat-list-more {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: none;
+  }
+  .cat-list-more:hover { color: var(--accent); }
+
+  .cat-empty {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    color: var(--ink-soft);
+    padding: 32px 0;
+  }
+  .cat-empty a {
+    color: var(--ink);
+    border-bottom: 0.5px solid var(--ink-faint);
+    text-decoration: none;
+  }
+  .cat-empty a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px 28px;
+  }
+  .cat-card { display: flex; flex-direction: column; }
+  .cat-card-image {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, var(--hairline), var(--paper-warm));
+    margin-bottom: 14px;
+  }
+  .cat-card-tag {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: none;
+    margin-bottom: 8px;
+  }
+  .cat-card-headline {
+    font-family: var(--font-sans);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+  }
+  .cat-card-headline a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.15s ease;
+  }
+  .cat-card-headline a:hover { color: var(--accent); }
+  .cat-card-dek {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .cat-card-meta {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: auto;
+  }
+
+  @media (max-width: 1024px) {
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .cat-grid { grid-template-columns: 1fr; }
   }
 
   /* ========== RESPONSIVE ========== */

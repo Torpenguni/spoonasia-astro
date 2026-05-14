@@ -46,6 +46,8 @@ const today = new Date().toLocaleDateString('en-US', {
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
         </button>
+        <a href="/newsletter" class="newsletter-link">↗ Newsletters</a>
+        <span class="masthead-divider" aria-hidden="true"></span>
         <a href="/penguin-x" class="subscribe-btn">Subscribe</a>
       </div>
     </div>
@@ -157,6 +159,27 @@ const today = new Date().toLocaleDateString('en-US', {
   }
   .search-btn:hover { color: var(--accent); }
 
+  .newsletter-link {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: none;
+    letter-spacing: 0.005em;
+    white-space: nowrap;
+    transition: color 0.15s ease;
+  }
+  .newsletter-link:hover { color: var(--accent-deep); }
+
+  .masthead-divider {
+    display: inline-block;
+    width: 1px;
+    height: 16px;
+    background: var(--hairline-strong);
+    flex-shrink: 0;
+  }
+
   .subscribe-btn {
     display: inline-block;
     background: var(--ink);
@@ -256,6 +279,8 @@ const today = new Date().toLocaleDateString('en-US', {
     .masthead-left { display: none; }
     .masthead-logo { font-size: 28px; }
     .search-btn { display: none; }
+    .newsletter-link { display: none; }
+    .masthead-divider { display: none; }
     .subscribe-btn { font-size: 12px; padding: 7px 14px; }
     .primary-nav-link { font-size: 13px; padding: 12px 14px; }
   }

@@ -80,8 +80,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$678.75",
-      "change": "+0.48%",
+      "value": "$681.00",
+      "change": "+0.81%",
       "positive": true
     },
     {
@@ -91,7 +91,7 @@
       "positive": true
     }
   ],
-  "asOf": "14 May, 08:38",
+  "asOf": "14 May, 09:27",
   "live": true,
-  "updatedAt": "2026-05-14T01:38:43.733Z"
+  "updatedAt": "2026-05-14T02:27:18.917Z"
 }

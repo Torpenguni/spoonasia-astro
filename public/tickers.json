@@ -1,0 +1,97 @@
+{
+  "tickers": [
+    {
+      "label": "MINT",
+      "value": "฿21.50",
+      "change": "-0.92%",
+      "positive": false
+    },
+    {
+      "label": "CENTEL",
+      "value": "฿30.75",
+      "change": "-1.60%",
+      "positive": false
+    },
+    {
+      "label": "M (MK)",
+      "value": "฿19.00",
+      "change": "+1.60%",
+      "positive": true
+    },
+    {
+      "label": "AU",
+      "value": "฿4.42",
+      "change": "+0.00%",
+      "positive": true
+    },
+    {
+      "label": "ZEN",
+      "value": "฿5.45",
+      "change": "+0.93%",
+      "positive": true
+    },
+    {
+      "label": "MAGURO",
+      "value": "฿17.10",
+      "change": "+1.79%",
+      "positive": true
+    },
+    {
+      "label": "S&P",
+      "value": "฿9.00",
+      "change": "+0.56%",
+      "positive": true
+    },
+    {
+      "label": "CBG",
+      "value": "฿40.00",
+      "change": "-1.84%",
+      "positive": false
+    },
+    {
+      "label": "OSP",
+      "value": "฿14.20",
+      "change": "+0.71%",
+      "positive": true
+    },
+    {
+      "label": "ICHI",
+      "value": "฿12.70",
+      "change": "+0.00%",
+      "positive": true
+    },
+    {
+      "label": "SAPPE",
+      "value": "฿29.50",
+      "change": "-0.84%",
+      "positive": false
+    },
+    {
+      "label": "TKN",
+      "value": "฿3.84",
+      "change": "-0.52%",
+      "positive": false
+    },
+    {
+      "label": "Coffee C",
+      "value": "$280.70",
+      "change": "-0.02%",
+      "positive": false
+    },
+    {
+      "label": "Wheat",
+      "value": "$678.75",
+      "change": "+0.48%",
+      "positive": true
+    },
+    {
+      "label": "Sugar #11",
+      "value": "$15.39",
+      "change": "+0.07%",
+      "positive": true
+    }
+  ],
+  "asOf": "14 May, 08:38",
+  "live": true,
+  "updatedAt": "2026-05-14T01:38:43.733Z"
+}

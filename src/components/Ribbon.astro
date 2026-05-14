@@ -1,19 +1,16 @@
 ---
-const tickers = [
-  { label: 'SET F&B', value: '1,247.32', change: '+0.84%', positive: true },
-  { label: 'CRB Food', value: '512.18', change: '-0.31%', positive: false },
-  { label: 'USD/THB', value: '34.82', change: '+0.12%', positive: true },
-  { label: 'Coffee C', value: '$2.18', change: '+1.24%', positive: true },
-  { label: 'Wheat', value: '$5.43', change: '-0.42%', positive: false },
-  { label: 'Sugar #11', value: '$0.21', change: '+0.18%', positive: true },
-];
+import { loadTickers } from '../lib/tickers';
+const { tickers, asOf, live } = await loadTickers();
 ---
 
-<div class="ticker-bar">
+<div class="ticker-bar" data-ticker-bar>
   <div class="ticker-inner">
     <div class="ticker-label">F&B Markets</div>
+    <div class="ticker-asof" data-ticker-asof title={live ? 'Live data via Yahoo Finance (SET delayed 15 min)' : 'Showing cached fallback'}>
+      {live ? `AS OF ${asOf} ICT` : 'CACHED'}
+    </div>
     <div class="ticker-track">
-      <div class="ticker-content">
+      <div class="ticker-content" data-ticker-content>
         {tickers.map(t => (
           <div class="ticker-item">
             <span class="ticker-name">{t.label}</span>
@@ -36,6 +33,50 @@ const tickers = [
     </div>
   </div>
 </div>
+
+<script>
+  // Client-side refresh: fetch /tickers.json every 60s so users keeping the
+  // page open see fresh prices without a hard reload. The JSON is updated
+  // every 15 min by .github/workflows/update-tickers.yml.
+  type Ticker = { label: string; value: string; change: string; positive: boolean };
+  type Payload = { tickers: Ticker[]; asOf: string; live: boolean };
+
+  function escapeHtml(s: string): string {
+    return s.replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    }[c] as string));
+  }
+
+  function renderItems(tickers: Ticker[]): string {
+    const oneSet = tickers.map(t => `
+      <div class="ticker-item">
+        <span class="ticker-name">${escapeHtml(t.label)}</span>
+        <span class="ticker-value">${escapeHtml(t.value)}</span>
+        <span class="ticker-change ${t.positive ? 'positive' : 'negative'}">${escapeHtml(t.change)}</span>
+      </div>
+    `).join('');
+    return oneSet + oneSet; // duplicate for seamless scroll
+  }
+
+  async function refresh() {
+    try {
+      const res = await fetch('/tickers.json', { cache: 'no-store' });
+      if (!res.ok) return;
+      const data: Payload = await res.json();
+      if (!data?.tickers?.length) return;
+
+      const content = document.querySelector<HTMLElement>('[data-ticker-content]');
+      const asOf = document.querySelector<HTMLElement>('[data-ticker-asof]');
+      if (content) content.innerHTML = renderItems(data.tickers);
+      if (asOf) asOf.textContent = data.live ? `AS OF ${data.asOf} ICT` : 'CACHED';
+    } catch {
+      // Network error — silently keep current values
+    }
+  }
+
+  refresh();
+  setInterval(refresh, 60_000);
+</script>
 
 <style>
   .ticker-bar {
@@ -67,6 +108,20 @@ const tickers = [
     align-items: center;
   }
 
+  .ticker-asof {
+    flex-shrink: 0;
+    padding: 0 14px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: help;
+  }
+
   .ticker-track {
     flex: 1;
     overflow: hidden;
@@ -86,7 +141,8 @@ const tickers = [
     100% { transform: translateX(-50%); }
   }
 
-  .ticker-item {
+  /* :global() — applied to client-side rendered items too */
+  :global(.ticker-item) {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -95,34 +151,35 @@ const tickers = [
     font-size: 12px;
   }
 
-  .ticker-name {
+  :global(.ticker-name) {
     font-family: var(--font-sans);
     font-weight: 600;
     color: var(--paper);
     letter-spacing: 0.02em;
   }
 
-  .ticker-value {
+  :global(.ticker-value) {
     font-family: var(--font-mono);
     color: var(--paper);
     font-weight: 500;
   }
 
-  .ticker-change {
+  :global(.ticker-change) {
     font-family: var(--font-mono);
     font-weight: 500;
     font-size: 11px;
   }
 
-  .ticker-change.positive { color: var(--signal-positive); }
-  .ticker-change.negative { color: var(--signal-negative); }
+  :global(.ticker-change.positive) { color: var(--signal-positive); }
+  :global(.ticker-change.negative) { color: var(--signal-negative); }
 
   @media (max-width: 768px) {
     .ticker-label {
       padding: 0 12px;
       font-size: 10px;
     }
-    .ticker-item {
+    .ticker-asof { display: none; }
+    :global(.ticker-item) {
       padding: 0 14px;
       font-size: 11px;
     }

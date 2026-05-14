@@ -107,11 +107,11 @@ const videos = [
         <article class="featured-tout">
           <div class="featured-image" aria-hidden="true"></div>
           <div class="featured-content">
-            <a href={`/decoded/${featuredTout.tag.toLowerCase().replace(' ', '-')}`} class="tag-link">
+            <a href={`/analysis/${featuredTout.tag.toLowerCase().replace(' ', '-')}`} class="tag-link">
               {featuredTout.tag}
             </a>
             <h2 class="featured-headline">
-              <a href={`/decoded/${featuredTout.slug}`}>{featuredTout.headline}</a>
+              <a href={`/analysis/${featuredTout.slug}`}>{featuredTout.headline}</a>
             </h2>
             <p class="featured-dek">{featuredTout.dek}</p>
             <div class="featured-byline">
@@ -129,7 +129,7 @@ const videos = [
           <ul class="fascinating-list">
             {fascinatingReads.map(item => (
               <li class="fascinating-item">
-                <a href={`/decoded/${item.slug}`}>
+                <a href={`/analysis/${item.slug}`}>
                   <span class="fascinating-tag">{item.tag}</span>
                   <span class="fascinating-headline">{item.headline}</span>
                 </a>
@@ -157,16 +157,16 @@ const videos = [
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">Today's Coverage</h2>
-        <a href="/decoded" class="section-more">All Coverage →</a>
+        <a href="/analysis" class="section-more">All Coverage →</a>
       </div>
 
       <div class="flood-grid">
         {floodArticles.map(article => (
           <article class="flood-card">
             <div class="flood-image" aria-hidden="true"></div>
-            <a href={`/decoded/${article.tag.toLowerCase()}`} class="tag-link">{article.tag}</a>
+            <a href={`/analysis/${article.tag.toLowerCase()}`} class="tag-link">{article.tag}</a>
             <h3 class="flood-headline">
-              <a href={`/decoded/${article.slug}`}>{article.headline}</a>
+              <a href={`/analysis/${article.slug}`}>{article.headline}</a>
             </h3>
             <p class="flood-dek">{article.dek}</p>
             <div class="flood-meta">{article.date}</div>
@@ -204,7 +204,7 @@ const videos = [
         <div class="great-content">
           <a href="#" class="tag-link long-read">{greatRead.tag}</a>
           <h3 class="great-headline">
-            <a href={`/decoded/${greatRead.slug}`}>{greatRead.headline}</a>
+            <a href={`/analysis/${greatRead.slug}`}>{greatRead.headline}</a>
           </h3>
           <p class="great-dek">{greatRead.dek}</p>
           <div class="great-byline">
@@ -223,12 +223,12 @@ const videos = [
     <div class="container">
       <div class="section-head">
         <h2 class="section-title">Videos</h2>
-        <a href="/watch" class="section-more">All Episodes →</a>
+        <a href="/videos" class="section-more">All Episodes →</a>
       </div>
 
       <div class="videos-grid">
         {videos.map(video => (
-          <a href={`/watch/${video.slug}`} class="video-card">
+          <a href={`/videos/${video.slug}`} class="video-card">
             <div class="video-thumb">
               <div class="video-play">▶</div>
               <div class="video-duration">{video.duration}</div>

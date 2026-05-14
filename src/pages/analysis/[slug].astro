@@ -77,7 +77,7 @@ const sources = [
 ---
 
 <BaseLayout
-  title={`${article.title} — SpoonAsia Decoded`}
+  title={`${article.title} — SpoonAsia Analysis`}
   description={article.dek}
 >
   {isFlagship ? (
@@ -321,13 +321,13 @@ const sources = [
       <!-- RELATED -->
       <section class="art-related">
         <div class="container-narrow">
-          <div class="section-tag">▍ Related Decoded</div>
+          <div class="section-tag">▍ Related Analysis</div>
           <div class="rel-grid">
             {related.map((r) => (
               <article class="rel-card">
                 <div class="rel-tag">{r.tag}</div>
                 <h3 class="rel-h">
-                  <a href={`/decoded/${r.slug}`}>{r.title}</a>
+                  <a href={`/analysis/${r.slug}`}>{r.title}</a>
                 </h3>
               </article>
             ))}
@@ -339,7 +339,7 @@ const sources = [
     <!-- PLACEHOLDER FOR OTHER ARTICLES -->
     <section class="art-placeholder">
       <div class="container-narrow">
-        <div class="section-tag">▍ Decoded</div>
+        <div class="section-tag">▍ Analysis</div>
         <h1 class="art-h1">{article.title}</h1>
         <p class="art-dek">{article.dek}</p>
         <div class="art-meta">
@@ -353,7 +353,7 @@ const sources = [
           <div class="ph-label">In Production</div>
           <p class="ph-text">
             Full report in progress. Subscribe to <a href="/newsletter">The Dispatch</a>
-            to receive it when published, or return to <a href="/decoded">all Decoded reports</a>.
+            to receive it when published, or return to <a href="/analysis">all Analysis reports</a>.
           </p>
         </div>
       </div>

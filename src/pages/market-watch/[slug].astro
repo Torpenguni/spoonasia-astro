@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { stories, type Story } from '../../data/stories';
+import { stories, type Story } from '../../data/market-watch';
 
 export function getStaticPaths() {
   return stories.map((s) => ({
@@ -20,7 +20,7 @@ const related = stories.filter((s) => s.slug !== story.slug).slice(0, 2);
 ---
 
 <BaseLayout
-  title={`${story.headline} — SpoonAsia Stories`}
+  title={`${story.headline} — SpoonAsia Market Watch`}
   description={story.dek}
 >
   <section class="st-head">
@@ -35,7 +35,7 @@ const related = stories.filter((s) => s.slug !== story.slug).slice(0, 2);
         <span class="sep">·</span>
         <span>{story.date}</span>
         <span class="sep">·</span>
-        <span>Stories</span>
+        <span>Market Watch</span>
       </div>
     </div>
   </section>
@@ -64,11 +64,11 @@ const related = stories.filter((s) => s.slug !== story.slug).slice(0, 2);
   {related.length > 0 && (
     <section class="st-related">
       <div class="container-narrow">
-        <div class="section-tag">▍ More Stories</div>
+        <div class="section-tag">▍ More Market Watch</div>
         <ul class="rel-list">
           {related.map((r) => (
             <li class="rel-item">
-              <a href={`/stories/${r.slug}`} class="rel-link">
+              <a href={`/market-watch/${r.slug}`} class="rel-link">
                 <div class="rel-tag">{r.tag}</div>
                 <h3 class="rel-h">{r.headline}</h3>
                 <div class="rel-meta">{r.date}</div>

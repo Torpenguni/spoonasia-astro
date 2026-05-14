@@ -1,20 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { stories } from '../data/stories';
+import { stories } from '../data/market-watch';
 ---
 
 <BaseLayout
-  title="Stories — SpoonAsia"
-  description="Quick takes on Thai F&B. News, observations, and short analysis. Faster than Decoded, shorter than a report."
+  title="Market Watch — SpoonAsia"
+  description="Quick takes on Thai F&B. News, observations, and short analysis. Faster than Analysis, shorter than a report."
 >
   <section class="stories-head">
     <div class="container-narrow">
-      <div class="section-tag">▍ Stories</div>
+      <div class="section-tag">▍ Market Watch</div>
       <h1 class="stories-title">Quick takes on Thai F&B</h1>
       <p class="stories-dek">
         <em>
           News, observations, and short analysis.
-          Faster than Decoded, shorter than a report.
+          Faster than Analysis, shorter than a report.
         </em>
       </p>
     </div>
@@ -26,7 +26,7 @@ import { stories } from '../data/stories';
         {
           stories.map((s) => (
             <li class="story-item">
-              <a href={`/stories/${s.slug}`} class="story-link">
+              <a href={`/market-watch/${s.slug}`} class="story-link">
                 <div class="story-tag">{s.tag}</div>
                 <h2 class="story-h">{s.headline}</h2>
                 <p class="story-dek-text">{s.dek}</p>

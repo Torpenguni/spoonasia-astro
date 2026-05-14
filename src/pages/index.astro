@@ -105,51 +105,50 @@ const videos = [
       <div class="top-grid-inner">
 
         <article class="featured-tout">
-          <div class="featured-image" aria-hidden="true"></div>
+          <a href={`/analysis/${featuredTout.slug}`} class="featured-image-link">
+            <div class="featured-image" aria-hidden="true">
+              <span class="featured-pill">{featuredTout.tag}</span>
+            </div>
+          </a>
           <div class="featured-content">
-            <a href={`/analysis/${featuredTout.tag.toLowerCase().replace(' ', '-')}`} class="tag-link">
-              {featuredTout.tag}
-            </a>
             <h2 class="featured-headline">
               <a href={`/analysis/${featuredTout.slug}`}>{featuredTout.headline}</a>
             </h2>
             <p class="featured-dek">{featuredTout.dek}</p>
             <div class="featured-byline">
-              <span class="byline-author">{featuredTout.author}</span>
-              <span class="byline-sep">·</span>
-              <span>{featuredTout.date}</span>
-              <span class="byline-sep">·</span>
               <span>{featuredTout.readTime}</span>
             </div>
           </div>
         </article>
 
         <aside class="fascinating-reads">
-          <h3 class="sidebar-title">Fascinating Reads</h3>
           <ul class="fascinating-list">
             {fascinatingReads.map(item => (
               <li class="fascinating-item">
-                <a href={`/analysis/${item.slug}`}>
-                  <span class="fascinating-tag">{item.tag}</span>
-                  <span class="fascinating-headline">{item.headline}</span>
+                <a href={`/analysis/${item.slug}`} class="fascinating-link">
+                  <div class="fascinating-text">
+                    <span class="fascinating-tag">{item.tag}</span>
+                    <span class="fascinating-headline">{item.headline}</span>
+                  </div>
+                  <div class="fascinating-thumb" aria-hidden="true"></div>
                 </a>
               </li>
             ))}
           </ul>
         </aside>
 
-        <aside class="quick-links">
-          <h3 class="sidebar-title">Quick Links</h3>
-          <ul class="quick-list">
-            {quickLinks.map(link => (
-              <li class="quick-item">
-                <a href="#">{link}</a>
-              </li>
-            ))}
-          </ul>
-        </aside>
-
       </div>
+
+      <aside class="quick-links">
+        <h3 class="sidebar-title">Quick Links</h3>
+        <ul class="quick-list">
+          {quickLinks.map(link => (
+            <li class="quick-item">
+              <a href="#">{link}</a>
+            </li>
+          ))}
+        </ul>
+      </aside>
     </div>
   </section>
 
@@ -291,14 +290,16 @@ const videos = [
   .section-more:hover { color: var(--accent); }
 
   .top-grid {
-    padding: 32px 0 48px;
+    padding: 24px 0 48px;
     border-bottom: 1px solid var(--hairline);
   }
 
+  /* BI-style: 2-col hero (big image left, sidebar right) */
   .top-grid-inner {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
-    gap: 32px;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
   }
 
   .featured-tout {
@@ -306,21 +307,47 @@ const videos = [
     flex-direction: column;
   }
 
+  .featured-image-link {
+    display: block;
+    text-decoration: none;
+    border-bottom: none;
+    margin-bottom: 18px;
+    transition: opacity 0.15s ease;
+  }
+  .featured-image-link:hover { opacity: 0.92; }
+
   .featured-image {
+    position: relative;
     width: 100%;
-    aspect-ratio: 16/10;
+    aspect-ratio: 4/3;
     background: linear-gradient(135deg, var(--paper-mute) 0%, var(--paper-warm) 100%);
-    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .featured-pill {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: inline-block;
+    background: var(--accent);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 2px;
   }
 
   .featured-headline {
     font-family: var(--font-sans);
-    font-size: clamp(28px, 3.2vw, 40px);
+    font-size: clamp(28px, 3.4vw, 44px);
     font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.025em;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
     color: var(--ink);
-    margin: 4px 0 14px;
+    margin: 0 0 14px;
   }
   .featured-headline a {
     color: inherit;
@@ -332,10 +359,10 @@ const videos = [
 
   .featured-dek {
     font-family: var(--font-serif);
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.5;
     color: var(--ink-soft);
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     max-width: 620px;
   }
 
@@ -370,17 +397,25 @@ const videos = [
     margin: 0;
   }
 
+  /* BI-style sidebar cards: text + thumbnail w/ hairline divider */
+  .fascinating-reads { display: flex; flex-direction: column; }
+
   .fascinating-item {
     border-bottom: 1px solid var(--hairline);
-    padding: 14px 0;
+    padding: 18px 0;
   }
+  .fascinating-item:first-child { padding-top: 0; }
   .fascinating-item:last-child { border-bottom: none; }
-  .fascinating-item a {
-    display: block;
+  .fascinating-link {
+    display: grid;
+    grid-template-columns: 1fr 96px;
+    gap: 16px;
+    align-items: start;
     text-decoration: none;
     border-bottom: none;
     color: inherit;
   }
+  .fascinating-text { display: flex; flex-direction: column; gap: 6px; }
   .fascinating-tag {
     display: block;
     font-family: var(--font-sans);
@@ -389,7 +424,6 @@ const videos = [
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 6px;
   }
   .fascinating-headline {
     font-family: var(--font-sans);
@@ -400,16 +434,35 @@ const videos = [
     letter-spacing: -0.01em;
     transition: color 0.15s ease;
   }
-  .fascinating-item a:hover .fascinating-headline { color: var(--accent); }
+  .fascinating-link:hover .fascinating-headline { color: var(--accent); }
 
-  .quick-item {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--hairline);
+  .fascinating-thumb {
+    width: 96px;
+    aspect-ratio: 1/1;
+    background: linear-gradient(135deg, var(--paper-mute) 0%, var(--paper-warm) 100%);
+    flex-shrink: 0;
   }
-  .quick-item:last-child { border-bottom: none; }
+
+  /* Quick Links — sits below the 2-col hero, full width 4-col grid */
+  .quick-links {
+    border-top: 1px solid var(--hairline);
+    padding-top: 20px;
+  }
+  .quick-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 24px;
+  }
+  .quick-item {
+    padding: 12px 0;
+    border-top: 1px solid var(--hairline);
+  }
   .quick-item a {
     font-family: var(--font-sans);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--ink);
     text-decoration: none;
@@ -653,23 +706,23 @@ const videos = [
   }
 
   @media (max-width: 1024px) {
-    .top-grid-inner {
-      grid-template-columns: 1fr 1fr;
-    }
-    .featured-tout { grid-column: 1 / -1; }
-
     .flood-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+    .quick-list { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 768px) {
     .top-grid-inner {
       grid-template-columns: 1fr;
       gap: 36px;
+      margin-bottom: 32px;
     }
     .featured-headline { font-size: 28px; }
     .featured-dek { font-size: 16px; }
+    .fascinating-link { grid-template-columns: 1fr 80px; gap: 12px; }
+    .fascinating-thumb { width: 80px; }
+    .quick-list { grid-template-columns: 1fr; }
 
     .flood-grid {
       grid-template-columns: 1fr;

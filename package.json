@@ -4,14 +4,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "tinacms dev -c \"astro dev\"",
     "start": "npm run build && npx --yes serve@14 dist -l tcp://0.0.0.0:${PORT:-8080}",
-    "build": "astro build",
+    "build": "([ -n \"$TINA_TOKEN\" ] && tinacms build || echo '[tina] skipped (TINA_TOKEN missing)') && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "dev:astro": "astro dev"
   },
   "dependencies": {
     "astro": "^4.16.18",
     "yahoo-finance2": "^3.14.0"
+  },
+  "devDependencies": {
+    "@tinacms/cli": "^2.3.1",
+    "tinacms": "^3.8.1",
+    "tsx": "^4.22.0"
   }
 }

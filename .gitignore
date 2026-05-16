@@ -26,3 +26,8 @@ pnpm-debug.log*
 
 # astro
 .astro/
+
+# tinacms — auto-generated; regenerated each build
+tina/__generated__/
+!tina/__generated__/.gitkeep
+admin/

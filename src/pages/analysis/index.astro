@@ -1,13 +1,26 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { articles, categories } from '../../data/content';
+import { getCollection } from 'astro:content';
+import { categories } from '../../data/content';
 
-// Newest first (data is already in date order, top = newest)
-const sorted = [...articles];
-const featured = sorted[0];
-const rest = sorted.slice(1);
+const entries = await getCollection('articles', ({ data }) => !data.draft);
+// Newest first
+entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-// Category counts (incl. "All")
+const articles = entries.map((e) => ({
+  slug: e.slug,
+  title: e.data.title,
+  dek: e.data.dek,
+  category: e.data.category,
+  tag: e.data.tag,
+  author: e.data.author,
+  date: e.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+  readTime: e.data.readTime,
+}));
+
+const featured = articles[0];
+const rest = articles.slice(1);
+
 const categoryCounts = categories.map((c) => ({
   ...c,
   count: articles.filter((a) => a.category === c.slug).length,
@@ -15,7 +28,6 @@ const categoryCounts = categories.map((c) => ({
 
 const allCount = articles.length;
 const activeCategory = 'all';
-
 const showPagination = articles.length > 12;
 ---
 

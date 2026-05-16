@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tinacms dev -c \"astro dev\"",
     "start": "npm run build && npx --yes serve@14 dist -l tcp://0.0.0.0:${PORT:-8080}",
-    "build": "([ -n \"$TINA_TOKEN\" ] && tinacms build || echo '[tina] skipped (TINA_TOKEN missing)') && astro build",
+    "build": "if [ -n \"$TINA_TOKEN\" ]; then echo '[tina] building admin...'; tinacms build || echo '[tina] ✗ FAILED — /admin will 404 in this build (continuing)'; else echo '[tina] skipped (no TINA_TOKEN)'; fi && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "dev:astro": "astro dev"

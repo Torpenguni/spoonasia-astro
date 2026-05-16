@@ -1,22 +1,42 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { stories, type Story } from '../../data/market-watch';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
-export function getStaticPaths() {
-  return stories.map((s) => ({
-    params: { slug: s.slug },
-    props: { story: s },
+type MWEntry = CollectionEntry<'market-watch'>;
+
+export async function getStaticPaths() {
+  const all = await getCollection('market-watch', ({ data }) => !data.draft);
+  return all.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry, allEntries: all },
   }));
 }
 
 interface Props {
-  story: Story;
+  entry: MWEntry;
+  allEntries: MWEntry[];
 }
 
-const { story } = Astro.props as Props;
-const paragraphs = story.body.split('\n\n');
+const { entry, allEntries } = Astro.props as Props;
+const { Content } = await entry.render();
 
-const related = stories.filter((s) => s.slug !== story.slug).slice(0, 2);
+const story = {
+  slug: entry.slug,
+  headline: entry.data.headline,
+  dek: entry.data.dek,
+  tag: entry.data.tag,
+  date: entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+};
+
+const related = allEntries
+  .filter((e) => e.slug !== entry.slug)
+  .slice(0, 2)
+  .map((e) => ({
+    slug: e.slug,
+    headline: e.data.headline,
+    tag: e.data.tag,
+    date: e.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+  }));
 ---
 
 <BaseLayout
@@ -41,8 +61,8 @@ const related = stories.filter((s) => s.slug !== story.slug).slice(0, 2);
   </section>
 
   <section class="st-body">
-    <div class="container-narrow">
-      {paragraphs.map((p) => <p class="body-p" set:html={p} />)}
+    <div class="container-narrow prose">
+      <Content />
     </div>
   </section>
 
@@ -132,20 +152,20 @@ const related = stories.filter((s) => s.slug !== story.slug).slice(0, 2);
     padding: 40px 0;
   }
 
-  .body-p {
+  .prose :global(p) {
     font-family: var(--font-serif);
     font-size: 18px;
     line-height: 1.75;
     color: var(--ink);
     margin-bottom: 24px;
   }
-  .body-p :global(a) {
+  .prose :global(a) {
     color: var(--ink);
     text-decoration: none;
     border-bottom: 0.5px solid var(--accent);
     transition: color 0.15s ease;
   }
-  .body-p :global(a:hover) {
+  .prose :global(a:hover) {
     color: var(--accent);
   }
 
@@ -236,6 +256,6 @@ const related = stories.filter((s) => s.slug !== story.slug).slice(0, 2);
   }
 
   @media (max-width: 900px) {
-    .body-p { font-size: 17px; }
+    .prose :global(p) { font-size: 17px; }
   }
 </style>

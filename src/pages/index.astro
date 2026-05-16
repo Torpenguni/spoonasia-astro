@@ -1,5 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const videoEntries = await getCollection('videos', ({ data }) => !data.draft);
+videoEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const videos = videoEntries.slice(0, 3).map((v) => ({
+  number: v.data.episode,
+  title: v.data.title,
+  duration: v.data.duration,
+  views: v.data.views,
+  slug: v.slug,
+}));
 
 const featuredTout = {
   tag: 'Unit Economics',
@@ -88,11 +99,6 @@ const greatRead = {
   slug: 'bangkok-rent-story',
 };
 
-const videos = [
-  { number: '03', title: 'How Bangkok rent prices a brand out of existence', duration: '13:42', views: '24K', slug: 'bangkok-rent-prices-brand-out' },
-  { number: '02', title: 'Reading Ari like an urban architect', duration: '11:08', views: '18K', slug: 'reading-ari' },
-  { number: '01', title: 'The Penguin Eat Shabu unit economics walkthrough', duration: '16:21', views: '32K', slug: 'penguin-eat-shabu-walkthrough' },
-];
 ---
 
 <BaseLayout

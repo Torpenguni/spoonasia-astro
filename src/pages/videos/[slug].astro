@@ -1,19 +1,38 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { videos, articles, type Video } from '../../data/content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
-export function getStaticPaths() {
-  return videos.map((v) => ({
-    params: { slug: v.slug },
-    props: { video: v },
+type VideoEntry = CollectionEntry<'videos'>;
+type ArticleEntry = CollectionEntry<'articles'>;
+
+export async function getStaticPaths() {
+  const all = await getCollection('videos', ({ data }) => !data.draft);
+  const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+  return all.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry, allVideos: all, allArticles },
   }));
 }
 
 interface Props {
-  video: Video;
+  entry: VideoEntry;
+  allVideos: VideoEntry[];
+  allArticles: ArticleEntry[];
 }
 
-const { video } = Astro.props as Props;
+const { entry, allVideos, allArticles } = Astro.props as Props;
+
+const video = {
+  slug: entry.slug,
+  episode: entry.data.episode,
+  title: entry.data.title,
+  description: entry.data.description,
+  duration: entry.data.duration,
+  views: entry.data.views,
+  date: entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+  youtubeId: entry.data.youtubeId,
+};
+
 const isFlagship = video.slug === 'bangkok-rent-prices-brand-out';
 
 // Flagship-only data
@@ -54,10 +73,22 @@ const entityTags = [
   'Rent burden',
 ];
 
-const otherEpisodes = videos.filter((v) => v.slug !== video.slug);
-const relatedReads = articles
-  .filter((a) => ['unit-economics', 'neighborhood-alpha'].includes(a.category))
-  .slice(0, 2);
+const otherEpisodes = allVideos
+  .filter((v) => v.slug !== video.slug)
+  .map((v) => ({
+    slug: v.slug,
+    episode: v.data.episode,
+    title: v.data.title,
+  }));
+
+const relatedReads = allArticles
+  .filter((a) => ['unit-economics', 'neighborhood-alpha'].includes(a.data.category))
+  .slice(0, 2)
+  .map((a) => ({
+    slug: a.slug,
+    title: a.data.title,
+    tag: a.data.tag,
+  }));
 ---
 
 <BaseLayout
@@ -86,7 +117,7 @@ const relatedReads = articles
         <div class="container">
           <div class="ep-embed">
             <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              src={`https://www.youtube.com/embed/${video.youtubeId}`}
               title={video.title}
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

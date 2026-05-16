@@ -1,6 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { stories } from '../data/market-watch';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('market-watch', ({ data }) => !data.draft);
+entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const stories = entries.map((e) => ({
+  slug: e.slug,
+  headline: e.data.headline,
+  dek: e.data.dek,
+  tag: e.data.tag,
+  date: e.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+}));
 ---
 
 <BaseLayout

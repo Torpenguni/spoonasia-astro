@@ -25,4 +25,30 @@ const articles = defineCollection({
   }),
 });
 
-export const collections = { articles };
+const marketWatch = defineCollection({
+  type: 'content',
+  schema: z.object({
+    headline: z.string(),
+    dek: z.string(),
+    tag: z.string(),
+    date: z.coerce.date(),
+    draft: z.boolean().default(false),
+    image: z.string().optional(),
+  }),
+});
+
+const videos = defineCollection({
+  type: 'content',
+  schema: z.object({
+    episode: z.string(),
+    title: z.string(),
+    description: z.string(),
+    duration: z.string(),
+    views: z.string().default('0'),
+    date: z.coerce.date(),
+    youtubeId: z.string().default('dQw4w9WgXcQ'),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { articles, 'market-watch': marketWatch, videos };

@@ -8,21 +8,21 @@
     },
     {
       "label": "CENTEL",
-      "value": "฿33.25",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿33.00",
+      "change": "-0.75%",
+      "positive": false
     },
     {
       "label": "M (MK)",
-      "value": "฿22.70",
-      "change": "+3.65%",
-      "positive": true
+      "value": "฿21.70",
+      "change": "-0.91%",
+      "positive": false
     },
     {
       "label": "AU",
-      "value": "฿4.58",
-      "change": "-0.43%",
-      "positive": false
+      "value": "฿4.60",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "ZEN",
@@ -38,45 +38,45 @@
     },
     {
       "label": "S&P",
-      "value": "฿8.95",
-      "change": "+1.13%",
-      "positive": true
-    },
-    {
-      "label": "CBG",
-      "value": "฿41.00",
+      "value": "฿8.85",
       "change": "+0.00%",
       "positive": true
     },
     {
-      "label": "OSP",
-      "value": "฿15.10",
-      "change": "-0.66%",
+      "label": "CBG",
+      "value": "฿40.75",
+      "change": "-0.61%",
       "positive": false
     },
     {
+      "label": "OSP",
+      "value": "฿15.20",
+      "change": "+0.00%",
+      "positive": true
+    },
+    {
       "label": "ICHI",
-      "value": "฿13.00",
-      "change": "+0.78%",
+      "value": "฿12.90",
+      "change": "+0.00%",
       "positive": true
     },
     {
       "label": "SAPPE",
-      "value": "฿30.75",
-      "change": "+4.24%",
+      "value": "฿30.25",
+      "change": "+2.54%",
       "positive": true
     },
     {
       "label": "TKN",
-      "value": "฿4.20",
-      "change": "+1.45%",
+      "value": "฿4.16",
+      "change": "+0.48%",
       "positive": true
     },
     {
       "label": "TFMAMA",
-      "value": "฿188.00",
-      "change": "+0.27%",
-      "positive": true
+      "value": "฿187.00",
+      "change": "-0.27%",
+      "positive": false
     },
     {
       "label": "CPF",
@@ -86,14 +86,14 @@
     },
     {
       "label": "CPALL",
-      "value": "฿45.75",
-      "change": "-0.54%",
-      "positive": false
+      "value": "฿46.00",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "TU",
-      "value": "฿11.10",
-      "change": "-1.77%",
+      "value": "฿11.20",
+      "change": "-0.88%",
       "positive": false
     },
     {
@@ -104,8 +104,8 @@
     },
     {
       "label": "GFPT",
-      "value": "฿8.60",
-      "change": "+0.00%",
+      "value": "฿8.65",
+      "change": "+0.58%",
       "positive": true
     },
     {
@@ -116,30 +116,30 @@
     },
     {
       "label": "PB",
-      "value": "฿45.75",
-      "change": "+0.00%",
+      "value": "฿48.00",
+      "change": "+4.92%",
       "positive": true
     },
     {
       "label": "Coffee C",
-      "value": "$272.05",
-      "change": "-0.71%",
-      "positive": false
+      "value": "$274.70",
+      "change": "+0.26%",
+      "positive": true
     },
     {
       "label": "Wheat",
-      "value": "$626.75",
-      "change": "-1.38%",
+      "value": "$627.00",
+      "change": "-1.34%",
       "positive": false
     },
     {
       "label": "Sugar #11",
-      "value": "$14.53",
-      "change": "-0.07%",
+      "value": "$14.38",
+      "change": "-1.10%",
       "positive": false
     }
   ],
-  "asOf": "27 May, 14:08",
+  "asOf": "27 May, 18:02",
   "live": true,
-  "updatedAt": "2026-05-27T07:08:10.162Z"
+  "updatedAt": "2026-05-27T11:02:22.313Z"
 }

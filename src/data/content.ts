@@ -84,6 +84,26 @@ export const categories: Category[] = [
     label: 'Neighborhood',
     description: 'Street-level alpha on Asia\'s F&B zones.',
   },
+  {
+    slug: 'founder-stories',
+    label: 'Founder Stories',
+    description: 'How Thai F&B operators built their businesses — origin moves, format decisions, and the structural choices that compounded.',
+  },
+  {
+    slug: 'deals',
+    label: 'Deals & Funding',
+    description: 'Acquisitions, fundraises, exits, joint ventures. The capital flows reshaping Thai F&B and the structural reasons behind each deal.',
+  },
+  {
+    slug: 'neighborhood-watch',
+    label: 'Neighborhood Watch',
+    description: 'Real-time signals from Bangkok\'s F&B zones — openings, closures, rent moves, and the small shifts that anticipate the big trends.',
+  },
+  {
+    slug: 'torpenguin',
+    label: "Torpenguin's Take",
+    description: 'First-person reads from eight years of operating Thai F&B. The patterns I see, the calls I\'m making, and where I think I\'m wrong.',
+  },
 ];
 
 const lorem = (paragraphs: string[]) => paragraphs.join('\n\n');

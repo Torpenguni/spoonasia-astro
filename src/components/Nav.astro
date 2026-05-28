@@ -2,31 +2,59 @@
 const currentPath = Astro.url.pathname;
 
 const primaryItems = [
-  { label: 'Analysis', href: '/analysis' },
-  { label: 'Videos', href: '/videos' },
+  { label: 'Analysis',     href: '/analysis' },
+  { label: 'Videos',       href: '/videos' },
   { label: 'Market Watch', href: '/market-watch' },
-  { label: 'About', href: '/about' },
+  { label: 'About',        href: '/about' },
 ];
 
-const subnavItems = [
-  // Editorial lenses
-  { label: 'Unit Economics', href: '/analysis/unit-economics' },
-  { label: 'Neighborhood Alpha', href: '/analysis/neighborhood-alpha' },
-  { label: 'Market Entry', href: '/analysis/market-entry' },
-  { label: 'Supplier Intel', href: '/analysis/supplier-intel' },
-  // Coverage
-  { label: 'Operator Profiles', href: '/operators' },
-  { label: 'M&A & Deals', href: '/deals' },
-  // Utility
-  { label: 'Data & Charts', href: '/data' },
-  { label: 'Tools', href: '/tools' },
-];
+// ============================================================
+// Contextual subnav — changes based on which primary section is active
+// ============================================================
+const subnavMap = {
+  analysis: [
+    { label: 'All Analysis',       href: '/analysis' },
+    { label: 'Founder Stories',    href: '/analysis/founder-stories' },
+    { label: 'Operator Profiles',  href: '/analysis/operators' },
+    { label: 'Market Entry',       href: '/analysis/market-entry' },
+    { label: 'Deals & Funding',    href: '/analysis/deals' },
+    { label: 'Unit Economics',     href: '/analysis/unit-economics' },
+    { label: 'Neighborhood Watch', href: '/analysis/neighborhood-watch' },
+    { label: "Torpenguin's Take",  href: '/analysis/torpenguin' },
+  ],
+  videos: [
+    { label: 'All Episodes',       href: '/videos' },
+    { label: 'Founder Stories',    href: '/videos/founder-stories' },
+    { label: 'Operator Profiles',  href: '/videos/operators' },
+    { label: 'Restaurant Tech',    href: '/videos/restaurant-tech' },
+    { label: 'Walking Tours',      href: '/videos/walking-tours' },
+    { label: "Torpenguin's Take",  href: '/videos/torpenguin' },
+  ],
+  marketWatch: [
+    { label: 'All',                href: '/market-watch' },
+    { label: 'Daily Brief',        href: '/market-watch/daily' },
+    { label: 'The Weekly',         href: '/market-watch/weekly' },
+    { label: 'Deals & Funding',    href: '/market-watch/deals' },
+    { label: 'Market Entry',       href: '/market-watch/market-entry' },
+    { label: 'Operator News',      href: '/market-watch/operators' },
+  ],
+} as const;
+
+let activeSubnav: readonly { label: string; href: string }[] | null = null;
+if (currentPath.startsWith('/analysis')) activeSubnav = subnavMap.analysis;
+else if (currentPath.startsWith('/videos')) activeSubnav = subnavMap.videos;
+else if (currentPath.startsWith('/market-watch')) activeSubnav = subnavMap.marketWatch;
+
+// Determine which subnav item is active (exact path match, prefer longer matches)
+function isSubnavActive(href: string): boolean {
+  // Root "All" links: only active when path matches exactly (no trailing segments)
+  const isRoot = href === '/analysis' || href === '/videos' || href === '/market-watch';
+  if (isRoot) return currentPath === href || currentPath === href + '/';
+  return currentPath === href || currentPath.startsWith(href + '/');
+}
 
 const today = new Date().toLocaleDateString('en-US', {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
+  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
 });
 ---
 
@@ -64,7 +92,9 @@ const today = new Date().toLocaleDateString('en-US', {
   <div class="container">
     <div class="primary-nav-inner">
       {primaryItems.map((item) => {
-        const isActive = currentPath.startsWith(item.href);
+        const isActive = item.href === '/'
+          ? currentPath === '/'
+          : currentPath.startsWith(item.href);
         return (
           <a href={item.href} class={`primary-nav-link ${isActive ? 'active' : ''}`}>
             {item.label}
@@ -78,15 +108,22 @@ const today = new Date().toLocaleDateString('en-US', {
   </div>
 </nav>
 
-<div class="subnav">
-  <div class="container">
-    <div class="subnav-inner">
-      {subnavItems.map((item) => (
-        <a href={item.href} class="subnav-link">{item.label}</a>
-      ))}
+{activeSubnav && (
+  <div class="subnav">
+    <div class="container">
+      <div class="subnav-inner">
+        {activeSubnav.map((item) => (
+          <a
+            href={item.href}
+            class={`subnav-link ${isSubnavActive(item.href) ? 'active' : ''}`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
     </div>
   </div>
-</div>
+)}
 
 <style>
   .masthead {
@@ -111,18 +148,9 @@ const today = new Date().toLocaleDateString('en-US', {
     cursor: pointer;
     padding: 8px;
   }
-  .hamburger span {
-    display: block;
-    width: 20px;
-    height: 2px;
-    background: var(--ink);
-  }
+  .hamburger span { display: block; width: 20px; height: 2px; background: var(--ink); }
 
-  .masthead-left {
-    display: flex;
-    align-items: center;
-  }
-
+  .masthead-left { display: flex; align-items: center; }
   .masthead-date {
     font-family: var(--font-sans);
     font-size: 12px;
@@ -154,12 +182,8 @@ const today = new Date().toLocaleDateString('en-US', {
     align-self: flex-end;
     margin-bottom: 0.04em;
   }
-  .masthead-logo:hover {
-    color: var(--accent);
-  }
-  .masthead-logo:hover .logo-dot {
-    background: var(--accent-deep);
-  }
+  .masthead-logo:hover { color: var(--accent); }
+  .masthead-logo:hover .logo-dot { background: var(--accent-deep); }
 
   .masthead-right {
     display: flex;
@@ -217,10 +241,7 @@ const today = new Date().toLocaleDateString('en-US', {
     transition: background 0.15s ease;
     letter-spacing: 0.01em;
   }
-  .subscribe-btn:hover {
-    background: var(--accent);
-    color: var(--paper);
-  }
+  .subscribe-btn:hover { background: var(--accent); color: var(--paper); }
 
   .primary-nav {
     background: var(--paper);
@@ -266,6 +287,9 @@ const today = new Date().toLocaleDateString('en-US', {
     color: var(--accent);
   }
 
+  /* ============================================================
+     Subnav — contextual, only shown on Analysis / Videos / Market Watch
+     ============================================================ */
   .subnav {
     background: var(--paper);
     border-bottom: 1px solid var(--hairline);
@@ -292,6 +316,10 @@ const today = new Date().toLocaleDateString('en-US', {
   }
   .subnav-link:first-child { padding-left: 0; }
   .subnav-link:hover { color: var(--ink); }
+  .subnav-link.active {
+    color: var(--accent);
+    font-weight: 600;
+  }
 
   @media (max-width: 768px) {
     .masthead-inner {

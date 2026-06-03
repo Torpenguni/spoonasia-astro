@@ -122,24 +122,24 @@
     },
     {
       "label": "Coffee C",
-      "value": "$261.90",
-      "change": "+0.50%",
-      "positive": true
+      "value": "$259.15",
+      "change": "-0.02%",
+      "positive": false
     },
     {
       "label": "Wheat",
-      "value": "$604.00",
-      "change": "-0.78%",
+      "value": "$597.50",
+      "change": "-0.91%",
       "positive": false
     },
     {
       "label": "Sugar #11",
-      "value": "$14.40",
-      "change": "-0.35%",
-      "positive": false
+      "value": "$14.53",
+      "change": "+1.04%",
+      "positive": true
     }
   ],
-  "asOf": "02 Jun, 18:52",
+  "asOf": "03 Jun, 15:23",
   "live": true,
-  "updatedAt": "2026-06-02T11:52:37.422Z"
+  "updatedAt": "2026-06-03T08:23:58.285Z"
 }

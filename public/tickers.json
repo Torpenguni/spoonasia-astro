@@ -2,26 +2,26 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿24.40",
-      "change": "+2.09%",
+      "value": "฿24.50",
+      "change": "+2.51%",
       "positive": true
     },
     {
       "label": "CENTEL",
-      "value": "฿36.00",
-      "change": "+2.86%",
+      "value": "฿36.25",
+      "change": "+3.57%",
       "positive": true
     },
     {
       "label": "M (MK)",
-      "value": "฿21.30",
-      "change": "+0.47%",
+      "value": "฿21.20",
+      "change": "+0.00%",
       "positive": true
     },
     {
       "label": "AU",
-      "value": "฿4.78",
-      "change": "-0.42%",
+      "value": "฿4.76",
+      "change": "-0.83%",
       "positive": false
     },
     {
@@ -32,8 +32,8 @@
     },
     {
       "label": "MAGURO",
-      "value": "฿17.30",
-      "change": "+1.17%",
+      "value": "฿17.20",
+      "change": "+0.58%",
       "positive": true
     },
     {
@@ -56,44 +56,44 @@
     },
     {
       "label": "ICHI",
-      "value": "฿13.40",
+      "value": "฿13.30",
+      "change": "-0.75%",
+      "positive": false
+    },
+    {
+      "label": "SAPPE",
+      "value": "฿30.00",
       "change": "+0.00%",
       "positive": true
     },
     {
-      "label": "SAPPE",
-      "value": "฿30.25",
-      "change": "+0.83%",
-      "positive": true
-    },
-    {
       "label": "TKN",
-      "value": "฿4.02",
-      "change": "-0.99%",
+      "value": "฿4.04",
+      "change": "-0.49%",
       "positive": false
     },
     {
       "label": "TFMAMA",
-      "value": "฿187.50",
-      "change": "+0.81%",
+      "value": "฿187.00",
+      "change": "+0.54%",
       "positive": true
     },
     {
       "label": "CPF",
-      "value": "฿19.30",
-      "change": "+0.52%",
+      "value": "฿19.20",
+      "change": "+0.00%",
       "positive": true
     },
     {
       "label": "CPALL",
-      "value": "฿46.25",
-      "change": "-1.06%",
+      "value": "฿46.50",
+      "change": "-0.53%",
       "positive": false
     },
     {
       "label": "TU",
-      "value": "฿11.40",
-      "change": "-0.87%",
+      "value": "฿11.30",
+      "change": "-1.74%",
       "positive": false
     },
     {
@@ -110,8 +110,8 @@
     },
     {
       "label": "NRF",
-      "value": "฿0.23",
-      "change": "-7.69%",
+      "value": "฿0.24",
+      "change": "-4.00%",
       "positive": false
     },
     {
@@ -139,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "19 Jun, 15:36",
+  "asOf": "19 Jun, 19:38",
   "live": true,
-  "updatedAt": "2026-06-19T08:36:41.830Z"
+  "updatedAt": "2026-06-19T12:38:13.718Z"
 }

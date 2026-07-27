@@ -2,75 +2,75 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿22.30",
-      "change": "+0.00%",
+      "value": "฿23.20",
+      "change": "+4.04%",
       "positive": true
     },
     {
       "label": "CENTEL",
-      "value": "฿36.25",
-      "change": "+0.69%",
+      "value": "฿38.50",
+      "change": "+6.21%",
       "positive": true
     },
     {
       "label": "M (MK)",
-      "value": "฿21.50",
-      "change": "+1.90%",
-      "positive": true
+      "value": "฿21.20",
+      "change": "-1.40%",
+      "positive": false
     },
     {
       "label": "AU",
-      "value": "฿4.70",
-      "change": "-0.42%",
+      "value": "฿4.66",
+      "change": "-0.85%",
       "positive": false
     },
     {
       "label": "ZEN",
-      "value": "฿5.55",
-      "change": "+0.00%",
+      "value": "฿5.65",
+      "change": "+1.80%",
       "positive": true
     },
     {
       "label": "MAGURO",
-      "value": "฿19.50",
-      "change": "-0.51%",
-      "positive": false
+      "value": "฿20.00",
+      "change": "+2.56%",
+      "positive": true
     },
     {
       "label": "S&P",
-      "value": "฿8.85",
-      "change": "+0.00%",
+      "value": "฿8.90",
+      "change": "+0.56%",
       "positive": true
     },
     {
       "label": "CBG",
-      "value": "฿50.00",
-      "change": "+2.04%",
+      "value": "฿51.25",
+      "change": "+2.50%",
       "positive": true
     },
     {
       "label": "OSP",
-      "value": "฿17.20",
-      "change": "-0.58%",
-      "positive": false
+      "value": "฿17.50",
+      "change": "+1.74%",
+      "positive": true
     },
     {
       "label": "ICHI",
-      "value": "฿14.70",
-      "change": "-0.68%",
-      "positive": false
+      "value": "฿14.90",
+      "change": "+1.36%",
+      "positive": true
     },
     {
       "label": "SAPPE",
       "value": "฿34.00",
-      "change": "+4.62%",
+      "change": "+0.00%",
       "positive": true
     },
     {
       "label": "TKN",
       "value": "฿4.10",
-      "change": "-0.49%",
-      "positive": false
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "TFMAMA",
@@ -80,66 +80,66 @@
     },
     {
       "label": "CPF",
-      "value": "฿21.80",
-      "change": "+0.00%",
+      "value": "฿21.90",
+      "change": "+0.46%",
       "positive": true
     },
     {
       "label": "CPALL",
-      "value": "฿46.50",
-      "change": "-0.53%",
-      "positive": false
-    },
-    {
-      "label": "TU",
-      "value": "฿12.40",
-      "change": "+0.81%",
+      "value": "฿46.75",
+      "change": "+0.54%",
       "positive": true
     },
     {
+      "label": "TU",
+      "value": "฿12.30",
+      "change": "-0.81%",
+      "positive": false
+    },
+    {
       "label": "CPAXT",
-      "value": "฿14.80",
-      "change": "+0.00%",
+      "value": "฿14.90",
+      "change": "+0.68%",
       "positive": true
     },
     {
       "label": "GFPT",
-      "value": "฿9.65",
-      "change": "-0.52%",
+      "value": "฿9.55",
+      "change": "-1.04%",
       "positive": false
     },
     {
       "label": "NRF",
       "value": "฿0.24",
-      "change": "-4.00%",
-      "positive": false
-    },
-    {
-      "label": "PB",
-      "value": "฿48.00",
       "change": "+0.00%",
       "positive": true
     },
     {
+      "label": "PB",
+      "value": "฿47.50",
+      "change": "-1.04%",
+      "positive": false
+    },
+    {
       "label": "Coffee C",
-      "value": "$311.05",
-      "change": "+0.53%",
+      "value": "$298.25",
+      "change": "+0.07%",
       "positive": true
     },
     {
       "label": "Wheat",
-      "value": "$703.00",
-      "change": "+0.97%",
+      "value": "$679.25",
+      "change": "+0.18%",
       "positive": true
     },
     {
       "label": "Sugar #11",
-      "value": "$14.64",
-      "change": "-0.34%",
+      "value": "$14.76",
+      "change": "-0.07%",
       "positive": false
     }
   ],
-  "asOf": "24 Jul, 17:50",
+  "asOf": "27 Jul, 13:35",
   "live": true,
-  "updatedAt": "2026-07-24T10:50:20.802Z"
+  "updatedAt": "2026-07-27T06:35:49.936Z"
 }

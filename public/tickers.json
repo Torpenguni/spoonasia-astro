@@ -8,8 +8,8 @@
     },
     {
       "label": "CENTEL",
-      "value": "฿39.00",
-      "change": "-0.64%",
+      "value": "฿38.75",
+      "change": "-1.27%",
       "positive": false
     },
     {
@@ -38,26 +38,26 @@
     },
     {
       "label": "S&P",
-      "value": "฿8.85",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿8.80",
+      "change": "-0.56%",
+      "positive": false
     },
     {
       "label": "CBG",
-      "value": "฿50.75",
-      "change": "-3.35%",
+      "value": "฿50.25",
+      "change": "-4.27%",
       "positive": false
     },
     {
       "label": "OSP",
-      "value": "฿17.50",
-      "change": "-0.57%",
+      "value": "฿17.40",
+      "change": "-1.13%",
       "positive": false
     },
     {
       "label": "ICHI",
       "value": "฿14.80",
-      "change": "-1.32%",
+      "change": "-1.33%",
       "positive": false
     },
     {
@@ -80,14 +80,14 @@
     },
     {
       "label": "CPF",
-      "value": "฿21.80",
-      "change": "-3.11%",
+      "value": "฿21.70",
+      "change": "-3.54%",
       "positive": false
     },
     {
       "label": "CPALL",
-      "value": "฿49.50",
-      "change": "+1.54%",
+      "value": "฿49.75",
+      "change": "+2.05%",
       "positive": true
     },
     {
@@ -104,8 +104,8 @@
     },
     {
       "label": "GFPT",
-      "value": "฿9.75",
-      "change": "+0.52%",
+      "value": "฿9.80",
+      "change": "+1.03%",
       "positive": true
     },
     {
@@ -122,24 +122,24 @@
     },
     {
       "label": "Coffee C",
-      "value": "$307.70",
-      "change": "-0.36%",
-      "positive": false
+      "value": "$310.05",
+      "change": "+0.40%",
+      "positive": true
     },
     {
       "label": "Wheat",
-      "value": "$637.00",
-      "change": "-0.23%",
-      "positive": false
+      "value": "$639.00",
+      "change": "+0.08%",
+      "positive": true
     },
     {
       "label": "Sugar #11",
-      "value": "$15.06",
-      "change": "+0.13%",
+      "value": "$15.16",
+      "change": "+0.80%",
       "positive": true
     }
   ],
-  "asOf": "05 Aug, 12:50",
+  "asOf": "05 Aug, 15:43",
   "live": true,
-  "updatedAt": "2026-08-05T05:50:50.283Z"
+  "updatedAt": "2026-08-05T08:43:08.750Z"
 }

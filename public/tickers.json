@@ -3,7 +3,7 @@
     {
       "label": "MINT",
       "value": "฿23.40",
-      "change": "+0.86%",
+      "change": "+0.87%",
       "positive": true
     },
     {
@@ -32,8 +32,8 @@
     },
     {
       "label": "MAGURO",
-      "value": "฿19.10",
-      "change": "-1.04%",
+      "value": "฿19.00",
+      "change": "-1.55%",
       "positive": false
     },
     {
@@ -44,14 +44,14 @@
     },
     {
       "label": "CBG",
-      "value": "฿51.50",
-      "change": "+0.98%",
+      "value": "฿51.25",
+      "change": "+0.49%",
       "positive": true
     },
     {
       "label": "OSP",
-      "value": "฿17.80",
-      "change": "+1.14%",
+      "value": "฿17.70",
+      "change": "+0.56%",
       "positive": true
     },
     {
@@ -68,8 +68,8 @@
     },
     {
       "label": "TKN",
-      "value": "฿4.26",
-      "change": "+1.43%",
+      "value": "฿4.24",
+      "change": "+0.95%",
       "positive": true
     },
     {
@@ -81,7 +81,7 @@
     {
       "label": "CPF",
       "value": "฿21.50",
-      "change": "-1.83%",
+      "change": "-1.82%",
       "positive": false
     },
     {
@@ -104,8 +104,8 @@
     },
     {
       "label": "GFPT",
-      "value": "฿9.85",
-      "change": "-1.01%",
+      "value": "฿9.80",
+      "change": "-1.51%",
       "positive": false
     },
     {
@@ -128,9 +128,9 @@
     },
     {
       "label": "Wheat",
-      "value": "$630.75",
-      "change": "-0.08%",
-      "positive": false
+      "value": "$634.50",
+      "change": "+0.51%",
+      "positive": true
     },
     {
       "label": "Sugar #11",
@@ -139,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "07 Aug, 13:13",
+  "asOf": "07 Aug, 14:45",
   "live": true,
-  "updatedAt": "2026-08-07T06:13:52.528Z"
+  "updatedAt": "2026-08-07T07:45:59.656Z"
 }

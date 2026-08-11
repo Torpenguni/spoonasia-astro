@@ -32,8 +32,8 @@
     },
     {
       "label": "MAGURO",
-      "value": "฿18.10",
-      "change": "-2.16%",
+      "value": "฿18.40",
+      "change": "-0.54%",
       "positive": false
     },
     {
@@ -50,32 +50,32 @@
     },
     {
       "label": "OSP",
-      "value": "฿17.40",
-      "change": "-1.14%",
+      "value": "฿17.50",
+      "change": "-0.56%",
       "positive": false
     },
     {
       "label": "ICHI",
-      "value": "฿15.00",
-      "change": "+0.00%",
+      "value": "฿15.10",
+      "change": "+0.67%",
       "positive": true
     },
     {
       "label": "SAPPE",
-      "value": "฿34.75",
-      "change": "+1.46%",
-      "positive": true
-    },
-    {
-      "label": "TKN",
-      "value": "฿4.20",
-      "change": "-0.47%",
+      "value": "฿34.00",
+      "change": "-0.73%",
       "positive": false
     },
     {
+      "label": "TKN",
+      "value": "฿4.22",
+      "change": "+0.00%",
+      "positive": true
+    },
+    {
       "label": "TFMAMA",
-      "value": "฿186.50",
-      "change": "-0.27%",
+      "value": "฿186.00",
+      "change": "-0.53%",
       "positive": false
     },
     {
@@ -92,14 +92,14 @@
     },
     {
       "label": "TU",
-      "value": "฿13.30",
-      "change": "-0.75%",
-      "positive": false
+      "value": "฿13.40",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "CPAXT",
-      "value": "฿14.90",
-      "change": "+0.68%",
+      "value": "฿14.80",
+      "change": "+0.00%",
       "positive": true
     },
     {
@@ -110,8 +110,8 @@
     },
     {
       "label": "NRF",
-      "value": "฿0.22",
-      "change": "+0.00%",
+      "value": "฿0.23",
+      "change": "+4.55%",
       "positive": true
     },
     {
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$642.25",
-      "change": "+0.27%",
+      "value": "$642.50",
+      "change": "+0.31%",
       "positive": true
     },
     {
@@ -139,7 +139,7 @@
       "positive": false
     }
   ],
-  "asOf": "11 Aug, 11:23",
+  "asOf": "11 Aug, 12:36",
   "live": true,
-  "updatedAt": "2026-08-11T04:23:47.860Z"
+  "updatedAt": "2026-08-11T05:36:56.040Z"
 }

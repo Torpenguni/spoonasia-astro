@@ -8,14 +8,14 @@
     },
     {
       "label": "CENTEL",
-      "value": "฿42.00",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿41.75",
+      "change": "-0.60%",
+      "positive": false
     },
     {
       "label": "M (MK)",
-      "value": "฿21.90",
-      "change": "+1.39%",
+      "value": "฿21.80",
+      "change": "+0.93%",
       "positive": true
     },
     {
@@ -32,14 +32,14 @@
     },
     {
       "label": "MAGURO",
-      "value": "฿19.20",
-      "change": "+3.78%",
+      "value": "฿19.10",
+      "change": "+3.24%",
       "positive": true
     },
     {
       "label": "S&P",
-      "value": "฿8.85",
-      "change": "+1.14%",
+      "value": "฿8.95",
+      "change": "+2.29%",
       "positive": true
     },
     {
@@ -50,26 +50,26 @@
     },
     {
       "label": "OSP",
-      "value": "฿18.00",
-      "change": "+2.27%",
+      "value": "฿18.20",
+      "change": "+3.41%",
       "positive": true
     },
     {
       "label": "ICHI",
-      "value": "฿14.90",
-      "change": "+1.36%",
+      "value": "฿14.80",
+      "change": "+0.68%",
       "positive": true
     },
     {
       "label": "SAPPE",
-      "value": "฿34.00",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿33.75",
+      "change": "-0.74%",
+      "positive": false
     },
     {
       "label": "TKN",
-      "value": "฿4.42",
-      "change": "+0.91%",
+      "value": "฿4.40",
+      "change": "+0.46%",
       "positive": true
     },
     {
@@ -98,14 +98,14 @@
     },
     {
       "label": "CPAXT",
-      "value": "฿14.90",
-      "change": "+0.68%",
+      "value": "฿14.80",
+      "change": "+0.00%",
       "positive": true
     },
     {
       "label": "GFPT",
-      "value": "฿10.10",
-      "change": "+6.38%",
+      "value": "฿10.00",
+      "change": "+5.21%",
       "positive": true
     },
     {
@@ -122,24 +122,24 @@
     },
     {
       "label": "Coffee C",
-      "value": "$312.00",
-      "change": "-0.73%",
-      "positive": false
+      "value": "$320.80",
+      "change": "+2.07%",
+      "positive": true
     },
     {
       "label": "Wheat",
-      "value": "$686.50",
-      "change": "-0.44%",
+      "value": "$686.00",
+      "change": "-0.51%",
       "positive": false
     },
     {
       "label": "Sugar #11",
-      "value": "$16.54",
-      "change": "-0.36%",
-      "positive": false
+      "value": "$16.75",
+      "change": "+0.90%",
+      "positive": true
     }
   ],
-  "asOf": "17 Aug, 15:26",
+  "asOf": "17 Aug, 16:11",
   "live": true,
-  "updatedAt": "2026-08-17T08:26:20.818Z"
+  "updatedAt": "2026-08-17T09:11:32.013Z"
 }

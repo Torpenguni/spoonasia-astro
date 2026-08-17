@@ -2,14 +2,14 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿23.00",
-      "change": "+0.00%",
+      "value": "฿23.10",
+      "change": "+0.43%",
       "positive": true
     },
     {
       "label": "CENTEL",
-      "value": "฿41.50",
-      "change": "-1.18%",
+      "value": "฿41.75",
+      "change": "-0.60%",
       "positive": false
     },
     {
@@ -20,8 +20,8 @@
     },
     {
       "label": "AU",
-      "value": "฿4.34",
-      "change": "-4.82%",
+      "value": "฿4.36",
+      "change": "-4.39%",
       "positive": false
     },
     {
@@ -45,7 +45,7 @@
     {
       "label": "CBG",
       "value": "฿56.25",
-      "change": "+2.26%",
+      "change": "+2.27%",
       "positive": true
     },
     {
@@ -56,8 +56,8 @@
     },
     {
       "label": "ICHI",
-      "value": "฿15.00",
-      "change": "+2.05%",
+      "value": "฿14.80",
+      "change": "+0.68%",
       "positive": true
     },
     {
@@ -68,8 +68,8 @@
     },
     {
       "label": "TKN",
-      "value": "฿4.46",
-      "change": "+1.83%",
+      "value": "฿4.44",
+      "change": "+1.37%",
       "positive": true
     },
     {
@@ -80,8 +80,8 @@
     },
     {
       "label": "CPF",
-      "value": "฿22.50",
-      "change": "+3.23%",
+      "value": "฿22.40",
+      "change": "+2.75%",
       "positive": true
     },
     {
@@ -98,8 +98,8 @@
     },
     {
       "label": "CPAXT",
-      "value": "฿14.90",
-      "change": "+0.68%",
+      "value": "฿14.80",
+      "change": "+0.00%",
       "positive": true
     },
     {
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$690.25",
-      "change": "+0.11%",
+      "value": "$689.50",
+      "change": "+0.00%",
       "positive": true
     },
     {
@@ -139,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "17 Aug, 12:39",
+  "asOf": "17 Aug, 13:22",
   "live": true,
-  "updatedAt": "2026-08-17T05:39:14.337Z"
+  "updatedAt": "2026-08-17T06:22:06.801Z"
 }

@@ -2,14 +2,14 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿22.90",
-      "change": "-0.43%",
+      "value": "฿22.80",
+      "change": "-0.87%",
       "positive": false
     },
     {
       "label": "CENTEL",
-      "value": "฿42.75",
-      "change": "+0.59%",
+      "value": "฿42.50",
+      "change": "+0.00%",
       "positive": true
     },
     {
@@ -20,9 +20,9 @@
     },
     {
       "label": "AU",
-      "value": "฿4.34",
-      "change": "-0.46%",
-      "positive": false
+      "value": "฿4.36",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "ZEN",
@@ -44,15 +44,15 @@
     },
     {
       "label": "CBG",
-      "value": "฿57.25",
-      "change": "+0.44%",
-      "positive": true
+      "value": "฿56.75",
+      "change": "-0.44%",
+      "positive": false
     },
     {
       "label": "OSP",
-      "value": "฿18.10",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿17.90",
+      "change": "-1.10%",
+      "positive": false
     },
     {
       "label": "ICHI",
@@ -86,14 +86,14 @@
     },
     {
       "label": "CPALL",
-      "value": "฿47.00",
-      "change": "+0.53%",
+      "value": "฿47.25",
+      "change": "+1.07%",
       "positive": true
     },
     {
       "label": "TU",
-      "value": "฿13.10",
-      "change": "+0.00%",
+      "value": "฿13.20",
+      "change": "+0.76%",
       "positive": true
     },
     {
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$688.25",
-      "change": "-0.15%",
+      "value": "$688.00",
+      "change": "-0.18%",
       "positive": false
     },
     {
@@ -139,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "18 Aug, 12:14",
+  "asOf": "18 Aug, 12:49",
   "live": true,
-  "updatedAt": "2026-08-18T05:14:54.962Z"
+  "updatedAt": "2026-08-18T05:49:40.415Z"
 }

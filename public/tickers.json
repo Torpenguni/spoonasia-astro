@@ -2,9 +2,9 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿23.10",
-      "change": "+0.43%",
-      "positive": true
+      "value": "฿22.80",
+      "change": "-0.87%",
+      "positive": false
     },
     {
       "label": "CENTEL",
@@ -14,15 +14,15 @@
     },
     {
       "label": "M (MK)",
-      "value": "฿22.50",
-      "change": "+1.35%",
+      "value": "฿23.00",
+      "change": "+3.60%",
       "positive": true
     },
     {
       "label": "AU",
-      "value": "฿4.36",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿4.34",
+      "change": "-0.46%",
+      "positive": false
     },
     {
       "label": "ZEN",
@@ -44,20 +44,20 @@
     },
     {
       "label": "CBG",
-      "value": "฿57.00",
-      "change": "+0.00%",
+      "value": "฿57.25",
+      "change": "+0.44%",
       "positive": true
     },
     {
       "label": "OSP",
-      "value": "฿18.10",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿18.00",
+      "change": "-0.55%",
+      "positive": false
     },
     {
       "label": "ICHI",
       "value": "฿14.60",
-      "change": "-1.34%",
+      "change": "-1.35%",
       "positive": false
     },
     {
@@ -68,9 +68,9 @@
     },
     {
       "label": "TKN",
-      "value": "฿4.42",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿4.40",
+      "change": "-0.45%",
+      "positive": false
     },
     {
       "label": "TFMAMA",
@@ -86,14 +86,14 @@
     },
     {
       "label": "CPALL",
-      "value": "฿47.00",
-      "change": "+0.53%",
+      "value": "฿47.25",
+      "change": "+1.07%",
       "positive": true
     },
     {
       "label": "TU",
-      "value": "฿13.30",
-      "change": "+1.53%",
+      "value": "฿13.20",
+      "change": "+0.77%",
       "positive": true
     },
     {
@@ -110,9 +110,9 @@
     },
     {
       "label": "NRF",
-      "value": "฿0.21",
-      "change": "-4.55%",
-      "positive": false
+      "value": "฿0.22",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "PB",
@@ -128,9 +128,9 @@
     },
     {
       "label": "Wheat",
-      "value": "$689.25",
-      "change": "+0.00%",
-      "positive": true
+      "value": "$688.50",
+      "change": "-0.11%",
+      "positive": false
     },
     {
       "label": "Sugar #11",
@@ -139,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "18 Aug, 10:49",
+  "asOf": "18 Aug, 11:39",
   "live": true,
-  "updatedAt": "2026-08-18T03:49:23.020Z"
+  "updatedAt": "2026-08-18T04:39:58.203Z"
 }

@@ -2,20 +2,20 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿22.80",
-      "change": "-0.87%",
+      "value": "฿22.90",
+      "change": "-0.43%",
       "positive": false
     },
     {
       "label": "CENTEL",
-      "value": "฿42.50",
-      "change": "+0.00%",
+      "value": "฿42.75",
+      "change": "+0.59%",
       "positive": true
     },
     {
       "label": "M (MK)",
-      "value": "฿23.00",
-      "change": "+3.60%",
+      "value": "฿22.90",
+      "change": "+3.15%",
       "positive": true
     },
     {
@@ -32,8 +32,8 @@
     },
     {
       "label": "MAGURO",
-      "value": "฿19.00",
-      "change": "-1.04%",
+      "value": "฿19.10",
+      "change": "-0.52%",
       "positive": false
     },
     {
@@ -50,20 +50,20 @@
     },
     {
       "label": "OSP",
-      "value": "฿18.00",
-      "change": "-0.55%",
-      "positive": false
+      "value": "฿18.10",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "ICHI",
-      "value": "฿14.60",
-      "change": "-1.35%",
+      "value": "฿14.70",
+      "change": "-0.68%",
       "positive": false
     },
     {
       "label": "SAPPE",
-      "value": "฿34.00",
-      "change": "-0.73%",
+      "value": "฿33.75",
+      "change": "-1.46%",
       "positive": false
     },
     {
@@ -80,20 +80,20 @@
     },
     {
       "label": "CPF",
-      "value": "฿22.50",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿22.40",
+      "change": "-0.44%",
+      "positive": false
     },
     {
       "label": "CPALL",
-      "value": "฿47.25",
-      "change": "+1.07%",
+      "value": "฿47.00",
+      "change": "+0.53%",
       "positive": true
     },
     {
       "label": "TU",
-      "value": "฿13.20",
-      "change": "+0.77%",
+      "value": "฿13.10",
+      "change": "+0.00%",
       "positive": true
     },
     {
@@ -110,9 +110,9 @@
     },
     {
       "label": "NRF",
-      "value": "฿0.22",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿0.21",
+      "change": "-4.55%",
+      "positive": false
     },
     {
       "label": "PB",
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$688.50",
-      "change": "-0.11%",
+      "value": "$688.25",
+      "change": "-0.15%",
       "positive": false
     },
     {
@@ -139,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "18 Aug, 11:39",
+  "asOf": "18 Aug, 12:14",
   "live": true,
-  "updatedAt": "2026-08-18T04:39:58.203Z"
+  "updatedAt": "2026-08-18T05:14:54.962Z"
 }

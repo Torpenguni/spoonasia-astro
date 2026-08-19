@@ -2,8 +2,8 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿22.50",
-      "change": "-0.88%",
+      "value": "฿22.40",
+      "change": "-1.32%",
       "positive": false
     },
     {
@@ -20,9 +20,9 @@
     },
     {
       "label": "AU",
-      "value": "฿4.32",
-      "change": "-0.46%",
-      "positive": false
+      "value": "฿4.34",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "ZEN",
@@ -32,9 +32,9 @@
     },
     {
       "label": "MAGURO",
-      "value": "฿19.00",
-      "change": "-0.52%",
-      "positive": false
+      "value": "฿19.10",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "S&P",
@@ -44,8 +44,8 @@
     },
     {
       "label": "CBG",
-      "value": "฿56.50",
-      "change": "+0.00%",
+      "value": "฿56.75",
+      "change": "+0.44%",
       "positive": true
     },
     {
@@ -68,8 +68,8 @@
     },
     {
       "label": "TKN",
-      "value": "฿4.40",
-      "change": "+0.00%",
+      "value": "฿4.42",
+      "change": "+0.45%",
       "positive": true
     },
     {
@@ -86,21 +86,21 @@
     },
     {
       "label": "CPALL",
-      "value": "฿46.75",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿46.50",
+      "change": "-0.53%",
+      "positive": false
     },
     {
       "label": "TU",
-      "value": "฿13.00",
-      "change": "-1.52%",
+      "value": "฿13.10",
+      "change": "-0.76%",
       "positive": false
     },
     {
       "label": "CPAXT",
-      "value": "฿14.80",
-      "change": "-0.67%",
-      "positive": false
+      "value": "฿14.90",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "GFPT",
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$685.50",
-      "change": "+0.62%",
+      "value": "$683.25",
+      "change": "+0.29%",
       "positive": true
     },
     {
@@ -139,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "19 Aug, 12:51",
+  "asOf": "19 Aug, 13:51",
   "live": true,
-  "updatedAt": "2026-08-19T05:51:35.343Z"
+  "updatedAt": "2026-08-19T06:51:49.171Z"
 }

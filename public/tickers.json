@@ -2,8 +2,8 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿22.60",
-      "change": "-0.44%",
+      "value": "฿22.50",
+      "change": "-0.88%",
       "positive": false
     },
     {
@@ -14,14 +14,14 @@
     },
     {
       "label": "M (MK)",
-      "value": "฿22.60",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿22.30",
+      "change": "-1.32%",
+      "positive": false
     },
     {
       "label": "AU",
-      "value": "฿4.34",
-      "change": "+0.00%",
+      "value": "฿4.36",
+      "change": "+0.46%",
       "positive": true
     },
     {
@@ -38,14 +38,14 @@
     },
     {
       "label": "S&P",
-      "value": "฿8.90",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿8.80",
+      "change": "-1.12%",
+      "positive": false
     },
     {
       "label": "CBG",
-      "value": "฿57.25",
-      "change": "+1.33%",
+      "value": "฿57.00",
+      "change": "+0.88%",
       "positive": true
     },
     {
@@ -62,9 +62,9 @@
     },
     {
       "label": "SAPPE",
-      "value": "฿33.75",
-      "change": "-0.74%",
-      "positive": false
+      "value": "฿34.00",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "TKN",
@@ -92,8 +92,8 @@
     },
     {
       "label": "TU",
-      "value": "฿13.00",
-      "change": "-1.50%",
+      "value": "฿13.10",
+      "change": "-0.76%",
       "positive": false
     },
     {
@@ -104,8 +104,8 @@
     },
     {
       "label": "GFPT",
-      "value": "฿10.10",
-      "change": "+0.00%",
+      "value": "฿10.20",
+      "change": "+0.99%",
       "positive": true
     },
     {
@@ -116,8 +116,8 @@
     },
     {
       "label": "PB",
-      "value": "฿47.75",
-      "change": "-0.52%",
+      "value": "฿47.50",
+      "change": "-1.04%",
       "positive": false
     },
     {
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$682.50",
-      "change": "+0.18%",
+      "value": "$683.50",
+      "change": "+0.33%",
       "positive": true
     },
     {
@@ -139,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "19 Aug, 10:51",
+  "asOf": "19 Aug, 11:41",
   "live": true,
-  "updatedAt": "2026-08-19T03:51:10.608Z"
+  "updatedAt": "2026-08-19T04:41:58.303Z"
 }

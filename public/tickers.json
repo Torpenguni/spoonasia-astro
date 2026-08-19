@@ -8,8 +8,8 @@
     },
     {
       "label": "CENTEL",
-      "value": "฿41.50",
-      "change": "-1.19%",
+      "value": "฿41.75",
+      "change": "-0.60%",
       "positive": false
     },
     {
@@ -44,8 +44,8 @@
     },
     {
       "label": "CBG",
-      "value": "฿56.75",
-      "change": "+0.44%",
+      "value": "฿57.25",
+      "change": "+1.33%",
       "positive": true
     },
     {
@@ -68,8 +68,8 @@
     },
     {
       "label": "TKN",
-      "value": "฿4.42",
-      "change": "+0.45%",
+      "value": "฿4.40",
+      "change": "+0.00%",
       "positive": true
     },
     {
@@ -80,20 +80,20 @@
     },
     {
       "label": "CPF",
-      "value": "฿22.40",
-      "change": "-0.44%",
-      "positive": false
+      "value": "฿22.50",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "CPALL",
-      "value": "฿46.50",
-      "change": "-0.53%",
-      "positive": false
+      "value": "฿46.75",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "TU",
-      "value": "฿13.10",
-      "change": "-0.76%",
+      "value": "฿13.00",
+      "change": "-1.50%",
       "positive": false
     },
     {
@@ -128,18 +128,18 @@
     },
     {
       "label": "Wheat",
-      "value": "$685.25",
-      "change": "+0.59%",
+      "value": "$684.50",
+      "change": "+0.48%",
       "positive": true
     },
     {
       "label": "Sugar #11",
-      "value": "$17.48",
-      "change": "+0.06%",
-      "positive": true
+      "value": "$17.39",
+      "change": "-0.46%",
+      "positive": false
     }
   ],
-  "asOf": "19 Aug, 14:42",
+  "asOf": "19 Aug, 15:17",
   "live": true,
-  "updatedAt": "2026-08-19T07:42:22.986Z"
+  "updatedAt": "2026-08-19T08:17:34.574Z"
 }

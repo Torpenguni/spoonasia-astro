@@ -8,14 +8,14 @@
     },
     {
       "label": "CENTEL",
-      "value": "฿41.75",
-      "change": "-0.60%",
+      "value": "฿41.50",
+      "change": "-1.19%",
       "positive": false
     },
     {
       "label": "M (MK)",
-      "value": "฿22.30",
-      "change": "-1.33%",
+      "value": "฿22.10",
+      "change": "-2.21%",
       "positive": false
     },
     {
@@ -50,8 +50,8 @@
     },
     {
       "label": "OSP",
-      "value": "฿17.40",
-      "change": "-1.69%",
+      "value": "฿17.50",
+      "change": "-1.13%",
       "positive": false
     },
     {
@@ -62,9 +62,9 @@
     },
     {
       "label": "SAPPE",
-      "value": "฿33.75",
-      "change": "-0.74%",
-      "positive": false
+      "value": "฿34.00",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "TKN",
@@ -80,9 +80,9 @@
     },
     {
       "label": "CPF",
-      "value": "฿22.50",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿22.40",
+      "change": "-0.44%",
+      "positive": false
     },
     {
       "label": "CPALL",
@@ -116,8 +116,8 @@
     },
     {
       "label": "PB",
-      "value": "฿47.50",
-      "change": "-1.04%",
+      "value": "฿47.75",
+      "change": "-0.52%",
       "positive": false
     },
     {
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$683.25",
-      "change": "+0.29%",
+      "value": "$685.25",
+      "change": "+0.59%",
       "positive": true
     },
     {
@@ -139,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "19 Aug, 13:51",
+  "asOf": "19 Aug, 14:42",
   "live": true,
-  "updatedAt": "2026-08-19T06:51:49.171Z"
+  "updatedAt": "2026-08-19T07:42:22.986Z"
 }

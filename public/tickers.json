@@ -2,26 +2,26 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿22.40",
-      "change": "-1.32%",
-      "positive": false
+      "value": "฿22.70",
+      "change": "+0.89%",
+      "positive": true
     },
     {
       "label": "CENTEL",
-      "value": "฿41.50",
-      "change": "-1.19%",
-      "positive": false
+      "value": "฿42.00",
+      "change": "+1.20%",
+      "positive": true
     },
     {
       "label": "M (MK)",
-      "value": "฿22.00",
-      "change": "-2.67%",
-      "positive": false
+      "value": "฿22.20",
+      "change": "+1.37%",
+      "positive": true
     },
     {
       "label": "AU",
-      "value": "฿4.34",
-      "change": "+0.00%",
+      "value": "฿4.40",
+      "change": "+0.46%",
       "positive": true
     },
     {
@@ -32,87 +32,87 @@
     },
     {
       "label": "MAGURO",
-      "value": "฿19.00",
-      "change": "-0.52%",
-      "positive": false
+      "value": "฿19.10",
+      "change": "+1.06%",
+      "positive": true
     },
     {
       "label": "S&P",
       "value": "฿8.80",
-      "change": "-1.12%",
-      "positive": false
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "CBG",
-      "value": "฿57.25",
-      "change": "+1.33%",
+      "value": "฿57.50",
+      "change": "+0.00%",
       "positive": true
     },
     {
       "label": "OSP",
-      "value": "฿17.40",
-      "change": "-1.69%",
-      "positive": false
+      "value": "฿17.60",
+      "change": "+0.57%",
+      "positive": true
     },
     {
       "label": "ICHI",
-      "value": "฿14.60",
-      "change": "+0.00%",
+      "value": "฿14.70",
+      "change": "+0.68%",
       "positive": true
     },
     {
       "label": "SAPPE",
-      "value": "฿33.75",
-      "change": "-0.74%",
-      "positive": false
+      "value": "฿34.25",
+      "change": "+1.48%",
+      "positive": true
     },
     {
       "label": "TKN",
-      "value": "฿4.40",
-      "change": "+0.00%",
+      "value": "฿4.42",
+      "change": "+0.91%",
       "positive": true
     },
     {
       "label": "TFMAMA",
-      "value": "฿186.50",
-      "change": "+0.27%",
-      "positive": true
+      "value": "฿186.00",
+      "change": "-0.27%",
+      "positive": false
     },
     {
       "label": "CPF",
-      "value": "฿22.50",
-      "change": "+0.00%",
+      "value": "฿23.20",
+      "change": "+3.11%",
       "positive": true
     },
     {
       "label": "CPALL",
-      "value": "฿46.50",
-      "change": "-0.53%",
-      "positive": false
+      "value": "฿47.00",
+      "change": "+1.08%",
+      "positive": true
     },
     {
       "label": "TU",
       "value": "฿13.10",
-      "change": "-0.76%",
-      "positive": false
-    },
-    {
-      "label": "CPAXT",
-      "value": "฿14.90",
-      "change": "+0.00%",
+      "change": "+0.77%",
       "positive": true
     },
     {
+      "label": "CPAXT",
+      "value": "฿14.80",
+      "change": "-0.67%",
+      "positive": false
+    },
+    {
       "label": "GFPT",
-      "value": "฿10.10",
-      "change": "+0.00%",
+      "value": "฿10.20",
+      "change": "+2.00%",
       "positive": true
     },
     {
       "label": "NRF",
-      "value": "฿0.22",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿0.21",
+      "change": "-4.55%",
+      "positive": false
     },
     {
       "label": "PB",
@@ -122,24 +122,24 @@
     },
     {
       "label": "Coffee C",
-      "value": "$329.90",
-      "change": "-0.77%",
+      "value": "$328.15",
+      "change": "-0.02%",
       "positive": false
     },
     {
       "label": "Wheat",
-      "value": "$683.75",
-      "change": "+0.37%",
+      "value": "$699.25",
+      "change": "+0.25%",
       "positive": true
     },
     {
       "label": "Sugar #11",
-      "value": "$17.49",
-      "change": "+0.11%",
+      "value": "$17.56",
+      "change": "+0.06%",
       "positive": true
     }
   ],
-  "asOf": "19 Aug, 16:52",
+  "asOf": "20 Aug, 10:50",
   "live": true,
-  "updatedAt": "2026-08-19T09:52:05.974Z"
+  "updatedAt": "2026-08-20T03:50:34.959Z"
 }

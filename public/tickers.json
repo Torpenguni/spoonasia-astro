@@ -2,9 +2,9 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿22.80",
-      "change": "+0.44%",
-      "positive": true
+      "value": "฿22.60",
+      "change": "-0.44%",
+      "positive": false
     },
     {
       "label": "CENTEL",
@@ -14,14 +14,14 @@
     },
     {
       "label": "M (MK)",
-      "value": "฿22.00",
-      "change": "-1.35%",
+      "value": "฿21.90",
+      "change": "-1.79%",
       "positive": false
     },
     {
       "label": "AU",
-      "value": "฿4.40",
-      "change": "+0.92%",
+      "value": "฿4.38",
+      "change": "+0.46%",
       "positive": true
     },
     {
@@ -50,8 +50,8 @@
     },
     {
       "label": "OSP",
-      "value": "฿17.60",
-      "change": "+0.57%",
+      "value": "฿17.50",
+      "change": "+0.00%",
       "positive": true
     },
     {
@@ -62,14 +62,14 @@
     },
     {
       "label": "SAPPE",
-      "value": "฿35.50",
-      "change": "-0.70%",
+      "value": "฿35.00",
+      "change": "-2.10%",
       "positive": false
     },
     {
       "label": "TKN",
-      "value": "฿4.34",
-      "change": "-0.91%",
+      "value": "฿4.36",
+      "change": "-0.46%",
       "positive": false
     },
     {
@@ -80,21 +80,21 @@
     },
     {
       "label": "CPF",
-      "value": "฿23.60",
-      "change": "-0.42%",
+      "value": "฿23.30",
+      "change": "-1.69%",
       "positive": false
     },
     {
       "label": "CPALL",
-      "value": "฿46.75",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿46.50",
+      "change": "-0.53%",
+      "positive": false
     },
     {
       "label": "TU",
-      "value": "฿13.20",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿13.10",
+      "change": "-0.76%",
+      "positive": false
     },
     {
       "label": "CPAXT",
@@ -110,15 +110,15 @@
     },
     {
       "label": "NRF",
-      "value": "฿0.23",
-      "change": "-4.17%",
+      "value": "฿0.22",
+      "change": "-8.33%",
       "positive": false
     },
     {
       "label": "PB",
-      "value": "฿48.00",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿47.50",
+      "change": "-1.04%",
+      "positive": false
     },
     {
       "label": "Coffee C",
@@ -139,7 +139,7 @@
       "positive": false
     }
   ],
-  "asOf": "21 Aug, 10:54",
+  "asOf": "21 Aug, 11:43",
   "live": true,
-  "updatedAt": "2026-08-21T03:54:36.159Z"
+  "updatedAt": "2026-08-21T04:43:23.846Z"
 }

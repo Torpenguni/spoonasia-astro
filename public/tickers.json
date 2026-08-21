@@ -2,8 +2,8 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿22.60",
-      "change": "-0.44%",
+      "value": "฿22.50",
+      "change": "-0.88%",
       "positive": false
     },
     {
@@ -14,8 +14,8 @@
     },
     {
       "label": "M (MK)",
-      "value": "฿21.90",
-      "change": "-1.79%",
+      "value": "฿21.80",
+      "change": "-2.24%",
       "positive": false
     },
     {
@@ -44,8 +44,8 @@
     },
     {
       "label": "CBG",
-      "value": "฿58.25",
-      "change": "-0.85%",
+      "value": "฿58.50",
+      "change": "-0.43%",
       "positive": false
     },
     {
@@ -56,21 +56,21 @@
     },
     {
       "label": "ICHI",
-      "value": "฿14.80",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿14.70",
+      "change": "-0.68%",
+      "positive": false
     },
     {
       "label": "SAPPE",
-      "value": "฿35.00",
-      "change": "-2.10%",
+      "value": "฿34.50",
+      "change": "-3.47%",
       "positive": false
     },
     {
       "label": "TKN",
-      "value": "฿4.36",
-      "change": "-0.46%",
-      "positive": false
+      "value": "฿4.38",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "TFMAMA",
@@ -110,8 +110,8 @@
     },
     {
       "label": "NRF",
-      "value": "฿0.22",
-      "change": "-8.33%",
+      "value": "฿0.23",
+      "change": "-4.17%",
       "positive": false
     },
     {
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$704.00",
-      "change": "+0.57%",
+      "value": "$703.00",
+      "change": "+0.43%",
       "positive": true
     },
     {
@@ -139,7 +139,7 @@
       "positive": false
     }
   ],
-  "asOf": "21 Aug, 11:43",
+  "asOf": "21 Aug, 12:18",
   "live": true,
-  "updatedAt": "2026-08-21T04:43:23.846Z"
+  "updatedAt": "2026-08-21T05:18:45.482Z"
 }

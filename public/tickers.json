@@ -32,8 +32,8 @@
     },
     {
       "label": "MAGURO",
-      "value": "฿19.10",
-      "change": "+1.06%",
+      "value": "฿19.00",
+      "change": "+0.53%",
       "positive": true
     },
     {
@@ -45,7 +45,7 @@
     {
       "label": "CBG",
       "value": "฿58.50",
-      "change": "-0.43%",
+      "change": "-0.42%",
       "positive": false
     },
     {
@@ -56,9 +56,9 @@
     },
     {
       "label": "ICHI",
-      "value": "฿14.70",
-      "change": "-0.68%",
-      "positive": false
+      "value": "฿14.80",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "SAPPE",
@@ -68,9 +68,9 @@
     },
     {
       "label": "TKN",
-      "value": "฿4.38",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿4.34",
+      "change": "-0.91%",
+      "positive": false
     },
     {
       "label": "TFMAMA",
@@ -86,9 +86,9 @@
     },
     {
       "label": "CPALL",
-      "value": "฿46.50",
-      "change": "-0.53%",
-      "positive": false
+      "value": "฿47.00",
+      "change": "+0.53%",
+      "positive": true
     },
     {
       "label": "TU",
@@ -104,8 +104,8 @@
     },
     {
       "label": "GFPT",
-      "value": "฿10.00",
-      "change": "-1.94%",
+      "value": "฿10.10",
+      "change": "-0.98%",
       "positive": false
     },
     {
@@ -122,24 +122,24 @@
     },
     {
       "label": "Coffee C",
-      "value": "$328.30",
-      "change": "-0.30%",
+      "value": "$328.95",
+      "change": "-0.11%",
       "positive": false
     },
     {
       "label": "Wheat",
-      "value": "$702.00",
-      "change": "+0.29%",
+      "value": "$703.00",
+      "change": "+0.43%",
       "positive": true
     },
     {
       "label": "Sugar #11",
-      "value": "$17.53",
-      "change": "+0.06%",
-      "positive": true
+      "value": "$17.32",
+      "change": "-1.14%",
+      "positive": false
     }
   ],
-  "asOf": "21 Aug, 14:59",
+  "asOf": "21 Aug, 15:53",
   "live": true,
-  "updatedAt": "2026-08-21T07:59:48.142Z"
+  "updatedAt": "2026-08-21T08:53:02.183Z"
 }

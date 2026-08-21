@@ -45,7 +45,7 @@
     {
       "label": "CBG",
       "value": "฿58.50",
-      "change": "-0.42%",
+      "change": "-0.43%",
       "positive": false
     },
     {
@@ -81,7 +81,7 @@
     {
       "label": "CPF",
       "value": "฿23.30",
-      "change": "-1.68%",
+      "change": "-1.69%",
       "positive": false
     },
     {
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$703.75",
-      "change": "+0.54%",
+      "value": "$703.25",
+      "change": "+0.46%",
       "positive": true
     },
     {
@@ -139,7 +139,7 @@
       "positive": false
     }
   ],
-  "asOf": "21 Aug, 13:00",
+  "asOf": "21 Aug, 14:02",
   "live": true,
-  "updatedAt": "2026-08-21T06:00:26.434Z"
+  "updatedAt": "2026-08-21T07:02:00.960Z"
 }

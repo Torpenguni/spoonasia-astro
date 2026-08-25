@@ -2,8 +2,8 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿22.50",
-      "change": "+0.90%",
+      "value": "฿22.60",
+      "change": "+1.35%",
       "positive": true
     },
     {
@@ -14,9 +14,9 @@
     },
     {
       "label": "M (MK)",
-      "value": "฿21.70",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿21.60",
+      "change": "-0.46%",
+      "positive": false
     },
     {
       "label": "AU",
@@ -44,14 +44,14 @@
     },
     {
       "label": "CBG",
-      "value": "฿55.50",
-      "change": "-1.33%",
+      "value": "฿55.75",
+      "change": "-0.89%",
       "positive": false
     },
     {
       "label": "OSP",
-      "value": "฿17.60",
-      "change": "+1.15%",
+      "value": "฿17.50",
+      "change": "+0.57%",
       "positive": true
     },
     {
@@ -62,14 +62,14 @@
     },
     {
       "label": "SAPPE",
-      "value": "฿35.25",
-      "change": "+3.70%",
+      "value": "฿35.50",
+      "change": "+4.41%",
       "positive": true
     },
     {
       "label": "TKN",
-      "value": "฿4.24",
-      "change": "+0.00%",
+      "value": "฿4.26",
+      "change": "+0.47%",
       "positive": true
     },
     {
@@ -80,8 +80,8 @@
     },
     {
       "label": "CPF",
-      "value": "฿24.00",
-      "change": "+2.14%",
+      "value": "฿23.90",
+      "change": "+1.70%",
       "positive": true
     },
     {
@@ -93,7 +93,7 @@
     {
       "label": "TU",
       "value": "฿13.10",
-      "change": "+0.77%",
+      "change": "+0.78%",
       "positive": true
     },
     {
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$703.00",
-      "change": "+0.50%",
+      "value": "$701.50",
+      "change": "+0.29%",
       "positive": true
     },
     {
@@ -139,7 +139,7 @@
       "positive": true
     }
   ],
-  "asOf": "25 Aug, 12:19",
+  "asOf": "25 Aug, 13:00",
   "live": true,
-  "updatedAt": "2026-08-25T05:19:30.851Z"
+  "updatedAt": "2026-08-25T06:00:15.565Z"
 }

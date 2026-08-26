@@ -9,7 +9,7 @@
     {
       "label": "CENTEL",
       "value": "฿42.75",
-      "change": "+0.58%",
+      "change": "+0.59%",
       "positive": true
     },
     {
@@ -80,8 +80,8 @@
     },
     {
       "label": "CPF",
-      "value": "฿23.90",
-      "change": "-0.42%",
+      "value": "฿23.80",
+      "change": "-0.83%",
       "positive": false
     },
     {
@@ -93,7 +93,7 @@
     {
       "label": "TU",
       "value": "฿13.00",
-      "change": "+0.77%",
+      "change": "+0.78%",
       "positive": true
     },
     {
@@ -128,8 +128,8 @@
     },
     {
       "label": "Wheat",
-      "value": "$713.75",
-      "change": "+1.49%",
+      "value": "$711.50",
+      "change": "+1.17%",
       "positive": true
     },
     {
@@ -139,7 +139,7 @@
       "positive": false
     }
   ],
-  "asOf": "26 Aug, 13:02",
+  "asOf": "26 Aug, 14:11",
   "live": true,
-  "updatedAt": "2026-08-26T06:02:09.692Z"
+  "updatedAt": "2026-08-26T07:11:24.258Z"
 }

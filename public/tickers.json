@@ -44,14 +44,14 @@
     },
     {
       "label": "CBG",
-      "value": "฿57.00",
-      "change": "+1.79%",
+      "value": "฿57.25",
+      "change": "+2.23%",
       "positive": true
     },
     {
       "label": "OSP",
-      "value": "฿17.80",
-      "change": "+1.14%",
+      "value": "฿18.00",
+      "change": "+2.27%",
       "positive": true
     },
     {
@@ -62,9 +62,9 @@
     },
     {
       "label": "SAPPE",
-      "value": "฿35.00",
-      "change": "-0.71%",
-      "positive": false
+      "value": "฿35.25",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "TKN",
@@ -128,18 +128,18 @@
     },
     {
       "label": "Wheat",
-      "value": "$711.50",
-      "change": "+1.17%",
+      "value": "$710.25",
+      "change": "+1.00%",
       "positive": true
     },
     {
       "label": "Sugar #11",
-      "value": "$17.25",
-      "change": "-0.12%",
-      "positive": false
+      "value": "$17.33",
+      "change": "+0.35%",
+      "positive": true
     }
   ],
-  "asOf": "26 Aug, 14:11",
+  "asOf": "26 Aug, 15:02",
   "live": true,
-  "updatedAt": "2026-08-26T07:11:24.258Z"
+  "updatedAt": "2026-08-26T08:02:08.132Z"
 }

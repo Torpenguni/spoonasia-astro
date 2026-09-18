@@ -79,33 +79,35 @@ const { tickers, asOf, live } = await loadTickers();
 </script>
 
 <style>
+  /* Markets strip: white, 30px, each quote its own ruled cell — the data
+     reads as data rather than as a banner. */
   .ticker-bar {
-    background: var(--ink);
-    color: var(--paper);
-    border-bottom: 1px solid var(--ink);
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
     overflow: hidden;
   }
 
   .ticker-inner {
     display: flex;
     align-items: center;
-    height: 36px;
-    max-width: 100%;
+    height: 30px;
+    max-width: var(--plate);
+    margin: 0 auto;
+    padding-left: var(--gutter);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
   }
 
   .ticker-label {
     flex-shrink: 0;
-    padding: 0 16px;
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--paper);
-    background: var(--accent);
-    height: 100%;
-    display: flex;
-    align-items: center;
+    color: var(--ink);
+    padding-right: 14px;
+    border-right: 1px solid var(--rule);
   }
 
   .ticker-asof {
@@ -114,16 +116,15 @@ const { tickers, asOf, live } = await loadTickers();
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--ink-mute);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    height: 100%;
-    display: flex;
-    align-items: center;
+    border-right: 1px solid var(--rule);
     cursor: help;
   }
 
   .ticker-track {
     flex: 1;
+    min-width: 0;
     overflow: hidden;
     position: relative;
   }
@@ -131,7 +132,7 @@ const { tickers, asOf, live } = await loadTickers();
   .ticker-content {
     display: flex;
     gap: 0;
-    animation: ticker-scroll 60s linear infinite;
+    animation: ticker-scroll 70s linear infinite;
     white-space: nowrap;
     width: max-content;
   }
@@ -141,47 +142,47 @@ const { tickers, asOf, live } = await loadTickers();
     100% { transform: translateX(-50%); }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-content { animation: none; }
+  }
+
   /* :global() — applied to client-side rendered items too */
   :global(.ticker-item) {
     display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0 20px;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 12px;
+    align-items: baseline;
+    gap: 7px;
+    padding: 0 18px;
+    border-right: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
   }
 
   :global(.ticker-name) {
-    font-family: var(--font-sans);
     font-weight: 600;
-    color: var(--paper);
-    letter-spacing: 0.02em;
+    color: var(--ink);
+    letter-spacing: 0.04em;
   }
 
   :global(.ticker-value) {
-    font-family: var(--font-mono);
-    color: var(--paper);
-    font-weight: 500;
+    color: var(--ink-soft);
   }
 
   :global(.ticker-change) {
-    font-family: var(--font-mono);
     font-weight: 500;
-    font-size: 11px;
   }
 
-  :global(.ticker-change.positive) { color: var(--signal-positive); }
-  :global(.ticker-change.negative) { color: var(--signal-negative); }
+  :global(.ticker-change.positive) { color: var(--up); }
+  :global(.ticker-change.negative) { color: var(--down); }
 
   @media (max-width: 768px) {
-    .ticker-label {
-      padding: 0 12px;
-      font-size: 10px;
+    .ticker-inner {
+      padding-left: var(--gutter);
+      border-left: none;
+      border-right: none;
     }
+    .ticker-label { font-size: 9px; padding-right: 10px; }
     .ticker-asof { display: none; }
-    :global(.ticker-item) {
-      padding: 0 14px;
-      font-size: 11px;
-    }
+    :global(.ticker-item) { padding: 0 14px; font-size: 10px; }
   }
 </style>

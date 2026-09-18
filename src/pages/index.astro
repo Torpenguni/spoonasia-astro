@@ -81,16 +81,17 @@ const floodArticles = [
   },
 ];
 
+// The rank column carries real information, so each row names its desk.
 const popularStories = [
-  'Why every Japanese ramen chain in Bangkok looks the same now',
-  'The unit economics of a 60-seat Sukhumvit izakaya',
-  'How CentralWorld broke its own F&B floor plan',
-  'A field guide to Thai partner contracts (and the clauses that ruin foreigners)',
-  'The case for buying — not opening — your first Thai F&B outlet',
+  { headline: 'Why every Japanese ramen chain in Bangkok looks the same now', desk: 'Operators' },
+  { headline: 'The unit economics of a 60-seat Sukhumvit izakaya', desk: 'Analysis' },
+  { headline: 'How CentralWorld broke its own F&B floor plan', desk: 'Locations' },
+  { headline: 'A field guide to Thai partner contracts (and the clauses that ruin foreigners)', desk: 'Market Entry' },
+  { headline: 'The case for buying — not opening — your first Thai F&B outlet', desk: 'Deals' },
 ];
 
 const greatRead = {
-  tag: 'Long Read',
+  tag: 'Investigation',
   headline: 'Bangkok rent is not a number — it is a story about who the city is becoming',
   dek: 'A five-month investigation into how landlords price retail F&B space across nine Bangkok neighborhoods. What we found rewrites the standard market-entry playbook.',
   author: 'SpoonAsia Editorial',
@@ -98,7 +99,6 @@ const greatRead = {
   readTime: '24 min read',
   slug: 'bangkok-rent-story',
 };
-
 ---
 
 <BaseLayout
@@ -106,143 +106,143 @@ const greatRead = {
   description="Decoding Thailand's F&B landscape for international investors, suppliers, and operators. Unit economics, neighborhood alpha, and the gaps in pitch decks."
 >
 
-  <section class="top-grid">
+  <!-- ===== Hero band: lead column and rail, split by a full-height rule ===== -->
+  <div class="band close">
     <div class="container">
-      <div class="top-grid-inner">
+      <div class="cols hero">
 
-        <article class="featured-tout">
-          <a href={`/analysis/${featuredTout.slug}`} class="featured-image-link">
-            <div class="featured-image" aria-hidden="true">
-              <span class="featured-pill">{featuredTout.tag}</span>
-            </div>
-          </a>
-          <div class="featured-content">
-            <h2 class="featured-headline">
+        <div class="hero-lead">
+          <article>
+            <a href={`/analysis/${featuredTout.slug}`} class="hero-image-link">
+              <div class="well hero-well" aria-hidden="true"></div>
+            </a>
+            <span class="kicker">{featuredTout.tag}</span>
+            <h1 class="hero-headline">
               <a href={`/analysis/${featuredTout.slug}`}>{featuredTout.headline}</a>
-            </h2>
-            <p class="featured-dek">{featuredTout.dek}</p>
-            <div class="featured-byline">
-              <span>{featuredTout.readTime}</span>
+            </h1>
+            <p class="hero-dek">{featuredTout.dek}</p>
+            <div class="meta">
+              {featuredTout.author} · {featuredTout.date} · {featuredTout.readTime}
             </div>
-          </div>
-        </article>
+          </article>
 
-        <aside class="fascinating-reads">
-          <ul class="fascinating-list">
+          <!-- The three related heads, divided the way a wire service sets them -->
+          <div class="cols hero-sub">
             {fascinatingReads.map(item => (
-              <li class="fascinating-item">
-                <a href={`/analysis/${item.slug}`} class="fascinating-link">
-                  <div class="fascinating-text">
-                    <span class="fascinating-tag">{item.tag}</span>
-                    <span class="fascinating-headline">{item.headline}</span>
-                  </div>
-                  <div class="fascinating-thumb" aria-hidden="true"></div>
-                </a>
-              </li>
+              <a href={`/analysis/${item.slug}`}>
+                <span class="kicker tight">{item.tag}</span>
+                <h3 class="hero-sub-head">{item.headline}</h3>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <aside class="hero-rail">
+          <div class="rail-label">Quick Links</div>
+          <ul class="rail-list">
+            {quickLinks.map(link => (
+              <li class="rail-item"><a href="#" class="rail-head">{link}</a></li>
             ))}
           </ul>
         </aside>
 
       </div>
+    </div>
+  </div>
 
-      <aside class="quick-links">
-        <h3 class="sidebar-title">Quick Links</h3>
-        <ul class="quick-list">
-          {quickLinks.map(link => (
-            <li class="quick-item">
-              <a href="#">{link}</a>
+  <!-- ===== Today's coverage: ruled on both axes ===== -->
+  <section class="band">
+    <div class="container">
+      <div class="label-bar">
+        <h2 class="section-tag">Today's Coverage</h2>
+        <a href="/analysis" class="label-more">All coverage ↗</a>
+      </div>
+      <div class="band-body">
+        <div class="flood-grid">
+          {floodArticles.map(article => (
+            <article class="flood-card">
+              <a href={`/analysis/${article.slug}`} class="flood-image-link">
+                <div class="well flood-well" aria-hidden="true"></div>
+              </a>
+              <span class="kicker">{article.tag}</span>
+              <h3 class="flood-headline">
+                <a href={`/analysis/${article.slug}`}>{article.headline}</a>
+              </h3>
+              <p class="flood-dek">{article.dek}</p>
+              <div class="meta">{article.date}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Most read: a ranked table ===== -->
+  <section class="band">
+    <div class="container">
+      <div class="label-bar">
+        <h2 class="section-tag">Most Read This Week</h2>
+      </div>
+      <div class="band-body">
+        <ol class="popular-list">
+          {popularStories.map((story, i) => (
+            <li class="popular-item">
+              <span class="popular-num">{String(i + 1).padStart(2, '0')}</span>
+              <a href="#" class="popular-headline">{story.headline}</a>
+              <span class="popular-desk">{story.desk}</span>
             </li>
           ))}
-        </ul>
-      </aside>
+        </ol>
+      </div>
     </div>
   </section>
 
-  <section class="flood-zone">
+  <!-- ===== The long read: the one place serif still earns its keep ===== -->
+  <section class="band">
     <div class="container">
-      <div class="section-head">
-        <h2 class="section-title">Today's Coverage</h2>
-        <a href="/analysis" class="section-more">All Coverage →</a>
+      <div class="label-bar">
+        <h2 class="section-tag">The Long Read</h2>
       </div>
-
-      <div class="flood-grid">
-        {floodArticles.map(article => (
-          <article class="flood-card">
-            <div class="flood-image" aria-hidden="true"></div>
-            <a href={`/analysis/${article.tag.toLowerCase()}`} class="tag-link">{article.tag}</a>
-            <h3 class="flood-headline">
-              <a href={`/analysis/${article.slug}`}>{article.headline}</a>
+      <div class="band-body">
+        <div class="cols longread">
+          <div>
+            <a href={`/analysis/${greatRead.slug}`}>
+              <div class="well longread-well" aria-hidden="true"></div>
+            </a>
+          </div>
+          <div>
+            <span class="kicker">{greatRead.readTime} · {greatRead.tag}</span>
+            <h3 class="longread-headline">
+              <a href={`/analysis/${greatRead.slug}`}>{greatRead.headline}</a>
             </h3>
-            <p class="flood-dek">{article.dek}</p>
-            <div class="flood-meta">{article.date}</div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="most-popular">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="section-title">Most Popular</h2>
-      </div>
-
-      <ol class="popular-list">
-        {popularStories.map((story, i) => (
-          <li class="popular-item">
-            <span class="popular-num">{String(i + 1).padStart(2, '0')}</span>
-            <a href="#" class="popular-headline">{story}</a>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <section class="great-reads">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="section-title">Great Reads</h2>
-      </div>
-
-      <article class="great-read-card">
-        <div class="great-image" aria-hidden="true"></div>
-        <div class="great-content">
-          <a href="#" class="tag-link long-read">{greatRead.tag}</a>
-          <h3 class="great-headline">
-            <a href={`/analysis/${greatRead.slug}`}>{greatRead.headline}</a>
-          </h3>
-          <p class="great-dek">{greatRead.dek}</p>
-          <div class="great-byline">
-            <span class="byline-author">{greatRead.author}</span>
-            <span class="byline-sep">·</span>
-            <span>{greatRead.date}</span>
-            <span class="byline-sep">·</span>
-            <span>{greatRead.readTime}</span>
+            <p class="longread-dek serif">{greatRead.dek}</p>
+            <div class="meta">{greatRead.author} · {greatRead.date}</div>
           </div>
         </div>
-      </article>
+      </div>
     </div>
   </section>
 
-  <section class="videos-section">
+  <!-- ===== Videos: the footer's rule closes this one ===== -->
+  <section>
     <div class="container">
-      <div class="section-head">
-        <h2 class="section-title">Videos</h2>
-        <a href="/videos" class="section-more">All Episodes →</a>
+      <div class="label-bar">
+        <h2 class="section-tag">Videos</h2>
+        <a href="/videos" class="label-more">All episodes ↗</a>
       </div>
-
-      <div class="videos-grid">
-        {videos.map(video => (
-          <a href={`/videos/${video.slug}`} class="video-card">
-            <div class="video-thumb">
-              <div class="video-play">▶</div>
-              <div class="video-duration">{video.duration}</div>
-            </div>
-            <div class="video-num">EP. {video.number}</div>
-            <h3 class="video-headline">{video.title}</h3>
-            <div class="video-meta">{video.views} views</div>
-          </a>
-        ))}
+      <div class="band-body">
+        <div class="cols videos">
+          {videos.map(video => (
+            <a href={`/videos/${video.slug}`} class="video">
+              <div class="well video-well" aria-hidden="true">
+                <span class="video-play">▶</span>
+                <span class="video-duration">{video.duration}</span>
+              </div>
+              <span class="kicker tight">Ep. {video.number} · {video.views} views</span>
+              <h3 class="video-headline">{video.title}</h3>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -250,505 +250,251 @@ const greatRead = {
 </BaseLayout>
 
 <style>
-  .tag-link {
-    display: inline-block;
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: none;
-    margin-bottom: 8px;
-    transition: color 0.15s ease;
-  }
-  .tag-link:hover { color: var(--accent-deep); }
-  .tag-link.long-read { color: var(--ink); }
-
-  .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-top: 2px solid var(--ink);
-    padding-top: 16px;
-    margin-bottom: 28px;
-  }
-
-  .section-title {
-    font-family: var(--font-sans);
-    font-size: clamp(28px, 3vw, 36px);
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    color: var(--ink);
-    line-height: 1;
-  }
-
-  .section-more {
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink-soft);
-    text-decoration: none;
-    border-bottom: none;
-    transition: color 0.15s ease;
-  }
-  .section-more:hover { color: var(--accent); }
-
-  .top-grid {
-    padding: 24px 0 48px;
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  /* BI-style: 2-col hero (big image left, sidebar right) */
-  .top-grid-inner {
-    display: grid;
-    grid-template-columns: 1.55fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-  }
-
-  .featured-tout {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .featured-image-link {
+  /* ---- shared atoms ---------------------------------------- */
+  .kicker {
     display: block;
-    text-decoration: none;
-    border-bottom: none;
-    margin-bottom: 18px;
-    transition: opacity 0.15s ease;
-  }
-  .featured-image-link:hover { opacity: 0.92; }
-
-  .featured-image {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4/3;
-    background: linear-gradient(135deg, var(--paper-mute) 0%, var(--paper-warm) 100%);
-    overflow: hidden;
-  }
-
-  .featured-pill {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    display: inline-block;
-    background: var(--accent);
-    color: var(--paper);
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 6px 10px;
-    border-radius: 2px;
-  }
-
-  .featured-headline {
-    font-family: var(--font-sans);
-    font-size: clamp(28px, 3.4vw, 44px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--ink);
-    margin: 0 0 14px;
-  }
-  .featured-headline a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: none;
-    transition: color 0.15s ease;
-  }
-  .featured-headline a:hover { color: var(--accent); }
-
-  .featured-dek {
-    font-family: var(--font-serif);
-    font-size: 17px;
-    line-height: 1.5;
-    color: var(--ink-soft);
-    margin-bottom: 14px;
-    max-width: 620px;
-  }
-
-  .featured-byline,
-  .great-byline {
-    display: flex;
-    gap: 8px;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    color: var(--ink-faint);
-    font-weight: 500;
-  }
-  .byline-author { color: var(--ink); font-weight: 600; }
-  .byline-sep { color: var(--ink-mute); }
-
-  .sidebar-title {
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ink);
-    border-bottom: 2px solid var(--ink);
-    padding-bottom: 10px;
-    margin-bottom: 16px;
-  }
-
-  .fascinating-list,
-  .quick-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  /* BI-style sidebar cards: text + thumbnail w/ hairline divider */
-  .fascinating-reads { display: flex; flex-direction: column; }
-
-  .fascinating-item {
-    border-bottom: 1px solid var(--hairline);
-    padding: 18px 0;
-  }
-  .fascinating-item:first-child { padding-top: 0; }
-  .fascinating-item:last-child { border-bottom: none; }
-  .fascinating-link {
-    display: grid;
-    grid-template-columns: 1fr 140px;
-    gap: 16px;
-    align-items: start;
-    text-decoration: none;
-    border-bottom: none;
-    color: inherit;
-  }
-  .fascinating-text { display: flex; flex-direction: column; gap: 6px; }
-  .fascinating-tag {
-    display: block;
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-weight: 500;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent);
+    margin-bottom: 10px;
   }
-  .fascinating-headline {
-    font-family: var(--font-sans);
-    font-size: 16px;
+  .kicker.tight { margin-bottom: 5px; }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .band-body { padding: 26px 0 34px; }
+
+  /* ---- hero -------------------------------------------------- */
+  .hero {
+    grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+  .hero-lead { padding: 30px 30px 0 0; }
+  .hero-rail { padding: 30px 0 26px 28px; }
+
+  .hero-image-link { display: block; margin-bottom: 20px; }
+  .hero-well { aspect-ratio: 16 / 9; }
+
+  .hero-headline {
+    font-size: clamp(30px, 3.6vw, 44px);
     font-weight: 700;
-    line-height: 1.25;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-    transition: color 0.15s ease;
-  }
-  .fascinating-link:hover .fascinating-headline { color: var(--accent); }
-
-  .fascinating-thumb {
-    width: 140px;
-    aspect-ratio: 3/2;
-    background: linear-gradient(135deg, var(--paper-mute) 0%, var(--paper-warm) 100%);
-    flex-shrink: 0;
+    letter-spacing: -0.032em;
+    line-height: 1.06;
   }
 
-  /* Quick Links — sits below the 2-col hero, full width 4-col grid */
-  .quick-links {
-    border-top: 1px solid var(--hairline);
-    padding-top: 20px;
+  .hero-dek {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin-top: 14px;
   }
-  .quick-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0 24px;
+
+  .hero-sub {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--rule);
+    margin-top: 26px;
+    padding: 20px 0 26px;
   }
-  .quick-item {
-    padding: 12px 0;
-    border-top: 1px solid var(--hairline);
-  }
-  .quick-item a {
-    font-family: var(--font-sans);
-    font-size: 13px;
+  .hero-sub > * { padding: 0 18px; }
+  .hero-sub > *:first-child { padding-left: 0; }
+  .hero-sub > *:last-child { padding-right: 0; }
+
+  .hero-sub-head {
+    font-size: 15px;
     font-weight: 600;
+    letter-spacing: -0.018em;
+    line-height: 1.25;
+  }
+
+  .rail-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: var(--ink);
-    text-decoration: none;
-    border-bottom: none;
-    line-height: 1.3;
-    letter-spacing: -0.005em;
-    transition: color 0.15s ease;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule-hard);
+  }
+
+  .rail-list { list-style: none; }
+
+  .rail-item {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .rail-item:last-child { border-bottom: none; }
+
+  .rail-head {
     display: block;
-  }
-  .quick-item a:hover { color: var(--accent); }
-
-  .flood-zone {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--hairline);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
   }
 
+  /* ---- today's coverage -------------------------------------- */
   .flood-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px 28px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .flood-card {
-    display: flex;
-    flex-direction: column;
+    padding: 26px 24px;
+    border-left: 1px solid var(--rule);
+    border-top: 1px solid var(--rule);
   }
+  .flood-card:nth-child(3n + 1) { border-left: none; padding-left: 0; }
+  .flood-card:nth-child(3n) { padding-right: 0; }
+  .flood-card:nth-child(-n + 3) { border-top: none; padding-top: 0; }
 
-  .flood-image {
-    width: 100%;
-    aspect-ratio: 16/10;
-    background: linear-gradient(135deg, var(--paper-mute) 0%, var(--paper-warm) 100%);
-    margin-bottom: 14px;
-  }
+  .flood-image-link { display: block; margin-bottom: 16px; }
+  .flood-well { aspect-ratio: 3 / 2; }
 
   .flood-headline {
-    font-family: var(--font-sans);
     font-size: 19px;
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: -0.022em;
     line-height: 1.2;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-    margin: 4px 0 8px;
   }
-  .flood-headline a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: none;
-    transition: color 0.15s ease;
-  }
-  .flood-headline a:hover { color: var(--accent); }
 
   .flood-dek {
-    font-family: var(--font-serif);
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--ink-soft);
-    margin-bottom: 10px;
+    margin-top: 10px;
   }
 
-  .flood-meta {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--ink-faint);
-    letter-spacing: 0.02em;
-    margin-top: auto;
-  }
-
-  .most-popular {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  .popular-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 32px;
-  }
+  /* ---- most read --------------------------------------------- */
+  .popular-list { list-style: none; }
 
   .popular-item {
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-    border-bottom: 1px solid var(--hairline);
-    padding: 18px 0;
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
   }
+  .popular-item:last-child { border-bottom: none; }
 
   .popular-num {
-    font-family: var(--font-sans);
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--accent);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    flex-shrink: 0;
-    min-width: 36px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
   }
 
   .popular-headline {
-    font-family: var(--font-sans);
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: none;
-    transition: color 0.15s ease;
-  }
-  .popular-headline:hover { color: var(--accent); }
-
-  .great-reads {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  .great-read-card {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 40px;
-    align-items: center;
-  }
-
-  .great-image {
-    width: 100%;
-    aspect-ratio: 4/3;
-    background: linear-gradient(135deg, var(--ink) 0%, #2A2825 100%);
-  }
-
-  .great-headline {
-    font-family: var(--font-serif);
-    font-size: clamp(28px, 3.2vw, 42px);
-    font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-    margin: 4px 0 16px;
-  }
-  .great-headline a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: none;
-    transition: color 0.15s ease;
-  }
-  .great-headline a:hover { color: var(--accent); }
-
-  .great-dek {
-    font-family: var(--font-serif);
     font-size: 17px;
-    line-height: 1.55;
+    font-weight: 500;
+    letter-spacing: -0.017em;
+    line-height: 1.3;
+  }
+
+  .popular-desk {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ---- long read ---------------------------------------------- */
+  .longread { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .longread > *:first-child { padding-right: 32px; }
+  .longread > *:last-child { padding-left: 32px; }
+
+  .longread-well { aspect-ratio: 4 / 3; }
+
+  .longread-headline {
+    font-size: clamp(26px, 2.6vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+
+  .longread-dek {
+    font-size: 17px;
+    line-height: 1.6;
     color: var(--ink-soft);
-    margin-bottom: 18px;
+    margin-top: 16px;
   }
 
-  .videos-section {
-    padding: 48px 0 64px;
-    background: var(--paper-mute);
-    border-bottom: 1px solid var(--hairline);
-  }
+  /* ---- videos -------------------------------------------------- */
+  .videos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
-  .videos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-
-  .video-card {
-    display: block;
-    text-decoration: none;
-    border-bottom: none;
-    color: inherit;
-  }
-
-  .video-thumb {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: linear-gradient(135deg, var(--ink) 0%, #2A2825 100%);
-    position: relative;
+  .video-well {
+    aspect-ratio: 16 / 9;
     margin-bottom: 14px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .video-play {
-    width: 56px;
-    height: 56px;
-    background: var(--paper);
-    color: var(--ink);
-    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--ink);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    padding-left: 4px;
-    transition: transform 0.15s ease;
+    font-size: 11px;
+    color: var(--ink);
   }
-  .video-card:hover .video-play { transform: scale(1.1); }
 
   .video-duration {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    right: 8px;
+    bottom: 8px;
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 10px;
+    background: var(--ink);
     color: var(--paper);
-    background: rgba(0, 0, 0, 0.7);
-    padding: 3px 7px;
-    border-radius: 2px;
-  }
-
-  .video-num {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    margin-bottom: 6px;
+    padding: 2px 6px;
+    font-variant-numeric: tabular-nums;
   }
 
   .video-headline {
-    font-family: var(--font-sans);
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.018em;
     line-height: 1.25;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-    margin-bottom: 8px;
-    transition: color 0.15s ease;
-  }
-  .video-card:hover .video-headline { color: var(--accent); }
-
-  .video-meta {
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink-faint);
   }
 
-  @media (max-width: 1024px) {
-    .flood-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .quick-list { grid-template-columns: repeat(2, 1fr); }
-  }
+  @media (max-width: 900px) {
+    .hero-lead, .hero-rail { padding: 22px 0 !important; }
+    .hero-sub { margin-top: 20px; }
 
-  @media (max-width: 768px) {
-    .top-grid-inner {
-      grid-template-columns: 1fr;
-      gap: 36px;
-      margin-bottom: 32px;
+    .flood-grid { grid-template-columns: 1fr; }
+    .flood-card {
+      border-left: none;
+      border-top: 1px solid var(--rule);
+      padding: 24px 0;
     }
-    .featured-headline { font-size: 28px; }
-    .featured-dek { font-size: 16px; }
-    .fascinating-link { grid-template-columns: 1fr 110px; gap: 12px; }
-    .fascinating-thumb { width: 110px; }
-    .quick-list { grid-template-columns: 1fr; }
+    .flood-card:first-child { border-top: none; padding-top: 0; }
 
-    .flood-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
+    .popular-item {
+      grid-template-columns: 32px 1fr;
+      gap: 10px;
     }
+    .popular-desk { grid-column: 2; }
 
-    .popular-list {
-      grid-template-columns: 1fr;
-    }
-    .popular-num { font-size: 22px; }
-    .popular-headline { font-size: 15px; }
-
-    .great-read-card {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    .great-headline { font-size: 26px; }
-
-    .videos-grid {
-      grid-template-columns: 1fr;
-    }
+    .longread > *:first-child,
+    .longread > *:last-child { padding: 22px 0 !important; }
   }
 </style>

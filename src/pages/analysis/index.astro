@@ -178,8 +178,8 @@ const showPagination = articles.length > 12;
 
   /* ========== CATEGORY FILTER ========== */
   .cat-filter {
-    border-top: 0.5px solid var(--hairline);
-    border-bottom: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
     background: var(--paper);
   }
 
@@ -225,7 +225,7 @@ const showPagination = articles.length > 12;
   /* ========== FEATURED ========== */
   .featured-wrap {
     padding: 48px 0;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
 
   .featured {
@@ -238,7 +238,7 @@ const showPagination = articles.length > 12;
   .featured-image {
     width: 100%;
     aspect-ratio: 4/3;
-    background: linear-gradient(135deg, var(--hairline), var(--paper-warm));
+    background: var(--well);
     order: 2;
   }
 
@@ -306,7 +306,7 @@ const showPagination = articles.length > 12;
   .grid-head {
     margin-bottom: 24px;
     padding-bottom: 16px;
-    border-bottom: 0.5px solid var(--ink);
+    border-bottom: 1px solid var(--rule-hard);
   }
   .grid-head .section-tag {
     margin-bottom: 0;
@@ -320,7 +320,7 @@ const showPagination = articles.length > 12;
 
   .card {
     padding: 28px 0;
-    border-top: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
   }
   /* Hide hairline on first row to avoid double border w/ grid-head */
   .card:nth-child(1),
@@ -331,7 +331,7 @@ const showPagination = articles.length > 12;
   /* Add divider between columns */
   .card:nth-child(odd) {
     padding-right: 32px;
-    border-right: 0.5px solid var(--hairline);
+    border-right: 1px solid var(--rule);
   }
   .card:nth-child(even) {
     padding-left: 32px;
@@ -366,7 +366,7 @@ const showPagination = articles.length > 12;
   .pagination {
     margin-top: 48px;
     padding-top: 24px;
-    border-top: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -409,7 +409,7 @@ const showPagination = articles.length > 12;
     }
     .card:nth-child(1) { border-top: none; padding-top: 8px; }
     .card:nth-child(2) {
-      border-top: 0.5px solid var(--hairline);
+      border-top: 1px solid var(--rule);
       padding-top: 28px;
     }
   }

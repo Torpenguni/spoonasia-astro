@@ -364,8 +364,8 @@ const relatedReads = allArticles
   }
   .table-wrap {
     margin-top: 4px;
-    border-top: 0.5px solid var(--ink);
-    border-bottom: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule-hard);
+    border-bottom: 1px solid var(--rule);
   }
   .table-head-bar {
     display: flex;
@@ -375,7 +375,7 @@ const relatedReads = allArticles
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
   .tab-num { color: var(--ink); }
   .tab-src { color: var(--ink-soft); }
@@ -393,7 +393,7 @@ const relatedReads = allArticles
     font-weight: 500;
     text-align: left;
     padding: 14px 12px 14px 0;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
   .cell-num {
     text-align: right;
@@ -404,7 +404,7 @@ const relatedReads = allArticles
     font-size: 14px;
     color: var(--ink);
     padding: 14px 12px 14px 0;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
   .cell-td.cell-num {
     font-family: var(--font-mono);
@@ -418,8 +418,8 @@ const relatedReads = allArticles
     padding: 24px 0;
   }
   .transcript {
-    border-top: 0.5px solid var(--hairline);
-    border-bottom: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
     padding: 0;
   }
   .transcript-summary {
@@ -479,8 +479,7 @@ const relatedReads = allArticles
   .pill {
     display: inline-block;
     padding: 6px 12px;
-    border: 0.5px solid var(--hairline-strong);
-    border-radius: 999px;
+    border: 1px solid var(--rule);
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.12em;
@@ -498,7 +497,7 @@ const relatedReads = allArticles
     gap: 24px;
   }
   .rel-card {
-    border-top: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
     padding-top: 16px;
   }
   .rel-tag {
@@ -532,7 +531,7 @@ const relatedReads = allArticles
   .ep-embed-placeholder {
     width: 100%;
     aspect-ratio: 16/9;
-    background: linear-gradient(135deg, var(--ink) 0%, #2A2825 100%);
+    background: var(--ink);
     margin: 32px 0;
     display: flex;
     align-items: center;
@@ -541,7 +540,6 @@ const relatedReads = allArticles
   .ep-embed-placeholder .play-btn {
     width: 72px;
     height: 72px;
-    border-radius: 50%;
     background: var(--paper);
     color: var(--ink);
     display: flex;
@@ -572,7 +570,7 @@ const relatedReads = allArticles
   }
   .ph-text a {
     color: var(--ink);
-    border-bottom: 0.5px solid var(--ink-faint);
+    border-bottom: 1px solid var(--rule);
     text-decoration: none;
   }
   .ph-text a:hover {

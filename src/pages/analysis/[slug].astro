@@ -485,7 +485,7 @@ const sources = [
   /* ========== HEADER ========== */
   .art-head {
     padding: 40px 0 24px;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
 
   .art-h1 {
@@ -537,7 +537,7 @@ const sources = [
   .fig-image {
     width: 100%;
     aspect-ratio: 16/9;
-    background: linear-gradient(135deg, var(--hairline), var(--paper-warm));
+    background: var(--well);
   }
 
   .fig-cap {
@@ -660,8 +660,8 @@ const sources = [
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    border-top: 0.5px solid var(--ink);
-    border-bottom: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule-hard);
+    border-bottom: 1px solid var(--rule);
     padding: 24px 0;
     margin: 36px 0;
   }
@@ -689,8 +689,8 @@ const sources = [
   /* ========== DATA TABLE ========== */
   .table-wrap {
     margin: 36px 0;
-    border-top: 0.5px solid var(--ink);
-    border-bottom: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule-hard);
+    border-bottom: 1px solid var(--rule);
   }
 
   .table-head-bar {
@@ -701,7 +701,7 @@ const sources = [
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
   .tab-num { color: var(--ink); }
   .tab-src { color: var(--ink-soft); }
@@ -719,7 +719,7 @@ const sources = [
     font-weight: 500;
     text-align: left;
     padding: 14px 12px 14px 0;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
   .cell-num {
     text-align: right;
@@ -730,7 +730,7 @@ const sources = [
     font-size: 14px;
     color: var(--ink);
     padding: 14px 12px 14px 0;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
   .cell-td.cell-num {
     font-family: var(--font-mono);
@@ -753,7 +753,7 @@ const sources = [
     display: flex;
     gap: 18px;
     padding: 18px 0;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
   .prompt:last-child { border-bottom: none; }
   .prompt-num {
@@ -784,14 +784,14 @@ const sources = [
   /* ========== FAQ ========== */
   .art-faq {
     padding: 40px 0;
-    border-top: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
   }
   .faq-list {
     margin: 0;
   }
   .faq-item {
     padding: 20px 0;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
   .faq-item:last-child { border-bottom: none; }
   .faq-q {
@@ -812,7 +812,7 @@ const sources = [
   /* ========== SOURCES ========== */
   .art-sources {
     padding: 40px 0;
-    border-top: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
   }
   .src-list {
     list-style: none;
@@ -841,8 +841,8 @@ const sources = [
   /* ========== AUTHOR ========== */
   .art-author {
     padding: 36px 0;
-    border-top: 0.5px solid var(--hairline);
-    border-bottom: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
   }
   .author {
     display: flex;
@@ -853,8 +853,7 @@ const sources = [
     flex-shrink: 0;
     width: 56px;
     height: 56px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--hairline), var(--paper-warm));
+    background: var(--well);
   }
   .author-name {
     font-family: var(--font-sans);
@@ -941,7 +940,7 @@ const sources = [
     gap: 24px;
   }
   .rel-card {
-    border-top: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
     padding-top: 16px;
   }
   .rel-tag {
@@ -994,7 +993,7 @@ const sources = [
   }
   .ph-text a {
     color: var(--ink);
-    border-bottom: 0.5px solid var(--ink-faint);
+    border-bottom: 1px solid var(--rule);
     text-decoration: none;
   }
   .ph-text a:hover {
@@ -1005,7 +1004,7 @@ const sources = [
   /* ========== CATEGORY ========== */
   .cat-hero {
     padding: 40px 0 24px;
-    border-bottom: 0.5px solid var(--hairline);
+    border-bottom: 1px solid var(--rule);
   }
   .cat-title {
     font-family: var(--font-sans);
@@ -1031,7 +1030,7 @@ const sources = [
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    border-top: 2px solid var(--ink);
+    border-top: 1px solid var(--rule-hard);
     padding-top: 16px;
     margin-bottom: 32px;
   }
@@ -1060,7 +1059,7 @@ const sources = [
   }
   .cat-empty a {
     color: var(--ink);
-    border-bottom: 0.5px solid var(--ink-faint);
+    border-bottom: 1px solid var(--rule);
     text-decoration: none;
   }
   .cat-empty a:hover {
@@ -1077,7 +1076,7 @@ const sources = [
   .cat-card-image {
     width: 100%;
     aspect-ratio: 16/10;
-    background: linear-gradient(135deg, var(--hairline), var(--paper-warm));
+    background: var(--well);
     margin-bottom: 14px;
   }
   .cat-card-tag {
@@ -1177,7 +1176,7 @@ const sources = [
   .prose :global(a) {
     color: var(--accent);
     text-decoration: underline;
-    text-decoration-thickness: 0.5px;
+    text-decoration-thickness: 1px;
     text-underline-offset: 2px;
     border-bottom: none;
   }
@@ -1193,13 +1192,12 @@ const sources = [
     font-size: 0.9em;
     background: var(--paper-mute);
     padding: 2px 6px;
-    border-radius: 2px;
   }
 
   /* ========== RELATED ========== */
   .art-related {
     padding: 32px 0 64px;
-    border-top: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
   }
   .related-list {
     list-style: none;
@@ -1207,7 +1205,7 @@ const sources = [
     margin: 16px 0 0;
   }
   .related-item {
-    border-top: 0.5px solid var(--hairline);
+    border-top: 1px solid var(--rule);
     padding: 18px 0;
   }
   .related-item:first-child { border-top: none; }

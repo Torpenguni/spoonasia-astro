@@ -42,6 +42,16 @@ const capital = capitalEntries
   .filter((a) => a.slug !== lead?.slug)
   .slice(0, 4);
 
+// The desk feed fills the main column under the hero — every remaining
+// report with capital relevance, as a ruled headline stack.
+const capitalSlugs = new Set(capital.map((a) => a.slug));
+const allEntries = await getCollection('articles', ({ data }) => !data.draft);
+allEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const feed = allEntries
+  .map(flat)
+  .filter((a) => a.slug !== lead?.slug && !capitalSlugs.has(a.slug))
+  .slice(0, 6);
+
 const newsEntries = await getCollection('market-watch', ({ data }) => !data.draft);
 newsEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const news = newsEntries.slice(0, 4).map((e) => ({
@@ -104,6 +114,22 @@ const topics = [
         </article>
       </div>
     )}
+
+    <div class="feed">
+      <div class="roster-head">
+        <h2>From the desk</h2>
+        <span class="roster-count">{feed.length} reports</span>
+      </div>
+      <ul class="feed-list">
+        {feed.map((a) => (
+          <li>
+            <span class="kicker">{a.tag}</span>
+            <a href={`/analysis/${a.slug}`} class="feed-head">{a.title}</a>
+            <span class="meta">{a.date} · {a.readTime}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
 
     <Fragment slot="rail">
       <RailSignup />
@@ -179,6 +205,37 @@ const topics = [
 
 <style>
   .hero-head.second a { color: inherit; }
+
+  /* The desk feed: a ruled headline stack that keeps the main column as
+     tall as the rail beside it. */
+  .feed { margin-top: 28px; border-top: 1px solid var(--rule-hard, var(--ink)); }
+
+  .feed-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .feed-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .feed-list li:last-child { border-bottom: none; }
+
+  .feed-head {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+    text-decoration: none;
+    margin: 4px 0 6px;
+  }
+
+  .feed-head:hover { color: var(--accent); }
 
   /* Bloomberg-style themed bands: a bold label on a hard rule, then four
      across, full width now that the rail has ended. */

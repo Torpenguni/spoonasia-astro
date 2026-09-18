@@ -4,40 +4,117 @@ import SectionFront from '../components/SectionFront.astro';
 import RailSignup from '../components/rail/RailSignup.astro';
 import RailPromo from '../components/rail/RailPromo.astro';
 import RailTopVideo from '../components/rail/RailTopVideo.astro';
+import { getCollection } from 'astro:content';
 
-const watchlist = [
-  { tag: 'Chain', name: 'Penguin Eat Shabu', note: '40+ outlet shabu chain. Supplier consolidation as moat.' },
-  { tag: 'Dessert', name: 'After You', note: 'Premium dessert format. Mall flagship economics.' },
-  { tag: 'Forecourt', name: 'Inthanin', note: "Bangchak's coffee play. Forecourt-led footprint." },
-  { tag: 'Scale', name: 'Caf\u00e9 Amazon', note: 'PTT-owned. 4,000+ outlets. The scale playbook nobody copies.' },
-  { tag: 'Casual', name: 'Greyhound Caf\u00e9', note: 'Lifestyle-led casual dining. Mall-tier survivor.' },
+// Operator Stories draws on published work: the operators and founder-stories
+// beats already carry three reports, so this front leads with journalism
+// rather than with a notice.
+const entries = await getCollection(
+  'articles',
+  ({ data }) => !data.draft && ['operators', 'founder-stories'].includes(data.category),
+);
+entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+const articles = entries.map((e) => ({
+  slug: e.slug,
+  title: e.data.title,
+  dek: e.data.dek,
+  tag: e.data.tag,
+  author: e.data.author,
+  date: fmt(e.data.date),
+  readTime: e.data.readTime,
+  minutes: parseInt(e.data.readTime, 10) || 0,
+}));
+
+// The flagship profile leads; the rest fill the column beside it.
+const flagship = [...articles].sort((a, b) => b.minutes - a.minutes)[0];
+const others = articles.filter((a) => a.slug !== flagship?.slug);
+const [second, ...restArticles] = others;
+
+// The roster the desk is working through. `figure` is only set where the
+// operator's own note already carries the number.
+const roster = [
+  { type: 'Chain', name: 'Penguin Eat Shabu', note: 'Supplier consolidation as moat. Scaled without venture capital.', figure: '40+', figureLabel: 'outlets' },
+  { type: 'Dessert', name: 'After You', note: 'Premium dessert format. Mall flagship economics, and what happens when the queue stops.' },
+  { type: 'Forecourt', name: 'Inthanin', note: "Bangchak's coffee play. Forecourt-led footprint, fuel-retail economics underneath." },
+  { type: 'Scale', name: 'Café Amazon', note: 'PTT-owned. The scale playbook nobody copies, and the reason why.', figure: '4,000+', figureLabel: 'outlets' },
+  { type: 'Casual', name: 'Greyhound Café', note: 'Lifestyle-led casual dining. A mall-tier survivor through two rent cycles.' },
 ];
 
-const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
+const topics = [
+  { label: 'Chains', count: 0 },
+  { label: 'Founder Stories', count: 0 },
+  { label: 'Dessert', count: 0 },
+  { label: 'Forecourt', count: 0 },
+  { label: 'Scale', count: 0 },
+];
 ---
 
 <BaseLayout
-  title="Operator Profiles — SpoonAsia"
-  description="In-depth profiles of Thai F&B operators. Unit economics, growth playbooks, and the structural moats."
+  title="Operator Stories — SpoonAsia"
+  description="In-depth profiles of Thai F&B operators. Unit economics, growth playbooks, and the structural moats that hold once the queue thins out."
 >
   <SectionFront title="Operator Stories" topics={topics}>
 
-    <div class="notice">
-      <div class="notice-label">In production</div>
-      <p class="notice-text">
-        The first five profiles are being researched — the operators are below.
-        For early access when they publish, subscribe to <a href="/newsletter">The Dispatch</a>.
-      </p>
-    </div>
-
-    <div class="watchlist">
-      {watchlist.map((w) => (
+    {flagship && (
+      <div class="hero">
         <article>
-          <span class="kicker">{w.tag}</span>
-          <h3>{w.name}</h3>
-          <p class="dek">{w.note}</p>
+          <a href={`/analysis/${flagship.slug}`}>
+            <div class="well hero-well" aria-hidden="true"></div>
+          </a>
+          <span class="credit">{flagship.author}</span>
+          <span class="kicker">{flagship.tag} · {flagship.readTime}</span>
+          <h2 class="hero-head"><a href={`/analysis/${flagship.slug}`}>{flagship.title}</a></h2>
+          <p class="dek">{flagship.dek}</p>
+          <div class="meta">{flagship.date}</div>
         </article>
-      ))}
+
+        <div>
+          {second && (
+            <article>
+              <a href={`/analysis/${second.slug}`}>
+                <div class="well side-well" aria-hidden="true"></div>
+              </a>
+              <span class="kicker tight">{second.tag}</span>
+              <h3 class="side-head"><a href={`/analysis/${second.slug}`}>{second.title}</a></h3>
+            </article>
+          )}
+          {restArticles.length > 0 && (
+            <ul class="side-list">
+              {restArticles.map((a) => (
+                <li><h4><a href={`/analysis/${a.slug}`}>{a.title}</a></h4></li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    )}
+
+    <div class="roster">
+      <div class="roster-head">
+        <h2>On the desk</h2>
+        <span class="roster-count">{roster.length} operators in research</span>
+      </div>
+      <div class="grid3">
+        {roster.map((r) => (
+          <article>
+            <div class="plate plate-wide" aria-hidden="true">
+              {r.figure && (
+                <span class="plate-figure">{r.figure}<small>{r.figureLabel}</small></span>
+              )}
+              <span class="plate-type">{r.type}</span>
+            </div>
+            <h3>{r.name}</h3>
+            <p class="dek">{r.note}</p>
+            {r.figure && (
+              <div class="stat-line"><b>{r.figure}</b> {r.figureLabel}</div>
+            )}
+          </article>
+        ))}
+      </div>
     </div>
 
     <Fragment slot="rail">

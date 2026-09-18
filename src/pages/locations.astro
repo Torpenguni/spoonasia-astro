@@ -5,13 +5,85 @@ import RailSignup from '../components/rail/RailSignup.astro';
 import RailPromo from '../components/rail/RailPromo.astro';
 import RailLatest from '../components/rail/RailLatest.astro';
 
+// Layer 1 — zone dossiers. The atlas everything else refers back to.
 const watchlist = [
-  { tag: 'Premium CBD', name: 'Sukhumvit \u2014 Asoke / Thonglor / Ekkamai', note: 'Rent runs $78\u201395/sqm. Premium-mall saturation. Foreign-chain flagship belt. Margin compression risk: high.' },
-  { tag: 'Creator Corridor', name: 'Ari', note: 'BTS Ari corridor. Independent-favored, low-rise zoning, creator-class footprint. Rent $42/sqm \u2014 rising fast.' },
+  { tag: 'Premium CBD', name: 'Sukhumvit — Asoke / Thonglor / Ekkamai', note: 'Rent runs $78–95/sqm. Premium-mall saturation. Foreign-chain flagship belt. Margin compression risk: high.' },
+  { tag: 'Creator Corridor', name: 'Ari', note: 'BTS Ari corridor. Independent-favored, low-rise zoning, creator-class footprint. Rent $42/sqm — rising fast.' },
   { tag: 'Frontier', name: 'Phra Khanong', note: 'Emerging F&B zone. Rents up 18% YoY. BTS upgrade Q4 2024. Window-of-entry open through 2026.' },
   { tag: 'Heritage', name: 'Charoenkrung / Talad Noi', note: "Heritage-led, slow burn. Premium-independent only. Mall-tier formats don't survive here." },
   { tag: 'Local-tier', name: 'Ratchada / Huai Khwang', note: 'Underwritten by night-market footfall. Resilient unit economics, lower ceiling.' },
-  { tag: 'Mall-tier', name: 'EmQuartier / ICONSIAM / Central Embassy', note: 'Premium mall F&B vacancy at 7-year high. Effective rent down 15\u201322% vs 2024. Leverage window open.' },
+  { tag: 'Mall-tier', name: 'EmQuartier / ICONSIAM / Central Embassy', note: 'Premium mall F&B vacancy at 7-year high. Effective rent down 15–22% vs 2024. Leverage window open.' },
+];
+
+// Layer 2 — the supply pipeline. Every mega-project and mixed-use launch
+// that adds F&B floorplate, read for what it does to the zones around it —
+// not the developer's press release.
+const pipeline = [
+  {
+    project: 'One Bangkok',
+    district: 'Rama IV / Wireless',
+    format: 'Mixed-use · retail + office + hotel',
+    status: 'Open — ramping through 2026',
+    read: 'The largest single addition of F&B floorplate in Bangkok history. Office towers fill faster than retail — weekday lunch works now, dinner catchment still forming. First-phase tenants carry the ramp risk.',
+  },
+  {
+    project: 'Dusit Central Park',
+    district: 'Silom / Rama IV',
+    format: 'Mixed-use · retail podium + hotel + residences',
+    status: 'Retail opened 2025',
+    read: 'Completes the Rama IV corridor with One Bangkok and Samyan Mitrtown — three projects now compete for the same office-worker lunch. Expect effective-rent softness at the corridor’s casual tier.',
+  },
+  {
+    project: 'EmSphere',
+    district: 'Sukhumvit / Phrom Phong',
+    format: 'Retail · food-hall-weighted',
+    status: 'Open since Dec 2023',
+    read: 'The EM District’s third box leans food-first — which siphons casual-tier traffic from EmQuartier’s upper floors more than it grows the district. A cautionary read for "new supply = new demand" assumptions.',
+  },
+  {
+    project: 'Cloud 11',
+    district: 'South Sukhumvit / On Nut',
+    format: 'Mixed-use · creator-economy hub',
+    status: 'Phased opening from 2026',
+    read: 'The bet that matters for the Phra Khanong–On Nut frontier: if its creator tenancy lands, the corridor’s rent curve re-rates early. Watch pre-let announcements, not the opening date.',
+  },
+  {
+    project: 'Bangkok Mall',
+    district: 'Bangna',
+    format: 'Regional mall · super-scale',
+    status: 'Under construction — late-decade',
+    read: 'Bangna’s catchment is real but already served. The question a term sheet here must answer: does super-scale supply grow east-side dining spend, or redistribute it at higher rent?',
+  },
+];
+
+// Layer 3 — infrastructure and momentum. The leading indicators of a rent
+// curve, logged before the brokers reprice the corridor.
+const signals = [
+  {
+    tag: 'Transit',
+    name: 'MRT Orange Line (east section) — targeted 2027',
+    note: 'Thailand Cultural Centre to Min Buri. The single biggest re-pricing event pending for Ramkhamhaeng and Bang Kapi — corridors still priced local-tier.',
+  },
+  {
+    tag: 'Transit',
+    name: 'Pink & Yellow monorails — ridership maturing',
+    note: 'Two years in, transfer nodes (Lat Phrao, Samrong) show the compounding footfall. Mid-corridor stations still lag — node-adjacency matters more than line-adjacency.',
+  },
+  {
+    tag: 'Corridor',
+    name: 'Rama IV — from pass-through to destination',
+    note: 'One Bangkok + Dusit Central Park + Samyan Mitrtown now anchor a continuous spine. Weekday spend is proven; the open question is whether weekends follow.',
+  },
+  {
+    tag: 'Rail hub',
+    name: 'Krung Thep Aphiwat (Bang Sue) — slow burn',
+    note: 'Thailand’s largest station still under-indexes on retail spend. The surrounding plots are a land-bank story for now — early F&B entry here is patience capital.',
+  },
+  {
+    tag: 'Zoning',
+    name: 'Low-rise caps — the quiet moat',
+    note: 'Where the city plan caps height (Ari and parts of Charoenkrung), supply cannot flood in behind a rent run. Zoning is the most durable protection an operator’s lease can sit behind.',
+  },
 ];
 
 const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
@@ -19,24 +91,76 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
 
 <BaseLayout
   title="Locations — SpoonAsia"
-  description="Bangkok F&B neighborhood intelligence. Rent curves, foot traffic, intent traffic, and the structural reads on where operators win or lose."
+  description="Bangkok F&B location intelligence — zone dossiers, the mega-project supply pipeline read through an operator's P&L, and the infrastructure signals that re-price a corridor."
 >
   <SectionFront title="Locations" topics={topics}>
 
     <div class="notice">
       <div class="notice-label">In production</div>
       <p class="notice-text">
-        Locations launches Q3 2026 with monthly neighborhood reports.
-        Subscribe to <a href="/newsletter">The Dispatch</a> for the first six zones.
+        Location is an investment decision, not a map. Three layers below:
+        the zone dossiers, the supply pipeline read through an operator's
+        P&L, and the infrastructure signals that re-price a corridor before
+        the brokers do. Monthly reports launch Q3 2026 —
+        subscribe to <a href="/newsletter">The Dispatch</a> for the first six zones.
       </p>
     </div>
 
+    <div class="group-head">The zones</div>
     <div class="watchlist">
       {watchlist.map((w) => (
         <article>
           <span class="kicker">{w.tag}</span>
           <h3>{w.name}</h3>
           <p class="dek">{w.note}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="group-head">Supply watch — the pipeline</div>
+    <p class="group-dek">
+      Every project adding meaningful F&B floorplate, and what it does to the
+      zones around it. Updated as projects move.
+    </p>
+    <div class="board-wrap">
+      <table class="board">
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>District</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pipeline.map((p) => (
+            <>
+              <tr class="row-top">
+                <th scope="row">{p.project}</th>
+                <td>{p.district}</td>
+                <td class="status">{p.status}</td>
+              </tr>
+              <tr class="row-read">
+                <td colspan="3">
+                  <span class="read-label">Our read</span> {p.read}
+                </td>
+              </tr>
+            </>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="group-head">Signals — infrastructure &amp; momentum</div>
+    <p class="group-dek">
+      The leading indicators of a rent curve. Logged here first, folded into
+      the zone dossiers as they play out.
+    </p>
+    <div class="watchlist">
+      {signals.map((s) => (
+        <article>
+          <span class="kicker">{s.tag}</span>
+          <h3>{s.name}</h3>
+          <p class="dek">{s.note}</p>
         </article>
       ))}
     </div>
@@ -49,3 +173,89 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
 
   </SectionFront>
 </BaseLayout>
+
+<style>
+  .group-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin: 40px 0 4px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule-hard, var(--ink));
+  }
+
+  .group-head:first-of-type { margin-top: 28px; }
+
+  .group-dek {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 14px 0 6px;
+    max-width: 560px;
+  }
+
+  .board-wrap { overflow-x: auto; margin-top: 10px; }
+
+  .board {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 520px;
+  }
+
+  .board th,
+  .board td {
+    text-align: left;
+    padding: 12px 18px 4px 0;
+    vertical-align: baseline;
+  }
+
+  .board thead th {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute, var(--ink-soft));
+    border-bottom: 1px solid var(--rule-hard, var(--ink));
+    padding-bottom: 9px;
+  }
+
+  .board tbody th {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .board .status {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .board .row-read td {
+    padding: 6px 0 14px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 620px;
+  }
+
+  .board tbody tr:last-child td { border-bottom: none; }
+
+  .read-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-right: 8px;
+  }
+</style>

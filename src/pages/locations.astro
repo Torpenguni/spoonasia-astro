@@ -4,16 +4,17 @@ import SectionFront from '../components/SectionFront.astro';
 import RailSignup from '../components/rail/RailSignup.astro';
 import RailPromo from '../components/rail/RailPromo.astro';
 import RailLatest from '../components/rail/RailLatest.astro';
-import ZoneMap from '../components/ZoneMap.astro';
 
 // Layer 1 — zone dossiers. The atlas everything else refers back to.
+// Photo licensing lives in public/images/locations/CREDITS.md — the credit
+// line on each card satisfies the CC BY / BY-SA attribution requirement.
 const watchlist = [
-  { tag: 'Premium CBD', map: 'sukhumvit' as const, name: 'Sukhumvit — Asoke / Thonglor / Ekkamai', note: 'Rent runs $78–95/sqm. Premium-mall saturation. Foreign-chain flagship belt. Margin compression risk: high.' },
-  { tag: 'Creator Corridor', map: 'ari' as const, name: 'Ari', note: 'BTS Ari corridor. Independent-favored, low-rise zoning, creator-class footprint. Rent $42/sqm — rising fast.' },
-  { tag: 'Frontier', map: 'phra-khanong' as const, name: 'Phra Khanong', note: 'Emerging F&B zone. Rents up 18% YoY. BTS upgrade Q4 2024. Window-of-entry open through 2026.' },
-  { tag: 'Heritage', map: 'charoenkrung' as const, name: 'Charoenkrung / Talad Noi', note: "Heritage-led, slow burn. Premium-independent only. Mall-tier formats don't survive here." },
-  { tag: 'Local-tier', map: 'ratchada' as const, name: 'Ratchada / Huai Khwang', note: 'Underwritten by night-market footfall. Resilient unit economics, lower ceiling.' },
-  { tag: 'Mall-tier', map: 'mall-tier' as const, name: 'EmQuartier / ICONSIAM / Central Embassy', note: 'Premium mall F&B vacancy at 7-year high. Effective rent down 15–22% vs 2024. Leverage window open.' },
+  { tag: 'Premium CBD', map: 'sukhumvit' as const, name: 'Sukhumvit — Asoke / Thonglor / Ekkamai', note: 'Rent runs $78–95/sqm. Premium-mall saturation. Foreign-chain flagship belt. Margin compression risk: high.', credit: 'Max221B · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Bangkok_from_sukhumvit.jpg' },
+  { tag: 'Creator Corridor', map: 'ari' as const, name: 'Ari', note: 'BTS Ari corridor. Independent-favored, low-rise zoning, creator-class footprint. Rent $42/sqm — rising fast.', credit: 'Phoebus 28 · CC0', creditHref: 'https://commons.wikimedia.org/wiki/File:Ari_Samphan_Noodles_Stall.jpg' },
+  { tag: 'Frontier', map: 'phra-khanong' as const, name: 'Phra Khanong', note: 'Emerging F&B zone. Rents up 18% YoY. BTS upgrade Q4 2024. Window-of-entry open through 2026.', credit: 'Suikotei · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Phra_Khanong_Station.jpg' },
+  { tag: 'Heritage', map: 'charoenkrung' as const, name: 'Charoenkrung / Talad Noi', note: "Heritage-led, slow burn. Premium-independent only. Mall-tier formats don't survive here.", credit: 'Phoebus 28 · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Talat_Noi_Street_Art.jpg' },
+  { tag: 'Local-tier', map: 'ratchada' as const, name: 'Ratchada / Huai Khwang', note: 'Underwritten by night-market footfall. Resilient unit economics, lower ceiling.', credit: 'aotaro · CC BY 2.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Train_Night_Market_Ratchada_(34144230042).jpg' },
+  { tag: 'Mall-tier', map: 'mall-tier' as const, name: 'EmQuartier / ICONSIAM / Central Embassy', note: 'Premium mall F&B vacancy at 7-year high. Effective rent down 15–22% vs 2024. Leverage window open.', credit: 'Supanut Arunoprayote · CC BY 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Iconsiam_at_Day_(III).jpg' },
 ];
 
 // Layer 2 — the supply pipeline. Every mega-project and mixed-use launch
@@ -111,7 +112,10 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
     <div class="grid3">
       {watchlist.map((w) => (
         <article>
-          <ZoneMap zone={w.map} />
+          <div class="zone-photo">
+            <img src={`/images/locations/${w.map}.webp`} alt={w.name} width="960" height="640" loading="lazy" />
+          </div>
+          <a class="zone-credit" href={w.creditHref} target="_blank" rel="noopener noreferrer">Photo: {w.credit}</a>
           <span class="kicker">{w.tag}</span>
           <h3>{w.name}</h3>
           <p class="dek">{w.note}</p>
@@ -189,6 +193,33 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
   }
 
   .group-head:first-of-type { margin-top: 28px; }
+
+  .zone-photo {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--paper-warm, var(--well));
+    margin-bottom: 6px;
+  }
+
+  .zone-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .zone-credit {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+
+  .zone-credit:hover { color: var(--ink-soft); }
 
   .group-dek {
     font-size: 14px;

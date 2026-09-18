@@ -4,15 +4,47 @@ import SectionFront from '../components/SectionFront.astro';
 import RailSignup from '../components/rail/RailSignup.astro';
 import RailPromo from '../components/rail/RailPromo.astro';
 import RailMovers from '../components/rail/RailMovers.astro';
+import { getCollection } from 'astro:content';
 
+// Deal coverage has one published report so far — the investment beat. It
+// leads, and the watchlist carries the rest of the page.
+const entries = await getCollection(
+  'articles',
+  ({ data }) => !data.draft && ['deals', 'investment'].includes(data.category),
+);
+entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+const articles = entries.map((e) => ({
+  slug: e.slug,
+  title: e.data.title,
+  dek: e.data.dek,
+  tag: e.data.tag,
+  author: e.data.author,
+  date: fmt(e.data.date),
+  readTime: e.data.readTime,
+}));
+
+const [lead] = articles;
+
+// The watchlist. `figure` is only set where the note already carries the
+// number — nothing here is estimated.
 const watchlist = [
-  { tag: 'Acquisition', name: 'Minor International eyes regional shabu category', note: 'Quiet diligence on at least two operators. Q3 2026 close target rumored.' },
-  { tag: 'Fundraise', name: 'Bangkok specialty coffee chain in Series B talks', note: '$8\u201312M round. Singapore family office and a Japanese strategic on the cap table.' },
-  { tag: 'Exit', name: 'PE-backed bubble tea brand testing strategic buyers', note: 'Eight-year hold. Returns capped by post-2024 margin compression.' },
-  { tag: 'Joint Venture', name: 'Japanese udon chain \u00d7 Thai mall operator', note: 'Master franchise structure under construction. Three flagship slots.' },
+  { type: 'Acquisition', name: 'Minor International eyes regional shabu category', note: 'Quiet diligence on at least two operators.', figure: 'Q3 2026', figureLabel: 'close target, rumored' },
+  { type: 'Fundraise', name: 'Bangkok specialty coffee chain in Series B talks', note: 'Singapore family office and a Japanese strategic on the cap table.', figure: '$8–12M', figureLabel: 'round size' },
+  { type: 'Exit', name: 'PE-backed bubble tea brand testing strategic buyers', note: 'Returns capped by post-2024 margin compression.', figure: '8 yr', figureLabel: 'hold period' },
+  { type: 'Joint Venture', name: 'Japanese udon chain × Thai mall operator', note: 'Master franchise structure under construction.', figure: '3', figureLabel: 'flagship slots' },
 ];
 
-const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
+const topics = [
+  { label: 'Acquisition', count: 0 },
+  { label: 'Fundraise', count: 0 },
+  { label: 'Exit', count: 0 },
+  { label: 'Joint Venture', count: 0 },
+  { label: 'Deal News', href: '/market-watch/deals' },
+];
 ---
 
 <BaseLayout
@@ -21,29 +53,68 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
 >
   <SectionFront title="M&A & Deals" topics={topics}>
 
-    <div class="notice">
-      <div class="notice-label">In production</div>
-      <p class="notice-text">
-        Deal coverage launches Q3 2026. Below is what is currently on our watchlist.
-        For alerts when it goes live, subscribe to <a href="/newsletter">The Dispatch</a>.
-      </p>
-    </div>
-
-    <div class="watchlist">
-      {watchlist.map((w) => (
+    {lead && (
+      <div class="hero">
         <article>
-          <span class="kicker">{w.tag}</span>
-          <h3>{w.name}</h3>
-          <p class="dek">{w.note}</p>
+          <a href={`/analysis/${lead.slug}`}>
+            <div class="well hero-well" aria-hidden="true"></div>
+          </a>
+          <span class="credit">{lead.author}</span>
+          <span class="kicker">{lead.tag} · {lead.readTime}</span>
+          <h2 class="hero-head"><a href={`/analysis/${lead.slug}`}>{lead.title}</a></h2>
+          <p class="dek">{lead.dek}</p>
+          <div class="meta">{lead.date}</div>
         </article>
-      ))}
+
+        <div>
+          <div class="notice notice-inline">
+            <div class="notice-label">In production</div>
+            <p class="notice-text">
+              Deal coverage launches Q3 2026. The watchlist below is what the desk
+              is tracking now. For alerts when it goes live, subscribe to
+              <a href="/newsletter">The Dispatch</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <div class="roster">
+      <div class="roster-head">
+        <h2>On the watchlist</h2>
+        <span class="roster-count">{watchlist.length} live situations</span>
+      </div>
+      <div class="grid3 grid3-loose">
+        {watchlist.map((w) => (
+          <article>
+            <div class="plate plate-wide" aria-hidden="true">
+              <span class="plate-figure">{w.figure}<small>{w.figureLabel}</small></span>
+              <span class="plate-type">{w.type}</span>
+            </div>
+            <h3>{w.name}</h3>
+            <p class="dek">{w.note}</p>
+            <div class="stat-line"><b>{w.figure}</b> {w.figureLabel}</div>
+          </article>
+        ))}
+      </div>
     </div>
 
     <Fragment slot="rail">
       <RailSignup />
       <RailPromo section="deals" />
-      <RailMovers />
+      <RailMovers title="Possible acquirers" limit={5} />
     </Fragment>
 
   </SectionFront>
 </BaseLayout>
+
+<style>
+  /* The notice sits in the hero's second column rather than above the page,
+     so the lead report still opens the section. */
+  .notice-inline { padding: 0; }
+  .notice-inline .notice-text { font-size: 15px; margin-bottom: 0; }
+
+  /* Four cards in a three-across grid leaves one alone on the second row;
+     the extra top rule keeps it reading as part of the same set. */
+  .grid3-loose > *:nth-child(n + 4) { border-top: 1px solid var(--rule); }
+</style>

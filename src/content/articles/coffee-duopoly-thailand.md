@@ -1,8 +1,8 @@
 ---
 title: "The hidden duopoly behind Thailand's coffee bean trade"
 dek: "Two importers control 78% of specialty bean flow into Bangkok cafés."
-category: suppliers
-tag: "Suppliers"
+category: supplier-intel
+tag: "Supplier Intel"
 author: "SpoonAsia Desk"
 date: 2026-05-10
 readTime: "10 min read"

@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionFront from '../components/SectionFront.astro';
+import RailSignup from '../components/rail/RailSignup.astro';
+import RailPromo from '../components/rail/RailPromo.astro';
+
+// Event pages, photo archives, and booking live on penguinx.co — this page
+// is the SpoonAsia-side front for them. Adding an event = one entry here
+// plus its page on the PenguinX site.
+const PX = 'https://penguinx.co/events';
+
+const owned = [
+  { kind: 'Conference', name: 'TRC — Thailand Restaurant Conference', href: `${PX}/trc.html`, note: 'Multi-day, multi-track programming for owners and senior operators. The room where annual decisions get made.' },
+  { kind: 'Expo', name: 'Restech', href: `${PX}/restech.html`, note: 'Restaurant tech and equipment expo — live demos, comparison, on-floor procurement.' },
+  { kind: 'Expo', name: 'Damn Expo', href: `${PX}/damn-expo.html`, note: 'Nightlife and craft-liquor home expo. Bar owners, distributors, beverage brands on one floor.' },
+  { kind: 'Conference', name: 'CafCon', href: `${PX}/cafcon.html`, note: 'The café business conference — coffee shop owners, roasters, category suppliers, one playbook.' },
+  { kind: 'Community', name: '#LongKaek', href: `${PX}/longkaek.html`, note: 'Founder-only peer dinners — competitors turning into trusted allies, by invitation.' },
+];
+
+const forBrands = [
+  { kind: 'Conference', name: 'Thaifex Horec', href: `${PX}/thaifex-horec.html`, note: 'Built the operator-focused conference inside Asia’s biggest food and hospitality trade show — from the speaker list up.' },
+  { kind: 'Conference · Workshop', name: 'GSB', href: `${PX}/gsb.html`, note: 'Conference and workshop programming for GSB.' },
+  { kind: 'Conference · Workshop', name: 'SME D Bank', href: `${PX}/sme-d-bank.html`, note: 'Conference and workshop programming for SME D Bank.' },
+  { kind: 'Workshop', name: 'เงินให้ใจ', href: `${PX}/ngern-hai-jai.html`, note: 'Workshop programming for เงินให้ใจ.' },
+  { kind: 'Conference · Workshop', name: 'LINE', href: `${PX}/line.html`, note: 'Conference and workshop programming for LINE.' },
+  { kind: 'Conference', name: 'RMBA Forum', href: `${PX}/rmba-forum.html`, note: 'Conference programming for the Restaurant MBA Forum.' },
+  { kind: 'Conference', name: 'Tyson', href: `${PX}/tyson.html`, note: 'Conference programming for Tyson.' },
+];
+
+const all = [...owned, ...forBrands];
+const kindCount = (k: string) => all.filter((e) => e.kind.includes(k)).length;
+const topics = [
+  { label: 'Conference', count: kindCount('Conference') },
+  { label: 'Expo', count: kindCount('Expo') },
+  { label: 'Workshop', count: kindCount('Workshop') },
+  { label: 'Community', count: kindCount('Community') },
+];
+---
+
+<BaseLayout
+  title="Events — SpoonAsia"
+  description="The F&B events we run in Thailand — TRC, Restech, Damn Expo, CafCon, #LongKaek — and the conferences we produce for brands. Where operators, suppliers, and manufacturers meet."
+>
+  <SectionFront title="Events" topics={topics}>
+
+    <div class="notice">
+      <div class="notice-label">Produced by PenguinX</div>
+      <p class="notice-text">
+        The rooms where Thai F&B decisions get made — operators, suppliers,
+        and manufacturers in one place. Five events we run ourselves, plus
+        the conferences we produce for brands. Full programs, photo
+        archives, and booking at
+        <a href="https://penguinx.co/events.html" target="_blank" rel="noopener noreferrer">penguinx.co ↗</a>.
+      </p>
+    </div>
+
+    <div class="group-head">Our events</div>
+    <div class="watchlist">
+      {owned.map((e) => (
+        <article>
+          <span class="kicker">{e.kind}</span>
+          <h3><a href={e.href} target="_blank" rel="noopener noreferrer">{e.name} ↗</a></h3>
+          <p class="dek">{e.note}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="group-head">Produced for brands</div>
+    <div class="watchlist">
+      {forBrands.map((e) => (
+        <article>
+          <span class="kicker">{e.kind}</span>
+          <h3><a href={e.href} target="_blank" rel="noopener noreferrer">{e.name} ↗</a></h3>
+          <p class="dek">{e.note}</p>
+        </article>
+      ))}
+    </div>
+
+    <Fragment slot="rail">
+      <RailSignup />
+      <RailPromo section="events" />
+    </Fragment>
+
+  </SectionFront>
+</BaseLayout>
+
+<style>
+  .group-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin: 36px 0 4px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule-hard, var(--ink));
+  }
+
+  .watchlist h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .watchlist h3 a:hover {
+    color: var(--accent);
+  }
+</style>

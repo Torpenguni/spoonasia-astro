@@ -11,6 +11,8 @@ const watchlist = [
   { tag: 'Packaging', name: 'Sustainable F&B packaging \u2014 supply vs hype', note: 'PLA, sugarcane bagasse, mushroom mycelium \u2014 which are actually shipping at scale to Thai operators.' },
   { tag: 'Equipment', name: 'Kitchen equipment imports \u2014 Japan vs Italy vs Thai-made', note: 'Lead times, service network coverage, total cost of ownership across the three main supplier origins.' },
   { tag: 'Ingredients', name: 'Specialty wagyu and premium beef flow into Bangkok', note: 'Australian, Japanese, US import volumes. Mark-up structure from import point to restaurant kitchen.' },
+  { tag: 'OEM', name: 'Who manufactures for the chains — Thailand’s contract producers', note: 'The OEM plants behind private-label sauces, broths, and frozen lines. Capacity, MOQs, and which chains they already serve.' },
+  { tag: 'Central Kitchens', name: 'Make-or-buy: the central kitchen math', note: 'When a chain should build its own commissary vs contract out. Break-even outlet counts, capex, and the margin swing either way.' },
 ];
 
 const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
@@ -18,14 +20,16 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
 
 <BaseLayout
   title="Supplier Intel — SpoonAsia"
-  description="The hidden supply chains feeding Thailand's F&B economy — importers, distributors, equipment vendors, and the duopolies hiding in plain sight."
+  description="The supply chains feeding Thailand's F&B economy — importers, distributors, equipment vendors, OEM and contract manufacturers, and the duopolies hiding in plain sight."
 >
   <SectionFront title="Supplier Intel" topics={topics}>
 
     <div class="notice">
       <div class="notice-label">In production</div>
       <p class="notice-text">
-        Supplier Intel launches Q3 2026 — the pipeline is below.
+        Supplier Intel covers the whole chain behind the service sector —
+        importers, distributors, equipment, and the OEM plants that
+        manufacture for the chains. Launches Q3 2026; the pipeline is below.
         Subscribe to <a href="/newsletter">The Dispatch</a> for supplier briefs as they publish.
       </p>
     </div>

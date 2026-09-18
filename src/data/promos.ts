@@ -6,7 +6,7 @@
 //
 //   sections  omit to run everywhere, or list the section keys it belongs on:
 //             'news' | 'deals' | 'analysis' | 'operators' | 'supplier-intel'
-//             | 'locations' | 'videos'
+//             | 'events' | 'locations' | 'videos'
 //   image     optional. Supplied art replaces the ink panel; the frame and the
 //             footer bar stay, so a paid placement never reads as editorial.
 

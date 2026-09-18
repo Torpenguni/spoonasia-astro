@@ -57,7 +57,12 @@ export const categories: Category[] = [
   {
     slug: 'supplier-intel',
     label: 'Supplier Intel',
-    description: 'The hidden chains feeding Thailand\'s F&B economy. Importers, distributors, and the duopolies hiding in plain sight.',
+    description: 'The hidden chains feeding Thailand\'s F&B economy. Importers, distributors, OEM and contract manufacturers, and the duopolies hiding in plain sight.',
+  },
+  {
+    slug: 'manufacturing',
+    label: 'Manufacturing & Sourcing',
+    description: 'The production layer behind the service sector — contract manufacturers, central kitchens, and the make-or-buy decisions that shape a chain\'s margin.',
   },
   {
     slug: 'markets',
@@ -70,19 +75,9 @@ export const categories: Category[] = [
     description: 'Inside the chains and independents reshaping Asian F&B.',
   },
   {
-    slug: 'suppliers',
-    label: 'Suppliers',
-    description: 'Importers, distributors, and the supply-chain dynamics that move the menu.',
-  },
-  {
     slug: 'investment',
     label: 'Investment',
     description: 'Where Asian F&B capital flows — family offices, private equity, and the cross-border deals.',
-  },
-  {
-    slug: 'neighborhood',
-    label: 'Neighborhood',
-    description: 'Street-level alpha on Asia\'s F&B zones.',
   },
   {
     slug: 'founder-stories',
@@ -93,11 +88,6 @@ export const categories: Category[] = [
     slug: 'deals',
     label: 'Deals & Funding',
     description: 'Acquisitions, fundraises, exits, joint ventures. The capital flows reshaping Thai F&B and the structural reasons behind each deal.',
-  },
-  {
-    slug: 'neighborhood-watch',
-    label: 'Neighborhood Watch',
-    description: 'Real-time signals from Bangkok\'s F&B zones — openings, closures, rent moves, and the small shifts that anticipate the big trends.',
   },
   {
     slug: 'torpenguin',
@@ -212,8 +202,8 @@ export const articles: Article[] = [
     slug: 'coffee-duopoly-thailand',
     title: "The hidden duopoly behind Thailand's coffee bean trade",
     dek: 'Two importers control 78% of specialty bean flow into Bangkok cafés.',
-    category: 'suppliers',
-    tag: 'Suppliers',
+    category: 'supplier-intel',
+    tag: 'Supplier Intel',
     author: 'SpoonAsia Desk',
     date: '11 May 2026',
     readTime: '10 min read',
@@ -244,7 +234,7 @@ export const articles: Article[] = [
     slug: 'phra-khanong-frontier',
     title: "Phra Khanong is quietly becoming Bangkok's next F&B frontier",
     dek: 'Three signals: rents up 18%, BTS upgrades, and Gen Z creator clusters.',
-    category: 'neighborhood',
+    category: 'neighborhood-alpha',
     tag: 'Neighborhood',
     author: 'SpoonAsia Desk',
     date: '09 May 2026',

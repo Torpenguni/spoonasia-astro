@@ -1,7 +1,7 @@
 ---
 title: "Phra Khanong is quietly becoming Bangkok's next F&B frontier"
 dek: "Three signals: rents up 18%, BTS upgrades, and Gen Z creator clusters."
-category: neighborhood
+category: neighborhood-alpha
 tag: "Neighborhood"
 author: "SpoonAsia Desk"
 date: 2026-05-08

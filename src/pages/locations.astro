@@ -19,44 +19,9 @@ const watchlist = [
 
 // Layer 2 — the supply pipeline. Every mega-project and mixed-use launch
 // that adds F&B floorplate, read for what it does to the zones around it —
-// not the developer's press release.
-const pipeline = [
-  {
-    project: 'One Bangkok',
-    district: 'Rama IV / Wireless',
-    format: 'Mixed-use · retail + office + hotel',
-    status: 'Open — ramping through 2026',
-    read: 'The largest single addition of F&B floorplate in Bangkok history. Office towers fill faster than retail — weekday lunch works now, dinner catchment still forming. First-phase tenants carry the ramp risk.',
-  },
-  {
-    project: 'Dusit Central Park',
-    district: 'Silom / Rama IV',
-    format: 'Mixed-use · retail podium + hotel + residences',
-    status: 'Retail opened 2025',
-    read: 'Completes the Rama IV corridor with One Bangkok and Samyan Mitrtown — three projects now compete for the same office-worker lunch. Expect effective-rent softness at the corridor’s casual tier.',
-  },
-  {
-    project: 'EmSphere',
-    district: 'Sukhumvit / Phrom Phong',
-    format: 'Retail · food-hall-weighted',
-    status: 'Open since Dec 2023',
-    read: 'The EM District’s third box leans food-first — which siphons casual-tier traffic from EmQuartier’s upper floors more than it grows the district. A cautionary read for "new supply = new demand" assumptions.',
-  },
-  {
-    project: 'Cloud 11',
-    district: 'South Sukhumvit / On Nut',
-    format: 'Mixed-use · creator-economy hub',
-    status: 'Phased opening from 2026',
-    read: 'The bet that matters for the Phra Khanong–On Nut frontier: if its creator tenancy lands, the corridor’s rent curve re-rates early. Watch pre-let announcements, not the opening date.',
-  },
-  {
-    project: 'Bangkok Mall',
-    district: 'Bangna',
-    format: 'Regional mall · super-scale',
-    status: 'Under construction — late-decade',
-    read: 'Bangna’s catchment is real but already served. The question a term sheet here must answer: does super-scale supply grow east-side dining spend, or redistribute it at higher rent?',
-  },
-];
+// not the developer's press release. Full files live in
+// src/data/properties.ts and render at /properties/<slug>.
+import { properties } from '../data/properties';
 
 // Layer 3 — infrastructure and momentum. The leading indicators of a rent
 // curve, logged before the brokers reprice the corridor.
@@ -126,34 +91,20 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
     <div class="group-head">Supply watch — the pipeline</div>
     <p class="group-dek">
       Every project adding meaningful F&B floorplate, and what it does to the
-      zones around it. Updated as projects move.
+      zones around it. Each opens the full property file.
     </p>
-    <div class="board-wrap">
-      <table class="board">
-        <thead>
-          <tr>
-            <th>Project</th>
-            <th>District</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pipeline.map((p) => (
-            <>
-              <tr class="row-top">
-                <th scope="row">{p.project}</th>
-                <td>{p.district}</td>
-                <td class="status">{p.status}</td>
-              </tr>
-              <tr class="row-read">
-                <td colspan="3">
-                  <span class="read-label">Our read</span> {p.read}
-                </td>
-              </tr>
-            </>
-          ))}
-        </tbody>
-      </table>
+    <div class="grid3">
+      {properties.map((p) => (
+        <a href={`/properties/${p.slug}`} class="prop-card">
+          <div class="prop-photo">
+            <img src={p.image} alt={p.name} width="1600" height="900" loading="lazy" />
+          </div>
+          <span class="prop-status">{p.status}</span>
+          <h3>{p.name} →</h3>
+          <span class="prop-district">{p.district}</span>
+          <p class="dek">{p.read}</p>
+        </a>
+      ))}
     </div>
 
     <div class="group-head">Signals — infrastructure &amp; momentum</div>
@@ -229,66 +180,50 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
     max-width: 560px;
   }
 
-  .board-wrap { overflow-x: auto; margin-top: 10px; }
+  .prop-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
 
-  .board {
+  .prop-photo {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--paper-warm, var(--well));
+    margin-bottom: 12px;
+  }
+
+  .prop-photo img {
+    display: block;
     width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    min-width: 520px;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
   }
 
-  .board th,
-  .board td {
-    text-align: left;
-    padding: 12px 18px 4px 0;
-    vertical-align: baseline;
-  }
+  .prop-card:hover .prop-photo img { transform: scale(1.025); }
 
-  .board thead th {
+  .prop-status {
+    display: block;
     font-family: var(--font-mono);
     font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-mute, var(--ink-soft));
-    border-bottom: 1px solid var(--rule-hard, var(--ink));
-    padding-bottom: 9px;
-  }
-
-  .board tbody th {
-    font-family: var(--font-serif);
-    font-size: 17px;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-
-  .board .status {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent);
-    white-space: nowrap;
+    margin-bottom: 6px;
   }
 
-  .board .row-read td {
-    padding: 6px 0 14px;
-    border-bottom: 1px solid var(--rule);
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    max-width: 620px;
-  }
+  .prop-card h3 { transition: color 0.2s; }
 
-  .board tbody tr:last-child td { border-bottom: none; }
+  .prop-card:hover h3 { color: var(--accent); }
 
-  .read-label {
+  .prop-district {
+    display: block;
     font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
+    font-size: 10px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ink);
-    margin-right: 8px;
+    color: var(--ink-faint);
+    margin-top: 4px;
   }
 </style>

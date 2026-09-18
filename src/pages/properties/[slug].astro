@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { properties } from '../../data/properties';
+
+export async function getStaticPaths() {
+  return properties.map((p) => ({ params: { slug: p.slug }, props: { property: p } }));
+}
+
+const { property: p } = Astro.props;
+const others = properties.filter((o) => o.slug !== p.slug);
+---
+
+<BaseLayout
+  title={`${p.name} — Property File — SpoonAsia`}
+  description={p.read}
+>
+  <article class="file">
+    <div class="container-narrow">
+
+      <div class="crumbs">
+        <a href="/locations">Locations</a>
+        <span>/</span>
+        <span>Supply Watch</span>
+      </div>
+
+      <div class="section-tag">▍ Property File</div>
+      <h1 class="file-h1">{p.name}</h1>
+      <p class="file-dek">{p.read}</p>
+
+      <div class="file-meta">
+        <span class="meta-item">{p.district}</span>
+        <span class="meta-dot">·</span>
+        <span class="meta-item">{p.format}</span>
+        <span class="meta-dot">·</span>
+        <span class="meta-item status">{p.status}</span>
+      </div>
+
+      <figure class="file-hero">
+        <img src={p.image} alt={p.name} width="1600" height="900" loading="eager" />
+        {(p.imageCredit || p.imageNote) && (
+          <figcaption>
+            {p.imageNote && <span>{p.imageNote} · </span>}
+            {p.imageCredit && (
+              p.imageCreditHref
+                ? <a href={p.imageCreditHref} target="_blank" rel="noopener noreferrer">Photo: {p.imageCredit}</a>
+                : <span>Photo: {p.imageCredit}</span>
+            )}
+          </figcaption>
+        )}
+      </figure>
+
+      <div class="facts">
+        <div class="facts-head">The file</div>
+        <dl>
+          {p.facts.map((f) => (
+            <div class="fact-row">
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      {p.sections.map((s) => (
+        <section class="story">
+          <h2 class="story-head">{s.head}</h2>
+          {s.paragraphs.map((para) => <p class="story-para">{para}</p>)}
+        </section>
+      ))}
+
+      <div class="cta">
+        <div class="cta-label">Penguin X — Advisory</div>
+        <p class="cta-text">
+          Evaluating a lease in this project? Penguin X runs ground-truth due
+          diligence for operators weighing Thai retail terms — catchment,
+          effective rent, and the clauses that decide the P&L.
+        </p>
+        <a href="/penguin-x" class="cta-link">Request a briefing →</a>
+      </div>
+
+      <div class="more">
+        <div class="more-head">More property files</div>
+        <ul>
+          {others.map((o) => (
+            <li>
+              <a href={`/properties/${o.slug}`}>{o.name}</a>
+              <span class="more-status">{o.status}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .file { padding: 40px 0 80px; }
+
+  .crumbs {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .crumbs a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .crumbs a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+
+  .file-h1 {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+
+  .file-dek {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 20px;
+    max-width: 640px;
+  }
+
+  .file-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--rule-hard, var(--ink));
+    margin-bottom: 26px;
+  }
+
+  .file-meta .status { color: var(--accent); }
+  .meta-dot { color: var(--ink-faint); }
+
+  .file-hero { margin: 0 0 8px; }
+
+  .file-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--paper-warm, var(--well));
+  }
+
+  .file-hero figcaption {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-top: 6px;
+  }
+
+  .file-hero figcaption a { color: inherit; text-decoration: none; }
+  .file-hero figcaption a:hover { color: var(--ink-soft); }
+
+  .facts { margin: 34px 0 10px; }
+
+  .facts-head,
+  .story-head,
+  .more-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin: 0 0 4px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule-hard, var(--ink));
+  }
+
+  .facts dl { margin: 0; }
+
+  .fact-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .fact-row dt {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    padding-top: 3px;
+  }
+
+  .fact-row dd {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .story { margin-top: 40px; }
+
+  .story-para {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin: 18px 0 0;
+    max-width: 640px;
+  }
+
+  .cta {
+    margin-top: 52px;
+    background: var(--ink);
+    padding: 32px 28px;
+  }
+
+  .cta-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .cta-text {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.6;
+    color: #b8b5ac;
+    margin: 0 0 18px;
+    max-width: 560px;
+  }
+
+  .cta-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--paper);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 3px;
+  }
+
+  .cta-link:hover { color: var(--accent); }
+
+  .more { margin-top: 48px; }
+
+  .more ul { list-style: none; margin: 0; padding: 0; }
+
+  .more li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .more a {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .more a:hover { color: var(--accent); }
+
+  .more-status {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 700px) {
+    .file-h1 { font-size: 32px; }
+    .fact-row { grid-template-columns: 1fr; gap: 4px; }
+    .more li { flex-direction: column; gap: 4px; }
+  }
+</style>

@@ -14,12 +14,21 @@ export interface PropertySection {
   paragraphs: string[];
 }
 
+export type PropertyGroup = 'open' | 'next' | 'announced';
+
+export const groupLabels: Record<PropertyGroup, string> = {
+  open: 'Open — ramping',
+  next: 'Opening next',
+  announced: 'Announced & under construction',
+};
+
 export interface Property {
   slug: string;
   name: string;
   district: string;
   format: string;
   status: string;
+  group: PropertyGroup;
   read: string; // the one-paragraph read shown on the card
   image: string;
   imageCredit?: string;
@@ -32,6 +41,7 @@ export interface Property {
 export const properties: Property[] = [
   {
     slug: 'one-bangkok',
+    group: 'open',
     name: 'One Bangkok',
     district: 'Rama IV / Wireless',
     format: 'Mixed-use — retail, office, hotels, residences',
@@ -77,6 +87,7 @@ export const properties: Property[] = [
   },
   {
     slug: 'dusit-central-park',
+    group: 'open',
     name: 'Dusit Central Park',
     district: 'Silom / Rama IV',
     format: 'Mixed-use — hotel, residences, office, retail podium',
@@ -115,6 +126,7 @@ export const properties: Property[] = [
   },
   {
     slug: 'emsphere',
+    group: 'open',
     name: 'EmSphere',
     district: 'Sukhumvit / Phrom Phong',
     format: 'Retail — food-hall-weighted, arena-anchored',
@@ -153,6 +165,7 @@ export const properties: Property[] = [
   },
   {
     slug: 'cloud-11',
+    group: 'next',
     name: 'Cloud 11',
     district: 'South Sukhumvit / On Nut',
     format: 'Mixed-use — creator-economy hub',
@@ -191,6 +204,7 @@ export const properties: Property[] = [
   },
   {
     slug: 'bangkok-mall',
+    group: 'announced',
     name: 'Bangkok Mall',
     district: 'Bangna',
     format: 'Regional mall — super-scale',
@@ -223,6 +237,162 @@ export const properties: Property[] = [
         head: 'The call',
         paragraphs: [
           'Right for: category leaders who will be offered anchor-grade terms to complete the landlord’s line-up — the leverage sits with tenants the mall needs, and it should be used. Wrong for: independents and first-time suburban entrants; this is chain terrain. There is no urgency premium here — the project’s own timeline grants years to watch pre-leasing and let the anchor terms surface. Sign late, sign informed.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'ics',
+    group: 'open',
+    name: 'ICS',
+    district: 'Charoen Nakhon / Thonburi riverside',
+    format: 'Mixed-use — retail podium, hotel, offices',
+    status: 'Open since 2023',
+    read: 'The value-tier half of the ICONSIAM cluster. Thonburi\u2019s first organized-retail district now runs a two-mall system \u2014 and the F&B math differs sharply between the two boxes.',
+    image: '/images/properties/ics.webp',
+    facts: [
+      { label: 'Developer', value: 'Siam Piwat consortium (ICONSIAM group)' },
+      { label: 'Site', value: 'Charoen Nakhon Road, opposite ICONSIAM' },
+      { label: 'Opened', value: '2023' },
+      { label: 'F&B posture', value: 'Daily-tier dining and convenience, complementing ICONSIAM\u2019s destination tier' },
+      { label: 'Nearest rail', value: 'BTS Gold Line Charoen Nakhon' },
+    ],
+    sections: [
+      {
+        head: 'The setup',
+        paragraphs: [
+          'ICS completes what ICONSIAM started: turning the Thonburi riverside from a hotel strip into an organized-retail district. Where ICONSIAM sells spectacle to tourists and destination shoppers, ICS is built for the other catchment \u2014 the offices upstairs, the Gold Line commuters, and the fast-growing residential towers along Charoen Nakhon.',
+          'For F&B operators the cluster now works as a two-tier system: destination pricing across the road, daily pricing here. Mistaking which box your concept belongs in is the expensive error.',
+        ],
+      },
+      {
+        head: 'The catchment',
+        paragraphs: [
+          'Thonburi\u2019s riverside has quietly become one of Bangkok\u2019s densest new-condo corridors, and that residential base \u2014 not tourism \u2014 is what underwrites weekday F&B at ICS. Tourist flow tops up weekends but arrives via ICONSIAM first; ICS captures spillover, not the primary trip.',
+          'The Gold Line matters more than it looks: it converts the cluster into a walkable extension of the BTS network, and the commuter flow it feeds is exactly the repeat-frequency customer a daily-tier concept needs.',
+        ],
+      },
+      {
+        head: 'The call',
+        paragraphs: [
+          'Right for: daily-frequency formats \u2014 coffee, fast casual, grab-and-go \u2014 priced for residents and office workers, riding a rent card meaningfully below ICONSIAM\u2019s. Wrong for: destination concepts that belong across the road, and anything priced as if the tourist is the base customer. Read the cluster as one district with two rent curves, and sign on the curve that matches your ticket size.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'the-forestias',
+    group: 'next',
+    name: 'The Forestias',
+    district: 'Bangna\u2013Trad',
+    format: 'Mixed-use township — residential-led, forest-centered',
+    status: 'Phased — town center ramping',
+    read: 'A residential-led township betting that a private forest can anchor suburban life. For F&B, the catchment is captive but thin until the homes fill \u2014 township retail runs on rooftops, not footfall projections.',
+    image: '/images/properties/the-forestias.webp',
+    facts: [
+      { label: 'Developer', value: 'MQDC' },
+      { label: 'Site', value: 'Bangna\u2013Trad corridor, eastern Bangkok' },
+      { label: 'Positioning', value: 'Wellness township around a central forest; residences, seniors living, retail town center' },
+      { label: 'Status', value: 'Residential phases handing over; town center ramping in phases' },
+      { label: 'Context', value: 'Same corridor as Mega Bangna and the announced Bangkok Mall' },
+    ],
+    sections: [
+      {
+        head: 'The setup',
+        paragraphs: [
+          'The Forestias is the most unusual large project in Thailand: a township where the amenity is a cultivated forest, aimed at multi-generation families and wellness-minded buyers. Retail exists to serve the township first and the corridor second \u2014 the reverse of a mall\u2019s logic.',
+          'That inversion changes the F&B math entirely. Demand here is a function of units handed over and occupied, not of traffic engineering. The forest brings visitors on weekends; the P&L is underwritten by the people who sleep there.',
+        ],
+      },
+      {
+        head: 'The math',
+        paragraphs: [
+          'Township retail ramps with residency, and residency ramps slowly \u2014 handovers, fit-outs, families actually moving in. Early F&B tenants face the same shape of risk as One Bangkok\u2019s first phase, at suburban ticket sizes: real rent now, maturing catchment later.',
+          'The offset is loyalty economics. A township customer eats with you weekly, not once a quarter \u2014 retention replaces reach. Formats that build repeat habits (bakery-cafe, family dining, health-leaning daily food) compound here in a way high-energy destination concepts cannot.',
+        ],
+      },
+      {
+        head: 'The call',
+        paragraphs: [
+          'Right for: neighborhood-loyalty formats with patient capital and lease terms indexed to the township\u2019s actual occupancy. Wrong for: anything that needs corridor-scale footfall from day one \u2014 Mega Bangna up the road already owns that job, at scale. Enter when handover data, not the marketing suite, says the rooftops are real.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'asiatique-riverfront',
+    group: 'announced',
+    name: 'Asiatique 2.0',
+    district: 'Charoenkrung riverside',
+    format: 'Riverfront mixed-use — announced redevelopment',
+    status: 'Announced — long game',
+    read: 'AWC\u2019s plan to rebuild the night-market riverfront into a full mixed-use destination. The existing Asiatique keeps trading while the vision seeks its timeline \u2014 which is precisely the read: announced is not under way.',
+    image: '/images/properties/asiatique-riverfront.webp',
+    facts: [
+      { label: 'Owner', value: 'Asset World Corp (AWC)' },
+      { label: 'Site', value: 'Asiatique The Riverfront, Charoenkrung riverside' },
+      { label: 'Positioning', value: 'Announced expansion into towers, hotels and expanded retail around the existing night market' },
+      { label: 'Status', value: 'Announced; the current Asiatique continues operating' },
+      { label: 'Context', value: 'Tourist-led riverfront; ferry-fed access from Saphan Taksin' },
+    ],
+    sections: [
+      {
+        head: 'The setup',
+        paragraphs: [
+          'Asiatique already proved the location: a ferry-fed riverfront night destination that tourists reliably find. AWC\u2019s announced redevelopment would stack hotels and towers onto that proof \u2014 turning an evening market into an all-day district.',
+          'The operative word is announced. Mega-projects on this scale move with financing cycles and tourism confidence, and the gap between a launch event and a piling rig can run years. The current asset trades on regardless.',
+        ],
+      },
+      {
+        head: 'The math',
+        paragraphs: [
+          'Today\u2019s Asiatique is a tourist-margin business: high evening peaks, soft weekdays, and a customer who visits once. That suits souvenir-tier F&B and photogenic flagships; it starves frequency-led formats. The redevelopment, if built, changes the equation by adding hotel guests and office workers \u2014 a captive, repeat base the site has never had.',
+          'For operators, that makes this a monitoring file, not a term-sheet file. The trade is being positioned when construction becomes real \u2014 riverside sites with this kind of access do not stay reasonably priced once cranes appear.',
+        ],
+      },
+      {
+        head: 'The call',
+        paragraphs: [
+          'Right for: operators already in tourist-led formats who can trade the existing evening peaks profitably now, with an option on the bigger district later. Wrong for: committing capital against the announced masterplan before ground actually breaks. Watch AWC\u2019s capex announcements and hotel-brand signings \u2014 those, not renders, are the signal.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'emporium',
+    group: 'announced',
+    name: 'EM District Completion',
+    district: 'Sukhumvit / Phrom Phong',
+    format: 'Renovation — Emporium revamp',
+    status: 'Renovation underway',
+    read: 'The Mall Group\u2019s final move at Phrom Phong: rebuilding Emporium to match its two younger siblings. Renovation churn means tenant displacement \u2014 and displacement means negotiating leverage across the whole district.',
+    image: '/images/properties/emporium.webp',
+    facts: [
+      { label: 'Developer', value: 'The Mall Group' },
+      { label: 'Site', value: 'Emporium, Phrom Phong \u2014 the EM District\u2019s original box' },
+      { label: 'Positioning', value: 'Full revamp to complete the three-mall EM District masterplan' },
+      { label: 'Status', value: 'Phased renovation while trading' },
+      { label: 'Context', value: 'Adjacent to EmQuartier and EmSphere; BTS Phrom Phong' },
+    ],
+    sections: [
+      {
+        head: 'The setup',
+        paragraphs: [
+          'Emporium is where Bangkok premium-mall retail started, and it is now the dated box between two newer siblings. The Mall Group\u2019s revamp is the last piece of the EM District masterplan: three malls, one BTS station, one continuous premium precinct.',
+          'A renovation-while-trading is a different animal from a new build: floors close in sequence, tenants get relocated, offered new terms, or quietly not renewed. That churn is the story for F&B.',
+        ],
+      },
+      {
+        head: 'The mechanism',
+        paragraphs: [
+          'Renovation churn hands leverage to strong operators. A landlord clearing floors needs proven tenants to anchor the reopened ones, and a district with three boxes has three places to put you \u2014 which makes this the moment to renegotiate the whole Phrom Phong relationship, not one lease.',
+          'It also compounds the district\u2019s existing problem: EmSphere already redistributed the casual tier, and premium-mall vacancy sits at multi-year highs. Emporium\u2019s reopened floors will re-set the district\u2019s premium dining line-up \u2014 whoever is in the landlord\u2019s good graces when the music stops gets the best real estate at Phrom Phong for a decade.',
+        ],
+      },
+      {
+        head: 'The call',
+        paragraphs: [
+          'Right for: operators already trading in the EM District \u2014 use the churn window to consolidate into better positions across the three boxes. Wrong for: newcomers paying full district pricing mid-renovation; let the reopened floors prove their traffic first. The asset to watch is not the renovation render \u2014 it is which anchor restaurants The Mall Group announces for the reopened floors.',
         ],
       },
     ],

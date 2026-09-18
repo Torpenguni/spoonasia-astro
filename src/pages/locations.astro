@@ -88,13 +88,14 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
       ))}
     </div>
 
-    <div class="group-head">Supply watch — the pipeline</div>
+    <div class="group-head">Supply watch — property files</div>
     <p class="group-dek">
-      Every project adding meaningful F&B floorplate, and what it does to the
-      zones around it. Each opens the full property file.
+      Every project adding meaningful F&B floorplate, one file per property —
+      who should sign, who shouldn't, and when. The three most consequential
+      right now:
     </p>
     <div class="grid3">
-      {properties.map((p) => (
+      {properties.slice(0, 3).map((p) => (
         <a href={`/properties/${p.slug}`} class="prop-card">
           <div class="prop-photo">
             <img src={p.image} alt={p.name} width="1600" height="900" loading="lazy" />
@@ -106,6 +107,7 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
         </a>
       ))}
     </div>
+    <a href="/properties" class="all-link">All {properties.length} property files →</a>
 
     <div class="group-head">Signals — infrastructure &amp; momentum</div>
     <p class="group-dek">
@@ -226,4 +228,19 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
     color: var(--ink-faint);
     margin-top: 4px;
   }
+
+  .all-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 3px;
+    margin-top: 22px;
+  }
+
+  .all-link:hover { color: var(--accent); }
 </style>

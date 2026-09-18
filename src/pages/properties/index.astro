@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionFront from '../../components/SectionFront.astro';
+import RailSignup from '../../components/rail/RailSignup.astro';
+import RailPromo from '../../components/rail/RailPromo.astro';
+import RailLatest from '../../components/rail/RailLatest.astro';
+import { properties, groupLabels, type PropertyGroup } from '../../data/properties';
+
+const order: PropertyGroup[] = ['open', 'next', 'announced'];
+const grouped = order.map((g) => ({
+  label: groupLabels[g],
+  items: properties.filter((p) => p.group === g),
+}));
+
+const topics = order.map((g) => ({
+  label: groupLabels[g],
+  count: properties.filter((p) => p.group === g).length,
+}));
+---
+
+<BaseLayout
+  title="Property Files — SpoonAsia"
+  description="Every Bangkok mega-project and mall the market is talking about, read through an operator's P&L — who should sign, who shouldn't, and when. One file per property."
+>
+  <SectionFront title="Property Files" topics={topics}>
+
+    <div class="notice">
+      <div class="notice-label">Supply Watch</div>
+      <p class="notice-text">
+        Every project adding meaningful F&B floorplate to Bangkok — read
+        through an operator's P&L, not the developer's press release. Each
+        file ends with the only question that matters: who should sign here,
+        and who shouldn't. Updated as projects move.
+      </p>
+    </div>
+
+    {grouped.map((g) => (
+      <>
+        <div class="group-head">{g.label}</div>
+        <div class="grid3">
+          {g.items.map((p) => (
+            <a href={`/properties/${p.slug}`} class="prop-card">
+              <div class="prop-photo">
+                <img src={p.image} alt={p.name} width="1600" height="900" loading="lazy" />
+              </div>
+              <span class="prop-status">{p.status}</span>
+              <h3>{p.name} →</h3>
+              <span class="prop-district">{p.district}</span>
+              <p class="dek">{p.read}</p>
+            </a>
+          ))}
+        </div>
+      </>
+    ))}
+
+    <Fragment slot="rail">
+      <RailSignup />
+      <RailPromo section="properties" />
+      <RailLatest />
+    </Fragment>
+
+  </SectionFront>
+</BaseLayout>
+
+<style>
+  .group-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin: 40px 0 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule-hard, var(--ink));
+  }
+
+  .group-head:first-of-type { margin-top: 28px; }
+
+  .prop-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .prop-photo {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--paper-warm, var(--well));
+    margin-bottom: 12px;
+  }
+
+  .prop-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+
+  .prop-card:hover .prop-photo img { transform: scale(1.025); }
+
+  .prop-status {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .prop-card h3 { transition: color 0.2s; }
+
+  .prop-card:hover h3 { color: var(--accent); }
+
+  .prop-district {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 4px;
+  }
+</style>

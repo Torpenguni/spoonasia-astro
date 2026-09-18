@@ -52,7 +52,7 @@ html {
   --signal-warning: var(--accent);
 
   /* --- Type --------------------------------------------------- */
-  --font-sans: 'Libre Franklin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-serif: 'Source Serif 4', Georgia, serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
 

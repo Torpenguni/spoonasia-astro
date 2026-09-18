@@ -105,12 +105,14 @@ const today = new Date().toLocaleDateString('en-US', {
   .logo-light { font-weight: 400; }
   .logo-dot {
     display: inline-block;
-    width: 6px;
-    height: 6px;
+    width: 9px;
+    height: 9px;
     background: var(--accent);
     margin-left: 4px;
-    align-self: flex-end;
-    margin-bottom: 5px;
+    /* An empty inline-block's baseline is its bottom edge, so with the
+       flex container aligning baselines the square sits exactly on the
+       type's baseline. */
+    align-self: baseline;
   }
   .masthead-logo:hover { color: var(--accent); }
 

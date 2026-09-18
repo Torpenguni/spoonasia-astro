@@ -4,15 +4,16 @@ import SectionFront from '../components/SectionFront.astro';
 import RailSignup from '../components/rail/RailSignup.astro';
 import RailPromo from '../components/rail/RailPromo.astro';
 import RailLatest from '../components/rail/RailLatest.astro';
+import ZoneMap from '../components/ZoneMap.astro';
 
 // Layer 1 — zone dossiers. The atlas everything else refers back to.
 const watchlist = [
-  { tag: 'Premium CBD', name: 'Sukhumvit — Asoke / Thonglor / Ekkamai', note: 'Rent runs $78–95/sqm. Premium-mall saturation. Foreign-chain flagship belt. Margin compression risk: high.' },
-  { tag: 'Creator Corridor', name: 'Ari', note: 'BTS Ari corridor. Independent-favored, low-rise zoning, creator-class footprint. Rent $42/sqm — rising fast.' },
-  { tag: 'Frontier', name: 'Phra Khanong', note: 'Emerging F&B zone. Rents up 18% YoY. BTS upgrade Q4 2024. Window-of-entry open through 2026.' },
-  { tag: 'Heritage', name: 'Charoenkrung / Talad Noi', note: "Heritage-led, slow burn. Premium-independent only. Mall-tier formats don't survive here." },
-  { tag: 'Local-tier', name: 'Ratchada / Huai Khwang', note: 'Underwritten by night-market footfall. Resilient unit economics, lower ceiling.' },
-  { tag: 'Mall-tier', name: 'EmQuartier / ICONSIAM / Central Embassy', note: 'Premium mall F&B vacancy at 7-year high. Effective rent down 15–22% vs 2024. Leverage window open.' },
+  { tag: 'Premium CBD', map: 'sukhumvit' as const, name: 'Sukhumvit — Asoke / Thonglor / Ekkamai', note: 'Rent runs $78–95/sqm. Premium-mall saturation. Foreign-chain flagship belt. Margin compression risk: high.' },
+  { tag: 'Creator Corridor', map: 'ari' as const, name: 'Ari', note: 'BTS Ari corridor. Independent-favored, low-rise zoning, creator-class footprint. Rent $42/sqm — rising fast.' },
+  { tag: 'Frontier', map: 'phra-khanong' as const, name: 'Phra Khanong', note: 'Emerging F&B zone. Rents up 18% YoY. BTS upgrade Q4 2024. Window-of-entry open through 2026.' },
+  { tag: 'Heritage', map: 'charoenkrung' as const, name: 'Charoenkrung / Talad Noi', note: "Heritage-led, slow burn. Premium-independent only. Mall-tier formats don't survive here." },
+  { tag: 'Local-tier', map: 'ratchada' as const, name: 'Ratchada / Huai Khwang', note: 'Underwritten by night-market footfall. Resilient unit economics, lower ceiling.' },
+  { tag: 'Mall-tier', map: 'mall-tier' as const, name: 'EmQuartier / ICONSIAM / Central Embassy', note: 'Premium mall F&B vacancy at 7-year high. Effective rent down 15–22% vs 2024. Leverage window open.' },
 ];
 
 // Layer 2 — the supply pipeline. Every mega-project and mixed-use launch
@@ -110,6 +111,7 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
     <div class="watchlist">
       {watchlist.map((w) => (
         <article>
+          <ZoneMap zone={w.map} />
           <span class="kicker">{w.tag}</span>
           <h3>{w.name}</h3>
           <p class="dek">{w.note}</p>

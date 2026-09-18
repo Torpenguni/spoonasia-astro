@@ -1,0 +1,84 @@
+---
+// A schematic Bangkok locator — river, BTS/MRT spines, and one highlighted
+// zone per card. Drawn in-house so every Locations panel reads as one
+// system, FT-style, with no photography rights to clear.
+//
+// Geography is deliberately diagrammatic: Sukhumvit line runs NW→SE,
+// Silom line SW to the river, the MRT Ratchada spine NE. Close enough to
+// orient a reader who knows the city; not a street map.
+interface Props {
+  zone: 'sukhumvit' | 'ari' | 'phra-khanong' | 'charoenkrung' | 'ratchada' | 'mall-tier';
+}
+const { zone } = Astro.props;
+
+type Ring = { cx: number; cy: number; r: number };
+const highlights: Record<Props['zone'], Ring[]> = {
+  sukhumvit: [{ cx: 220, cy: 115, r: 26 }],
+  ari: [{ cx: 146, cy: 38, r: 14 }],
+  'phra-khanong': [{ cx: 261, cy: 132, r: 15 }],
+  charoenkrung: [{ cx: 103, cy: 163, r: 16 }],
+  ratchada: [{ cx: 221, cy: 36, r: 16 }],
+  'mall-tier': [
+    { cx: 212, cy: 112, r: 9 },
+    { cx: 170, cy: 99, r: 9 },
+    { cx: 82, cy: 150, r: 9 },
+  ],
+};
+const rings = highlights[zone];
+---
+
+<div class="zone-map" aria-hidden="true">
+  <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
+    {/* Chao Phraya */}
+    <path
+      d="M 70 -4 C 60 40, 92 60, 86 92 C 80 122, 54 132, 59 156 C 63 176, 86 186, 96 204"
+      fill="none" stroke="var(--rule)" stroke-width="9" stroke-linecap="round" opacity="0.7"
+    />
+    {/* BTS Sukhumvit spine: Mo Chit → On Nut */}
+    <polyline
+      points="150,12 146,38 142,62 140,78 150,95 166,98 178,100 196,106 212,112 228,118 243,125 261,132 276,140 302,156"
+      fill="none" stroke="var(--ink-faint)" stroke-width="2"
+    />
+    {/* BTS Silom spine: Siam → across the river */}
+    <polyline
+      points="150,95 152,112 146,130 137,146 125,158 110,168 88,178"
+      fill="none" stroke="var(--ink-faint)" stroke-width="2"
+    />
+    {/* MRT Ratchada spine: Asok → Huai Khwang */}
+    <polyline
+      points="196,106 205,88 212,66 218,48 224,28 227,12"
+      fill="none" stroke="var(--ink-faint)" stroke-width="2" stroke-dasharray="4 3"
+    />
+    {/* Interchange + reference stations */}
+    {[
+      [150, 95], [196, 106], [146, 38], [212, 112], [228, 118],
+      [261, 132], [110, 168], [221, 36], [170, 99],
+    ].map(([cx, cy]) => (
+      <circle cx={cx} cy={cy} r="2.4" fill="var(--paper)" stroke="var(--ink-soft)" stroke-width="1.2" />
+    ))}
+    {/* The zone this card is about */}
+    {rings.map((h) => (
+      <>
+        <circle cx={h.cx} cy={h.cy} r={h.r} fill="var(--accent)" opacity="0.12" />
+        <circle cx={h.cx} cy={h.cy} r={h.r} fill="none" stroke="var(--accent)" stroke-width="1.6" />
+        <circle cx={h.cx} cy={h.cy} r="3" fill="var(--accent)" />
+      </>
+    ))}
+  </svg>
+</div>
+
+<style>
+  .zone-map {
+    aspect-ratio: 8 / 5;
+    background: var(--paper-warm, var(--well));
+    border: 1px solid var(--rule);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .zone-map svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>

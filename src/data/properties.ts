@@ -48,6 +48,8 @@ export const properties: Property[] = [
     status: 'Open — ramping through 2026',
     read: 'The largest single addition of F&B floorplate in Bangkok history. Office towers fill faster than retail — weekday lunch works now, dinner catchment still forming. First-phase tenants carry the ramp risk.',
     image: '/images/properties/one-bangkok.webp',
+    imageCredit: 'Magnamonkun \u00b7 CC0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Parade_at_One_Bangkok-2024-11-23.jpg',
     facts: [
       { label: 'Developer', value: 'TCC Assets × Frasers Property' },
       { label: 'Site', value: '~104 rai at Rama IV × Wireless Road' },
@@ -94,6 +96,8 @@ export const properties: Property[] = [
     status: 'Retail opened 2025',
     read: 'Completes the Rama IV corridor with One Bangkok and Samyan Mitrtown — three projects now compete for the same office-worker lunch. Expect effective-rent softness at the corridor’s casual tier.',
     image: '/images/properties/dusit-central-park.webp',
+    imageCredit: 'Chainwit. \u00b7 CC BY 4.0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Dusit_Arun_at_Dusit_Central_Park_(07-09-2025)_-_img_02.jpg',
     facts: [
       { label: 'Developer', value: 'Dusit Thani × Central Pattana (JV)' },
       { label: 'Site', value: 'Silom × Rama IV corner, opposite Lumpini Park' },
@@ -133,6 +137,8 @@ export const properties: Property[] = [
     status: 'Open since Dec 2023',
     read: 'The EM District’s third box leans food-first — which siphons casual-tier traffic from EmQuartier’s upper floors more than it grows the district. A cautionary read for "new supply = new demand" assumptions.',
     image: '/images/properties/emsphere.webp',
+    imageCredit: 'Suicasmo \u00b7 CC BY-SA 4.0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:EmSphere_20240915.jpg',
     facts: [
       { label: 'Developer', value: 'The Mall Group (EM District)' },
       { label: 'Opened', value: 'December 2023' },
@@ -172,6 +178,8 @@ export const properties: Property[] = [
     status: 'Phased opening from 2026',
     read: 'The bet that matters for the Phra Khanong–On Nut frontier: if its creator tenancy lands, the corridor’s rent curve re-rates early. Watch pre-let announcements, not the opening date.',
     image: '/images/properties/cloud-11.webp',
+    imageCredit: 'Magnamonkun \u00b7 CC0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Cloud_11_Bangkok.jpg',
     facts: [
       { label: 'Developer', value: 'MQDC' },
       { label: 'Site', value: 'Sukhumvit south corridor, On Nut side' },
@@ -211,6 +219,9 @@ export const properties: Property[] = [
     status: 'Under construction — late-decade',
     read: 'Bangna’s catchment is real but already served. The question a term sheet here must answer: does super-scale supply grow east-side dining spend, or redistribute it at higher rent?',
     image: '/images/properties/bangkok-mall.webp',
+    imageCredit: '\u0e01\u0e2a\u0e34\u0e13\u0e18\u0e23 \u0e23\u0e32\u0e0a\u0e42\u0e2d\u0e23\u0e2a \u00b7 CC BY-SA 4.0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%99%E0%B8%B2-%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B8%94_Bangna-Trat_Road_(2).jpg',
+    imageNote: 'Bangna\u2013Trad corridor \u2014 the project\u2019s trade area, not the mall itself',
     facts: [
       { label: 'Developer', value: 'The Mall Group' },
       { label: 'Site', value: 'Bangna intersection, eastern Bangkok' },
@@ -250,6 +261,8 @@ export const properties: Property[] = [
     status: 'Open since 2023',
     read: 'The value-tier half of the ICONSIAM cluster. Thonburi\u2019s first organized-retail district now runs a two-mall system \u2014 and the F&B math differs sharply between the two boxes.',
     image: '/images/properties/ics.webp',
+    imageCredit: 'Idea Works Communications \u00b7 CC BY-SA 4.0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:ICS_Night_copy.jpg',
     facts: [
       { label: 'Developer', value: 'Siam Piwat consortium (ICONSIAM group)' },
       { label: 'Site', value: 'Charoen Nakhon Road, opposite ICONSIAM' },
@@ -289,6 +302,9 @@ export const properties: Property[] = [
     status: 'Phased — town center ramping',
     read: 'A residential-led township betting that a private forest can anchor suburban life. For F&B, the catchment is captive but thin until the homes fill \u2014 township retail runs on rooftops, not footfall projections.',
     image: '/images/properties/the-forestias.webp',
+    imageCredit: '\u0e01\u0e2a\u0e34\u0e13\u0e18\u0e23 \u0e23\u0e32\u0e0a\u0e42\u0e2d\u0e23\u0e2a \u00b7 CC BY-SA 4.0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%99%E0%B8%B2-%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B8%94_Bangna-Trat_Road_(2).jpg',
+    imageNote: 'Bangna\u2013Trad corridor \u2014 the project\u2019s corridor, not the township itself',
     facts: [
       { label: 'Developer', value: 'MQDC' },
       { label: 'Site', value: 'Bangna\u2013Trad corridor, eastern Bangkok' },
@@ -328,6 +344,8 @@ export const properties: Property[] = [
     status: 'Announced — long game',
     read: 'AWC\u2019s plan to rebuild the night-market riverfront into a full mixed-use destination. The existing Asiatique keeps trading while the vision seeks its timeline \u2014 which is precisely the read: announced is not under way.',
     image: '/images/properties/asiatique-riverfront.webp',
+    imageCredit: 'Moel81 \u00b7 CC BY-SA 4.0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Asiatique_Sky_Ferris_Wheel.jpg',
     facts: [
       { label: 'Owner', value: 'Asset World Corp (AWC)' },
       { label: 'Site', value: 'Asiatique The Riverfront, Charoenkrung riverside' },
@@ -367,6 +385,8 @@ export const properties: Property[] = [
     status: 'Renovation underway',
     read: 'The Mall Group\u2019s final move at Phrom Phong: rebuilding Emporium to match its two younger siblings. Renovation churn means tenant displacement \u2014 and displacement means negotiating leverage across the whole district.',
     image: '/images/properties/emporium.webp',
+    imageCredit: 'Chainwit. \u00b7 CC BY-SA 4.0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Emporium_Bangkok_2020.jpg',
     facts: [
       { label: 'Developer', value: 'The Mall Group' },
       { label: 'Site', value: 'Emporium, Phrom Phong \u2014 the EM District\u2019s original box' },

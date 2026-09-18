@@ -1,0 +1,31 @@
+---
+// House ads and events. Content comes from src/data/promos.ts — swapping a
+// campaign is an edit to that file, never a layout change.
+import { promoFor } from '../../data/promos';
+
+interface Props { section: string; }
+const { section } = Astro.props;
+const promo = promoFor(section);
+---
+{promo && (
+  <div class="mod">
+    <div class="promo-slug">Advertisement</div>
+    <a href={promo.href} class="promo">
+      {promo.image ? (
+        <div class="promo-panel has-image">
+          <img src={promo.image} alt={promo.title} loading="lazy" />
+        </div>
+      ) : (
+        <div class="promo-panel">
+          <div class="promo-eyebrow">{promo.eyebrow}</div>
+          <div class="promo-title">{promo.title}</div>
+          <div class="promo-when">{promo.when}</div>
+        </div>
+      )}
+      <div class="promo-foot">
+        <span>{promo.cta}</span>
+        <span>{promo.place} ↗</span>
+      </div>
+    </a>
+  </div>
+)}

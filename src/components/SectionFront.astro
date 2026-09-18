@@ -1,0 +1,58 @@
+---
+// The shell every section front shares: the section names itself, its beats
+// run as a plain row of links, then two columns — content, and a rail beside
+// it. Anything placed in the "full" slot lands below the rail, full width.
+interface Topic {
+  label: string;
+  // Omit href for a beat we cover but have not published a page for yet —
+  // it renders as plain text rather than a link that goes nowhere.
+  href?: string;
+  count?: number;
+}
+
+interface Props {
+  title: string;
+  topics?: Topic[];
+  activeTopic?: string;
+}
+
+const { title, topics = [], activeTopic } = Astro.props;
+---
+
+<section class="band">
+  <div class="container">
+    <div class="sec-title-band">
+      <h1 class="sec-title">{title}</h1>
+    </div>
+  </div>
+</section>
+
+{topics.length > 0 && (
+  <nav class="band close" aria-label={`${title} topics`}>
+    <div class="container">
+      <div class="sec-topics">
+        {topics.map((t) => {
+          const cls = `sec-topic ${t.count === 0 ? 'muted' : ''} ${t.label === activeTopic ? 'active' : ''}`;
+          return t.href
+            ? <a href={t.href} class={cls}>{t.label}</a>
+            : <span class={cls}>{t.label}</span>;
+        })}
+      </div>
+    </div>
+  </nav>
+)}
+
+<div class="band">
+  <div class="container">
+    <div class="sec-body">
+      <div class="sec-main">
+        <slot />
+      </div>
+      <aside class="sec-rail">
+        <slot name="rail" />
+      </aside>
+    </div>
+  </div>
+</div>
+
+<slot name="full" />

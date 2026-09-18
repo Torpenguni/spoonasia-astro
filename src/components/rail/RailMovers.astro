@@ -1,0 +1,38 @@
+---
+// F&B Movers — the same feed the ticker runs on, sorted by absolute move.
+// SET equities only; the commodity futures stay in the ticker.
+import { loadTickers } from '../../lib/tickers';
+import { SYMBOLS } from '../../lib/tickers';
+
+const { tickers, asOf, live } = await loadTickers();
+
+const nameFor = (label: string) =>
+  SYMBOLS.find((s) => s.label === label)?.symbol.replace('.BK', '') ?? label;
+
+const movers = tickers
+  .filter((t) => t.value.startsWith('฿'))
+  .map((t) => ({ ...t, move: Math.abs(parseFloat(t.change)) || 0 }))
+  .sort((a, b) => b.move - a.move)
+  .slice(0, 5);
+---
+<div class="mod">
+  <div class="mod-head">
+    <h2>F&B Movers</h2>
+    <a href="/data" class="mod-more">All tickers ↗</a>
+  </div>
+  <ul class="movers">
+    {movers.map((m) => (
+      <li>
+        <span class="chip">
+          <span class="chip-sym">{m.label}</span>
+          <span class="chip-px">
+            {m.value}
+            <em class={m.positive ? 'up' : 'down'} style="font-style:normal">{m.change}</em>
+          </span>
+        </span>
+        <span class="mover-name">{nameFor(m.label)} · SET</span>
+      </li>
+    ))}
+  </ul>
+  <div class="meta">{live ? `As of ${asOf} ICT · SET delayed 15 min` : 'Showing cached prices'}</div>
+</div>

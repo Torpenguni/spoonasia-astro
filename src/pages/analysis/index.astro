@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionFront from '../../components/SectionFront.astro';
+import RailSignup from '../../components/rail/RailSignup.astro';
+import RailPromo from '../../components/rail/RailPromo.astro';
+import RailTopVideo from '../../components/rail/RailTopVideo.astro';
 import { getCollection } from 'astro:content';
 import { categories } from '../../data/content';
 
 const entries = await getCollection('articles', ({ data }) => !data.draft);
-// Newest first
 entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 
 const articles = entries.map((e) => ({
   slug: e.slug,
@@ -14,403 +20,126 @@ const articles = entries.map((e) => ({
   category: e.data.category,
   tag: e.data.tag,
   author: e.data.author,
-  date: e.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+  date: fmt(e.data.date),
   readTime: e.data.readTime,
+  minutes: parseInt(e.data.readTime, 10) || 0,
 }));
 
-const featured = articles[0];
-const rest = articles.slice(1);
+// Beats run as a plain row. A beat with nothing in it still shows — the
+// muted state is more honest than hiding the fact that we cover it.
+const topics = categories
+  .map((c) => ({
+    label: c.label,
+    href: `/analysis/${c.slug}`,
+    count: articles.filter((a) => a.category === c.slug).length,
+  }))
+  .filter((t) => t.count > 0 || ['supplier-intel', 'market-entry'].includes(t.href.split('/').pop()!))
+  .sort((a, b) => b.count - a.count);
 
-const categoryCounts = categories.map((c) => ({
-  ...c,
-  count: articles.filter((a) => a.category === c.slug).length,
-}));
+// The flagship read is whichever piece runs longest — it earns the tint.
+const longRead = [...articles].sort((a, b) => b.minutes - a.minutes)[0];
+const feed = articles.filter((a) => a.slug !== longRead?.slug);
 
-const allCount = articles.length;
-const activeCategory = 'all';
-const showPagination = articles.length > 12;
+const [lead, second, third, fourth, ...rest] = feed;
+const grid = rest.slice(0, 6);
+
+const beatCards = categories
+  .filter((c) => articles.some((a) => a.category === c.slug))
+  .slice(0, 4);
 ---
 
 <BaseLayout
-  title="Analysis — SpoonAsia"
+  title="Market Analysis — SpoonAsia"
   description="Long-form F&B investment analysis for the Thailand market. Unit economics, neighborhood alpha, market entry, and supplier intel — 3,000–4,000 word reports."
 >
-  <section class="decoded-head">
-    <div class="container-narrow">
-      <div class="section-tag">▍ Analysis</div>
-      <h1 class="decoded-title">Long-form F&B analysis</h1>
-      <p class="decoded-dek">
-        <em>
-          Each report runs 3,000–4,000 words with unit economics, neighborhood
-          analysis, and decision frameworks for foreign operators evaluating Thailand.
-        </em>
-      </p>
-    </div>
-  </section>
+  <SectionFront title="Market Analysis" topics={topics}>
 
-  <nav class="cat-filter" aria-label="Categories">
-    <div class="container">
-      <div class="cat-filter-inner">
-        <a
-          href="/analysis"
-          class={activeCategory === 'all' ? 'cat-chip active' : 'cat-chip'}
-        >
-          All <span class="cat-count">({allCount})</span>
-        </a>
-        {
-          categoryCounts.map((c) => {
-            const cls =
-              c.count === 0 ? 'cat-chip disabled' : 'cat-chip';
-            return c.count === 0 ? (
-              <span class={cls}>
-                {c.label} <span class="cat-count">({c.count})</span>
-              </span>
-            ) : (
-              <a href={`/analysis/${c.slug}`} class={cls}>
-                {c.label} <span class="cat-count">({c.count})</span>
-              </a>
-            );
-          })
-        }
-      </div>
-    </div>
-  </nav>
-
-  <section class="featured-wrap">
-    <div class="container">
-      <article class="featured">
-        <div class="featured-image" aria-hidden="true"></div>
-        <div class="featured-body">
-          <a href={`/analysis/${featured.category}`} class="tag">
-            {featured.tag}
+    {lead && (
+      <div class="hero">
+        <article>
+          <a href={`/analysis/${lead.slug}`}>
+            <div class="well hero-well" aria-hidden="true"></div>
           </a>
-          <h2 class="featured-h">
-            <a href={`/analysis/${featured.slug}`}>{featured.title}</a>
-          </h2>
-          <p class="featured-dek">{featured.dek}</p>
-          <div class="meta">
-            <span>{featured.date}</span>
-            <span class="meta-sep">·</span>
-            <span>{featured.readTime}</span>
-            <span class="meta-sep">·</span>
-            <span>By {featured.author}</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
+          <span class="credit">{lead.author}</span>
+          <span class="kicker">{lead.tag} · {lead.readTime}</span>
+          <h2 class="hero-head"><a href={`/analysis/${lead.slug}`}>{lead.title}</a></h2>
+          <p class="dek">{lead.dek}</p>
+          <div class="meta">{lead.date}</div>
+        </article>
 
-  <section class="grid-wrap">
-    <div class="container">
-      <div class="grid-head">
-        <div class="section-tag">▍ All reports</div>
-      </div>
-
-      <div class="grid">
-        {
-          rest.map((a) => (
-            <article class="card">
-              <a href={`/analysis/${a.category}`} class="tag">
-                {a.tag}
+        <div>
+          {second && (
+            <article>
+              <a href={`/analysis/${second.slug}`}>
+                <div class="well side-well" aria-hidden="true"></div>
               </a>
-              <h3 class="card-h">
-                <a href={`/analysis/${a.slug}`}>{a.title}</a>
-              </h3>
-              <p class="card-dek-text">{a.dek}</p>
-              <div class="meta">
-                <span>{a.date}</span>
-                <span class="meta-sep">·</span>
-                <span>{a.readTime}</span>
-              </div>
+              <span class="kicker tight">{second.tag}</span>
+              <h3 class="side-head"><a href={`/analysis/${second.slug}`}>{second.title}</a></h3>
             </article>
-          ))
-        }
+          )}
+          <ul class="side-list">
+            {[third, fourth].filter(Boolean).map((a) => (
+              <li><h4><a href={`/analysis/${a.slug}`}>{a.title}</a></h4></li>
+            ))}
+          </ul>
+        </div>
       </div>
+    )}
 
-      {
-        showPagination && (
-          <nav class="pagination" aria-label="Pagination">
-            <span class="pag-link disabled">← Previous</span>
-            <span class="pag-pos">1 / 1</span>
-            <span class="pag-link disabled">Next →</span>
-          </nav>
-        )
-      }
+    {longRead && (
+      <div class="feature tinted">
+        <div>
+          <a href={`/analysis/${longRead.slug}`}>
+            <div class="well feature-well" aria-hidden="true"></div>
+          </a>
+        </div>
+        <div>
+          <div class="feature-label">The Long Read</div>
+          <h3 class="feature-head">
+            <a href={`/analysis/${longRead.slug}`}>{longRead.title}</a>
+          </h3>
+          <p class="dek">{longRead.dek}</p>
+          <div class="meta">{longRead.author} · {longRead.date} · {longRead.readTime}</div>
+        </div>
+      </div>
+    )}
+
+    {grid.length > 0 && (
+      <div class="grid3">
+        {grid.map((a) => (
+          <article>
+            <a href={`/analysis/${a.slug}`}>
+              <div class="well grid-well" aria-hidden="true"></div>
+            </a>
+            <span class="kicker tight">{a.tag}</span>
+            <h3><a href={`/analysis/${a.slug}`}>{a.title}</a></h3>
+          </article>
+        ))}
+      </div>
+    )}
+
+    <Fragment slot="rail">
+      <RailSignup />
+      <RailPromo section="analysis" />
+      <RailTopVideo />
+    </Fragment>
+
+    <div slot="full" class="band close">
+      <div class="container">
+        <div class="zone-label">Start with a beat</div>
+        <div class="grid4">
+          {beatCards.map((c) => (
+            <article>
+              <a href={`/analysis/${c.slug}`}>
+                <div class="well grid-well" aria-hidden="true"></div>
+              </a>
+              <h3><a href={`/analysis/${c.slug}`}>{c.label}</a></h3>
+              <p class="dek">{c.description.split('.')[0]}.</p>
+            </article>
+          ))}
+        </div>
+      </div>
     </div>
-  </section>
+
+  </SectionFront>
 </BaseLayout>
-
-<style>
-  .section-tag {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-
-  /* ========== HEAD ========== */
-  .decoded-head {
-    padding: 40px 0 24px;
-  }
-
-  .decoded-title {
-    font-family: var(--font-sans);
-    font-size: clamp(28px, 3.8vw, 44px);
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    color: var(--ink);
-    margin-bottom: 22px;
-  }
-
-  .decoded-dek {
-    font-family: var(--font-serif);
-    font-size: clamp(18px, 2vw, 22px);
-    line-height: 1.5;
-    color: var(--ink-soft);
-    max-width: 620px;
-  }
-  .decoded-dek em {
-    font-style: italic;
-  }
-
-  /* ========== CATEGORY FILTER ========== */
-  .cat-filter {
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    background: var(--paper);
-  }
-
-  .cat-filter-inner {
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .cat-filter-inner::-webkit-scrollbar { display: none; }
-
-  .cat-chip {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    padding: 14px 16px;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    transition: color 0.15s ease, border-color 0.15s ease;
-  }
-  .cat-chip:first-child { padding-left: 0; }
-  .cat-chip:hover {
-    color: var(--ink);
-  }
-  .cat-chip.active {
-    color: var(--ink);
-    border-bottom-color: var(--accent);
-  }
-  .cat-chip.disabled {
-    color: var(--ink-mute);
-    cursor: default;
-    pointer-events: none;
-  }
-  .cat-count {
-    color: var(--ink-faint);
-    margin-left: 2px;
-  }
-  .cat-chip.active .cat-count { color: var(--accent); }
-
-  /* ========== FEATURED ========== */
-  .featured-wrap {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .featured {
-    display: grid;
-    grid-template-columns: 1fr 1.05fr;
-    gap: 48px;
-    align-items: center;
-  }
-
-  .featured-image {
-    width: 100%;
-    aspect-ratio: 4/3;
-    background: var(--well);
-    order: 2;
-  }
-
-  .featured-body {
-    order: 1;
-  }
-
-  .tag {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: none;
-    margin-bottom: 14px;
-  }
-  .tag:hover { color: var(--accent-deep); }
-
-  .featured-h {
-    font-family: var(--font-serif);
-    font-size: clamp(28px, 3.4vw, 40px);
-    font-weight: 500;
-    line-height: 1.12;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-    margin-bottom: 16px;
-  }
-  .featured-h a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: none;
-    transition: color 0.15s ease;
-  }
-  .featured-h a:hover { color: var(--accent); }
-
-  .featured-dek {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin-bottom: 22px;
-  }
-
-  .meta {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .meta-sep {
-    color: var(--ink-mute);
-  }
-
-  /* ========== GRID ========== */
-  .grid-wrap {
-    padding: 48px 0 80px;
-  }
-
-  .grid-head {
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--rule-hard);
-  }
-  .grid-head .section-tag {
-    margin-bottom: 0;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-  }
-
-  .card {
-    padding: 28px 0;
-    border-top: 1px solid var(--rule);
-  }
-  /* Hide hairline on first row to avoid double border w/ grid-head */
-  .card:nth-child(1),
-  .card:nth-child(2) {
-    border-top: none;
-    padding-top: 8px;
-  }
-  /* Add divider between columns */
-  .card:nth-child(odd) {
-    padding-right: 32px;
-    border-right: 1px solid var(--rule);
-  }
-  .card:nth-child(even) {
-    padding-left: 32px;
-  }
-
-  .card-h {
-    font-family: var(--font-serif);
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 1.22;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin: 4px 0 10px;
-  }
-  .card-h a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: none;
-    transition: color 0.15s ease;
-  }
-  .card-h a:hover { color: var(--accent); }
-
-  .card-dek-text {
-    font-family: var(--font-serif);
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin-bottom: 14px;
-  }
-
-  /* ========== PAGINATION ========== */
-  .pagination {
-    margin-top: 48px;
-    padding-top: 24px;
-    border-top: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .pag-link {
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: none;
-  }
-  .pag-link.disabled {
-    color: var(--ink-mute);
-    cursor: default;
-  }
-  .pag-pos {
-    color: var(--ink-soft);
-  }
-
-  /* ========== RESPONSIVE ========== */
-  @media (max-width: 900px) {
-    .decoded-head { padding: 48px 0 32px; }
-    .featured {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    .featured-image { order: 1; aspect-ratio: 16/10; }
-    .featured-body { order: 2; }
-
-    .grid {
-      grid-template-columns: 1fr;
-    }
-    .card:nth-child(odd),
-    .card:nth-child(even) {
-      padding-left: 0;
-      padding-right: 0;
-      border-right: none;
-    }
-    .card:nth-child(1) { border-top: none; padding-top: 8px; }
-    .card:nth-child(2) {
-      border-top: 1px solid var(--rule);
-      padding-top: 28px;
-    }
-  }
-</style>

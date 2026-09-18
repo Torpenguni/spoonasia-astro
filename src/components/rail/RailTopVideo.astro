@@ -1,0 +1,24 @@
+---
+// Top Videos — the newest episode. Left off the Videos front itself.
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('videos', ({ data }) => !data.draft);
+entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const v = entries[0];
+---
+{v && (
+  <div class="mod rail-video">
+    <div class="mod-head">
+      <h2>Top Videos</h2>
+      <a href="/videos" class="mod-more">All ↗</a>
+    </div>
+    <a href={`/videos/${v.slug}`}>
+      <div class="well rail-video-well" aria-hidden="true">
+        <span class="play">▶</span>
+        <span class="dur">{v.data.duration}</span>
+      </div>
+      <span class="kicker tight">Ep. {v.data.episode} · {v.data.views} views</span>
+      <h3>{v.data.title}</h3>
+    </a>
+  </div>
+)}

@@ -1,152 +1,153 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionFront from '../components/SectionFront.astro';
+import RailSignup from '../components/rail/RailSignup.astro';
+import RailPromo from '../components/rail/RailPromo.astro';
+import RailMovers from '../components/rail/RailMovers.astro';
 import { getCollection } from 'astro:content';
+import { loadTickers } from '../lib/tickers';
 
 const entries = await getCollection('market-watch', ({ data }) => !data.draft);
 entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 
 const stories = entries.map((e) => ({
   slug: e.slug,
   headline: e.data.headline,
   dek: e.data.dek,
   tag: e.data.tag,
-  date: e.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+  date: fmt(e.data.date),
+}));
+
+const [lead, second, ...rest] = stories;
+
+const topics = [
+  { label: 'Daily Brief', href: '/market-watch/daily' },
+  { label: 'Weekly Wrap', href: '/market-watch/weekly' },
+  { label: 'Deals', href: '/market-watch/deals' },
+  { label: 'Market Entry', href: '/market-watch/market-entry' },
+  { label: 'Operators', href: '/market-watch/operators' },
+];
+
+// Data Point band — the same feed the ticker runs on, ranked by the size of
+// the move. Nothing here is written by hand.
+const { tickers, asOf, live } = await loadTickers();
+const movers = tickers
+  .filter((t) => t.value.startsWith('฿'))
+  .map((t) => ({ ...t, move: Math.abs(parseFloat(t.change)) || 0 }))
+  .sort((a, b) => b.move - a.move)
+  .slice(0, 4);
+const peak = movers[0]?.move || 1;
+const topMover = movers[0];
+
+// Cross-link into the long-form desk once the rail has ended.
+const articleEntries = await getCollection('articles', ({ data }) => !data.draft);
+articleEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const fromAnalysis = articleEntries.slice(0, 4).map((e) => ({
+  slug: e.slug,
+  title: e.data.title,
+  tag: e.data.tag,
 }));
 ---
 
 <BaseLayout
-  title="Market Watch — SpoonAsia"
+  title="News — SpoonAsia"
   description="Quick takes on Thai F&B. News, observations, and short analysis. Faster than Analysis, shorter than a report."
 >
-  <section class="stories-head">
-    <div class="container-narrow">
-      <div class="section-tag">▍ Market Watch</div>
-      <h1 class="stories-title">Quick takes on Thai F&B</h1>
-      <p class="stories-dek">
-        <em>
-          News, observations, and short analysis.
-          Faster than Analysis, shorter than a report.
-        </em>
-      </p>
-    </div>
-  </section>
+  <SectionFront title="News" topics={topics}>
 
-  <section class="stories-list-wrap">
-    <div class="container-narrow">
-      <ol class="story-list">
-        {
-          stories.map((s) => (
-            <li class="story-item">
-              <a href={`/market-watch/${s.slug}`} class="story-link">
-                <div class="story-tag">{s.tag}</div>
-                <h2 class="story-h">{s.headline}</h2>
-                <p class="story-dek-text">{s.dek}</p>
-                <div class="story-meta">{s.date}</div>
+    {lead && (
+      <div class="hero">
+        <article>
+          <a href={`/market-watch/${lead.slug}`}>
+            <div class="well hero-well" aria-hidden="true"></div>
+          </a>
+          <span class="credit">SpoonAsia Desk</span>
+          <span class="kicker">{lead.tag}</span>
+          <h2 class="hero-head"><a href={`/market-watch/${lead.slug}`}>{lead.headline}</a></h2>
+          <p class="dek">{lead.dek}</p>
+          <div class="meta">{lead.date}</div>
+        </article>
+
+        <div>
+          {second && (
+            <article>
+              <a href={`/market-watch/${second.slug}`}>
+                <div class="well side-well" aria-hidden="true"></div>
               </a>
-            </li>
-          ))
-        }
-      </ol>
+              <span class="kicker tight">{second.tag}</span>
+              <h3 class="side-head"><a href={`/market-watch/${second.slug}`}>{second.headline}</a></h3>
+            </article>
+          )}
+          {rest.length > 0 && (
+            <ul class="side-list">
+              {rest.map((s) => (
+                <li><h4><a href={`/market-watch/${s.slug}`}>{s.headline}</a></h4></li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    )}
+
+    {topMover && (
+      <div class="datafeat">
+        <div>
+          <h3 class="chart-title">Biggest F&B moves today</h3>
+          <div class="chart-note">SET · % change · {live ? `${asOf} ICT` : 'cached'}</div>
+          <div class="bars">
+            {movers.map((m) => (
+              <div class="bar-col">
+                <span class={`bar-val ${m.positive ? 'up' : 'down'}`}>{m.change}</span>
+                <span
+                  class={`bar ${m.positive ? 'up' : 'down'}`}
+                  style={`height:${Math.max(4, (m.move / peak) * 100)}%`}
+                ></span>
+                <span class="bar-label">{m.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div class="feature-label">Data Point</div>
+          <h3 class="feature-head">
+            {topMover.label} leads the F&B board at {topMover.change}
+          </h3>
+          <p class="dek">
+            The four biggest movers on the SET F&B names, ranked by the size of the move
+            rather than direction. The board refreshes every 15 minutes.
+          </p>
+          <div class="meta">
+            <a href="/data">Full ticker table →</a>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <Fragment slot="rail">
+      <RailSignup />
+      <RailPromo section="news" />
+      <RailMovers />
+    </Fragment>
+
+    <div slot="full" class="band close">
+      <div class="container">
+        <div class="zone-label">From Market Analysis</div>
+        <div class="grid4">
+          {fromAnalysis.map((a) => (
+            <article>
+              <a href={`/analysis/${a.slug}`}>
+                <div class="well grid-well" aria-hidden="true"></div>
+              </a>
+              <span class="kicker tight">{a.tag}</span>
+              <h3><a href={`/analysis/${a.slug}`}>{a.title}</a></h3>
+            </article>
+          ))}
+        </div>
+      </div>
     </div>
-  </section>
+
+  </SectionFront>
 </BaseLayout>
-
-<style>
-  .section-tag {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-
-  .stories-head {
-    padding: 40px 0 24px;
-  }
-  .stories-title {
-    font-family: var(--font-sans);
-    font-size: clamp(28px, 3.8vw, 44px);
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    color: var(--ink);
-    margin-bottom: 22px;
-  }
-  .stories-dek {
-    font-family: var(--font-serif);
-    font-size: clamp(18px, 2vw, 22px);
-    line-height: 1.5;
-    color: var(--ink-soft);
-    max-width: 620px;
-  }
-  .stories-dek em { font-style: italic; }
-
-  .stories-list-wrap {
-    padding: 24px 0 80px;
-  }
-
-  .story-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .story-item {
-    border-top: 1px solid var(--rule);
-  }
-  .story-item:last-child {
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .story-link {
-    display: block;
-    padding: 26px 0;
-    text-decoration: none;
-    border-bottom: none;
-    color: inherit;
-    transition: background 0.15s ease;
-  }
-
-  .story-tag {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
-  }
-
-  .story-h {
-    font-family: var(--font-serif);
-    font-size: clamp(22px, 2.6vw, 28px);
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-    margin: 0 0 10px;
-    transition: color 0.15s ease;
-  }
-  .story-link:hover .story-h { color: var(--accent); }
-
-  .story-dek-text {
-    font-family: var(--font-serif);
-    font-size: 16px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin-bottom: 14px;
-  }
-
-  .story-meta {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-
-  @media (max-width: 900px) {
-    .stories-head { padding: 48px 0 32px; }
-    .story-link { padding: 22px 0; }
-  }
-</style>

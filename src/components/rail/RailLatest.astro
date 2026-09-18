@@ -1,0 +1,45 @@
+---
+// Latest — market-watch and analysis merged, newest first, with the age of
+// each item in terracotta the way a wire desk marks a fresh line.
+import { getCollection } from 'astro:content';
+
+interface Props { limit?: number; }
+const { limit = 5 } = Astro.props;
+
+const [watch, articles] = await Promise.all([
+  getCollection('market-watch', ({ data }) => !data.draft),
+  getCollection('articles', ({ data }) => !data.draft),
+]);
+
+const items = [
+  ...watch.map((e) => ({ title: e.data.headline, date: e.data.date, href: `/market-watch/${e.slug}` })),
+  ...articles.map((e) => ({ title: e.data.title, date: e.data.date, href: `/analysis/${e.slug}` })),
+]
+  .sort((a, b) => b.date.getTime() - a.date.getTime())
+  .slice(0, limit);
+
+// Newest item is the clock: everything else is aged relative to it, so the
+// list still reads correctly on a static build.
+const newest = items[0]?.date.getTime() ?? Date.now();
+function age(d: Date): string {
+  const hours = Math.round((newest - d.getTime()) / 3_600_000);
+  if (hours < 1) return 'New';
+  if (hours < 24) return `${hours} h`;
+  const days = Math.round(hours / 24);
+  return days < 7 ? `${days} d` : `${Math.round(days / 7)} w`;
+}
+---
+<div class="mod">
+  <div class="mod-head">
+    <h2>Latest</h2>
+    <a href="/market-watch" class="mod-more">See all ↗</a>
+  </div>
+  <ul class="latest">
+    {items.map((i) => (
+      <li>
+        <span class="latest-age">{age(i.date)}</span>
+        <h4><a href={i.href}>{i.title}</a></h4>
+      </li>
+    ))}
+  </ul>
+</div>

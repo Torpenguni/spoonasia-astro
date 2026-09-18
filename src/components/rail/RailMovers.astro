@@ -1,23 +1,33 @@
 ---
 // F&B Movers — the same feed the ticker runs on, sorted by absolute move.
-// SET equities only; the commodity futures stay in the ticker.
-import { loadTickers } from '../../lib/tickers';
-import { SYMBOLS } from '../../lib/tickers';
+// Pass a group to narrow it: the Supplier Intel front shows only the names
+// that sell into kitchens, News shows the whole board.
+import { loadTickers, SYMBOLS, type Group } from '../../lib/tickers';
+
+interface Props {
+  group?: Group;
+  title?: string;
+  limit?: number;
+}
+const { group, title = 'F&B Movers', limit = 5 } = Astro.props;
 
 const { tickers, asOf, live } = await loadTickers();
 
-const nameFor = (label: string) =>
-  SYMBOLS.find((s) => s.label === label)?.symbol.replace('.BK', '') ?? label;
+const meta = new Map(SYMBOLS.map((s) => [s.label, s]));
 
 const movers = tickers
-  .filter((t) => t.value.startsWith('฿'))
-  .map((t) => ({ ...t, move: Math.abs(parseFloat(t.change)) || 0 }))
+  .filter((t) => {
+    const cfg = meta.get(t.label);
+    if (!cfg || cfg.group === 'commodity') return false;
+    return group ? cfg.group === group : true;
+  })
+  .map((t) => ({ ...t, move: Math.abs(parseFloat(t.change)) || 0, supplies: meta.get(t.label)?.supplies }))
   .sort((a, b) => b.move - a.move)
-  .slice(0, 5);
+  .slice(0, limit);
 ---
 <div class="mod">
   <div class="mod-head">
-    <h2>F&B Movers</h2>
+    <h2>{title}</h2>
     <a href="/data" class="mod-more">All tickers ↗</a>
   </div>
   <ul class="movers">
@@ -30,7 +40,7 @@ const movers = tickers
             <em class={m.positive ? 'up' : 'down'} style="font-style:normal">{m.change}</em>
           </span>
         </span>
-        <span class="mover-name">{nameFor(m.label)} · SET</span>
+        <span class="mover-name">{m.supplies ?? 'SET'}</span>
       </li>
     ))}
   </ul>

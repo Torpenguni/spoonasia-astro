@@ -3,6 +3,7 @@
 import YahooFinance from 'yahoo-finance2';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { SYMBOLS as RAW_SYMBOLS } from './symbols.mjs';
 
 const yahooFinance = new YahooFinance({ suppressNotices: ['yahooSurvey'] });
 
@@ -19,41 +20,23 @@ export type TickerPayload = {
   live: boolean;
 };
 
-type SymbolConfig = {
+export type Group =
+  | 'operator'      // restaurant groups
+  | 'brand'         // consumer F&B brands
+  | 'supplier'      // sells into kitchens: protein, ingredients, oils, sugar, drinks
+  | 'distribution'  // wholesale and the channels operators buy through
+  | 'commodity';
+
+export type SymbolConfig = {
   symbol: string;
   label: string;
   currency: 'THB' | 'USD';
+  group: Group;
+  // What it actually supplies. Shown on the Supplier Intel board.
+  supplies?: string;
 };
 
-export const SYMBOLS: SymbolConfig[] = [
-  // Restaurant operators
-  { symbol: 'MINT.BK',    label: 'MINT',     currency: 'THB' },
-  { symbol: 'CENTEL.BK',  label: 'CENTEL',   currency: 'THB' },
-  { symbol: 'M.BK',       label: 'M (MK)',   currency: 'THB' },
-  { symbol: 'AU.BK',      label: 'AU',       currency: 'THB' },
-  { symbol: 'ZEN.BK',     label: 'ZEN',      currency: 'THB' },
-  { symbol: 'MAGURO.BK',  label: 'MAGURO',   currency: 'THB' },
-  { symbol: 'SNP.BK',     label: 'S&P',      currency: 'THB' },
-  // Beverages & snacks (consumer F&B brands)
-  { symbol: 'CBG.BK',     label: 'CBG',      currency: 'THB' },
-  { symbol: 'OSP.BK',     label: 'OSP',      currency: 'THB' },
-  { symbol: 'ICHI.BK',    label: 'ICHI',     currency: 'THB' },
-  { symbol: 'SAPPE.BK',   label: 'SAPPE',    currency: 'THB' },
-  { symbol: 'TKN.BK',     label: 'TKN',      currency: 'THB' },
-  // Food giants, distribution & ingredients
-  { symbol: 'TFMAMA.BK',  label: 'TFMAMA',   currency: 'THB' },
-  { symbol: 'CPF.BK',     label: 'CPF',      currency: 'THB' },
-  { symbol: 'CPALL.BK',   label: 'CPALL',    currency: 'THB' },
-  { symbol: 'TU.BK',      label: 'TU',       currency: 'THB' },
-  { symbol: 'CPAXT.BK',   label: 'CPAXT',    currency: 'THB' },
-  { symbol: 'GFPT.BK',    label: 'GFPT',     currency: 'THB' },
-  { symbol: 'NRF.BK',     label: 'NRF',      currency: 'THB' },
-  { symbol: 'PB.BK',      label: 'PB',       currency: 'THB' },
-  // Commodities relevant to F&B operators
-  { symbol: 'KC=F',       label: 'Coffee C', currency: 'USD' },
-  { symbol: 'ZW=F',       label: 'Wheat',    currency: 'USD' },
-  { symbol: 'SB=F',       label: 'Sugar #11', currency: 'USD' },
-];
+export const SYMBOLS: SymbolConfig[] = RAW_SYMBOLS as SymbolConfig[];
 
 // Mock fallback — used if Yahoo Finance is unreachable AND no cached JSON exists
 const FALLBACK: Ticker[] = [
@@ -108,18 +91,20 @@ export async function fetchLiveTickers(): Promise<TickerPayload> {
     const results = await yahooFinance.quote(SYMBOLS.map(s => s.symbol));
     const resultMap = new Map(results.map(r => [r.symbol, r]));
 
-    const tickers: Ticker[] = SYMBOLS.map(cfg => {
+    const tickers: Ticker[] = SYMBOLS.flatMap(cfg => {
       const r = resultMap.get(cfg.symbol);
       if (!r || r.regularMarketPrice == null) {
-        return FALLBACK.find(f => f.label === cfg.label) ?? FALLBACK[0];
+        // Never substitute another company's numbers under this label.
+        const cached = FALLBACK.find(f => f.label === cfg.label);
+        return cached ? [cached] : [];
       }
       const pct = r.regularMarketChangePercent ?? 0;
-      return {
+      return [{
         label: cfg.label,
         value: format(r.regularMarketPrice, cfg.currency),
         change: formatChange(pct),
         positive: pct >= 0,
-      };
+      }];
     });
 
     return { tickers, asOf, live: true };

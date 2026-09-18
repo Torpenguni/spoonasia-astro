@@ -4,51 +4,166 @@ import SectionFront from '../components/SectionFront.astro';
 import RailSignup from '../components/rail/RailSignup.astro';
 import RailPromo from '../components/rail/RailPromo.astro';
 import RailMovers from '../components/rail/RailMovers.astro';
+import { loadTickers, SYMBOLS } from '../lib/tickers';
 
+// The supplier board: every listed Thai company in our coverage that sells
+// into a kitchen, priced off the same feed the ticker runs on.
+const { tickers, asOf, live } = await loadTickers();
+const priced = new Map(tickers.map((t) => [t.label, t]));
+
+const board = SYMBOLS.filter((s) => s.group === 'supplier').map((s) => ({
+  label: s.label,
+  supplies: s.supplies ?? '',
+  quote: priced.get(s.label),
+}));
+
+// Editorial pipeline — what the desk is researching, not what is published.
 const watchlist = [
   { tag: 'Importers', name: 'The Thai specialty coffee duopoly', note: 'Two firms control 78% of single-origin bean flow. Volume share, origin breakdown, exclusive estate relationships.' },
   { tag: 'Distribution', name: 'Cold-chain operators serving Bangkok F&B', note: 'Who moves dairy, seafood, frozen proteins. Reliability scores by zone, capacity constraints, pricing transparency.' },
-  { tag: 'Packaging', name: 'Sustainable F&B packaging \u2014 supply vs hype', note: 'PLA, sugarcane bagasse, mushroom mycelium \u2014 which are actually shipping at scale to Thai operators.' },
-  { tag: 'Equipment', name: 'Kitchen equipment imports \u2014 Japan vs Italy vs Thai-made', note: 'Lead times, service network coverage, total cost of ownership across the three main supplier origins.' },
+  { tag: 'Packaging', name: 'Sustainable F&B packaging — supply vs hype', note: 'PLA, sugarcane bagasse, mushroom mycelium — which are actually shipping at scale to Thai operators.' },
+  { tag: 'Equipment', name: 'Kitchen equipment imports — Japan vs Italy vs Thai-made', note: 'Lead times, service network coverage, total cost of ownership across the three main supplier origins.' },
   { tag: 'Ingredients', name: 'Specialty wagyu and premium beef flow into Bangkok', note: 'Australian, Japanese, US import volumes. Mark-up structure from import point to restaurant kitchen.' },
   { tag: 'OEM', name: 'Who manufactures for the chains — Thailand’s contract producers', note: 'The OEM plants behind private-label sauces, broths, and frozen lines. Capacity, MOQs, and which chains they already serve.' },
   { tag: 'Central Kitchens', name: 'Make-or-buy: the central kitchen math', note: 'When a chain should build its own commissary vs contract out. Break-even outlet counts, capex, and the margin swing either way.' },
 ];
 
-const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
+const topics = [
+  { label: 'Protein & Seafood' },
+  { label: 'Ingredients' },
+  { label: 'Oils & Fats' },
+  { label: 'Sugar' },
+  { label: 'Produce' },
+  { label: 'Beverage Supply' },
+].map((t) => ({ ...t, count: 0 }));
 ---
 
 <BaseLayout
   title="Supplier Intel — SpoonAsia"
-  description="The supply chains feeding Thailand's F&B economy — importers, distributors, equipment vendors, OEM and contract manufacturers, and the duopolies hiding in plain sight."
+  description="The supply chains feeding Thailand's F&B economy — listed suppliers priced live off the SET, plus importers, distributors, equipment vendors, and the OEM plants that manufacture for the chains."
 >
   <SectionFront title="Supplier Intel" topics={topics}>
 
     <div class="notice">
-      <div class="notice-label">In production</div>
+      <div class="notice-label">The supplier board</div>
       <p class="notice-text">
-        Supplier Intel covers the whole chain behind the service sector —
-        importers, distributors, equipment, and the OEM plants that
-        manufacture for the chains. Launches Q3 2026; the pipeline is below.
-        Subscribe to <a href="/newsletter">The Dispatch</a> for supplier briefs as they publish.
+        Every listed Thai company in our coverage that sells into a kitchen,
+        priced off the same feed as the ticker. Coverage runs the whole chain
+        behind the service sector — importers, distributors, equipment, and
+        the OEM plants that manufacture for the chains. Written coverage
+        launches Q3 2026 — the research pipeline is below the board.
       </p>
     </div>
 
-    <div class="watchlist">
-      {watchlist.map((w) => (
-        <article>
-          <span class="kicker">{w.tag}</span>
-          <h3>{w.name}</h3>
-          <p class="dek">{w.note}</p>
-        </article>
-      ))}
+    <div class="board-wrap">
+      <table class="board">
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Supplies</th>
+            <th class="num">Last</th>
+            <th class="num">Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          {board.map((b) => (
+            <tr>
+              <th scope="row">{b.label}</th>
+              <td class="supplies">{b.supplies}</td>
+              <td class="num">{b.quote?.value ?? '—'}</td>
+              <td class={`num ${b.quote ? (b.quote.positive ? 'up' : 'down') : ''}`}>
+                {b.quote?.change ?? '—'}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="meta board-meta">
+      {board.length} listed suppliers · {live ? `as of ${asOf} ICT · SET delayed 15 min` : 'cached prices'}
+    </div>
+
+    <div class="pipeline">
+      <div class="label-bar">
+        <h2 class="section-tag">Research pipeline</h2>
+        <span class="label-more">{watchlist.length} briefs</span>
+      </div>
+      <div class="watchlist">
+        {watchlist.map((w) => (
+          <article>
+            <span class="kicker">{w.tag}</span>
+            <h3>{w.name}</h3>
+            <p class="dek">{w.note}</p>
+          </article>
+        ))}
+      </div>
     </div>
 
     <Fragment slot="rail">
       <RailSignup />
       <RailPromo section="supplier-intel" />
-      <RailMovers />
+      <RailMovers group="supplier" title="Supplier movers" />
     </Fragment>
 
   </SectionFront>
 </BaseLayout>
+
+<style>
+  .board-wrap { overflow-x: auto; }
+
+  .board {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 520px;
+  }
+
+  .board th,
+  .board td {
+    text-align: left;
+    padding: 10px 14px 10px 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: baseline;
+  }
+
+  .board thead th {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    border-bottom-color: var(--rule-hard);
+    padding-bottom: 9px;
+  }
+
+  .board tbody th {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    width: 92px;
+  }
+
+  .board .supplies { color: var(--ink-soft); line-height: 1.4; }
+
+  .board .num {
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    padding-right: 0;
+    width: 88px;
+  }
+
+  .board .num.up { color: var(--up); }
+  .board .num.down { color: var(--down); }
+
+  .board tbody tr:last-child th,
+  .board tbody tr:last-child td { border-bottom: none; }
+
+  .board-meta { margin-top: 12px; }
+
+  .pipeline { margin-top: 36px; }
+</style>

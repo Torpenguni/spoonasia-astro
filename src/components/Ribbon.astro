@@ -1,6 +1,9 @@
 ---
 import { loadTickers } from '../lib/tickers';
 const { tickers, asOf, live } = await loadTickers();
+
+// ~2.8s per quote keeps the scroll readable however many symbols we track.
+const scrollSeconds = Math.max(60, Math.round(tickers.length * 2.8));
 ---
 
 <div class="ticker-bar" data-ticker-bar>
@@ -10,7 +13,7 @@ const { tickers, asOf, live } = await loadTickers();
       {live ? `AS OF ${asOf} ICT` : 'CACHED'}
     </div>
     <div class="ticker-track">
-      <div class="ticker-content" data-ticker-content>
+      <div class="ticker-content" data-ticker-content style={`animation-duration:${scrollSeconds}s`}>
         {tickers.map(t => (
           <div class="ticker-item">
             <span class="ticker-name">{t.label}</span>
@@ -67,7 +70,10 @@ const { tickers, asOf, live } = await loadTickers();
 
       const content = document.querySelector<HTMLElement>('[data-ticker-content]');
       const asOf = document.querySelector<HTMLElement>('[data-ticker-asof]');
-      if (content) content.innerHTML = renderItems(data.tickers);
+      if (content) {
+        content.innerHTML = renderItems(data.tickers);
+        content.style.animationDuration = `${Math.max(60, Math.round(data.tickers.length * 2.8))}s`;
+      }
       if (asOf) asOf.textContent = data.live ? `AS OF ${data.asOf} ICT` : 'CACHED';
     } catch {
       // Network error — silently keep current values
@@ -132,7 +138,7 @@ const { tickers, asOf, live } = await loadTickers();
   .ticker-content {
     display: flex;
     gap: 0;
-    animation: ticker-scroll 70s linear infinite;
+    animation: ticker-scroll 70s linear infinite; /* duration set inline from the quote count */
     white-space: nowrap;
     width: max-content;
   }

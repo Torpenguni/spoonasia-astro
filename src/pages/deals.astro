@@ -6,18 +6,27 @@ import RailPromo from '../components/rail/RailPromo.astro';
 import RailMovers from '../components/rail/RailMovers.astro';
 import { getCollection } from 'astro:content';
 
-// Deal coverage has one published report so far — the investment beat. It
-// leads, and the watchlist carries the rest of the page.
-const entries = await getCollection(
-  'articles',
-  ({ data }) => !data.draft && ['deals', 'investment'].includes(data.category),
-);
-entries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
+// The deals front runs Bloomberg-style: a hero up top, then full-width
+// themed bands below the rail — a different rhythm from every other
+// section, which is the point.
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 
-const articles = entries.map((e) => ({
+const dealEntries = await getCollection(
+  'articles',
+  ({ data }) => !data.draft && ['deals', 'investment'].includes(data.category),
+);
+dealEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const capitalEntries = await getCollection(
+  'articles',
+  ({ data }) =>
+    !data.draft &&
+    ['investment', 'operators', 'unit-economics', 'market-entry'].includes(data.category),
+);
+capitalEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const flat = (e: (typeof capitalEntries)[number]) => ({
   slug: e.slug,
   title: e.data.title,
   dek: e.data.dek,
@@ -25,9 +34,22 @@ const articles = entries.map((e) => ({
   author: e.data.author,
   date: fmt(e.data.date),
   readTime: e.data.readTime,
-}));
+});
 
-const [lead] = articles;
+const [lead] = dealEntries.map(flat);
+const capital = capitalEntries
+  .map(flat)
+  .filter((a) => a.slug !== lead?.slug)
+  .slice(0, 4);
+
+const newsEntries = await getCollection('market-watch', ({ data }) => !data.draft);
+newsEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const news = newsEntries.slice(0, 4).map((e) => ({
+  slug: e.slug,
+  headline: e.data.headline,
+  tag: e.data.tag,
+  date: fmt(e.data.date),
+}));
 
 // The watchlist. `figure` is only set where the note already carries the
 // number — nothing here is estimated.
@@ -37,6 +59,8 @@ const watchlist = [
   { type: 'Exit', name: 'PE-backed bubble tea brand testing strategic buyers', note: 'Returns capped by post-2024 margin compression.', figure: '8 yr', figureLabel: 'hold period' },
   { type: 'Joint Venture', name: 'Japanese udon chain × Thai mall operator', note: 'Master franchise structure under construction.', figure: '3', figureLabel: 'flagship slots' },
 ];
+
+const [featured, ...situations] = watchlist;
 
 const topics = [
   { label: 'Acquisition', count: 0 },
@@ -66,38 +90,20 @@ const topics = [
           <div class="meta">{lead.date}</div>
         </article>
 
-        <div>
-          <div class="notice notice-inline">
-            <div class="notice-label">In production</div>
-            <p class="notice-text">
-              Deal coverage launches Q3 2026. The watchlist below is what the desk
-              is tracking now. For alerts when it goes live, subscribe to
-              <a href="/newsletter">The Dispatch</a>.
-            </p>
+        <article>
+          <div class="plate plate-tall" aria-hidden="true">
+            <span class="plate-figure">{featured.figure}<small>{featured.figureLabel}</small></span>
+            <span class="plate-type">{featured.type}</span>
           </div>
-        </div>
+          <span class="kicker">Situation of the week</span>
+          <h2 class="hero-head second">{featured.name}</h2>
+          <p class="dek">{featured.note}</p>
+          <div class="meta">
+            Deal coverage launches Q3 2026 — alerts via <a href="/newsletter">The Dispatch</a>.
+          </div>
+        </article>
       </div>
     )}
-
-    <div class="roster">
-      <div class="roster-head">
-        <h2>On the watchlist</h2>
-        <span class="roster-count">{watchlist.length} live situations</span>
-      </div>
-      <div class="grid3 grid3-loose">
-        {watchlist.map((w) => (
-          <article>
-            <div class="plate plate-wide" aria-hidden="true">
-              <span class="plate-figure">{w.figure}<small>{w.figureLabel}</small></span>
-              <span class="plate-type">{w.type}</span>
-            </div>
-            <h3>{w.name}</h3>
-            <p class="dek">{w.note}</p>
-            <div class="stat-line"><b>{w.figure}</b> {w.figureLabel}</div>
-          </article>
-        ))}
-      </div>
-    </div>
 
     <Fragment slot="rail">
       <RailSignup />
@@ -105,16 +111,109 @@ const topics = [
       <RailMovers title="Possible acquirers" limit={5} />
     </Fragment>
 
+    <Fragment slot="full">
+
+      <section class="band deal-band">
+        <div class="container">
+          <div class="roster-head">
+            <h2>Live situations</h2>
+            <span class="roster-count">{situations.length} on the watchlist</span>
+          </div>
+          <div class="grid3 deal-grid situations">
+            {situations.map((w) => (
+              <article>
+                <div class="plate plate-wide" aria-hidden="true">
+                  <span class="plate-figure">{w.figure}<small>{w.figureLabel}</small></span>
+                  <span class="plate-type">{w.type}</span>
+                </div>
+                <h3>{w.name}</h3>
+                <p class="dek">{w.note}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="band deal-band">
+        <div class="container">
+          <div class="roster-head">
+            <h2>Reading the capital</h2>
+            <span class="roster-count">The structures behind the deals</span>
+          </div>
+          <div class="grid4 deal-grid">
+            {capital.map((a) => (
+              <article>
+                <a href={`/analysis/${a.slug}`}>
+                  <div class="well grid-well" aria-hidden="true"></div>
+                </a>
+                <span class="kicker">{a.tag} · {a.readTime}</span>
+                <h3><a href={`/analysis/${a.slug}`}>{a.title}</a></h3>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="band deal-band last">
+        <div class="container">
+          <div class="roster-head">
+            <h2>Deal news</h2>
+            <a href="/market-watch/deals" class="roster-more">All deal news →</a>
+          </div>
+          <div class="grid4 deal-grid">
+            {news.map((n) => (
+              <article class="news-card">
+                <span class="kicker">{n.tag}</span>
+                <h3><a href={`/market-watch/${n.slug}`}>{n.headline}</a></h3>
+                <div class="meta">{n.date}</div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+    </Fragment>
+
   </SectionFront>
 </BaseLayout>
 
 <style>
-  /* The notice sits in the hero's second column rather than above the page,
-     so the lead report still opens the section. */
-  .notice-inline { padding: 0; }
-  .notice-inline .notice-text { font-size: 15px; margin-bottom: 0; }
+  .hero-head.second a { color: inherit; }
 
-  /* Four cards in a three-across grid leaves one alone on the second row;
-     the extra top rule keeps it reading as part of the same set. */
-  .grid3-loose > *:nth-child(n + 4) { border-top: 1px solid var(--rule); }
+  /* Bloomberg-style themed bands: a bold label on a hard rule, then four
+     across, full width now that the rail has ended. */
+  .deal-band {
+    border-top: 1px solid var(--rule-hard, var(--ink));
+    padding: 26px 0 34px;
+  }
+
+  .deal-band.last { padding-bottom: 64px; }
+
+  .deal-grid { margin-top: 4px; }
+
+  .deal-grid h3 a { color: inherit; text-decoration: none; }
+  .deal-grid h3 a:hover { color: var(--accent); }
+
+  /* grid3 brings its own ruled gutters; inside a band we only want the
+     columns, not a top rule doubling the band's own. */
+  .situations { border-top: none; }
+  .situations > * { border-top: none; }
+
+  .roster-more {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .roster-more:hover { color: var(--accent); }
+
+  .news-card {
+    padding-top: 6px;
+    border-top: 2px solid var(--ink);
+  }
+
+  .news-card .meta { margin-top: 8px; }
 </style>

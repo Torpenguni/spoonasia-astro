@@ -42,11 +42,9 @@ const topics = order.map((g) => ({
             <a href={`/properties/${p.slug}`} class="prop-card">
               <div class="prop-photo">
                 <img src={p.image} alt={p.name} width="1600" height="900" loading="lazy" />
+                <span class="prop-name">{p.name}</span>
               </div>
-              <span class="prop-status">{p.status}</span>
-              <h3>{p.name} →</h3>
-              <span class="prop-district">{p.district}</span>
-              <p class="dek">{p.read}</p>
+              <span class="prop-sub">{p.district} · {p.owner}</span>
             </a>
           ))}
         </div>
@@ -83,10 +81,11 @@ const topics = order.map((g) => ({
   }
 
   .prop-photo {
-    height: 170px;
+    position: relative;
+    height: 190px;
     overflow: hidden;
     background: var(--paper-warm, var(--well));
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .prop-photo img {
@@ -99,27 +98,40 @@ const topics = order.map((g) => ({
 
   .prop-card:hover .prop-photo img { transform: scale(1.025); }
 
-  .prop-status {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 6px;
+  /* The name lives on the photo — the card needs no other headline. */
+  .prop-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.1) 45%, transparent 65%);
+    pointer-events: none;
   }
 
-  .prop-card h3 { transition: color 0.2s; }
+  .prop-name {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+    z-index: 1;
+    font-family: var(--font-sans);
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    transition: color 0.2s;
+  }
 
-  .prop-card:hover h3 { color: var(--accent); }
+  .prop-card:hover .prop-name { color: var(--accent); }
 
-  .prop-district {
+  .prop-sub {
     display: block;
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-top: 4px;
+    color: var(--ink-soft);
+    line-height: 1.5;
   }
 </style>

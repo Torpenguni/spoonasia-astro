@@ -8,6 +8,20 @@ export async function getStaticPaths() {
 
 const { property: p } = Astro.props;
 const others = properties.filter((o) => o.slug !== p.slug);
+const slides = p.images && p.images.length > 0 ? p.images : [p.image];
+
+// The standardized factsheet — same nine rows on every property.
+const factsheet = [
+  { label: 'Project', value: p.name },
+  { label: 'Owner / Developer', value: p.owner },
+  { label: 'Location', value: p.location },
+  { label: 'Area', value: p.area },
+  { label: 'Opening', value: p.openYear },
+  { label: 'Anchor tenants', value: p.anchors },
+  { label: 'The edge', value: p.highlight },
+  { label: 'Customer base', value: p.customers },
+  { label: 'Market tier', value: p.tier },
+];
 ---
 
 <BaseLayout
@@ -36,7 +50,22 @@ const others = properties.filter((o) => o.slug !== p.slug);
       </div>
 
       <figure class="file-hero">
-        <img src={p.image} alt={p.name} width="1600" height="900" loading="eager" />
+        <div class="carousel">
+          <div class="car-track" id="car-track">
+            {slides.map((src) => (
+              <div class="car-slide">
+                <img src={src} alt={p.name} width="1600" height="900" loading="eager" />
+              </div>
+            ))}
+          </div>
+          {slides.length > 1 && (
+            <>
+              <button class="car-btn car-prev" aria-label="Previous photo">‹</button>
+              <button class="car-btn car-next" aria-label="Next photo">›</button>
+              <span class="car-count" id="car-count">1 / {slides.length}</span>
+            </>
+          )}
+        </div>
         {(p.imageCredit || p.imageNote) && (
           <figcaption>
             {p.imageNote && <span>{p.imageNote} · </span>}
@@ -45,14 +74,15 @@ const others = properties.filter((o) => o.slug !== p.slug);
                 ? <a href={p.imageCreditHref} target="_blank" rel="noopener noreferrer">Photo: {p.imageCredit}</a>
                 : <span>Photo: {p.imageCredit}</span>
             )}
+            <span> · Full image credits in the site repository</span>
           </figcaption>
         )}
       </figure>
 
       <div class="facts">
-        <div class="facts-head">The file</div>
+        <div class="facts-head">Factsheet</div>
         <dl>
-          {p.facts.map((f) => (
+          {factsheet.map((f) => (
             <div class="fact-row">
               <dt>{f.label}</dt>
               <dd>{f.value}</dd>
@@ -164,13 +194,60 @@ const others = properties.filter((o) => o.slug !== p.slug);
 
   .file-hero { margin: 0 0 8px; }
 
-  .file-hero img {
+  .carousel { position: relative; }
+
+  .car-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .car-track::-webkit-scrollbar { display: none; }
+
+  .car-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  .car-slide img {
     display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     background: var(--paper-warm, var(--well));
+  }
+
+  .car-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .car-btn:hover { background: var(--accent); }
+  .car-prev { left: 0; }
+  .car-next { right: 0; }
+
+  .car-count {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 3px 8px;
   }
 
   .file-hero figcaption {
@@ -315,3 +392,24 @@ const others = properties.filter((o) => o.slug !== p.slug);
     .more li { flex-direction: column; gap: 4px; }
   }
 </style>
+
+<script>
+  const track = document.getElementById('car-track');
+  const count = document.getElementById('car-count');
+  if (track) {
+    const step = () => track.clientWidth;
+    document.querySelector('.car-prev')?.addEventListener('click', () => {
+      track.scrollBy({ left: -step(), behavior: 'smooth' });
+    });
+    document.querySelector('.car-next')?.addEventListener('click', () => {
+      track.scrollBy({ left: step(), behavior: 'smooth' });
+    });
+    if (count) {
+      const total = track.children.length;
+      track.addEventListener('scroll', () => {
+        const i = Math.round(track.scrollLeft / step()) + 1;
+        count.textContent = `${Math.min(Math.max(i, 1), total)} / ${total}`;
+      }, { passive: true });
+    }
+  }
+</script>

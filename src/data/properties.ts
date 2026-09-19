@@ -66,6 +66,7 @@ export const properties: Property[] = [
     customers: 'CBD office workers, hotel guests, upper-mid Bangkok',
     tier: 'Premium – Luxury',
     image: '/images/properties/one-bangkok.webp',
+    images: ['/images/properties/one-bangkok.webp', '/images/properties/one-bangkok-2.webp', '/images/properties/one-bangkok-3.webp'],
     imageCredit: 'Magnamonkun \u00b7 CC0',
     imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Parade_at_One_Bangkok-2024-11-23.jpg',
     facts: [
@@ -122,6 +123,7 @@ export const properties: Property[] = [
     customers: 'CBD workers, park-goers, hotel guests',
     tier: 'Premium',
     image: '/images/properties/dusit-central-park.webp',
+    images: ['/images/properties/dusit-central-park.webp', '/images/properties/dusit-central-park-2.webp', '/images/properties/dusit-central-park-3.webp'],
     imageCredit: 'Chainwit. \u00b7 CC BY 4.0',
     imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Dusit_Arun_at_Dusit_Central_Park_(07-09-2025)_-_img_02.jpg',
     facts: [
@@ -171,6 +173,7 @@ export const properties: Property[] = [
     customers: 'Young Bangkok, event crowds, EM District shoppers',
     tier: 'Mid – Premium',
     image: '/images/properties/emsphere.webp',
+    images: ['/images/properties/emsphere.webp', '/images/properties/emsphere-2.webp', '/images/properties/emsphere-3.webp'],
     imageCredit: 'Suicasmo \u00b7 CC BY-SA 4.0',
     imageCreditHref: 'https://commons.wikimedia.org/wiki/File:EmSphere_20240915.jpg',
     facts: [
@@ -220,6 +223,7 @@ export const properties: Property[] = [
     customers: 'Creators, production crews, On Nut residents',
     tier: 'Mid – Premium',
     image: '/images/properties/cloud-11.webp',
+    images: ['/images/properties/cloud-11.webp', '/images/properties/cloud-11-2.webp'],
     imageCredit: 'Magnamonkun \u00b7 CC0',
     imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Cloud_11_Bangkok.jpg',
     facts: [
@@ -269,6 +273,7 @@ export const properties: Property[] = [
     customers: 'East-Bangkok families, airport corridor',
     tier: 'Mid – Premium',
     image: '/images/properties/bangkok-mall.webp',
+    images: ['/images/properties/bangkok-mall.webp', '/images/properties/bangkok-mall-2.webp'],
     imageCredit: '\u0e01\u0e2a\u0e34\u0e13\u0e18\u0e23 \u0e23\u0e32\u0e0a\u0e42\u0e2d\u0e23\u0e2a \u00b7 CC BY-SA 4.0',
     imageCreditHref: 'https://commons.wikimedia.org/wiki/File:%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%99%E0%B8%B2-%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B8%94_Bangna-Trat_Road_(2).jpg',
     imageNote: 'Bangna\u2013Trad corridor \u2014 the project\u2019s trade area, not the mall itself',
@@ -319,6 +324,7 @@ export const properties: Property[] = [
     customers: 'Riverside residents, commuters, office workers',
     tier: 'Mid',
     image: '/images/properties/ics.webp',
+    images: ['/images/properties/ics.webp', '/images/properties/ics-2.webp', '/images/properties/ics-3.webp'],
     imageCredit: 'Idea Works Communications \u00b7 CC BY-SA 4.0',
     imageCreditHref: 'https://commons.wikimedia.org/wiki/File:ICS_Night_copy.jpg',
     facts: [
@@ -368,6 +374,7 @@ export const properties: Property[] = [
     customers: 'Township residents, east-side families',
     tier: 'Premium (residential-led)',
     image: '/images/properties/the-forestias.webp',
+    images: ['/images/properties/the-forestias.webp', '/images/properties/the-forestias-2.webp'],
     imageCredit: '\u0e01\u0e2a\u0e34\u0e13\u0e18\u0e23 \u0e23\u0e32\u0e0a\u0e42\u0e2d\u0e23\u0e2a \u00b7 CC BY-SA 4.0',
     imageCreditHref: 'https://commons.wikimedia.org/wiki/File:%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%99%E0%B8%B2-%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B8%94_Bangna-Trat_Road_(2).jpg',
     imageNote: 'Bangna\u2013Trad corridor \u2014 the project\u2019s corridor, not the township itself',
@@ -418,6 +425,7 @@ export const properties: Property[] = [
     customers: 'Tourists, evening leisure crowds',
     tier: 'Tourist / Mid',
     image: '/images/properties/asiatique-riverfront.webp',
+    images: ['/images/properties/asiatique-riverfront.webp', '/images/properties/asiatique-riverfront-2.webp', '/images/properties/asiatique-riverfront-3.webp'],
     imageCredit: 'Moel81 \u00b7 CC BY-SA 4.0',
     imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Asiatique_Sky_Ferris_Wheel.jpg',
     facts: [
@@ -467,6 +475,7 @@ export const properties: Property[] = [
     customers: 'Phrom Phong premium residents, Japanese expat belt',
     tier: 'Luxury – Premium',
     image: '/images/properties/emporium.webp',
+    images: ['/images/properties/emporium.webp', '/images/properties/emporium-2.webp', '/images/properties/emporium-3.webp'],
     imageCredit: 'Chainwit. \u00b7 CC BY-SA 4.0',
     imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Emporium_Bangkok_2020.jpg',
     facts: [
@@ -516,6 +525,9 @@ export const properties: Property[] = [
     customers: 'North-Bangkok families, Lat Phrao office belt, event crowds',
     tier: 'Premium',
     image: '/images/properties/the-central-phaholyothin.webp',
+    imageCredit: 'ILikelargeFries · CC0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Phahonyothin_Road,_north_of_Ha_Yaek_Lat_Phrao_station.jpg',
+    imageNote: 'Phahon Yothin corridor at Ha Yaek Lat Phrao — the project site area; the mall is under construction',
     facts: [],
     sections: [
       {
@@ -557,6 +569,9 @@ export const properties: Property[] = [
     customers: 'Students, Gen Z Bangkok, tourists on the Siam axis',
     tier: 'Mid \u2013 Premium (youth-led)',
     image: '/images/properties/central-central.webp',
+    imageCredit: 'Fabio Achilli · CC BY 2.0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Siam_Square,_Bangkok_(48107977133).jpg',
+    imageNote: 'Pathumwan intersection streetscape — the project is not yet built',
     facts: [],
     sections: [
       {
@@ -597,6 +612,9 @@ export const properties: Property[] = [
     customers: 'Northwest-suburb families, Purple Line commuters',
     tier: 'Mid',
     image: '/images/properties/central-northville.webp',
+    imageCredit: 'Sry85 · CC BY-SA 4.0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:Thanon_Rattanathibet.jpg',
+    imageNote: 'Rattanathibet corridor under the Purple Line — not the mall itself',
     facts: [],
     sections: [
       {
@@ -636,6 +654,9 @@ export const properties: Property[] = [
     customers: 'Thai and international tourists, families, EEC weekenders',
     tier: 'Tourist Mid \u2013 Premium',
     image: '/images/properties/aquatique-pattaya.webp',
+    imageCredit: 'PattayaPatrol · CC BY-SA 4.0',
+    imageCreditHref: 'https://commons.wikimedia.org/wiki/File:DZ6_0620_Aerial_view_of_a_bustling_coastal_city_with_a_long_sandy_beach_lined_by_hotels_and_palm_trees_and_numerous_boats_dotting_the_calm_bay_under_a_cloudy_sky.jpg',
+    imageNote: "Pattaya beachfront aerial — the district's setting, not the project itself",
     facts: [],
     sections: [
       {

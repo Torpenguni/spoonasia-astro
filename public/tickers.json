@@ -2,20 +2,20 @@
   "tickers": [
     {
       "label": "MINT",
-      "value": "฿20.40",
-      "change": "-1.91%",
+      "value": "฿20.50",
+      "change": "-1.44%",
       "positive": false
     },
     {
       "label": "CENTEL",
-      "value": "฿45.00",
-      "change": "-5.29%",
+      "value": "฿44.75",
+      "change": "-5.79%",
       "positive": false
     },
     {
       "label": "M (MK)",
-      "value": "฿20.50",
-      "change": "-0.97%",
+      "value": "฿20.60",
+      "change": "-0.48%",
       "positive": false
     },
     {
@@ -32,14 +32,14 @@
     },
     {
       "label": "MAGURO",
-      "value": "฿17.30",
-      "change": "-1.14%",
+      "value": "฿17.40",
+      "change": "-0.57%",
       "positive": false
     },
     {
       "label": "S&P",
-      "value": "฿8.30",
-      "change": "+0.00%",
+      "value": "฿8.40",
+      "change": "+1.20%",
       "positive": true
     },
     {
@@ -56,9 +56,9 @@
     },
     {
       "label": "ICHI",
-      "value": "฿14.30",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿14.20",
+      "change": "-0.70%",
+      "positive": false
     },
     {
       "label": "SAPPE",
@@ -74,21 +74,21 @@
     },
     {
       "label": "TFMAMA",
-      "value": "฿182.00",
-      "change": "-0.55%",
-      "positive": false
+      "value": "฿183.00",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "PB",
-      "value": "฿45.75",
-      "change": "-0.54%",
-      "positive": false
+      "value": "฿46.00",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "SNNP",
-      "value": "฿6.50",
-      "change": "-0.76%",
-      "positive": false
+      "value": "฿6.55",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "CPF",
@@ -98,15 +98,15 @@
     },
     {
       "label": "BTG",
-      "value": "฿21.10",
-      "change": "-1.40%",
+      "value": "฿21.20",
+      "change": "-0.93%",
       "positive": false
     },
     {
       "label": "TFG",
-      "value": "฿9.60",
-      "change": "+0.52%",
-      "positive": true
+      "value": "฿9.50",
+      "change": "-0.52%",
+      "positive": false
     },
     {
       "label": "GFPT",
@@ -140,14 +140,14 @@
     },
     {
       "label": "CM",
-      "value": "฿1.48",
-      "change": "-0.67%",
-      "positive": false
+      "value": "฿1.49",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "RBF",
-      "value": "฿4.82",
-      "change": "-1.63%",
+      "value": "฿4.86",
+      "change": "-0.82%",
       "positive": false
     },
     {
@@ -164,20 +164,20 @@
     },
     {
       "label": "XO",
-      "value": "฿19.00",
-      "change": "+0.53%",
-      "positive": true
+      "value": "฿18.80",
+      "change": "-0.53%",
+      "positive": false
     },
     {
       "label": "JDF",
-      "value": "฿2.06",
-      "change": "+0.00%",
+      "value": "฿2.08",
+      "change": "+0.97%",
       "positive": true
     },
     {
       "label": "TWPC",
-      "value": "฿2.50",
-      "change": "-1.57%",
+      "value": "฿2.52",
+      "change": "-0.79%",
       "positive": false
     },
     {
@@ -194,9 +194,9 @@
     },
     {
       "label": "TVO",
-      "value": "฿28.75",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿28.50",
+      "change": "-0.87%",
+      "positive": false
     },
     {
       "label": "LST",
@@ -206,21 +206,21 @@
     },
     {
       "label": "CPI",
-      "value": "฿3.50",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿3.46",
+      "change": "-1.14%",
+      "positive": false
     },
     {
       "label": "UVAN",
-      "value": "฿13.50",
-      "change": "+0.00%",
-      "positive": true
+      "value": "฿13.40",
+      "change": "-0.74%",
+      "positive": false
     },
     {
       "label": "KSL",
-      "value": "฿1.73",
-      "change": "-0.57%",
-      "positive": false
+      "value": "฿1.74",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "KTIS",
@@ -230,20 +230,20 @@
     },
     {
       "label": "BRR",
-      "value": "฿3.68",
-      "change": "-0.54%",
-      "positive": false
-    },
-    {
-      "label": "KBS",
-      "value": "฿6.40",
+      "value": "฿3.70",
       "change": "+0.00%",
       "positive": true
     },
     {
+      "label": "KBS",
+      "value": "฿6.45",
+      "change": "+0.78%",
+      "positive": true
+    },
+    {
       "label": "APURE",
-      "value": "฿2.06",
-      "change": "+0.00%",
+      "value": "฿2.10",
+      "change": "+1.94%",
       "positive": true
     },
     {
@@ -254,8 +254,8 @@
     },
     {
       "label": "TACC",
-      "value": "฿6.45",
-      "change": "+1.56%",
+      "value": "฿6.50",
+      "change": "+2.36%",
       "positive": true
     },
     {
@@ -266,9 +266,9 @@
     },
     {
       "label": "TIPCO",
-      "value": "฿6.70",
-      "change": "-0.74%",
-      "positive": false
+      "value": "฿6.75",
+      "change": "+0.00%",
+      "positive": true
     },
     {
       "label": "MALEE",
@@ -302,36 +302,36 @@
     },
     {
       "label": "BJC",
-      "value": "฿19.90",
-      "change": "+0.00%",
+      "value": "฿20.10",
+      "change": "+1.01%",
       "positive": true
     },
     {
       "label": "PM",
-      "value": "฿11.00",
-      "change": "+0.92%",
+      "value": "฿10.90",
+      "change": "+0.00%",
       "positive": true
     },
     {
       "label": "Coffee C",
-      "value": "$294.25",
-      "change": "+0.17%",
-      "positive": true
+      "value": "$285.50",
+      "change": "-2.81%",
+      "positive": false
     },
     {
       "label": "Wheat",
-      "value": "$609.50",
-      "change": "-0.12%",
+      "value": "$598.50",
+      "change": "-1.93%",
       "positive": false
     },
     {
       "label": "Sugar #11",
-      "value": "$19.20",
-      "change": "+0.00%",
+      "value": "$19.50",
+      "change": "+1.56%",
       "positive": true
     }
   ],
-  "asOf": "28 Oct, 16:28",
+  "asOf": "28 Oct, 23:14",
   "live": true,
-  "updatedAt": "2026-10-28T09:28:22.315Z"
+  "updatedAt": "2026-10-28T16:14:18.851Z"
 }

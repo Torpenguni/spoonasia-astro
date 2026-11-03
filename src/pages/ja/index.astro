@@ -1,0 +1,337 @@
+---
+// Japanese front page. Phase 1: the Japanese edition opens with a native
+// landing page; articles not yet translated link to their English original
+// and are labelled 英語版のみ (English only), so nothing dead-ends.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { localizedHref, useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('ja');
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+
+// Beat labels in Japanese; falls back to the English tag for anything new.
+const categoryJa: Record<string, string> = {
+  'unit-economics': 'ユニットエコノミクス',
+  'neighborhood-alpha': 'エリア分析',
+  'market-entry': '市場参入',
+  'supplier-intel': 'サプライヤー',
+  'manufacturing': '製造',
+  'markets': 'マーケット',
+  'operators': '事業者',
+  'investment': '投資',
+  'founder-stories': '創業者',
+  'deals': 'ディール',
+  'torpenguin': 'Torpenguin',
+};
+
+// Pieces most useful to a Japanese operator weighing Thailand go first.
+const priority = [
+  'hidden-costs-thai-market-entry',
+  'why-foreign-coffee-chains-fail-thailand',
+  'bangkok-mall-fb-vacancy',
+  'ari-bangkok-fb-zone',
+  'bangkok-rent-story',
+  'penguin-eat-shabu-rollout',
+];
+
+const articleEntries = await getCollection('articles', ({ data }) => !data.draft);
+const rank = (slug: string) => {
+  const i = priority.indexOf(slug);
+  return i === -1 ? priority.length : i;
+};
+const articles = articleEntries
+  .sort((a, b) => rank(a.slug) - rank(b.slug) || b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 6)
+  .map((e) => ({
+    href: localizedHref(`/analysis/${e.slug}`, 'ja'),
+    title: e.data.title,
+    dek: e.data.dek,
+    beat: categoryJa[e.data.category] ?? e.data.tag,
+    date: fmt(e.data.date),
+  }));
+
+const watchEntries = await getCollection('market-watch', ({ data }) => !data.draft);
+const watch = watchEntries
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 4)
+  .map((e) => ({
+    href: localizedHref(`/market-watch/${e.slug}`, 'ja'),
+    headline: e.data.headline,
+    date: fmt(e.data.date),
+  }));
+
+const questions = [
+  {
+    head: '出店コストの実態',
+    body: '賃料、キーマネー、デリバリーアプリの手数料、人件費。仲介業者の資料には載らないコストを、項目ごとに分解します。',
+    href: localizedHref('/analysis', 'ja'),
+    cta: '市場分析を読む',
+  },
+  {
+    head: 'どのエリアに出すか',
+    body: 'バンコクの商業施設とストリート立地を、客層・賃料・競合の観点から比較。エリアごとの勝ち筋を示します。',
+    href: localizedHref('/locations', 'ja'),
+    cta: 'エリア情報を見る',
+  },
+  {
+    head: '誰と組むか',
+    body: '現地パートナー、フランチャイジー、サプライヤー、M&A。タイの外食業界で実際に動いているディールを追います。',
+    href: localizedHref('/deals', 'ja'),
+    cta: 'ディールを見る',
+  },
+];
+---
+
+<BaseLayout
+  title="SpoonAsia 日本語版 — タイ外食市場のインテリジェンス"
+  description="タイの外食市場を、日本の外食企業・商社・投資家のために読み解く。出店コスト、エリア分析、現地パートナーとディールの情報を日本語で。"
+>
+  <section class="band close ja-hero">
+    <div class="container">
+      <div class="section-tag accent">▍ 日本語版</div>
+      <h1 class="ja-title">タイの外食市場を、<br class="br-wide" />数字で読み解く。</h1>
+      <p class="ja-dek">
+        SpoonAsia はバンコク拠点の外食ビジネスメディアです。
+        タイへの出店・投資・事業提携を検討する日本の外食企業、商社、投資家のために、
+        現地の数字と事業者の視点から市場を分析します。
+      </p>
+      <p class="ja-note">
+        日本語版は順次公開中です。未翻訳の記事は英語の原文にリンクし、
+        <span class="badge">{t('common.englishOnly')}</span> と表示しています。
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="label-row"><div class="section-tag">▍ SpoonAsia が答える3つの問い</div></div>
+      <div class="cols q-grid">
+        {questions.map((q, i) => (
+          <div class="q-cell">
+            <div class="q-num">{String(i + 1).padStart(2, '0')}</div>
+            <h2 class="q-head">{q.head}</h2>
+            <p class="q-body">{q.body}</p>
+            <a href={q.href} class="q-link">{q.cta} →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container">
+      <div class="label-row">
+        <div class="section-tag">▍ 注目の分析</div>
+        <a href={localizedHref('/analysis', 'ja')} class="more">すべての分析 →</a>
+      </div>
+      <ul class="story-grid">
+        {articles.map((a) => (
+          <li class="story">
+            <div class="story-meta">
+              <span class="story-beat">{a.beat}</span>
+              <span class="badge">{t('common.englishOnly')}</span>
+            </div>
+            <a href={a.href} class="story-link" lang="en" hreflang="en">
+              <h3 class="story-title">{a.title}</h3>
+              <p class="story-dek">{a.dek}</p>
+            </a>
+            <div class="story-date">{a.date}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band close">
+    <div class="container">
+      <div class="label-row">
+        <div class="section-tag">▍ マーケットウォッチ</div>
+        <a href={localizedHref('/market-watch', 'ja')} class="more">一覧へ →</a>
+      </div>
+      <ul class="watch-list">
+        {watch.map((w) => (
+          <li class="watch-item">
+            <span class="watch-date">{w.date}</span>
+            <a href={w.href} class="watch-link" lang="en" hreflang="en">{w.headline}</a>
+            <span class="badge">{t('common.englishOnly')}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band ja-contact">
+    <div class="container">
+      <div class="cols contact-grid">
+        <div>
+          <div class="section-tag">▍ お問い合わせ</div>
+          <h2 class="contact-head">タイ進出のご相談・取材のご依頼</h2>
+        </div>
+        <div>
+          <p class="contact-body">
+            市場調査、物件・パートナー探し、記事への情報提供などは、編集部までご連絡ください。
+            日本語・英語・タイ語で対応します。
+          </p>
+          <a href={localizedHref('/contact', 'ja')} class="contact-btn">お問い合わせ →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .ja-hero { padding: 56px 0 48px; }
+  .ja-title {
+    font-size: 44px;
+    font-weight: 700;
+    margin: 18px 0 20px;
+    max-width: 18em;
+  }
+  .ja-dek {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 40em;
+  }
+  .ja-note {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--ink-faint);
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    border: 1px solid var(--rule);
+    padding: 1px 6px;
+    line-height: 1.5;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 24px 0 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .more {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .more:hover { color: var(--accent); }
+
+  .q-grid { grid-template-columns: repeat(3, 1fr); padding: 24px 0 32px; }
+  .q-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .q-head { font-size: 20px; margin-bottom: 10px; }
+  .q-body { font-size: 14px; color: var(--ink-soft); margin-bottom: 14px; }
+  .q-link { font-size: 13px; font-weight: 600; color: var(--accent); }
+  .q-link:hover { color: var(--accent-deep); }
+
+  .story-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+    margin: 0;
+  }
+  .story {
+    padding: 22px 24px 26px;
+    border-left: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .story:nth-child(3n + 1) { border-left: none; padding-left: 0; }
+  .story:nth-child(3n) { padding-right: 0; }
+  .story:nth-last-child(-n + 3) { border-bottom: none; }
+  .story-meta { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .story-beat {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .story-link { color: var(--ink); display: block; }
+  .story-link:hover .story-title { color: var(--accent); }
+  .story-title {
+    font-size: 18px;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .story-dek {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .story-date {
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+  }
+
+  .watch-list { list-style: none; padding: 0; margin: 0; }
+  .watch-item {
+    display: grid;
+    grid-template-columns: 9em 1fr auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .watch-item:last-child { border-bottom: none; }
+  .watch-date { font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); }
+  .watch-link { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.35; }
+  .watch-link:hover { color: var(--accent); }
+
+  .contact-grid { grid-template-columns: 1fr 1fr; padding: 36px 0; align-items: start; }
+  .contact-grid > *:first-child { padding-right: 40px; }
+  .contact-grid > *:last-child { padding-left: 40px; }
+  .contact-head { font-size: 24px; margin-top: 12px; }
+  .contact-body { font-size: 14px; color: var(--ink-soft); margin-bottom: 18px; }
+  .contact-btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 18px;
+  }
+  .contact-btn:hover { background: var(--accent); color: var(--paper); }
+
+  @media (max-width: 900px) {
+    .story-grid { grid-template-columns: 1fr 1fr; }
+    .story, .story:nth-child(3n), .story:nth-child(3n + 1) { padding: 20px 20px 22px; border-left: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .story:nth-child(2n + 1) { border-left: none; padding-left: 0; }
+    .story:nth-child(2n) { padding-right: 0; }
+    .story:nth-last-child(-n + 2) { border-bottom: none; }
+  }
+
+  @media (max-width: 768px) {
+    .ja-hero { padding: 36px 0 32px; }
+    .ja-title { font-size: 30px; }
+    .br-wide { display: none; }
+    .ja-dek { font-size: 15px; }
+    .q-grid, .contact-grid { grid-template-columns: 1fr; }
+    .q-grid > *, .contact-grid > * { border-left: none; padding: 0 !important; }
+    .q-cell + .q-cell { border-top: 1px solid var(--rule); margin-top: 20px; padding-top: 20px !important; }
+    .contact-grid > * + * { margin-top: 16px; }
+    .story-grid { grid-template-columns: 1fr; }
+    .story, .story:nth-child(n) { padding: 18px 0; border-left: none; border-bottom: 1px solid var(--rule); }
+    .story:last-child { border-bottom: none; }
+    .watch-item { grid-template-columns: 1fr auto; gap: 6px 12px; }
+    .watch-date { grid-column: 1 / -1; }
+  }
+</style>

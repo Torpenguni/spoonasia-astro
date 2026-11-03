@@ -70,6 +70,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* --- Japanese edition ----------------------------------------
+   Latin glyphs keep the house faces; kana and kanji fall through to
+   Noto JP (loaded only on /ja pages). Japanese needs more leading and
+   none of the negative tracking the Latin headlines use. */
+:root:lang(ja) {
+  --font-sans: 'Plus Jakarta Sans', 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-mono: 'JetBrains Mono', 'Noto Sans JP', 'SF Mono', Menlo, monospace;
+}
+:lang(ja) body { line-height: 1.7; line-break: strict; }
+:lang(ja) :is(h1, h2, h3, h4, h5, h6) { letter-spacing: 0.01em; line-height: 1.35; }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   font-weight: 700;

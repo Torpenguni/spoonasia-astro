@@ -1,31 +1,35 @@
 ---
+import { getLangFromUrl, localizedHref, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const currentYear = new Date().getFullYear();
 
 const footerSections = [
   {
-    title: 'Editorial',
+    title: t('footer.editorial'),
     links: [
-      { label: 'Analysis', href: '/analysis' },
-      { label: 'Videos', href: '/videos' },
-      { label: 'Market Watch', href: '/market-watch' },
-      { label: 'Property Files', href: '/properties' },
+      { label: t('footer.analysis'), href: '/analysis' },
+      { label: t('footer.videos'), href: '/videos' },
+      { label: t('footer.marketWatch'), href: '/market-watch' },
+      { label: t('footer.properties'), href: '/properties' },
     ],
   },
   {
-    title: 'Company',
+    title: t('footer.company'),
     links: [
-      { label: 'About', href: '/about' },
-      { label: 'Events', href: '/events' },
+      { label: t('footer.about'), href: '/about' },
+      { label: t('footer.events'), href: '/events' },
       { label: 'Penguin X', href: '/penguin-x' },
-      { label: 'Contact', href: '/contact' },
+      { label: t('footer.contact'), href: '/contact' },
     ],
   },
   {
-    title: 'Channels',
+    title: t('footer.channels'),
     links: [
       { label: 'YouTube', href: 'https://youtube.com/@spoonasia', external: true },
       { label: 'LinkedIn', href: 'https://linkedin.com/company/spoonasia', external: true },
-      { label: 'Newsletter', href: '/newsletter' },
+      { label: t('footer.newsletter'), href: '/newsletter' },
     ],
   },
 ];
@@ -38,22 +42,21 @@ const footerSections = [
       <div class="cols sa-newsletter">
         <div>
           <div class="section-tag sa-kicker">The Dispatch</div>
-          <h2 class="sa-newsletter-head">F&B intelligence on Asia, every Sunday.</h2>
+          <h2 class="sa-newsletter-head">{t('footer.newsHead')}</h2>
         </div>
         <div>
           <form class="sa-newsletter-form" onsubmit="event.preventDefault()">
             <input
               type="email"
-              placeholder="your@email.com"
+              placeholder={t('footer.emailPlaceholder')}
               class="sa-newsletter-input"
-              aria-label="Email address"
+              aria-label={t('footer.emailLabel')}
               required
             />
-            <button type="submit" class="sa-newsletter-submit">Subscribe</button>
+            <button type="submit" class="sa-newsletter-submit">{t('nav.subscribe')}</button>
           </form>
           <p class="sa-newsletter-note">
-            Unit economics, neighborhood alpha, and the gaps in pitch decks. Read by
-            operators across SG · JP · KR · UK · CN.
+            {t('footer.newsNote')}
           </p>
         </div>
       </div>
@@ -66,9 +69,9 @@ const footerSections = [
         <div class="sa-footer-brand">
           <div class="sa-logo">Spoon<span class="light">Asia</span><span class="dot" aria-hidden="true"></span></div>
           <p class="sa-footer-tagline">
-            Decoding Thailand's F&B landscape for international investors, suppliers, and operators.
+            {t('site.tagline')}
           </p>
-          <div class="sa-footer-origin">A Torpenguin publication · Bangkok</div>
+          <div class="sa-footer-origin">{t('site.origin')}</div>
         </div>
 
         {footerSections.map(section => (
@@ -78,7 +81,7 @@ const footerSections = [
               {section.links.map(link => (
                 <li>
                   <a
-                    href={link.href}
+                    href={link.external ? link.href : localizedHref(link.href, lang)}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
                     class="sa-footer-link"
@@ -96,13 +99,13 @@ const footerSections = [
 
   <div class="container">
     <div class="sa-footer-ribbon">
-      <div>© {currentYear} SpoonAsia · All rights reserved</div>
+      <div>© {currentYear} SpoonAsia · {t('footer.rights')}</div>
       <div class="sa-footer-ribbon-right">
-        <a href="/privacy">Privacy</a>
+        <a href={localizedHref('/privacy', lang)}>{t('footer.privacy')}</a>
         <span class="sep">·</span>
-        <a href="/terms">Terms</a>
+        <a href={localizedHref('/terms', lang)}>{t('footer.terms')}</a>
         <span class="sep">·</span>
-        <a href="/colophon">Colophon</a>
+        <a href={localizedHref('/colophon', lang)}>{t('footer.colophon')}</a>
       </div>
     </div>
   </div>

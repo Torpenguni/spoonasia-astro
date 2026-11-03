@@ -1,41 +1,64 @@
 ---
-const currentPath = Astro.url.pathname;
+import { languages, type Lang } from '../i18n/ui';
+import { getAlternates, getLangFromUrl, getRoutePath, localizePath, localizedHref, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentPath = getRoutePath(Astro.url.pathname);
 
 const primaryItems = [
-  { label: 'News',             href: '/market-watch' },
-  { label: 'M&A & Deals',      href: '/deals' },
-  { label: 'Market Analysis',  href: '/analysis' },
-  { label: 'Operator Stories', href: '/operators' },
-  { label: 'Supplier Intel',   href: '/supplier-intel' },
-  { label: 'Events',           href: '/events' },
-  { label: 'Locations',        href: '/locations' },
-  { label: 'Videos',           href: '/videos' },
+  { label: t('nav.news'),      href: '/market-watch' },
+  { label: t('nav.deals'),     href: '/deals' },
+  { label: t('nav.analysis'),  href: '/analysis' },
+  { label: t('nav.operators'), href: '/operators' },
+  { label: t('nav.supplier'),  href: '/supplier-intel' },
+  { label: t('nav.events'),    href: '/events' },
+  { label: t('nav.locations'), href: '/locations' },
+  { label: t('nav.videos'),    href: '/videos' },
 ];
 
-const today = new Date().toLocaleDateString('en-US', {
+const today = new Date().toLocaleDateString(lang === 'ja' ? 'ja-JP' : 'en-US', {
   weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+  timeZone: 'Asia/Bangkok',
 });
+
+// Switcher: go to the same page in the other language when it exists,
+// otherwise to that language's front page.
+const alternates = getAlternates(Astro.url.pathname);
+const switchTargets = (Object.keys(languages) as Lang[]).map((code) => ({
+  code,
+  label: languages[code],
+  href: alternates.find((a) => a.lang === code)?.path ?? localizePath('/', code),
+  current: code === lang,
+}));
 ---
 
 <header class="band">
   <div class="container">
     <div class="masthead-inner">
-      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <button class="hamburger" aria-label={t('nav.menu')} aria-expanded="false" aria-controls="mobile-nav">
         <span></span><span></span><span></span>
       </button>
 
       <div class="masthead-left">
-        <span class="masthead-date">{today} · Bangkok</span>
+        <span class="masthead-date">{today} · {t('site.city')}</span>
       </div>
 
-      <a href="/" class="masthead-logo" aria-label="SpoonAsia home">
+      <a href={localizedHref('/', lang)} class="masthead-logo" aria-label={t('site.home')}>
         <span class="logo-bold">Spoon</span><span class="logo-light">Asia</span><span class="logo-dot" aria-hidden="true"></span>
       </a>
 
       <div class="masthead-right">
-        <button class="mast-link search-btn" aria-label="Search">Search</button>
-        <a href="/newsletter" class="mast-link">Newsletters</a>
-        <a href="/penguin-x" class="subscribe-btn">Subscribe</a>
+        <nav class="lang-switch" aria-label={t('nav.language')}>
+          {switchTargets.map((target) => (
+            target.current
+              ? <span class="lang-opt current" lang={target.code} aria-current="true">{target.label}</span>
+              : <a href={target.href} class="lang-opt" lang={target.code} hreflang={target.code}>{target.label}</a>
+          ))}
+        </nav>
+        <button class="mast-link search-btn" aria-label={t('nav.search')}>{t('nav.search')}</button>
+        <a href={localizedHref('/newsletter', lang)} class="mast-link">{t('nav.newsletters')}</a>
+        <a href={localizedHref('/penguin-x', lang)} class="subscribe-btn">{t('nav.subscribe')}</a>
       </div>
     </div>
   </div>
@@ -47,12 +70,12 @@ const today = new Date().toLocaleDateString('en-US', {
       {primaryItems.map((item) => {
         const isActive = currentPath === item.href || currentPath.startsWith(item.href + '/');
         return (
-          <a href={item.href} class={`primary-nav-link ${isActive ? 'active' : ''}`}>
+          <a href={localizedHref(item.href, lang)} class={`primary-nav-link ${isActive ? 'active' : ''}`}>
             {item.label}
           </a>
         );
       })}
-      <a href="/penguin-x" class={`primary-nav-link cta ${currentPath.startsWith('/penguin-x') ? 'active' : ''}`}>
+      <a href={localizedHref('/penguin-x', lang)} class={`primary-nav-link cta ${currentPath.startsWith('/penguin-x') ? 'active' : ''}`}>
         Penguin X ↗
       </a>
     </div>
@@ -138,6 +161,27 @@ const today = new Date().toLocaleDateString('en-US', {
   }
   .mast-link:hover { color: var(--accent); }
 
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 14px 0 0;
+    border-right: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+  .lang-opt { color: var(--ink-mute); }
+  .lang-opt + .lang-opt::before {
+    content: '/';
+    margin-right: 6px;
+    color: var(--rule-hard);
+  }
+  a.lang-opt:hover { color: var(--accent); }
+  .lang-opt.current { color: var(--ink); font-weight: 500; }
+
   .subscribe-btn {
     display: inline-block;
     background: var(--ink);
@@ -148,6 +192,7 @@ const today = new Date().toLocaleDateString('en-US', {
     text-transform: uppercase;
     padding: 8px 14px;
     margin-left: 14px;
+    white-space: nowrap;
     transition: background 0.15s ease;
   }
   .subscribe-btn:hover { background: var(--accent); color: var(--paper); }
@@ -204,6 +249,11 @@ const today = new Date().toLocaleDateString('en-US', {
     .masthead-left { display: none; }
     .masthead-logo { font-size: 35px; }
     .mast-link { display: none; }
+    /* Phones: only the language you can switch to, so the masthead fits. */
+    .masthead-inner { gap: 10px; }
+    .lang-switch { padding-right: 8px; margin-right: 8px; }
+    .lang-opt.current { display: none; }
+    .lang-opt + .lang-opt::before { content: none; }
     .subscribe-btn { margin-left: 0; font-size: 9px; padding: 7px 11px; }
     .primary-nav-link { font-size: 12px; padding: 11px 12px; }
   }

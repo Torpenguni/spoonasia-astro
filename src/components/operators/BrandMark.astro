@@ -6,16 +6,18 @@ interface Props {
   id: string;
   name: string;
   size?: number;
+  // fluid: fills its column as a 4:5 plate (section-front cards)
+  fluid?: boolean;
 }
-const { id, name, size = 56 } = Astro.props;
+const { id, name, size = 56, fluid = false } = Astro.props;
 const src = logoFor(id);
 const mono = monogram(name);
 const m = src ? logoMeta(id) : undefined;
-const cls = ['mark', src ? 'has-logo' : 'is-mono', m?.fit === 'fill' ? 'fill' : '', m?.bg === 'dark' ? 'dark' : ''].join(' ');
+const cls = ['mark', src ? 'has-logo' : 'is-mono', m?.fit === 'fill' ? 'fill' : '', m?.bg === 'dark' ? 'dark' : '', fluid ? 'fluid' : ''].join(' ');
 ---
 
 <span class={cls} style={`--s:${size}px`} aria-hidden="true">
-  {src ? <img src={src} alt="" loading="lazy" decoding="async" /> : <span class={`mono len-${mono.length}`}>{mono}</span>}
+  {src ? <img src={src} alt="" loading={fluid ? "eager" : "lazy"} decoding="async" /> : <span class={`mono len-${mono.length}`}>{mono}</span>}
 </span>
 
 <style>
@@ -45,4 +47,12 @@ const cls = ['mark', src ? 'has-logo' : 'is-mono', m?.fit === 'fill' ? 'fill' : 
   }
   .mono.len-3 { font-size: calc(var(--s) * 0.28); }
   .mono.len-4 { font-size: calc(var(--s) * 0.22); }
+
+  /* 4:5 plate that fills its card */
+  .mark.fluid { width: 100%; height: auto; aspect-ratio: 4 / 5; container-type: inline-size; }
+  .mark.fluid img { width: 74%; height: 74%; }
+  .mark.fluid.fill img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
+  .mark.fluid .mono { font-size: 34cqw; }
+  .mark.fluid .mono.len-3 { font-size: 26cqw; }
+  .mark.fluid .mono.len-4 { font-size: 21cqw; }
 </style>

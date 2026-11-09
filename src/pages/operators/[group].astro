@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BrandMark from '../../components/operators/BrandMark.astro';
+import {
+  groups,
+  anchorBrands,
+  archetypes,
+  segments,
+  sources,
+  type OperatorGroup,
+} from '../../data/operators-map';
+import { originLabel, asOf, splitFigure } from '../../lib/operators-format';
+
+export function getStaticPaths() {
+  return groups.map((g) => ({ params: { group: g.id }, props: { g } }));
+}
+
+const { g } = Astro.props as { g: OperatorGroup };
+const arch = archetypes[g.archetype];
+const anchors = anchorBrands.filter((b) => b.groupId === g.id);
+const anchorNames = new Set(anchors.map((a) => a.name));
+const others = g.brands.filter((b) => b.status !== 'verify' && !anchorNames.has(b.name));
+const held = g.brands.filter((b) => b.status === 'verify').length;
+
+const usedSources = [
+  ...new Set([
+    ...g.facts.map((f) => f.source),
+    ...g.moves.map((m) => m.source),
+    ...anchors.flatMap((a) => [...a.sources, ...(a.outlets ? [a.outlets.source] : [])]),
+  ]),
+].map((k) => ({ key: k, ...sources[k] }));
+const srcNo = Object.fromEntries(usedSources.map((s, i) => [s.key, i + 1]));
+
+// Neighbours in the same archetype, for onward reading.
+const peers = groups.filter((x) => x.archetype === g.archetype && x.id !== g.id);
+---
+
+<BaseLayout
+  title={`${g.name} — Operators Map — SpoonAsia`}
+  description={`${g.name}: ownership, key figures, deals and brand portfolio. Part of SpoonAsia’s Thailand F&B Operators Map.`}
+>
+  <div class="band">
+    <div class="container op">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/operators">Operator Stories</a> <span>/</span>
+        <a href={`/operators#${g.archetype}`}>{arch.label}</a>
+      </nav>
+
+      <header class="op-head">
+        <BrandMark id={g.id} name={g.short} size={84} />
+        <div>
+          <span class="kicker tight">{arch.label}</span>
+          <h1>{g.name}</h1>
+          {g.nameTh && <div class="th">{g.nameTh}</div>}
+        </div>
+      </header>
+
+      <p class="arch-note">{arch.summary}</p>
+
+      <dl class="facts">
+        <div><dt>Owner</dt><dd>{g.owner}</dd></div>
+        {g.listing && <div><dt>Listing</dt><dd>{g.listing}</dd></div>}
+        {g.facts.map((f) => (
+          <div>
+            <dt>{asOf(f.asOf) ? `As of ${asOf(f.asOf)}` : 'Reported'}</dt>
+            <dd>{f.value}<sup><a href={`#src-${srcNo[f.source]}`}>{srcNo[f.source]}</a></sup></dd>
+          </div>
+        ))}
+      </dl>
+
+      {g.moves.length > 0 && (
+        <section class="op-sec">
+          <h2 class="sec-label">Key moves</h2>
+          <ol class="moves">
+            {g.moves.map((m) => (
+              <li>
+                <span class="when">{m.date === 'n/a' ? '—' : asOf(m.date)}</span>
+                <span>{m.text}<sup><a href={`#src-${srcNo[m.source]}`}>{srcNo[m.source]}</a></sup></span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {anchors.length > 0 && (
+        <section class="op-sec">
+          <h2 class="sec-label">Anchor brands</h2>
+          <div class="anchors">
+            {anchors.map((b) => (
+              <article class="anchor-card" id={b.id}>
+                <BrandMark id={b.id} name={b.name} size={56} />
+                <div class="anchor-body">
+                  <span class="kicker tight">
+                    {segments[b.segment].label}{originLabel[b.origin] && ` · ${originLabel[b.origin]}`}
+                  </span>
+                  <h3>{b.name}{b.nameTh && <span class="th-inline"> {b.nameTh}</span>}</h3>
+                  <p class="dek">
+                    {b.whyItMatters}
+                    {b.sources.map((k) => <sup><a href={`#src-${srcNo[k]}`}>{srcNo[k]}</a></sup>)}
+                  </p>
+                  {b.outlets && (() => {
+                    const [num, qual] = splitFigure(b.outlets.value);
+                    return (
+                      <div class="stat-line">
+                        <b>{num}</b> outlets{qual ? ` ${qual}` : ''}{asOf(b.outlets.asOf) ? ` · ${asOf(b.outlets.asOf)}` : ''}
+                      </div>
+                    );
+                  })()}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {others.length > 0 && (
+        <section class="op-sec">
+          <h2 class="sec-label">{anchors.length ? 'Other brands' : 'Brands'}</h2>
+          <ul class="brand-list">
+            {others.map((b) => (
+              <li class={b.status === 'exited' ? 'exited' : ''}>
+                <span class="bn">{b.name}{b.nameTh && <span class="th-inline"> {b.nameTh}</span>}</span>
+                <span class="bm">
+                  {segments[b.segment].label}
+                  {originLabel[b.origin] && ` · ${originLabel[b.origin]}`}
+                  {b.status === 'exited' && <span class="flag"> · Exited</span>}
+                </span>
+                {b.note && <span class="bnote">{b.note}</span>}
+              </li>
+            ))}
+          </ul>
+          {held > 0 && <p class="held">{held} further {held === 1 ? 'brand is' : 'brands are'} held back until confirmed as trading.</p>}
+        </section>
+      )}
+
+      <section class="op-sec">
+        <h2 class="sec-label">Sources</h2>
+        <ol class="src-list">
+          {usedSources.map((s, i) => (
+            <li id={`src-${i + 1}`}><a href={s.url} target="_blank" rel="noopener">{s.title}</a></li>
+          ))}
+        </ol>
+      </section>
+
+      {peers.length > 0 && (
+        <section class="op-sec">
+          <h2 class="sec-label">More {arch.label.toLowerCase()}</h2>
+          <ul class="peers">
+            {peers.map((x) => (
+              <li><a href={`/operators/${x.id}`}><BrandMark id={x.id} name={x.short} size={36} /><span>{x.short}</span></a></li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .op { max-width: 760px; padding-top: 22px; padding-bottom: 56px; }
+  .crumbs { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); }
+  .crumbs a { color: var(--ink-soft); }
+  .crumbs a:hover { color: var(--accent); }
+  .crumbs span { margin: 0 6px; }
+
+  .op-head { display: flex; align-items: center; gap: 18px; margin-top: 22px; }
+  .op-head h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; margin: 0; }
+  .th { font-size: 14px; color: var(--ink-faint); margin-top: 6px; }
+  .th-inline { font-weight: 400; font-size: 0.82em; color: var(--ink-faint); }
+  .arch-note { font-size: 15px; line-height: 1.55; color: var(--ink-soft); margin: 18px 0 0; }
+
+  .facts { margin: 22px 0 0; border-top: 1px solid var(--rule-hard); }
+  .facts > div { display: grid; grid-template-columns: 140px 1fr; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--rule); }
+  .facts dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); padding-top: 3px; }
+  .facts dd { margin: 0; font-size: 15px; line-height: 1.45; }
+
+  sup { font-size: 9px; margin-left: 2px; }
+  sup a { color: var(--accent); }
+
+  .op-sec { margin-top: 36px; }
+  .sec-label { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 14px; }
+
+  .moves { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .moves li { display: grid; grid-template-columns: 90px 1fr; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--rule); font-size: 14px; line-height: 1.5; }
+  .when { font-family: var(--font-mono); font-size: 11px; color: var(--accent); padding-top: 2px; }
+
+  .anchors { display: grid; gap: 12px; }
+  .anchor-card { display: flex; gap: 16px; padding: 16px; border: 1px solid var(--rule); background: var(--paper-pure); scroll-margin-top: 90px; }
+  .anchor-card:target { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .anchor-card h3 { font-size: 18px; font-weight: 650; letter-spacing: -0.02em; margin: 0; }
+  .anchor-body { min-width: 0; }
+  .anchor-card .dek { margin-top: 6px; }
+
+  .brand-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .brand-list li { display: grid; grid-template-columns: 1fr auto; gap: 2px 14px; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .bn { font-size: 14px; font-weight: 500; }
+  .bm { font-size: 12px; color: var(--ink-faint); text-align: right; }
+  .bnote { grid-column: 1 / -1; font-size: 12px; color: var(--ink-mute); }
+  .brand-list li.exited .bn { color: var(--ink-mute); text-decoration: line-through; text-decoration-color: var(--rule); }
+  .flag { color: var(--down); }
+  .held { font-size: 12px; color: var(--ink-mute); margin: 10px 0 0; }
+
+  .src-list { margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.5; color: var(--ink-soft); }
+  .src-list li { margin-bottom: 6px; scroll-margin-top: 90px; }
+  .src-list li:target { background: var(--accent-soft); }
+  .src-list a { color: var(--ink-soft); }
+  .src-list a:hover { color: var(--accent); }
+
+  .peers { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .peers a { display: flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border: 1px solid var(--rule); background: var(--paper-pure); font-size: 13px; font-weight: 500; color: var(--ink); }
+  .peers a:hover { border-color: var(--ink-faint); color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .op-head { gap: 14px; }
+    .op-head h1 { font-size: 26px; }
+    .facts > div { grid-template-columns: 1fr; gap: 4px; }
+    .moves li { grid-template-columns: 1fr; gap: 2px; }
+    .anchor-card { padding: 14px; gap: 12px; }
+    .brand-list li { grid-template-columns: 1fr; }
+    .bm { text-align: left; }
+  }
+</style>

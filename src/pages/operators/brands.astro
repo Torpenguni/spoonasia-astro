@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { groups, segments } from '../../data/operators-map';
+import { originLabel } from '../../lib/operators-format';
+
+const rows = groups
+  .flatMap((g) =>
+    g.brands
+      .filter((b) => b.status !== 'verify')
+      .map((b) => ({ ...b, group: g.short, groupId: g.id })),
+  )
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout
+  title="Brand Index — Thailand F&B Operators Map — SpoonAsia"
+  description={`Every brand inside the ${groups.length} operator groups on SpoonAsia’s Thailand F&B Operators Map: owner, segment and how it entered the portfolio.`}
+>
+  <div class="band">
+    <div class="container idx">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/operators">Operator Stories</a> <span>/</span> Brand index</nav>
+      <h1>Brand index</h1>
+      <p class="dek">{rows.length} brands across {groups.length} operator groups.</p>
+
+      <label class="search">
+        <span class="sr">Search brands</span>
+        <input type="search" id="q" placeholder="Search brand or group…" autocomplete="off" />
+      </label>
+
+      <ul class="rows" id="rows">
+        {rows.map((r) => (
+          <li data-q={`${r.name} ${r.nameTh ?? ''} ${r.group}`.toLowerCase()} class={r.status === 'exited' ? 'exited' : ''}>
+            <span class="n">{r.name}{r.nameTh && <span class="th"> {r.nameTh}</span>}</span>
+            <a class="g" href={`/operators/${r.groupId}`}>{r.group}</a>
+            <span class="m">
+              {segments[r.segment].label}{originLabel[r.origin] && ` · ${originLabel[r.origin]}`}
+              {r.status === 'exited' && <span class="flag"> · Exited</span>}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p class="none" id="none" hidden>No brand matches that search.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const q = document.getElementById('q') as HTMLInputElement;
+  const items = document.querySelectorAll<HTMLElement>('#rows li');
+  const none = document.getElementById('none')!;
+  q.addEventListener('input', () => {
+    const v = q.value.trim().toLowerCase();
+    let shown = 0;
+    items.forEach((li) => {
+      const hit = !v || (li.dataset.q ?? '').includes(v);
+      li.hidden = !hit;
+      if (hit) shown++;
+    });
+    none.hidden = shown > 0;
+  });
+</script>
+
+<style>
+  .idx { max-width: 860px; padding-top: 22px; padding-bottom: 56px; }
+  .crumbs { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); }
+  .crumbs a { color: var(--ink-soft); }
+  .crumbs span { margin: 0 6px; }
+  h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.035em; margin: 20px 0 0; }
+  .search input {
+    width: 100%;
+    margin: 20px 0 8px;
+    padding: 12px 14px;
+    font: 15px var(--font-sans);
+    border: 1px solid var(--rule);
+    background: var(--paper-pure);
+    color: var(--ink);
+  }
+  .search input:focus { outline: none; border-color: var(--ink-faint); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-hard); }
+  .rows li { display: grid; grid-template-columns: 1.3fr 1fr 1.2fr; gap: 4px 16px; padding: 11px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .rows li[hidden] { display: none; }
+  .n { font-size: 14px; font-weight: 500; }
+  .th { font-weight: 400; font-size: 12px; color: var(--ink-faint); }
+  .g { font-size: 13px; color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--rule); }
+  .g:hover { color: var(--accent); }
+  .m { font-size: 12px; color: var(--ink-faint); }
+  .exited .n { color: var(--ink-mute); text-decoration: line-through; text-decoration-color: var(--rule); }
+  .flag { color: var(--down); }
+  .none { font-size: 14px; color: var(--ink-mute); margin-top: 16px; }
+  @media (max-width: 768px) {
+    h1 { font-size: 26px; }
+    .rows li { grid-template-columns: 1fr auto; }
+    .m { grid-column: 1 / -1; }
+  }
+</style>

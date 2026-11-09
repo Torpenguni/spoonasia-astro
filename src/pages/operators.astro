@@ -4,7 +4,16 @@ import SectionFront from '../components/SectionFront.astro';
 import RailSignup from '../components/rail/RailSignup.astro';
 import RailPromo from '../components/rail/RailPromo.astro';
 import RailTopVideo from '../components/rail/RailTopVideo.astro';
+import BrandMark from '../components/operators/BrandMark.astro';
 import { getCollection } from 'astro:content';
+import {
+  archetypes,
+  segments,
+  groups,
+  anchorBrands,
+  type Archetype,
+  type Segment,
+} from '../data/operators-map';
 
 // Operator Stories draws on published work: the operators and founder-stories
 // beats already carry three reports, so this front leads with journalism
@@ -44,12 +53,40 @@ const roster = [
   { type: 'Casual', name: 'Greyhound Café', note: 'Lifestyle-led casual dining. A mall-tier survivor through two rent cycles.' },
 ];
 
+// ── Thailand F&B Operators Map ──
+const archetypeOrder: Archetype[] = ['conglomerate', 'listed', 'founder-led', 'master-franchisee'];
+const segmentOrder = Object.keys(segments) as Segment[];
+
+// Anchor brands open on one segment so the front stays short on phones.
+const firstSeg: Segment = 'hotpot-buffet';
+
+const groupById = Object.fromEntries(groups.map((g) => [g.id, g]));
+
+const mapByArchetype = archetypeOrder.map((key) => ({
+  key,
+  ...archetypes[key],
+  groups: groups.filter((g) => g.archetype === key),
+}));
+
+const anchorsBySegment = segmentOrder.map((key) => ({
+  key,
+  ...segments[key],
+  brands: anchorBrands.filter((b) => b.segment === key),
+}));
+
+// Public index: hide entries whose existence the desk has not confirmed.
+const brandIndex = groups
+  .flatMap((g) =>
+    g.brands
+      .filter((b) => b.status !== 'verify')
+      .map((b) => ({ ...b, group: g.name, groupId: g.id })),
+  )
+  .sort((a, b) => a.name.localeCompare(b.name));
+
 const topics = [
-  { label: 'Chains', count: 0 },
-  { label: 'Founder Stories', count: 0 },
-  { label: 'Dessert', count: 0 },
-  { label: 'Forecourt', count: 0 },
-  { label: 'Scale', count: 0 },
+  ...mapByArchetype.map((a) => ({ label: a.label, href: `#${a.key}`, count: a.groups.length })),
+  { label: 'Anchor Brands', href: '#anchor-brands', count: anchorBrands.length },
+  { label: 'Brand Index', href: '/operators/brands', count: brandIndex.length },
 ];
 ---
 
@@ -93,6 +130,69 @@ const topics = [
       </div>
     )}
 
+    <section class="opmap" aria-labelledby="opmap-title">
+      <header class="opmap-intro">
+        <span class="kicker">Thailand F&amp;B Operators Map</span>
+        <h2 id="opmap-title" class="opmap-title">Who runs Thailand’s restaurant chains</h2>
+        <p class="dek">{groups.length} operator groups, {anchorBrands.length} anchor brands. Tap any group for the full profile.</p>
+      </header>
+
+      {mapByArchetype.map((a) => (
+        <div class="opmap-block" id={a.key}>
+          <div class="roster-head">
+            <h2>{a.label}</h2>
+            <span class="roster-count">{a.groups.length}</span>
+          </div>
+          <ul class="tiles group-tiles">
+            {a.groups.map((g) => {
+              const live = g.brands.filter((x) => x.status !== 'verify' && x.status !== 'exited').length;
+              return (
+                <li>
+                  <a class="tile" href={`/operators/${g.id}`}>
+                    <BrandMark id={g.id} name={g.short} size={44} />
+                    <span class="tile-text">
+                      <span class="tile-name">{g.short}</span>
+                      <span class="tile-meta">{live} {live === 1 ? 'brand' : 'brands'}</span>
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+
+      <div class="opmap-block" id="anchor-brands">
+        <div class="roster-head">
+          <h2>Anchor brands</h2>
+          <span class="roster-count">{anchorBrands.length}</span>
+        </div>
+        <div class="seg-filter" role="group" aria-label="Filter anchor brands by segment">
+          {anchorsBySegment.map((sg) => (
+            <button type="button" class={`seg-btn ${sg.key === firstSeg ? 'on' : ''}`} data-seg={sg.key} aria-pressed={String(sg.key === firstSeg)}>
+              {sg.label} <span>{sg.brands.length}</span>
+            </button>
+          ))}
+          <button type="button" class="seg-btn" data-seg="all" aria-pressed="false">All <span>{anchorBrands.length}</span></button>
+        </div>
+        <ul class="tiles brand-tiles">
+          {anchorBrands.map((x) => {
+            const g = groupById[x.groupId];
+            return (
+              <li class="anchor" data-seg={x.segment} hidden={x.segment !== firstSeg}>
+                <a class="tile tile-stack" href={`/operators/${g.id}#${x.id}`}>
+                  <BrandMark id={x.id} name={x.name} size={52} />
+                  <span class="tile-name">{x.name}</span>
+                  <span class="tile-meta">{g.short}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <a class="more" href="/operators/brands">Browse all {brandIndex.length} brands →</a>
+      </div>
+    </section>
+
     <div class="roster">
       <div class="roster-head">
         <h2>On the desk</h2>
@@ -125,3 +225,111 @@ const topics = [
 
   </SectionFront>
 </BaseLayout>
+
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('.seg-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.anchor');
+  btns.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const seg = btn.dataset.seg;
+      btns.forEach((b) => {
+        const on = b === btn;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-pressed', String(on));
+      });
+      cards.forEach((c) => {
+        c.hidden = seg !== 'all' && c.dataset.seg !== seg;
+      });
+    }),
+  );
+</script>
+
+<style>
+  .opmap { margin-top: 8px; }
+  .opmap-intro { border-top: 1px solid var(--rule-hard); padding: 24px 0 6px; }
+  .opmap-title { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin: 0; }
+  .opmap-block { border-top: 1px solid var(--rule); padding: 20px 0 6px; margin-top: 18px; }
+  .opmap-block .roster-head { margin-bottom: 14px; }
+
+  .tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .group-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .brand-tiles { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .tiles li[hidden] { display: none; }
+
+  .tile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid var(--rule);
+    background: var(--paper-pure);
+    color: var(--ink);
+    text-decoration: none;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .tile:hover { border-color: var(--ink-faint); transform: translateY(-1px); }
+  .tile:hover .tile-name { color: var(--accent); }
+  .tile-text { display: flex; flex-direction: column; min-width: 0; }
+  .tile-name { font-size: 14px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; }
+  .tile-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  .tile-stack { flex-direction: column; align-items: center; text-align: center; padding: 12px 6px 10px; gap: 0; }
+  .seg-btn span { font-family: var(--font-mono); font-size: 10px; opacity: 0.55; margin-left: 2px; }
+  .tile-stack .tile-name { margin-top: 10px; font-size: 13px; }
+
+  .seg-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .seg-filter::-webkit-scrollbar { display: none; }
+  .seg-btn {
+    flex: none;
+    font: 500 12px/1 var(--font-sans);
+    color: var(--ink-soft);
+    background: var(--paper-pure);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 8px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .seg-btn:hover { border-color: var(--ink-faint); }
+  .seg-btn.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+  .more {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  @media (max-width: 1000px) {
+    .brand-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (max-width: 768px) {
+    .group-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .seg-filter { flex-wrap: nowrap; margin-right: calc(-1 * var(--gutter, 18px)); }
+    .brand-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+    .brand-tiles .tile-meta { display: none; }
+    .brand-tiles .tile-stack { padding: 10px 4px 8px; }
+    .brand-tiles .tile-name { font-size: 11px; margin-top: 7px; }
+    .tile { padding: 8px; }
+    .tile-name { font-size: 13px; }
+    .opmap-title { font-size: 22px; }
+  }
+</style>

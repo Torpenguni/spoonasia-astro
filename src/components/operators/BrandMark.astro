@@ -1,0 +1,44 @@
+---
+// A brand's logo, or a monogram plate until the logo file arrives.
+import { logoFor, monogram } from '../../lib/brand-logos';
+
+interface Props {
+  id: string;
+  name: string;
+  size?: number;
+}
+const { id, name, size = 56 } = Astro.props;
+const src = logoFor(id);
+const mono = monogram(name);
+---
+
+<span class={`mark ${src ? 'has-logo' : 'is-mono'}`} style={`--s:${size}px`} aria-hidden="true">
+  {src ? <img src={src} alt="" loading="lazy" decoding="async" /> : <span class={`mono len-${mono.length}`}>{mono}</span>}
+</span>
+
+<style>
+  .mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: var(--s);
+    height: var(--s);
+    border: 1px solid var(--rule);
+    background: var(--paper-pure);
+    overflow: hidden;
+  }
+  .mark img { width: 82%; height: 82%; object-fit: contain; }
+  .is-mono { background: var(--well); }
+  .mono {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    opacity: 0.55;
+    font-size: calc(var(--s) * 0.36);
+    line-height: 1;
+  }
+  .mono.len-3 { font-size: calc(var(--s) * 0.28); }
+  .mono.len-4 { font-size: calc(var(--s) * 0.22); }
+</style>

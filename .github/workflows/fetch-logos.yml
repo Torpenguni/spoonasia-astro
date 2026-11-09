@@ -1,0 +1,34 @@
+name: Fetch brand logos
+
+# Downloads the logos listed in src/data/logo-sources.json and commits them,
+# so the site serves its own copies instead of hot-linking.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['src/data/logo-sources.json']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-logos
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Download logos
+        run: node scripts/fetch-logos.mjs
+      - name: Commit logos
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore(logos): update brand logos'
+          file_pattern: 'src/assets/logos/*'
+          commit_user_name: 'logos-bot'
+          commit_user_email: 'logos-bot@users.noreply.github.com'

@@ -12,7 +12,13 @@ for (const [path, url] of Object.entries(files)) {
   byId[id] = url;
 }
 
+import sources from '../data/logo-sources.json';
+
+type LogoMeta = { url: string; fit?: 'fill'; bg?: 'dark'; via?: string };
+const meta = sources as Record<string, LogoMeta>;
+
 export const logoFor = (id: string): string | undefined => byId[id];
+export const logoMeta = (id: string): LogoMeta | undefined => meta[id];
 
 // "Central Restaurants Group" → "CR", "The Pizza Company" → "PC", "S&P Syndicate" → "S&P", "KFC" → "KFC"
 export function monogram(name: string): string {

@@ -1,6 +1,6 @@
 ---
 // A brand's logo, or a monogram plate until the logo file arrives.
-import { logoFor, monogram } from '../../lib/brand-logos';
+import { logoFor, logoMeta, monogram } from '../../lib/brand-logos';
 
 interface Props {
   id: string;
@@ -10,9 +10,11 @@ interface Props {
 const { id, name, size = 56 } = Astro.props;
 const src = logoFor(id);
 const mono = monogram(name);
+const m = src ? logoMeta(id) : undefined;
+const cls = ['mark', src ? 'has-logo' : 'is-mono', m?.fit === 'fill' ? 'fill' : '', m?.bg === 'dark' ? 'dark' : ''].join(' ');
 ---
 
-<span class={`mark ${src ? 'has-logo' : 'is-mono'}`} style={`--s:${size}px`} aria-hidden="true">
+<span class={cls} style={`--s:${size}px`} aria-hidden="true">
   {src ? <img src={src} alt="" loading="lazy" decoding="async" /> : <span class={`mono len-${mono.length}`}>{mono}</span>}
 </span>
 
@@ -28,7 +30,9 @@ const mono = monogram(name);
     background: var(--paper-pure);
     overflow: hidden;
   }
-  .mark img { width: 82%; height: 82%; object-fit: contain; }
+  .mark img { width: 80%; height: 80%; object-fit: contain; }
+  .mark.fill img { width: 100%; height: 100%; object-fit: cover; }
+  .mark.dark { background: #161514; border-color: #161514; }
   .is-mono { background: var(--well); }
   .mono {
     font-family: var(--font-sans);

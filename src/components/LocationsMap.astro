@@ -16,7 +16,8 @@
     <input type="search" id="lm-q" placeholder="Search ICONSIAM, Thonglor, Central…" autocomplete="off" aria-label="Search projects" />
     <select id="lm-zone" aria-label="Zone"><option value="">All zones</option></select>
     <div class="lm-lens" role="group" aria-label="Map shading">
-      <button type="button" data-lens="zones" aria-pressed="true">Zones</button>
+      <button type="button" data-lens="rings" aria-pressed="true">City rings</button>
+      <button type="button" data-lens="zones" aria-pressed="false">Zones</button>
       <button type="button" data-lens="rent" aria-pressed="false">Rent</button>
       <button type="button" data-lens="supply" aria-pressed="false">Supply</button>
     </div>
@@ -24,9 +25,11 @@
 
   <details class="lm-filters" open>
     <summary>Filters <span id="lm-active"></span></summary>
-    <div class="lm-frow"><span class="lm-lab">Type</span><div class="lm-chips" id="lm-types"></div></div>
+    <div class="lm-frow"><span class="lm-lab">City ring</span><div class="lm-chips" id="lm-rings"></div></div>
+    <div class="lm-frow"><span class="lm-lab">Landlord</span><div class="lm-chips" id="lm-groups"></div></div>
+    <div class="lm-frow"><span class="lm-lab">Format</span><div class="lm-chips" id="lm-types"></div></div>
     <div class="lm-frow"><span class="lm-lab">Rent ฿/sqm/mo</span><div class="lm-chips" id="lm-rent"></div></div>
-    <div class="lm-frow"><span class="lm-lab">Customer</span><div class="lm-chips" id="lm-segs"></div></div>
+    <div class="lm-frow"><span class="lm-lab">Audience</span><div class="lm-chips" id="lm-segs"></div></div>
     <div class="lm-frow"><span class="lm-lab">Highlights</span><div class="lm-chips" id="lm-tags"></div></div>
     <div class="lm-frow"><span class="lm-lab">Access</span><div class="lm-chips">
       <button type="button" class="lm-chip" id="lm-direct" aria-pressed="false">Direct rail link</button>
@@ -34,7 +37,7 @@
       <button type="button" class="lm-chip lm-reset" id="lm-reset">Reset</button>
     </div></div>
     <div class="lm-frow lm-pending"><span class="lm-lab">Phase 2</span><div class="lm-chips">
-      <span class="lm-chip">NLA</span><span class="lm-chip">Shop count</span><span class="lm-chip">Unit size free</span><span class="lm-chip">Gas / hood allowed</span>
+      <span class="lm-chip">Street / shophouse</span><span class="lm-chip">Transit retail</span><span class="lm-chip">NLA</span><span class="lm-chip">Shop count</span><span class="lm-chip">Unit size free</span><span class="lm-chip">Gas / hood allowed</span>
     </div></div>
   </details>
 
@@ -193,13 +196,23 @@
 
   type Proj = (typeof PROJ)[number];
   type ZoneKey = keyof typeof GEO.zones;
-  const zones = GEO.zones as Record<string, { name: string; rent: { area: string; thb: number } | null; geometry: any; lp: number[] }>;
+  const zones = GEO.zones as Record<string, { name: string; ring: string; rent: { area: string; thb: number } | null; geometry: any; lp: number[] }>;
+  const RINGS: Record<string, [string, string, string]> = {
+    cbd: ['CBD', '#DDBB9B', 'Siam–Ratchaprasong, Silom–Sathorn, lower Sukhumvit'],
+    fringe: ['City fringe', '#EAD5BF', 'Rama 9–Ratchada, Ari–Phahon, upper Sukhumvit, riverside, old town'],
+    suburban: ['Suburban Bangkok', '#F3E8DA', 'East, north, west and south-west Bangkok'],
+    vicinity: ['Vicinity (BMR)', '#F8F3EB', 'Nonthaburi, Pathum Thani, Samut Prakan, Samut Sakhon, Nakhon Pathom'],
+  };
+  const GROUPS: Record<string, string> = {
+    central: 'Central Pattana / Central Group', themall: 'The Mall Group', siampiwat: 'Siam Piwat', tcc: 'TCC / Frasers / Golden Land',
+    hyper: "Lotus's / Big C", mqdc: 'MQDC', lhmall: 'LH Mall (Terminal 21)', siamfuture: 'Siam Future', other: 'Independent / other',
+  };
 
   const TYPES: Record<string, [string, string]> = {
-    mall: ['Shopping mall', '#B85A2A'], department: ['Department store', '#8E2C24'], hypermarket: ['Hypermarket', '#6F7D1F'],
-    community: ['Community mall', '#1F7A6D'], mixeduse: ['Mixed-use', '#3D4FA3'], office: ['Office podium', '#7C776C'],
+    mall: ['Regional mall', '#B85A2A'], department: ['Department store', '#8E2C24'], hypermarket: ['Hypermarket gallery', '#6F7D1F'],
+    community: ['Lifestyle / community mall', '#1F7A6D'], mixeduse: ['Mixed-use', '#3D4FA3'], office: ['Office podium', '#7C776C'],
   };
-  const SEGS: Record<string, string> = { office: 'Office', family: 'Family', tourist: 'Tourist', student: 'Student', young: 'Young adult', premium: 'Premium', mass: 'Mass' };
+  const SEGS: Record<string, string> = { tourist: 'Tourists', premium: 'Expats & premium Thai', office: 'Office workers', family: 'Thai families', student: 'Students', young: 'Young adults', mass: 'Mass market' };
   const TAGS: Record<string, string> = { supermarket: 'Supermarket', cinema: 'Cinema', foodcourt: 'Food court', '24h': '24 hours', tourist: 'Tourist draw', luxury: 'Luxury' };
   const RENTS: Record<string, string> = { any: 'Any', cbd: 'CBD ≥ 2,800', fringe: 'Fringe 2,200–2,400', none: 'No benchmark' };
   const STATUS: Record<string, string> = { open: 'Open', upcoming: 'Upcoming', phased: 'Phased opening', verify: 'To confirm' };
@@ -216,7 +229,8 @@
 
   const st = {
     q: '', types: new Set(Object.keys(TYPES)), zone: '', rent: 'any', segs: new Set<string>(), tags: new Set<string>(),
-    direct: false, openonly: false, lens: 'zones', sel: null as number | null,
+    direct: false, openonly: false, lens: 'rings', sel: null as number | null,
+    rings: new Set<string>(), groups: new Set<string>(),
   };
 
   const typeBox = $('lm-types');
@@ -228,7 +242,7 @@
     b.setAttribute('aria-pressed', String(st.types.has(k))); update();
   });
   const zsel = $<HTMLSelectElement>('lm-zone');
-  zsel.innerHTML += Object.entries(zones).map(([k, z]) => `<option value="${k}">${esc(z.name)}</option>`).join('');
+  zsel.innerHTML += Object.entries(RINGS).map(([r, [rn]]) => `<optgroup label="${esc(rn)}">` + Object.entries(zones).filter(([, z]) => z.ring === r).map(([k, z]) => `<option value="${k}">${esc(z.name)}</option>`).join('') + '</optgroup>').join('');
   const chipRow = (el: HTMLElement, obj: Record<string, string>, set: Set<string>) => {
     el.innerHTML = Object.entries(obj).map(([k, n]) => `<button type="button" class="lm-chip" data-k="${k}" aria-pressed="false">${esc(n)}</button>`).join('');
     el.addEventListener('click', (e) => {
@@ -237,6 +251,8 @@
       b.setAttribute('aria-pressed', String(set.has(k))); update();
     });
   };
+  chipRow($('lm-rings'), Object.fromEntries(Object.entries(RINGS).map(([k, v]) => [k, v[0]])), st.rings);
+  chipRow($('lm-groups'), GROUPS, st.groups);
   chipRow($('lm-segs'), SEGS, st.segs);
   chipRow($('lm-tags'), TAGS, st.tags);
   const rentEl = $('lm-rent');
@@ -252,6 +268,8 @@
     if (!ignoreType && !st.types.has(p.type)) return false;
     if (st.zone && p.zone !== st.zone) return false;
     if (st.rent !== 'any' && rentClass(p.zone!) !== st.rent) return false;
+    if (st.rings.size && !st.rings.has(zones[p.zone!]?.ring)) return false;
+    if (st.groups.size && !st.groups.has(p.group)) return false;
     for (const s of st.segs) if (!p.segments.includes(s)) return false;
     for (const t of st.tags) if (!p.tags.includes(t)) return false;
     if (st.direct && p.link !== 'direct') return false;
@@ -328,6 +346,7 @@
       .attr('fill', (d) => {
         if (st.lens === 'rent') { const c = rentClass(d[0]); return c === 'cbd' ? '#E9D3BE' : c === 'fringe' ? '#F4E9DC' : 'transparent'; }
         if (st.lens === 'supply') { const n = byZ.get(d[0]) || 0; return n ? `color-mix(in srgb, var(--accent) ${Math.round(8 + 40 * n / maxZ)}%, transparent)` : 'transparent'; }
+        if (st.lens === 'rings') return st.zone === d[0] ? 'var(--accent-soft)' : RINGS[d[1].ring][1];
         return st.zone === d[0] ? 'var(--accent-soft)' : 'transparent';
       });
     const zl = Object.entries(zones).map(([key, z]) => ({ key, lp: z.lp, name: z.name, n: byZ.get(key) || 0 }));
@@ -353,7 +372,7 @@
 
     $('lm-count').textContent = String(vis.length);
     $('lm-where').textContent = st.zone ? zones[st.zone].name : 'All zones';
-    const nActive = (st.types.size < 6 ? 1 : 0) + (st.rent !== 'any' ? 1 : 0) + st.segs.size + st.tags.size + (st.direct ? 1 : 0) + (st.openonly ? 1 : 0);
+    const nActive = (st.types.size < 6 ? 1 : 0) + (st.rent !== 'any' ? 1 : 0) + st.segs.size + st.tags.size + st.rings.size + st.groups.size + (st.direct ? 1 : 0) + (st.openonly ? 1 : 0);
     $('lm-active').textContent = nActive ? `· ${nActive} active` : '';
     $('lm-list').innerHTML = vis.slice().sort((a, b) => a.name.localeCompare(b.name)).map((p) =>
       `<li role="option" tabindex="0" data-id="${p.id}" aria-selected="${st.sel === p.id}">${coverThumb(p) ? `<img class="lm-th" src="${esc(coverThumb(p))}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : `<span class="lm-thx"><span class="lm-dot" style="background:${TYPES[p.type][1]}"></span></span>`}<span><span class="nm">${esc(p.name)}</span><br><span class="sb">${esc(TYPES[p.type][0])} · ${esc(zones[p.zone!]?.name)}${p.status !== 'open' ? ' · ' + esc(STATUS[p.status]) : ''}</span></span></li>`
@@ -436,12 +455,12 @@
     const el = $('lm-detail');
     if (!st.sel) {
       if (st.zone) {
-        el.innerHTML = `<span class="lm-flag">Zone</span><h3>${esc(zones[st.zone].name)}</h3>
-          <dl><dt>Rent band</dt><dd>${rentLine(st.zone)}</dd><dt>Projects</dt><dd>${PROJ.filter((p) => p.zone === st.zone).length} in the draft list</dd><dt>Read</dt><dd>${dossierLink(st.zone)}</dd></dl>${zoneGrid(st.zone)}`;
+        el.innerHTML = `<span class="lm-flag">${esc(RINGS[zones[st.zone].ring][0])} · zone</span><h3>${esc(zones[st.zone].name)}</h3>
+          <dl><dt>Landlords</dt><dd>${landlordMix(st.zone)}</dd><dt>Rent band</dt><dd>${rentLine(st.zone)}</dd><dt>Projects</dt><dd>${PROJ.filter((p) => p.zone === st.zone).length} in the draft list</dd><dt>Read</dt><dd>${dossierLink(st.zone)}</dd></dl>${zoneGrid(st.zone)}`;
         bindZoneGrid();
       } else {
         el.innerHTML = `<span class="lm-flag">How to read it</span><h3>Pick a zone or a pin</h3>
-          <p class="dek">Zoomed out, each dark circle counts the projects in a zone that match your filters. Click a zone or zoom in to see each project. Faded pins are not open yet. The shading switch colours zones by rent benchmark or by matching supply.</p>`;
+          <p class="dek">Bangkok reads as four rings: the CBD, the city fringe around it, suburban Bangkok, and the vicinity provinces (BMR). Each dark circle counts the projects in a zone that match your filters. Click a zone or zoom in to see each project; faded pins are not open yet. Filter by landlord to see who controls the space.</p>`;
       }
       return;
     }
@@ -450,7 +469,8 @@
     el.innerHTML = `${coverBlock(p)}<span class="lm-flag">Draft · unverified</span><h3>${esc(p.name)}</h3>
       <p class="dek" style="margin-top:2px">${esc(TYPES[p.type][0])} · ${esc(p.operator)}</p>
       <dl>
-        <dt>Zone</dt><dd>${esc(zones[z].name)}</dd>
+        <dt>Location</dt><dd>${esc(zones[z].name)} · ${esc(RINGS[zones[z].ring][0])}</dd>
+        <dt>Landlord</dt><dd>${esc(GROUPS[p.group])}</dd>
         <dt>District</dt><dd>${esc(p.district)} · ${esc(p.district_th)}</dd>
         <dt>Rail</dt><dd>${p.station ? `${esc(p.station)} · ${p.link === 'direct' ? 'direct link' : p.link === 'walk' ? 'walkable' : 'no direct link'}` : '<span class="muted">None nearby</span>'}</dd>
         <dt>Status</dt><dd>${esc(STATUS[p.status])}${p.opened ? ` · opened ${p.opened}` : ''}</dd>
@@ -458,7 +478,7 @@
         <dt>NLA · shops</dt><dd class="muted">Phase 2 — from landlord</dd>
         <dt>F&amp;B spec</dt><dd class="muted">Gas, hood, grease trap — phase 2</dd>
         <dt>Highlights</dt><dd>${p.tags.map((t) => `<span class="lm-tag">${esc(TAGS[t])}</span>`).join('') || '<span class="muted">—</span>'}</dd>
-        <dt>Customer</dt><dd>${p.segments.map((t) => `<span class="lm-tag">${esc(SEGS[t])}</span>`).join('')}</dd>
+        <dt>Audience</dt><dd>${p.segments.map((t) => `<span class="lm-tag">${esc(SEGS[t])}</span>`).join('')}</dd>
         <dt>Read</dt><dd>${p.file ? `<a href="/properties/${esc(p.file)}">Property file</a> · ` : ''}${MALL_TIER.has(p.name) ? '<a href="#zone-mall-tier">Mall-tier dossier</a>' : dossierLink(z)}</dd>
       </dl>
       <p style="margin:14px 0 0"><button type="button" class="lm-chip" id="lm-close">Close</button></p>`;
@@ -466,11 +486,18 @@
     const oa = document.getElementById('lm-open-album'); if (oa) oa.onclick = () => openAlbum(p, 0);
   }
 
+  function landlordMix(z: string) {
+    const ps = PROJ.filter((p) => p.zone === z);
+    const c = new Map<string, number>(); ps.forEach((p) => c.set(p.group, (c.get(p.group) || 0) + 1));
+    return [...c.entries()].sort((a, b) => b[1] - a[1]).map(([g, n]) => `${esc(GROUPS[g])} (${n})`).join(' · ') || '<span class="muted">—</span>';
+  }
+
   function legend() {
     const L = $('lm-legend');
     const types = Object.values(TYPES).map(([n, c]) => `<span><span class="lm-dot" style="background:${c}"></span>${n}</span>`).join('');
     const lens = st.lens === 'rent' ? '<span><span class="lm-dot" style="background:#E9D3BE;border-radius:1px"></span>CBD ฿2,852</span><span><span class="lm-dot" style="background:#F4E9DC;border-radius:1px"></span>Fringe ฿2,230–2,300</span>'
-      : st.lens === 'supply' ? '<span>Darker zone = more matching projects</span>' : '';
+      : st.lens === 'supply' ? '<span>Darker zone = more matching projects</span>'
+      : st.lens === 'rings' ? Object.values(RINGS).map(([n, c]) => `<span><span class="lm-dot" style="background:${c};border-radius:1px;box-shadow:0 0 0 1px var(--rule)"></span>${n}</span>`).join('') : '';
     L.innerHTML = lens + (k < 2.2 ? '<span>Circle = projects in zone · zoom in for pins</span>' : types) + '<span>- - rail (schematic)</span>';
   }
 
@@ -489,7 +516,7 @@
   $('lm-home').onclick = home;
   $('lm-reset').onclick = () => {
     Object.assign(st, { q: '', zone: '', rent: 'any', direct: false, openonly: false, sel: null });
-    st.types = new Set(Object.keys(TYPES)); st.segs.clear(); st.tags.clear();
+    st.types = new Set(Object.keys(TYPES)); st.segs.clear(); st.tags.clear(); st.rings.clear(); st.groups.clear();
     $<HTMLInputElement>('lm-q').value = ''; zsel.value = '';
     document.querySelectorAll('#lmap .lm-chip[aria-pressed]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
     typeBox.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', 'true'));
@@ -497,6 +524,10 @@
     update(); home();
   };
   if (window.matchMedia('(max-width: 700px)').matches) ($('lmap').querySelector('details') as HTMLDetailsElement).open = false;
+  window.addEventListener('lm-zone', (e) => {
+    const z = (e as CustomEvent).detail as string; if (!zones[z]) return;
+    st.zone = z; st.sel = null; zsel.value = z; update(); setTimeout(() => zoomTo(zones[z].geometry), 350);
+  });
   const ro = new ResizeObserver(() => { if (box.clientWidth !== W || box.clientHeight !== H) draw(); });
   ro.observe(box);
 </script>

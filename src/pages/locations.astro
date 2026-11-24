@@ -10,12 +10,12 @@ import LocationsMap from '../components/LocationsMap.astro';
 // Photo licensing lives in public/images/locations/CREDITS.md — the credit
 // line on each card satisfies the CC BY / BY-SA attribution requirement.
 const watchlist = [
-  { tag: 'Premium CBD', map: 'sukhumvit' as const, name: 'Sukhumvit — Asoke / Thonglor / Ekkamai', note: 'Rent runs $78–95/sqm. Premium-mall saturation. Foreign-chain flagship belt. Margin compression risk: high.', credit: 'Max221B · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Bangkok_from_sukhumvit.jpg' },
-  { tag: 'Creator Corridor', map: 'ari' as const, name: 'Ari', note: 'BTS Ari corridor. Independent-favored, low-rise zoning, creator-class footprint. Rent $42/sqm — rising fast.', credit: 'Phoebus 28 · CC0', creditHref: 'https://commons.wikimedia.org/wiki/File:Ari_Samphan_Noodles_Stall.jpg' },
-  { tag: 'Frontier', map: 'phra-khanong' as const, name: 'Phra Khanong', note: 'Emerging F&B zone. Rents up 18% YoY. BTS upgrade Q4 2024. Window-of-entry open through 2026.', credit: 'Suikotei · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Phra_Khanong_Station.jpg' },
-  { tag: 'Heritage', map: 'charoenkrung' as const, name: 'Charoenkrung / Talad Noi', note: "Heritage-led, slow burn. Premium-independent only. Mall-tier formats don't survive here.", credit: 'Phoebus 28 · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Talat_Noi_Street_Art.jpg' },
-  { tag: 'Local-tier', map: 'ratchada' as const, name: 'Ratchada / Huai Khwang', note: 'Underwritten by night-market footfall. Resilient unit economics, lower ceiling.', credit: 'aotaro · CC BY 2.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Train_Night_Market_Ratchada_(34144230042).jpg' },
-  { tag: 'Mall-tier', map: 'mall-tier' as const, name: 'EmQuartier / ICONSIAM / Central Embassy', note: 'Premium mall F&B vacancy at 7-year high. Effective rent down 15–22% vs 2024. Leverage window open.', credit: 'Supanut Arunoprayote · CC BY 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Iconsiam_at_Day_(III).jpg' },
+  { tag: 'Premium CBD', ring: 'CBD', zone: 'suk1', map: 'sukhumvit' as const, name: 'Sukhumvit — Asoke / Thonglor / Ekkamai', note: 'Rent runs $78–95/sqm. Premium-mall saturation. Foreign-chain flagship belt. Margin compression risk: high.', credit: 'Max221B · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Bangkok_from_sukhumvit.jpg' },
+  { tag: 'Creator Corridor', ring: 'City fringe', zone: 'north1', map: 'ari' as const, name: 'Ari', note: 'BTS Ari corridor. Independent-favored, low-rise zoning, creator-class footprint. Rent $42/sqm — rising fast.', credit: 'Phoebus 28 · CC0', creditHref: 'https://commons.wikimedia.org/wiki/File:Ari_Samphan_Noodles_Stall.jpg' },
+  { tag: 'Frontier', ring: 'City fringe', zone: 'suk2', map: 'phra-khanong' as const, name: 'Phra Khanong', note: 'Emerging F&B zone. Rents up 18% YoY. BTS upgrade Q4 2024. Window-of-entry open through 2026.', credit: 'Suikotei · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Phra_Khanong_Station.jpg' },
+  { tag: 'Heritage', ring: 'City fringe', zone: 'old', map: 'charoenkrung' as const, name: 'Charoenkrung / Talad Noi', note: "Heritage-led, slow burn. Premium-independent only. Mall-tier formats don't survive here.", credit: 'Phoebus 28 · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Talat_Noi_Street_Art.jpg' },
+  { tag: 'Local-tier', ring: 'City fringe', zone: 'rama9', map: 'ratchada' as const, name: 'Ratchada / Huai Khwang', note: 'Underwritten by night-market footfall. Resilient unit economics, lower ceiling.', credit: 'aotaro · CC BY 2.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Train_Night_Market_Ratchada_(34144230042).jpg' },
+  { tag: 'Mall-tier', ring: 'CBD & riverside', zone: '', map: 'mall-tier' as const, name: 'EmQuartier / ICONSIAM / Central Embassy', note: 'Premium mall F&B vacancy at 7-year high. Effective rent down 15–22% vs 2024. Leverage window open.', credit: 'Supanut Arunoprayote · CC BY 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Iconsiam_at_Day_(III).jpg' },
 ];
 
 // Layer 2 — the supply pipeline. Every mega-project and mixed-use launch
@@ -54,7 +54,52 @@ const signals = [
   },
 ];
 
-const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
+const topics = [
+  { label: 'Overview', href: '#overview' },
+  { label: 'Map', href: '#map' },
+  { label: 'Zones', href: '#zones' },
+  { label: 'Supply', href: '#supply' },
+  { label: 'Signals', href: '#signals' },
+  { label: 'Entry playbook', href: '#playbook' },
+  { label: 'Glossary', href: '#glossary' },
+];
+
+// Overview figures. Counts come from our own map data, computed at build;
+// market figures are quoted from the named source, never estimated here.
+import PROJ from '../data/locations/projects.json';
+import GEO from '../data/locations/geo.json';
+const zoneRing = Object.fromEntries(Object.entries(GEO.zones).map(([k, z]) => [k, (z as any).ring]));
+const ringCount = (r: string) => PROJ.filter((p) => zoneRing[p.zone as string] === r).length;
+const bigFour = ['central', 'themall', 'siampiwat', 'tcc'];
+const bigFourCount = PROJ.filter((p) => bigFour.includes((p as any).group)).length;
+const rings = [
+  { name: 'CBD', where: 'Siam–Ratchaprasong, Silom–Sathorn, lower Sukhumvit', n: ringCount('cbd') },
+  { name: 'City fringe', where: 'Rama 9–Ratchada, Ari–Phahon Yothin, upper Sukhumvit, riverside, old town', n: ringCount('fringe') },
+  { name: 'Suburban Bangkok', where: 'East, north, west and south-west Bangkok', n: ringCount('suburban') },
+  { name: 'Vicinity (BMR)', where: 'Nonthaburi, Pathum Thani, Samut Prakan, Samut Sakhon, Nakhon Pathom', n: ringCount('vicinity') },
+];
+
+const formats = [
+  { f: 'Regional mall', who: 'Central Pattana, The Mall Group, Siam Piwat', fit: 'Flagship and brand-building stores', watch: 'Landlord fit-out standards, fixed opening hours, rent often linked to sales' },
+  { f: 'Lifestyle / community mall', who: 'Independents, Siam Future, residential developers', fit: 'Test store; neighbourhood regulars', watch: 'Smaller catchment; parking-led traffic' },
+  { f: 'Department store', who: 'Central, Robinson, The Mall', fit: 'Corner, counter or pop-up', watch: 'Often a consignment (GP) deal: the store keeps a share of sales' },
+  { f: 'Hypermarket gallery', who: "Lotus's, Big C", fit: 'Mass-market brands expanding fast', watch: 'High traffic, lower spend per head' },
+  { f: 'Mixed-use / office podium', who: 'TCC / Frasers, Golden Land, MQDC', fit: 'Coffee, lunch, grab-and-go', watch: 'Strong weekdays, quiet weekends' },
+  { f: 'Transit retail', who: 'BTS / MRT station concessions', fit: 'Kiosk, takeaway', watch: 'Tiny units, little or no cooking' },
+  { f: 'Street / shophouse', who: 'Private owners', fit: 'Full-kitchen concepts, neighbourhood dining', watch: 'Key money, own licences, gas and ventilation on you' },
+];
+
+const glossary = [
+  ['BMR', 'Bangkok Metropolitan Region: Bangkok plus Nonthaburi, Pathum Thani, Samut Prakan, Samut Sakhon and Nakhon Pathom.'],
+  ['BTS / MRT', 'Bangkok’s two main rail networks: the elevated Skytrain (BTS) and the Metro (MRT).'],
+  ['CBD', 'Central business district — the city’s prime office and retail core.'],
+  ['Soi', 'A side street off a main road, numbered (Sukhumvit Soi 55 is Thonglor).'],
+  ['Shophouse', 'A narrow multi-storey terrace with a shop on the ground floor — the default street-retail unit.'],
+  ['Key money', 'An upfront premium paid for the right to take over a lease, common for street units (ค่าแป๊ะเจี๊ยะ, also called tea money).'],
+  ['GP', 'Gross profit share: the percentage of sales a department store or mall keeps under a consignment or revenue-share deal.'],
+  ['NLA', 'Net lettable area — the floor area tenants can actually lease.'],
+  ['Rai', 'Thai land unit: 1 rai = 1,600 square metres.'],
+];
 ---
 
 <BaseLayout
@@ -74,7 +119,28 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
       </p>
     </div>
 
-    <div class="group-head">The map — retail projects, Bangkok &amp; vicinity</div>
+    <div class="group-head" id="overview">Bangkok retail in 60 seconds</div>
+    <div class="ov-grid">
+      <div class="ov-card">
+        <span class="kicker tight">Four rings</span>
+        <ol class="ov-rings">
+          {rings.map((r) => (<li><b>{r.name}</b> <span>{r.where}</span> <em>{r.n} projects on our map</em></li>))}
+        </ol>
+      </div>
+      <div class="ov-card">
+        <span class="kicker tight">Who controls the space</span>
+        <p class="ov-big">43%</p>
+        <p class="dek">of retail space in the Bangkok Metropolitan Region is run by the major operators — Central Group, TCC Land, Siam Piwat and The Mall Group (Krungsri Research). On our map those four run {bigFourCount} of {PROJ.length} projects. Filter the map by landlord to see where each one sits.</p>
+      </div>
+      <div class="ov-card">
+        <span class="kicker tight">Supply and rent</span>
+        <p class="ov-big">8.25m sqm</p>
+        <p class="dek">of retail space in Bangkok at the end of 2025, with about 300,000 sqm more due in 2026 — roughly three-quarters of it in midtown and suburban locations (CBRE). Average mall rent in Q1 2026: ฿2,852 per sqm per month in the CBD, ฿2,230 in the northern fringe, ฿2,300 in the eastern fringe (CBRE).</p>
+      </div>
+    </div>
+    <p class="ov-note">All rents on this page are in Thai baht per square metre per month. Sources: <a href="https://www.cbre.com/press-releases/cbre-forecasts-year-of-repositioning-for-thai-retail" target="_blank" rel="noopener">CBRE, June 2026</a> · <a href="https://www.cbre.com/insights/reports/2026-thailand-real-estate-market-outlook" target="_blank" rel="noopener">CBRE 2026 outlook</a> · <a href="https://www.austchamthailand.com/resources/advance-blog/cbre-thailands-2026-outlook-strategic-balance-risk-and-reward-evolving" target="_blank" rel="noopener">CBRE outlook via AustCham</a> · <a href="https://www.krungsri.com/en/research/industry/industry-outlook/real-estate/commercial-buildings-in-bmr/io/retail-space-2026" target="_blank" rel="noopener">Krungsri Research, Retail Space in BMR 2026–28</a>.</p>
+
+    <div class="group-head" id="map">The map — retail projects, Bangkok &amp; vicinity</div>
     <p class="group-dek">
       Malls, department stores, hypermarkets, community malls, mixed-use and
       office podiums, placed on 18 micro-markets. Zoom in to move from zones
@@ -82,7 +148,7 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
     </p>
     <LocationsMap />
 
-    <div class="group-head">The zones</div>
+    <div class="group-head" id="zones">The zones</div>
     <div class="grid3">
       {watchlist.map((w) => (
         <article id={`zone-${w.map}`}>
@@ -90,14 +156,15 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
             <img src={`/images/locations/${w.map}.webp`} alt={w.name} width="960" height="640" loading="lazy" />
           </div>
           <a class="zone-credit" href={w.creditHref} target="_blank" rel="noopener noreferrer">Photo: {w.credit}</a>
-          <span class="kicker">{w.tag}</span>
+          <span class="kicker">{w.ring} · {w.tag}</span>
           <h3>{w.name}</h3>
           <p class="dek">{w.note}</p>
+          {w.zone && <a href="#map" class="zone-maplink" data-zone={w.zone}>See it on the map →</a>}
         </article>
       ))}
     </div>
 
-    <div class="group-head">Supply watch — property files</div>
+    <div class="group-head" id="supply">Supply watch — property files</div>
     <p class="group-dek">
       Every project adding meaningful F&B floorplate, one file per property —
       who should sign, who shouldn't, and when. The three most consequential
@@ -116,7 +183,7 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
     </div>
     <a href="/properties" class="all-link">All {properties.length} property files →</a>
 
-    <div class="group-head">Signals — infrastructure &amp; momentum</div>
+    <div class="group-head" id="signals">Signals — infrastructure &amp; momentum</div>
     <p class="group-dek">
       The leading indicators of a rent curve. Logged here first, folded into
       the zone dossiers as they play out.
@@ -131,6 +198,42 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
       ))}
     </div>
 
+    <div class="group-head" id="playbook">Entry playbook — which space for which move</div>
+    <p class="group-dek">
+      For brands coming into Thailand: the seven kinds of space on offer, who
+      controls each, and what it suits. Start here before you start viewing units.
+    </p>
+    <div class="pb-wrap">
+      <table class="pb-table">
+        <thead><tr><th>Format</th><th>Main landlords</th><th>Best for</th><th>Watch for</th></tr></thead>
+        <tbody>
+          {formats.map((r) => (<tr><td><b>{r.f}</b></td><td data-l="Landlords">{r.who}</td><td data-l="Best for">{r.fit}</td><td data-l="Watch for">{r.watch}</td></tr>))}
+        </tbody>
+      </table>
+    </div>
+    <div class="pb-notes">
+      <article>
+        <span class="kicker">Leases</span>
+        <h3>Three years is the natural term</h3>
+        <p class="dek">Under Thailand’s Civil and Commercial Code (section 538), a lease of more than three years must be in writing and registered at the Land Office, or it is enforceable for three years only. That is why three-year terms with renewal options are common.</p>
+      </article>
+      <article>
+        <span class="kicker">Rent</span>
+        <h3>Fixed, share of sales, or both</h3>
+        <p class="dek">Malls charge fixed rent per sqm, a percentage of sales, or the higher of the two; department stores often work on consignment (GP). Street units usually carry key money plus a deposit. Every figure is negotiated — use the zone benchmarks above as the opening reference, not the answer.</p>
+      </article>
+      <article>
+        <span class="kicker">Structure</span>
+        <h3>Settle the entity before the LOI</h3>
+        <p class="dek">Who signs the lease — a Thai company, a joint venture, a franchisee — depends on your ownership structure under the Foreign Business Act. Confirm it with Thai counsel before you sign a letter of intent.</p>
+      </article>
+    </div>
+
+    <div class="group-head" id="glossary">Glossary</div>
+    <dl class="gl">
+      {glossary.map(([t, d]) => (<><dt>{t}</dt><dd>{d}</dd></>))}
+    </dl>
+
     <Fragment slot="rail">
       <RailSignup />
       <RailPromo section="locations" />
@@ -140,7 +243,49 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
   </SectionFront>
 </BaseLayout>
 
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('.zone-maplink').forEach((a) => {
+    a.addEventListener('click', () => window.dispatchEvent(new CustomEvent('lm-zone', { detail: a.dataset.zone })));
+  });
+</script>
+
 <style>
+  html { scroll-padding-top: 72px; }
+  .ov-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 14px; }
+  .ov-card { padding: 4px 20px 6px; border-left: 1px solid var(--rule); }
+  .ov-card:first-child { border-left: 0; padding-left: 0; }
+  .ov-big { font: 700 34px/1 var(--font-sans); letter-spacing: -.03em; margin: 6px 0 0; }
+  .ov-rings { list-style: none; margin: 6px 0 0; padding: 0; counter-reset: r; }
+  .ov-rings li { padding: 7px 0; border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.45; }
+  .ov-rings li:first-child { border-top: 0; }
+  .ov-rings b { display: block; font-size: 14px; }
+  .ov-rings span { color: var(--ink-soft); }
+  .ov-rings em { display: block; font: 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); font-style: normal; margin-top: 2px; }
+  .ov-note { font-size: 12px; color: var(--ink-faint); margin: 12px 0 0; line-height: 1.55; }
+  .ov-note a { color: inherit; }
+  .zone-maplink { display: inline-block; margin-top: 10px; font: 500 10px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+  .pb-wrap { overflow-x: auto; margin-top: 10px; }
+  .pb-table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.45; }
+  .pb-table th { text-align: left; font: 500 10px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); padding: 8px 10px 8px 0; border-bottom: 1px solid var(--rule-hard, var(--ink)); }
+  .pb-table td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .pb-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 18px; }
+  .pb-notes article { padding: 0 18px; border-left: 1px solid var(--rule); }
+  .pb-notes article:first-child { border-left: 0; padding-left: 0; }
+  .pb-notes h3 { font: 600 16px/1.3 var(--font-sans); margin: 0 0 4px; }
+  .gl { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 8px 16px; margin: 14px 0 0; font-size: 14px; line-height: 1.5; }
+  .gl dt { font-weight: 600; }
+  .gl dd { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 760px) {
+    .ov-grid, .pb-notes { grid-template-columns: minmax(0, 1fr); }
+    .ov-card, .pb-notes article { border-left: 0; padding: 14px 0 0; border-top: 1px solid var(--rule); }
+    .ov-card:first-child, .pb-notes article:first-child { border-top: 0; padding-top: 0; }
+    .pb-table thead { display: none; }
+    .pb-table tr { display: grid; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+    .pb-table td { border: 0; padding: 2px 0; }
+    .pb-table td[data-l]::before { content: attr(data-l); display: inline-block; min-width: 82px; font: 500 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
+    .gl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .gl dd { margin-bottom: 8px; }
+  }
   .group-head {
     font-family: var(--font-mono);
     font-size: 10px;

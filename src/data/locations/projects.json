@@ -81,7 +81,8 @@
     }
    ]
   },
-  "slug": "siam-paragon"
+  "slug": "siam-paragon",
+  "group": "siampiwat"
  },
  {
   "id": 2,
@@ -147,7 +148,8 @@
     }
    ]
   },
-  "slug": "siam-center"
+  "slug": "siam-center",
+  "group": "siampiwat"
  },
  {
   "id": 3,
@@ -229,7 +231,8 @@
     }
    ]
   },
-  "slug": "siam-discovery"
+  "slug": "siam-discovery",
+  "group": "siampiwat"
  },
  {
   "id": 4,
@@ -289,7 +292,8 @@
     }
    ]
   },
-  "slug": "mbk-center"
+  "slug": "mbk-center",
+  "group": "other"
  },
  {
   "id": 5,
@@ -361,7 +365,8 @@
     }
    ]
   },
-  "slug": "siam-square-one"
+  "slug": "siam-square-one",
+  "group": "other"
  },
  {
   "id": 6,
@@ -438,7 +443,8 @@
     }
    ]
   },
-  "slug": "centralworld"
+  "slug": "centralworld",
+  "group": "central"
  },
  {
   "id": 7,
@@ -495,7 +501,8 @@
     }
    ]
   },
-  "slug": "central-chidlom"
+  "slug": "central-chidlom",
+  "group": "central"
  },
  {
   "id": 8,
@@ -577,7 +584,8 @@
     }
    ]
   },
-  "slug": "gaysorn-village"
+  "slug": "gaysorn-village",
+  "group": "other"
  },
  {
   "id": 9,
@@ -627,7 +635,8 @@
     }
    ]
   },
-  "slug": "big-c-ratchadamri"
+  "slug": "big-c-ratchadamri",
+  "group": "hyper"
  },
  {
   "id": 10,
@@ -669,7 +678,8 @@
    },
    "album": []
   },
-  "slug": "platinum-fashion-mall"
+  "slug": "platinum-fashion-mall",
+  "group": "other"
  },
  {
   "id": 11,
@@ -744,7 +754,8 @@
     }
    ]
   },
-  "slug": "central-embassy"
+  "slug": "central-embassy",
+  "group": "central"
  },
  {
   "id": 12,
@@ -819,7 +830,8 @@
     }
    ]
   },
-  "slug": "samyan-mitrtown"
+  "slug": "samyan-mitrtown",
+  "group": "tcc"
  },
  {
   "id": 13,
@@ -894,7 +906,8 @@
     }
    ]
   },
-  "slug": "one-bangkok"
+  "slug": "one-bangkok",
+  "group": "tcc"
  },
  {
   "id": 14,
@@ -932,7 +945,8 @@
    },
    "album": []
   },
-  "slug": "park-ventures-ecoplex"
+  "slug": "park-ventures-ecoplex",
+  "group": "other"
  },
  {
   "id": 15,
@@ -980,7 +994,8 @@
     }
    ]
   },
-  "slug": "the-unicorn"
+  "slug": "the-unicorn",
+  "group": "other"
  },
  {
   "id": 16,
@@ -1053,7 +1068,8 @@
     }
    ]
   },
-  "slug": "silom-complex"
+  "slug": "silom-complex",
+  "group": "central"
  },
  {
   "id": 17,
@@ -1109,7 +1125,8 @@
     }
    ]
   },
-  "slug": "dusit-central-park"
+  "slug": "dusit-central-park",
+  "group": "central"
  },
  {
   "id": 18,
@@ -1150,7 +1167,8 @@
    },
    "album": []
   },
-  "slug": "robinson-bangrak"
+  "slug": "robinson-bangrak",
+  "group": "central"
  },
  {
   "id": 19,
@@ -1179,7 +1197,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "mahanakhon-cube"
+  "slug": "mahanakhon-cube",
+  "group": "other"
  },
  {
   "id": 20,
@@ -1226,7 +1245,8 @@
     }
    ]
   },
-  "slug": "empire-tower"
+  "slug": "empire-tower",
+  "group": "other"
  },
  {
   "id": 21,
@@ -1264,7 +1284,8 @@
    },
    "album": []
   },
-  "slug": "sathorn-square"
+  "slug": "sathorn-square",
+  "group": "tcc"
  },
  {
   "id": 22,
@@ -1358,7 +1379,8 @@
     }
    ]
   },
-  "slug": "terminal-21-asok"
+  "slug": "terminal-21-asok",
+  "group": "lhmall"
  },
  {
   "id": 23,
@@ -1405,7 +1427,8 @@
     }
    ]
   },
-  "slug": "exchange-tower"
+  "slug": "exchange-tower",
+  "group": "other"
  },
  {
   "id": 24,
@@ -1464,7 +1487,8 @@
     }
    ]
   },
-  "slug": "the-emquartier"
+  "slug": "the-emquartier",
+  "group": "themall"
  },
  {
   "id": 25,
@@ -1522,7 +1546,8 @@
     }
    ]
   },
-  "slug": "the-emporium"
+  "slug": "the-emporium",
+  "group": "themall"
  },
  {
   "id": 26,
@@ -1604,7 +1629,8 @@
     }
    ]
   },
-  "slug": "gateway-ekamai"
+  "slug": "gateway-ekamai",
+  "group": "tcc"
  },
  {
   "id": 27,
@@ -1635,7 +1661,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "j-avenue-thonglor"
+  "slug": "j-avenue-thonglor",
+  "group": "siamfuture"
  },
  {
   "id": 28,
@@ -1664,7 +1691,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "the-commons-thonglor"
+  "slug": "the-commons-thonglor",
+  "group": "other"
  },
  {
   "id": 29,
@@ -1693,7 +1721,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "seenspace-thonglor"
+  "slug": "seenspace-thonglor",
+  "group": "other"
  },
  {
   "id": 30,
@@ -1735,7 +1764,8 @@
    },
    "album": []
   },
-  "slug": "donki-mall-thonglor"
+  "slug": "donki-mall-thonglor",
+  "group": "other"
  },
  {
   "id": 31,
@@ -1763,7 +1793,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "rain-hill"
+  "slug": "rain-hill",
+  "group": "other"
  },
  {
   "id": 32,
@@ -1794,7 +1825,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "lotuss-rama-4"
+  "slug": "lotuss-rama-4",
+  "group": "hyper"
  },
  {
   "id": 33,
@@ -1822,7 +1854,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "the-parq"
+  "slug": "the-parq",
+  "group": "tcc"
  },
  {
   "id": 34,
@@ -1850,7 +1883,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "fyi-center"
+  "slug": "fyi-center",
+  "group": "tcc"
  },
  {
   "id": 35,
@@ -1905,7 +1939,8 @@
     }
    ]
   },
-  "slug": "w-district"
+  "slug": "w-district",
+  "group": "other"
  },
  {
   "id": 36,
@@ -1934,7 +1969,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "lotuss-on-nut"
+  "slug": "lotuss-on-nut",
+  "group": "hyper"
  },
  {
   "id": 37,
@@ -1963,7 +1999,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "habito-mall"
+  "slug": "habito-mall",
+  "group": "other"
  },
  {
   "id": 38,
@@ -2004,7 +2041,8 @@
    },
    "album": []
   },
-  "slug": "true-digital-park"
+  "slug": "true-digital-park",
+  "group": "mqdc"
  },
  {
   "id": 39,
@@ -2079,7 +2117,8 @@
     }
    ]
   },
-  "slug": "central-bangna"
+  "slug": "central-bangna",
+  "group": "central"
  },
  {
   "id": 40,
@@ -2120,7 +2159,8 @@
    },
    "album": []
   },
-  "slug": "imperial-world-samrong"
+  "slug": "imperial-world-samrong",
+  "group": "other"
  },
  {
   "id": 41,
@@ -2195,7 +2235,8 @@
     }
    ]
   },
-  "slug": "mega-bangna"
+  "slug": "mega-bangna",
+  "group": "siamfuture"
  },
  {
   "id": 42,
@@ -2269,7 +2310,8 @@
     }
    ]
   },
-  "slug": "seacon-square-srinakarin"
+  "slug": "seacon-square-srinakarin",
+  "group": "other"
  },
  {
   "id": 43,
@@ -2308,7 +2350,8 @@
    },
    "album": []
   },
-  "slug": "paradise-park"
+  "slug": "paradise-park",
+  "group": "themall"
  },
  {
   "id": 44,
@@ -2350,7 +2393,8 @@
    },
    "album": []
   },
-  "slug": "central-rama-9"
+  "slug": "central-rama-9",
+  "group": "central"
  },
  {
   "id": 45,
@@ -2378,7 +2422,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "fortune-town"
+  "slug": "fortune-town",
+  "group": "other"
  },
  {
   "id": 46,
@@ -2425,7 +2470,8 @@
     }
    ]
   },
-  "slug": "g-tower"
+  "slug": "g-tower",
+  "group": "other"
  },
  {
   "id": 47,
@@ -2455,7 +2501,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "the-street-ratchada"
+  "slug": "the-street-ratchada",
+  "group": "other"
  },
  {
   "id": 48,
@@ -2486,7 +2533,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "esplanade-ratchada"
+  "slug": "esplanade-ratchada",
+  "group": "other"
  },
  {
   "id": 49,
@@ -2564,7 +2612,8 @@
     }
    ]
   },
-  "slug": "show-dc"
+  "slug": "show-dc",
+  "group": "other"
  },
  {
   "id": 50,
@@ -2614,7 +2663,8 @@
     }
    ]
   },
-  "slug": "la-villa-ari"
+  "slug": "la-villa-ari",
+  "group": "other"
  },
  {
   "id": 51,
@@ -2653,7 +2703,8 @@
    },
    "album": []
   },
-  "slug": "big-c-saphan-khwai"
+  "slug": "big-c-saphan-khwai",
+  "group": "hyper"
  },
  {
   "id": 52,
@@ -2728,7 +2779,8 @@
     }
    ]
   },
-  "slug": "central-ladprao"
+  "slug": "central-ladprao",
+  "group": "central"
  },
  {
   "id": 53,
@@ -2784,7 +2836,8 @@
     }
    ]
   },
-  "slug": "union-mall"
+  "slug": "union-mall",
+  "group": "other"
  },
  {
   "id": 54,
@@ -2825,7 +2878,8 @@
    },
    "album": []
   },
-  "slug": "major-ratchayothin"
+  "slug": "major-ratchayothin",
+  "group": "other"
  },
  {
   "id": 55,
@@ -2876,7 +2930,8 @@
     }
    ]
   },
-  "slug": "gateway-bangsue"
+  "slug": "gateway-bangsue",
+  "group": "tcc"
  },
  {
   "id": 56,
@@ -2961,7 +3016,8 @@
     }
    ]
   },
-  "slug": "iconsiam"
+  "slug": "iconsiam",
+  "group": "siampiwat"
  },
  {
   "id": 57,
@@ -3034,7 +3090,8 @@
     }
    ]
   },
-  "slug": "asiatique-the-riverfront"
+  "slug": "asiatique-the-riverfront",
+  "group": "tcc"
  },
  {
   "id": 58,
@@ -3109,7 +3166,8 @@
     }
    ]
   },
-  "slug": "central-rama-3"
+  "slug": "central-rama-3",
+  "group": "central"
  },
  {
   "id": 59,
@@ -3152,7 +3210,8 @@
    },
    "album": []
   },
-  "slug": "terminal-21-rama-3"
+  "slug": "terminal-21-rama-3",
+  "group": "lhmall"
  },
  {
   "id": 60,
@@ -3210,7 +3269,8 @@
     }
    ]
   },
-  "slug": "the-old-siam-plaza"
+  "slug": "the-old-siam-plaza",
+  "group": "other"
  },
  {
   "id": 61,
@@ -3277,7 +3337,8 @@
     }
    ]
   },
-  "slug": "central-pinklao"
+  "slug": "central-pinklao",
+  "group": "central"
  },
  {
   "id": 62,
@@ -3335,7 +3396,8 @@
     }
    ]
   },
-  "slug": "the-mall-lifestore-thapra"
+  "slug": "the-mall-lifestore-thapra",
+  "group": "themall"
  },
  {
   "id": 63,
@@ -3410,7 +3472,8 @@
     }
    ]
   },
-  "slug": "the-mall-lifestore-bangkae"
+  "slug": "the-mall-lifestore-bangkae",
+  "group": "themall"
  },
  {
   "id": 64,
@@ -3485,7 +3548,8 @@
     }
    ]
   },
-  "slug": "central-rama-2"
+  "slug": "central-rama-2",
+  "group": "central"
  },
  {
   "id": 65,
@@ -3544,7 +3608,8 @@
     }
    ]
   },
-  "slug": "central-ramindra"
+  "slug": "central-ramindra",
+  "group": "central"
  },
  {
   "id": 66,
@@ -3604,7 +3669,8 @@
     }
    ]
   },
-  "slug": "the-mall-lifestore-bangkapi"
+  "slug": "the-mall-lifestore-bangkapi",
+  "group": "themall"
  },
  {
   "id": 67,
@@ -3633,7 +3699,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "lotuss-bangkapi"
+  "slug": "lotuss-bangkapi",
+  "group": "hyper"
  },
  {
   "id": 68,
@@ -3699,7 +3766,8 @@
     }
    ]
   },
-  "slug": "central-eastville"
+  "slug": "central-eastville",
+  "group": "central"
  },
  {
   "id": 69,
@@ -3727,7 +3795,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "crystal-design-center"
+  "slug": "crystal-design-center",
+  "group": "other"
  },
  {
   "id": 70,
@@ -3794,7 +3863,8 @@
     }
    ]
   },
-  "slug": "fashion-island"
+  "slug": "fashion-island",
+  "group": "other"
  },
  {
   "id": 71,
@@ -3835,7 +3905,8 @@
    },
    "album": []
   },
-  "slug": "central-village"
+  "slug": "central-village",
+  "group": "central"
  },
  {
   "id": 72,
@@ -3910,7 +3981,8 @@
     }
    ]
   },
-  "slug": "central-westgate"
+  "slug": "central-westgate",
+  "group": "central"
  },
  {
   "id": 73,
@@ -3942,7 +4014,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "central-northville"
+  "slug": "central-northville",
+  "group": "central"
  },
  {
   "id": 74,
@@ -3993,7 +4066,8 @@
     }
    ]
   },
-  "slug": "central-chaengwattana"
+  "slug": "central-chaengwattana",
+  "group": "central"
  },
  {
   "id": 75,
@@ -4052,7 +4126,8 @@
     }
    ]
   },
-  "slug": "the-mall-lifestore-ngamwongwan"
+  "slug": "the-mall-lifestore-ngamwongwan",
+  "group": "themall"
  },
  {
   "id": 76,
@@ -4104,7 +4179,8 @@
     }
    ]
   },
-  "slug": "future-park-rangsit"
+  "slug": "future-park-rangsit",
+  "group": "other"
  },
  {
   "id": 77,
@@ -4171,7 +4247,8 @@
     }
    ]
   },
-  "slug": "central-salaya"
+  "slug": "central-salaya",
+  "group": "central"
  },
  {
   "id": 78,
@@ -4246,7 +4323,8 @@
     }
    ]
   },
-  "slug": "central-mahachai"
+  "slug": "central-mahachai",
+  "group": "central"
  },
  {
   "id": 79,
@@ -4320,7 +4398,8 @@
     }
    ]
   },
-  "slug": "emsphere"
+  "slug": "emsphere",
+  "group": "themall"
  },
  {
   "id": 80,
@@ -4351,7 +4430,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "ics"
+  "slug": "ics",
+  "group": "siampiwat"
  },
  {
   "id": 81,
@@ -4380,7 +4460,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "cloud-11"
+  "slug": "cloud-11",
+  "group": "mqdc"
  },
  {
   "id": 82,
@@ -4409,7 +4490,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "bangkok-mall"
+  "slug": "bangkok-mall",
+  "group": "themall"
  },
  {
   "id": 83,
@@ -4438,7 +4520,8 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "the-forestias"
+  "slug": "the-forestias",
+  "group": "mqdc"
  },
  {
   "id": 84,
@@ -4477,7 +4560,8 @@
    },
    "album": []
   },
-  "slug": "the-central-phaholyothin"
+  "slug": "the-central-phaholyothin",
+  "group": "central"
  },
  {
   "id": 85,
@@ -4506,6 +4590,7 @@
   "fnb_gas": null,
   "verified": false,
   "photos": null,
-  "slug": "central-central"
+  "slug": "central-central",
+  "group": "central"
  }
 ]

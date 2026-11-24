@@ -1,0 +1,401 @@
+---
+// SpoonAsia — Locations map.
+// Line map of Bangkok + vicinity built from real district boundaries
+// (OpenGISData-Thailand), grouped into 18 micro-markets. Zoomed out it
+// reads as zones with project counts; zoomed in it resolves to pins.
+//
+// Data discipline: src/data/locations/projects.json holds public facts only.
+// Coordinates are approximate unless coord_src says otherwise. NLA, shop
+// count, project rent and F&B spec stay null until a landlord verifies
+// them — the UI shows those filters as "phase 2" rather than guessing.
+// Rent band = CBRE Q1 2026 zone average, never a project's own rent.
+---
+
+<div class="lmap" id="lmap">
+  <div class="lm-bar">
+    <input type="search" id="lm-q" placeholder="Search ICONSIAM, Thonglor, Central…" autocomplete="off" aria-label="Search projects" />
+    <select id="lm-zone" aria-label="Zone"><option value="">All zones</option></select>
+    <div class="lm-lens" role="group" aria-label="Map shading">
+      <button type="button" data-lens="zones" aria-pressed="true">Zones</button>
+      <button type="button" data-lens="rent" aria-pressed="false">Rent</button>
+      <button type="button" data-lens="supply" aria-pressed="false">Supply</button>
+    </div>
+  </div>
+
+  <details class="lm-filters" open>
+    <summary>Filters <span id="lm-active"></span></summary>
+    <div class="lm-frow"><span class="lm-lab">Type</span><div class="lm-chips" id="lm-types"></div></div>
+    <div class="lm-frow"><span class="lm-lab">Rent ฿/sqm/mo</span><div class="lm-chips" id="lm-rent"></div></div>
+    <div class="lm-frow"><span class="lm-lab">Customer</span><div class="lm-chips" id="lm-segs"></div></div>
+    <div class="lm-frow"><span class="lm-lab">Highlights</span><div class="lm-chips" id="lm-tags"></div></div>
+    <div class="lm-frow"><span class="lm-lab">Access</span><div class="lm-chips">
+      <button type="button" class="lm-chip" id="lm-direct" aria-pressed="false">Direct rail link</button>
+      <button type="button" class="lm-chip" id="lm-open" aria-pressed="false">Open now</button>
+      <button type="button" class="lm-chip lm-reset" id="lm-reset">Reset</button>
+    </div></div>
+    <div class="lm-frow lm-pending"><span class="lm-lab">Phase 2</span><div class="lm-chips">
+      <span class="lm-chip">NLA</span><span class="lm-chip">Shop count</span><span class="lm-chip">Unit size free</span><span class="lm-chip">Gas / hood allowed</span>
+    </div></div>
+  </details>
+
+  <div class="lm-map">
+    <svg id="lm-svg" role="img" aria-label="Line map of Bangkok and vicinity with retail projects"></svg>
+    <div class="lm-ctl">
+      <button type="button" id="lm-zin" aria-label="Zoom in">+</button>
+      <button type="button" id="lm-zout" aria-label="Zoom out">−</button>
+      <button type="button" id="lm-home" aria-label="Reset view">⌂</button>
+    </div>
+    <div class="lm-legend" id="lm-legend"></div>
+    <div class="lm-tip" id="lm-tip"></div>
+  </div>
+
+  <div class="lm-below">
+    <section class="lm-detail" id="lm-detail" aria-live="polite"></section>
+    <section class="lm-results">
+      <div class="lm-rhead"><span><b id="lm-count">0</b> projects</span><span id="lm-where">All zones</span></div>
+      <ul class="lm-list" id="lm-list" role="listbox" aria-label="Projects"></ul>
+    </section>
+  </div>
+
+  <p class="lm-note">
+    Draft data — pins are approximate and every project is unverified until a landlord confirms it.
+    Rail is schematic (BTS Sukhumvit, Silom, MRT Blue, Airport Rail Link). Rent band is CBRE's Q1 2026
+    zone average (CBD ฿2,852; northern fringe ฿2,230; eastern fringe ฿2,300 per sqm per month); which
+    of our zones count as CBRE's fringe is our approximation. District boundaries: OpenGISData-Thailand.
+  </p>
+</div>
+
+<style is:global>
+  .lmap { margin: 18px 0 8px; }
+  .lm-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .lm-bar input, .lm-bar select {
+    font: 16px var(--font-sans); color: var(--ink); background: var(--paper-pure);
+    border: 1px solid var(--rule); padding: 8px 10px; min-height: 40px; border-radius: 0;
+  }
+  .lm-bar input { flex: 1 1 220px; }
+  .lm-bar select { flex: 0 1 230px; }
+  .lm-lens { display: flex; border: 1px solid var(--rule); }
+  .lm-lens button {
+    font: 500 11px var(--font-mono); letter-spacing: .1em; text-transform: uppercase;
+    background: var(--paper-pure); color: var(--ink-soft); border: 0; padding: 0 12px; min-height: 38px; cursor: pointer;
+  }
+  .lm-lens button[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
+
+  .lm-filters { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 8px 0; margin-bottom: 12px; }
+  .lm-filters summary {
+    font: 500 10px var(--font-mono); letter-spacing: .15em; text-transform: uppercase; color: var(--ink-soft);
+    cursor: pointer; padding: 4px 0;
+  }
+  #lm-active { color: var(--accent); }
+  .lm-frow { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 8px; align-items: start; padding: 6px 0; }
+  .lm-lab { font: 500 10px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); padding-top: 8px; }
+  .lm-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .lm-chip {
+    font: 13px var(--font-sans); color: var(--ink); background: var(--paper-pure); border: 1px solid var(--rule);
+    padding: 5px 10px; min-height: 32px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; border-radius: 999px;
+  }
+  .lm-chip[aria-pressed='true'] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .lm-chip .n { font: 11px var(--font-mono); color: var(--ink-mute); }
+  .lm-chip[aria-pressed='true'] .n { color: var(--rule); }
+  .lm-reset { border-style: dashed; }
+  .lm-pending { opacity: .55; }
+  .lm-pending .lm-chip { cursor: default; }
+  .lm-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; display: inline-block; }
+
+  .lm-map { position: relative; height: clamp(440px, 68vh, 640px); background: var(--paper-pure); border: 1px solid var(--rule); overflow: hidden; }
+  #lm-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
+  .lm-ctl { position: absolute; right: 10px; top: 10px; display: flex; flex-direction: column; gap: 4px; }
+  .lm-ctl button { width: 40px; height: 40px; font: 18px var(--font-sans); background: var(--paper-pure); color: var(--ink); border: 1px solid var(--rule); cursor: pointer; }
+  .lm-legend {
+    position: absolute; left: 10px; bottom: 10px; right: 64px; display: flex; flex-wrap: wrap; gap: 4px 12px;
+    font: 11px var(--font-sans); color: var(--ink-soft); background: color-mix(in srgb, var(--paper-pure) 92%, transparent);
+    border: 1px solid var(--rule); padding: 6px 10px; width: fit-content;
+  }
+  .lm-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .lm-tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--paper); font: 12px var(--font-sans); padding: 4px 8px; white-space: nowrap; transform: translate(-50%, -140%); display: none; }
+
+  .lm-below { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 0; border-bottom: 1px solid var(--rule); }
+  .lm-detail { padding: 16px 20px 18px 0; border-right: 1px solid var(--rule); }
+  .lm-detail h3 { font: 600 21px/1.2 var(--font-sans); letter-spacing: -.02em; margin: 6px 0 4px; }
+  .lm-detail dl { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 6px 10px; font-size: 13px; margin: 12px 0 0; }
+  .lm-detail dt { font: 500 10px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); padding-top: 3px; }
+  .lm-detail dd { margin: 0; color: var(--ink); }
+  .lm-detail .muted { color: var(--ink-mute); }
+  .lm-detail a { color: var(--ink); border-bottom: 1px solid var(--accent); text-decoration: none; }
+  .lm-tag { display: inline-block; font-size: 12px; padding: 1px 8px; border: 1px solid var(--rule); border-radius: 999px; margin: 0 4px 4px 0; }
+  .lm-flag { font: 500 10px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  .lm-results { min-width: 0; }
+  .lm-rhead { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 8px 20px; font: 500 10px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+  .lm-rhead b { font: 700 24px var(--font-sans); letter-spacing: -.02em; color: var(--ink); margin-right: 4px; }
+  .lm-list { list-style: none; margin: 0; padding: 0; max-height: 360px; overflow: auto; }
+  .lm-list li { display: flex; gap: 10px; align-items: center; padding: 9px 0 9px 20px; border-top: 1px solid var(--rule); cursor: pointer; }
+  .lm-list li:hover, .lm-list li[aria-selected='true'] { background: var(--accent-soft); }
+  .lm-list .nm { font-weight: 600; font-size: 14px; }
+  .lm-list .sb { font-size: 12px; color: var(--ink-faint); }
+  .lm-note { font-size: 12px; line-height: 1.55; color: var(--ink-faint); margin: 12px 0 0; max-width: 680px; }
+  .lmap button:focus-visible, .lmap input:focus-visible, .lmap select:focus-visible, .lm-list li:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  @media (max-width: 700px) {
+    .lm-frow { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .lm-lab { padding-top: 0; }
+    .lm-below { grid-template-columns: minmax(0, 1fr); }
+    .lm-detail { border-right: 0; padding-right: 0; }
+    .lm-rhead, .lm-list li { padding-left: 0; }
+    .lm-legend { right: 10px; }
+  }
+</style>
+
+<script>
+  import { select, geoMercator, geoPath, zoom as d3zoom, zoomIdentity, rollup, max } from 'd3';
+  import GEO from '../data/locations/geo.json';
+  import PROJ from '../data/locations/projects.json';
+
+  type Proj = (typeof PROJ)[number];
+  type ZoneKey = keyof typeof GEO.zones;
+  const zones = GEO.zones as Record<string, { name: string; rent: { area: string; thb: number } | null; geometry: any; lp: number[] }>;
+
+  const TYPES: Record<string, [string, string]> = {
+    mall: ['Shopping mall', '#B85A2A'], department: ['Department store', '#8E2C24'], hypermarket: ['Hypermarket', '#6F7D1F'],
+    community: ['Community mall', '#1F7A6D'], mixeduse: ['Mixed-use', '#3D4FA3'], office: ['Office podium', '#7C776C'],
+  };
+  const SEGS: Record<string, string> = { office: 'Office', family: 'Family', tourist: 'Tourist', student: 'Student', young: 'Young adult', premium: 'Premium', mass: 'Mass' };
+  const TAGS: Record<string, string> = { supermarket: 'Supermarket', cinema: 'Cinema', foodcourt: 'Food court', '24h': '24 hours', tourist: 'Tourist draw', luxury: 'Luxury' };
+  const RENTS: Record<string, string> = { any: 'Any', cbd: 'CBD ≥ 2,800', fringe: 'Fringe 2,200–2,400', none: 'No benchmark' };
+  const STATUS: Record<string, string> = { open: 'Open', upcoming: 'Upcoming', phased: 'Phased opening', verify: 'To confirm' };
+  // Zone → the dossier card on this page (see watchlist in locations.astro).
+  const DOSSIER: Record<string, [string, string]> = {
+    suk1: ['Premium CBD', 'sukhumvit'], north1: ['Creator Corridor', 'ari'], suk2: ['Frontier', 'phra-khanong'],
+    silom: ['Heritage', 'charoenkrung'], old: ['Heritage', 'charoenkrung'], rama9: ['Local-tier', 'ratchada'],
+  };
+  const MALL_TIER = new Set(['The EmQuartier', 'ICONSIAM', 'Central Embassy']);
+
+  const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+  const fmt = (n: number) => n.toLocaleString('en-US');
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+
+  const st = {
+    q: '', types: new Set(Object.keys(TYPES)), zone: '', rent: 'any', segs: new Set<string>(), tags: new Set<string>(),
+    direct: false, openonly: false, lens: 'zones', sel: null as number | null,
+  };
+
+  const typeBox = $('lm-types');
+  typeBox.innerHTML = Object.entries(TYPES).map(([k, [n, c]]) =>
+    `<button type="button" class="lm-chip" data-k="${k}" aria-pressed="true"><span class="lm-dot" style="background:${c}"></span>${n}<span class="n" data-n="${k}"></span></button>`).join('');
+  typeBox.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest('button'); if (!b) return;
+    const k = b.dataset.k!; st.types.has(k) ? st.types.delete(k) : st.types.add(k);
+    b.setAttribute('aria-pressed', String(st.types.has(k))); update();
+  });
+  const zsel = $<HTMLSelectElement>('lm-zone');
+  zsel.innerHTML += Object.entries(zones).map(([k, z]) => `<option value="${k}">${esc(z.name)}</option>`).join('');
+  const chipRow = (el: HTMLElement, obj: Record<string, string>, set: Set<string>) => {
+    el.innerHTML = Object.entries(obj).map(([k, n]) => `<button type="button" class="lm-chip" data-k="${k}" aria-pressed="false">${esc(n)}</button>`).join('');
+    el.addEventListener('click', (e) => {
+      const b = (e.target as HTMLElement).closest('button'); if (!b) return;
+      const k = b.dataset.k!; set.has(k) ? set.delete(k) : set.add(k);
+      b.setAttribute('aria-pressed', String(set.has(k))); update();
+    });
+  };
+  chipRow($('lm-segs'), SEGS, st.segs);
+  chipRow($('lm-tags'), TAGS, st.tags);
+  const rentEl = $('lm-rent');
+  rentEl.innerHTML = Object.entries(RENTS).map(([k, n]) => `<button type="button" class="lm-chip" data-k="${k}" aria-pressed="${k === 'any'}">${n}</button>`).join('');
+  rentEl.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest('button'); if (!b) return;
+    st.rent = b.dataset.k!; rentEl.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); update();
+  });
+
+  const rentClass = (z: string) => { const r = zones[z]?.rent; return !r ? 'none' : r.thb >= 2800 ? 'cbd' : 'fringe'; };
+  const pass = (p: Proj, ignoreType = false) => {
+    if (st.q && !`${p.name} ${p.operator} ${p.district} ${zones[p.zone!]?.name ?? ''} ${p.station}`.toLowerCase().includes(st.q)) return false;
+    if (!ignoreType && !st.types.has(p.type)) return false;
+    if (st.zone && p.zone !== st.zone) return false;
+    if (st.rent !== 'any' && rentClass(p.zone!) !== st.rent) return false;
+    for (const s of st.segs) if (!p.segments.includes(s)) return false;
+    for (const t of st.tags) if (!p.tags.includes(t)) return false;
+    if (st.direct && p.link !== 'direct') return false;
+    if (st.openonly && p.status !== 'open') return false;
+    return true;
+  };
+
+  const box = document.querySelector('.lm-map') as HTMLElement;
+  const svg = select<SVGSVGElement, unknown>('#lm-svg');
+  const root = svg.append('g');
+  const gZ = root.append('g'), gD = root.append('g'), gW = root.append('g'), gR = root.append('g'),
+    gZL = root.append('g'), gP = root.append('g'), gPL = root.append('g');
+  const proj = geoMercator(), path = geoPath(proj);
+  const focus: any = { type: 'MultiPoint', coordinates: [[100.30, 13.56], [100.78, 13.98]] };
+  const CORE = new Set(['siam', 'silom', 'old', 'river', 'suk1', 'rama9', 'north1']);
+  let W = 0, H = 0, k = 1;
+  const pt = (p: Proj) => proj([p.lng, p.lat]) as [number, number];
+
+  const zoom = d3zoom<SVGSVGElement, unknown>().scaleExtent([1, 24]).on('zoom', (e) => {
+    const wasBig = k < 2.2; k = e.transform.k; root.attr('transform', e.transform.toString()); restyle(); if (wasBig !== k < 2.2) legend();
+  });
+  svg.call(zoom).on('dblclick.zoom', null);
+
+  const tip = $('lm-tip');
+  const showTip = (e: MouseEvent, txt: string) => {
+    const r = box.getBoundingClientRect(); tip.textContent = txt;
+    tip.style.left = `${e.clientX - r.left}px`; tip.style.top = `${e.clientY - r.top}px`; tip.style.display = 'block';
+  };
+  const hideTip = () => { tip.style.display = 'none'; };
+
+  function zoomTo(g: any) {
+    const [[x0, y0], [x1, y1]] = path.bounds(g);
+    const s = Math.min(16, 0.8 / Math.max((x1 - x0) / W, (y1 - y0) / H));
+    svg.transition().duration(600).call(zoom.transform, zoomIdentity.translate(W / 2, H / 2).scale(s).translate(-(x0 + x1) / 2, -(y0 + y1) / 2));
+  }
+  const home = () => svg.transition().duration(500).call(zoom.transform, zoomIdentity);
+
+  function draw() {
+    W = box.clientWidth; H = box.clientHeight;
+    proj.fitExtent([[16, 16], [W - 16, H - 44]], focus);
+    gZ.selectAll('path').data(Object.entries(zones)).join('path').attr('d', (d) => path(d[1].geometry))
+      .attr('vector-effect', 'non-scaling-stroke').attr('stroke', 'var(--ink)').style('cursor', 'pointer')
+      .on('click', (_e, d) => { st.zone = st.zone === d[0] ? '' : d[0]; st.sel = null; zsel.value = st.zone; update(); if (st.zone) zoomTo(d[1].geometry); })
+      .on('mousemove', (e, d) => showTip(e, d[1].name)).on('mouseleave', hideTip);
+    gD.selectAll('path').data(GEO.districts).join('path').attr('d', (d: any) => path(d.geometry)).attr('fill', 'none')
+      .attr('stroke', 'var(--rule)').attr('stroke-width', 0.8).attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none');
+    gW.selectAll('path').data([GEO.river]).join('path').attr('d', (d: any) => path(d)).attr('fill', 'none')
+      .attr('stroke', '#BCD7E6').attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round').attr('pointer-events', 'none');
+    gR.selectAll('path').data(Object.entries(GEO.rail)).join('path')
+      .attr('d', (d) => path({ type: 'LineString', coordinates: d[1] } as any)).attr('fill', 'none')
+      .attr('stroke', 'var(--ink-faint)').attr('stroke-dasharray', '4 3').attr('vector-effect', 'non-scaling-stroke')
+      .attr('stroke-width', 1).attr('pointer-events', 'none');
+    update();
+  }
+
+  function restyle() {
+    const big = k < 2.2;
+    gW.selectAll('path').attr('stroke-width', Math.max(2, 6 / k));
+    gZL.selectAll<SVGGElement, any>('g').attr('display', big ? null : 'none').attr('transform', (d) => `translate(${proj(d.lp as [number, number])})scale(${1 / k})`);
+    gZL.selectAll<SVGTextElement, any>('text.l').attr('display', (d) => (CORE.has(d.key) && k < 1.6 ? 'none' : null));
+    gP.selectAll<SVGCircleElement, Proj>('circle').attr('display', big ? 'none' : null)
+      .attr('r', (d) => (st.sel === d.id ? 8 : 5.5) / k).attr('stroke-width', 1.5 / k);
+    gPL.selectAll<SVGTextElement, Proj>('text').attr('display', (d) => (k >= 7 || st.sel === d.id ? null : 'none'))
+      .attr('font-size', 12 / k).attr('x', (d) => pt(d)[0] + 8 / k).attr('y', (d) => pt(d)[1] + 4 / k).attr('stroke-width', 3 / k);
+  }
+
+  function update() {
+    const vis = PROJ.filter((p) => pass(p));
+    document.querySelectorAll<HTMLElement>('#lmap [data-n]').forEach((el) => { el.textContent = String(PROJ.filter((p) => p.type === el.dataset.n && pass(p, true)).length); });
+    const byZ = rollup(vis, (v) => v.length, (p) => p.zone);
+    const maxZ = max(byZ.values()) || 1;
+    gZ.selectAll<SVGPathElement, [string, any]>('path')
+      .attr('stroke-opacity', 0.5).attr('stroke-width', (d) => (st.zone === d[0] ? 2 : 0.9))
+      .attr('fill', (d) => {
+        if (st.lens === 'rent') { const c = rentClass(d[0]); return c === 'cbd' ? '#E9D3BE' : c === 'fringe' ? '#F4E9DC' : 'transparent'; }
+        if (st.lens === 'supply') { const n = byZ.get(d[0]) || 0; return n ? `color-mix(in srgb, var(--accent) ${Math.round(8 + 40 * n / maxZ)}%, transparent)` : 'transparent'; }
+        return st.zone === d[0] ? 'var(--accent-soft)' : 'transparent';
+      });
+    const zl = Object.entries(zones).map(([key, z]) => ({ key, lp: z.lp, name: z.name, n: byZ.get(key) || 0 }));
+    const g = gZL.selectAll<SVGGElement, (typeof zl)[number]>('g').data(zl, (d) => d.key).join((en) => {
+      const g = en.append('g').style('cursor', 'pointer'); g.append('circle'); g.append('text').attr('class', 'c'); g.append('text').attr('class', 'l'); return g;
+    });
+    g.on('click', (_e, d) => { st.zone = d.key; st.sel = null; zsel.value = d.key; update(); zoomTo(zones[d.key].geometry); });
+    g.select('circle').attr('r', (d) => (d.n ? 8 + Math.sqrt(d.n) * 2.2 : 0)).attr('fill', 'var(--ink)');
+    g.select('text.c').text((d) => d.n || '').attr('text-anchor', 'middle').attr('dy', '.35em').attr('fill', 'var(--paper)')
+      .attr('font-size', 12).attr('font-weight', 700).attr('font-family', 'var(--font-sans)');
+    g.select('text.l').text((d) => d.name).attr('text-anchor', 'middle').attr('y', (d) => (d.n ? -(12 + Math.sqrt(d.n) * 2.2) : 0))
+      .attr('fill', 'var(--ink)').attr('font-size', 11).attr('font-weight', 500).attr('font-family', 'var(--font-sans)')
+      .attr('paint-order', 'stroke').attr('stroke', 'var(--paper-pure)').attr('stroke-width', 3);
+    gP.selectAll<SVGCircleElement, Proj>('circle').data(vis, (d) => d.id).join('circle')
+      .attr('cx', (d) => pt(d)[0]).attr('cy', (d) => pt(d)[1]).attr('fill', (d) => TYPES[d.type][1])
+      .attr('fill-opacity', (d) => (d.status === 'open' ? 1 : 0.35)).attr('stroke', (d) => (d.status === 'open' ? 'var(--paper-pure)' : TYPES[d.type][1]))
+      .style('cursor', 'pointer')
+      .on('click', (_e, d) => selectProj(d.id)).on('mousemove', (e, d) => showTip(e, d.name)).on('mouseleave', hideTip);
+    gPL.selectAll<SVGTextElement, Proj>('text').data(vis, (d) => d.id).join('text').text((d) => d.name)
+      .attr('fill', 'var(--ink)').attr('font-weight', 700).attr('font-family', 'var(--font-sans)')
+      .attr('paint-order', 'stroke').attr('stroke', 'var(--paper-pure)').attr('pointer-events', 'none');
+    restyle();
+
+    $('lm-count').textContent = String(vis.length);
+    $('lm-where').textContent = st.zone ? zones[st.zone].name : 'All zones';
+    const nActive = (st.types.size < 6 ? 1 : 0) + (st.rent !== 'any' ? 1 : 0) + st.segs.size + st.tags.size + (st.direct ? 1 : 0) + (st.openonly ? 1 : 0);
+    $('lm-active').textContent = nActive ? `· ${nActive} active` : '';
+    $('lm-list').innerHTML = vis.slice().sort((a, b) => a.name.localeCompare(b.name)).map((p) =>
+      `<li role="option" tabindex="0" data-id="${p.id}" aria-selected="${st.sel === p.id}"><span class="lm-dot" style="background:${TYPES[p.type][1]}"></span><span><span class="nm">${esc(p.name)}</span><br><span class="sb">${esc(TYPES[p.type][0])} · ${esc(zones[p.zone!]?.name)}${p.status !== 'open' ? ' · ' + esc(STATUS[p.status]) : ''}</span></span></li>`
+    ).join('') || '<li style="cursor:default"><span class="sb">No project matches. Loosen a filter or reset.</span></li>';
+    legend(); detail();
+  }
+
+  function selectProj(id: number) {
+    st.sel = st.sel === id ? null : id;
+    const p = PROJ.find((x) => x.id === id)!;
+    if (st.sel && k < 6) { const [x, y] = pt(p); svg.transition().duration(500).call(zoom.transform, zoomIdentity.translate(W / 2, H / 2).scale(8).translate(-x, -y)); }
+    update();
+  }
+  const list = $('lm-list');
+  list.addEventListener('click', (e) => { const li = (e.target as HTMLElement).closest<HTMLElement>('li[data-id]'); if (li) selectProj(+li.dataset.id!); });
+  list.addEventListener('keydown', (e) => { const li = (e.target as HTMLElement).closest<HTMLElement>('li[data-id]'); if (li && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); selectProj(+li.dataset.id!); } });
+
+  const rentLine = (z: string) => { const r = zones[z]?.rent; return r ? `Zone avg ฿${fmt(r.thb)}/sqm/mo <span class="muted">(CBRE ${esc(r.area)}, Q1 2026)</span>` : '<span class="muted">No public benchmark yet</span>'; };
+  const dossierLink = (z: string) => { const d = DOSSIER[z]; return d ? `<a href="#zone-${d[1]}">${esc(d[0])} dossier</a>` : '<span class="muted">Dossier not yet written</span>'; };
+
+  function detail() {
+    const el = $('lm-detail');
+    if (!st.sel) {
+      if (st.zone) {
+        el.innerHTML = `<span class="lm-flag">Zone</span><h3>${esc(zones[st.zone].name)}</h3>
+          <dl><dt>Rent band</dt><dd>${rentLine(st.zone)}</dd><dt>Projects</dt><dd>${PROJ.filter((p) => p.zone === st.zone).length} in the draft list</dd><dt>Read</dt><dd>${dossierLink(st.zone)}</dd></dl>`;
+      } else {
+        el.innerHTML = `<span class="lm-flag">How to read it</span><h3>Pick a zone or a pin</h3>
+          <p class="dek">Zoomed out, each dark circle counts the projects in a zone that match your filters. Click a zone or zoom in to see each project. Faded pins are not open yet. The shading switch colours zones by rent benchmark or by matching supply.</p>`;
+      }
+      return;
+    }
+    const p = PROJ.find((x) => x.id === st.sel)!;
+    const z = p.zone!;
+    el.innerHTML = `<span class="lm-flag">Draft · unverified</span><h3>${esc(p.name)}</h3>
+      <p class="dek" style="margin-top:2px">${esc(TYPES[p.type][0])} · ${esc(p.operator)}</p>
+      <dl>
+        <dt>Zone</dt><dd>${esc(zones[z].name)}</dd>
+        <dt>District</dt><dd>${esc(p.district)} · ${esc(p.district_th)}</dd>
+        <dt>Rail</dt><dd>${p.station ? `${esc(p.station)} · ${p.link === 'direct' ? 'direct link' : p.link === 'walk' ? 'walkable' : 'no direct link'}` : '<span class="muted">None nearby</span>'}</dd>
+        <dt>Status</dt><dd>${esc(STATUS[p.status])}${p.opened ? ` · opened ${p.opened}` : ''}</dd>
+        <dt>Rent band</dt><dd>${rentLine(z)}</dd>
+        <dt>NLA · shops</dt><dd class="muted">Phase 2 — from landlord</dd>
+        <dt>F&amp;B spec</dt><dd class="muted">Gas, hood, grease trap — phase 2</dd>
+        <dt>Highlights</dt><dd>${p.tags.map((t) => `<span class="lm-tag">${esc(TAGS[t])}</span>`).join('') || '<span class="muted">—</span>'}</dd>
+        <dt>Customer</dt><dd>${p.segments.map((t) => `<span class="lm-tag">${esc(SEGS[t])}</span>`).join('')}</dd>
+        <dt>Read</dt><dd>${p.file ? `<a href="/properties/${esc(p.file)}">Property file</a> · ` : ''}${MALL_TIER.has(p.name) ? '<a href="#zone-mall-tier">Mall-tier dossier</a>' : dossierLink(z)}</dd>
+      </dl>
+      <p style="margin:14px 0 0"><button type="button" class="lm-chip" id="lm-close">Close</button></p>`;
+    $('lm-close').onclick = () => { st.sel = null; update(); };
+  }
+
+  function legend() {
+    const L = $('lm-legend');
+    const types = Object.values(TYPES).map(([n, c]) => `<span><span class="lm-dot" style="background:${c}"></span>${n}</span>`).join('');
+    const lens = st.lens === 'rent' ? '<span><span class="lm-dot" style="background:#E9D3BE;border-radius:1px"></span>CBD ฿2,852</span><span><span class="lm-dot" style="background:#F4E9DC;border-radius:1px"></span>Fringe ฿2,230–2,300</span>'
+      : st.lens === 'supply' ? '<span>Darker zone = more matching projects</span>' : '';
+    L.innerHTML = lens + (k < 2.2 ? '<span>Circle = projects in zone · zoom in for pins</span>' : types) + '<span>- - rail (schematic)</span>';
+  }
+
+  document.querySelector('.lm-lens')!.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest('button'); if (!b) return;
+    st.lens = b.dataset.lens!; document.querySelectorAll('.lm-lens button').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); update();
+  });
+  zsel.addEventListener('change', () => { st.zone = zsel.value; st.sel = null; update(); if (st.zone) zoomTo(zones[st.zone].geometry); else home(); });
+  $<HTMLInputElement>('lm-q').addEventListener('input', (e) => { st.q = (e.target as HTMLInputElement).value.trim().toLowerCase(); update(); });
+  const toggle = (id: string, key: 'direct' | 'openonly') => $(id).addEventListener('click', (e) => {
+    st[key] = !st[key]; (e.currentTarget as HTMLElement).setAttribute('aria-pressed', String(st[key])); update();
+  });
+  toggle('lm-direct', 'direct'); toggle('lm-open', 'openonly');
+  $('lm-zin').onclick = () => svg.transition().duration(300).call(zoom.scaleBy, 1.8);
+  $('lm-zout').onclick = () => svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.8);
+  $('lm-home').onclick = home;
+  $('lm-reset').onclick = () => {
+    Object.assign(st, { q: '', zone: '', rent: 'any', direct: false, openonly: false, sel: null });
+    st.types = new Set(Object.keys(TYPES)); st.segs.clear(); st.tags.clear();
+    $<HTMLInputElement>('lm-q').value = ''; zsel.value = '';
+    document.querySelectorAll('#lmap .lm-chip[aria-pressed]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+    typeBox.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', 'true'));
+    rentEl.querySelectorAll<HTMLElement>('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.k === 'any')));
+    update(); home();
+  };
+  if (window.matchMedia('(max-width: 700px)').matches) ($('lmap').querySelector('details') as HTMLDetailsElement).open = false;
+  const ro = new ResizeObserver(() => { if (box.clientWidth !== W || box.clientHeight !== H) draw(); });
+  ro.observe(box);
+</script>

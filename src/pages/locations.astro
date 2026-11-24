@@ -4,6 +4,7 @@ import SectionFront from '../components/SectionFront.astro';
 import RailSignup from '../components/rail/RailSignup.astro';
 import RailPromo from '../components/rail/RailPromo.astro';
 import RailLatest from '../components/rail/RailLatest.astro';
+import LocationsMap from '../components/LocationsMap.astro';
 
 // Layer 1 — zone dossiers. The atlas everything else refers back to.
 // Photo licensing lives in public/images/locations/CREDITS.md — the credit
@@ -73,10 +74,18 @@ const topics = watchlist.map((w) => ({ label: w.tag, count: 0 }));
       </p>
     </div>
 
+    <div class="group-head">The map — retail projects, Bangkok &amp; vicinity</div>
+    <p class="group-dek">
+      Malls, department stores, hypermarkets, community malls, mixed-use and
+      office podiums, placed on 18 micro-markets. Zoom in to move from zones
+      to projects, filter for what an operator needs, then read the dossier.
+    </p>
+    <LocationsMap />
+
     <div class="group-head">The zones</div>
     <div class="grid3">
       {watchlist.map((w) => (
-        <article>
+        <article id={`zone-${w.map}`}>
           <div class="zone-photo">
             <img src={`/images/locations/${w.map}.webp`} alt={w.name} width="960" height="640" loading="lazy" />
           </div>

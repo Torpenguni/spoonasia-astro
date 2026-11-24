@@ -208,11 +208,11 @@
   };
   const GROUPS: Record<string, string> = {
     central: 'Central Pattana / Central Group', themall: 'The Mall Group', siampiwat: 'Siam Piwat', tcc: 'TCC / Frasers / Golden Land',
-    hyper: "Lotus's / Big C", mqdc: 'MQDC', lhmall: 'LH Mall (Terminal 21)', siamfuture: 'Siam Future', other: 'Independent / other',
+    mqdc: 'MQDC', lhmall: 'LH Mall (Terminal 21)', siamfuture: 'Siam Future', other: 'Independent / other',
   };
 
   const TYPES: Record<string, [string, string]> = {
-    mall: ['Regional mall', '#B85A2A'], department: ['Department store', '#8E2C24'], hypermarket: ['Hypermarket gallery', '#6F7D1F'],
+    mall: ['Regional mall', '#B85A2A'], department: ['Department store', '#8E2C24'],
     community: ['Lifestyle / community mall', '#1F7A6D'], mixeduse: ['Mixed-use', '#3D4FA3'], office: ['Office podium', '#7C776C'],
   };
   const SEGS: Record<string, string> = { tourist: 'Tourists', premium: 'Expats & premium Thai', office: 'Office workers', family: 'Thai families', student: 'Students', young: 'Young adults', mass: 'Mass market' };
@@ -404,7 +404,7 @@
     });
   }
 
-  const TYPE_RANK: Record<string, number> = { mall: 0, mixeduse: 1, department: 2, community: 3, hypermarket: 4, office: 5 };
+  const TYPE_RANK: Record<string, number> = { mall: 0, mixeduse: 1, department: 2, community: 3, office: 4 };
   // Greedy placement: try right, left, above, below each pin; skip a label
   // rather than let it overlap another label or someone else's pin.
   function layoutLabels() {
@@ -497,7 +497,7 @@
 
     $('lm-count').textContent = String(vis.length);
     $('lm-where').textContent = st.zone ? zones[st.zone].name : 'All zones';
-    const nActive = (st.types.size < 6 ? 1 : 0) + (st.rent !== 'any' ? 1 : 0) + st.segs.size + st.tags.size + st.rings.size + st.groups.size + (st.direct ? 1 : 0) + (st.openonly ? 1 : 0);
+    const nActive = (st.types.size < Object.keys(TYPES).length ? 1 : 0) + (st.rent !== 'any' ? 1 : 0) + st.segs.size + st.tags.size + st.rings.size + st.groups.size + (st.direct ? 1 : 0) + (st.openonly ? 1 : 0);
     $('lm-active').textContent = nActive ? `· ${nActive} active` : '';
     $('lm-list').innerHTML = vis.slice().sort((a, b) => a.name.localeCompare(b.name)).map((p) =>
       `<li role="option" tabindex="0" data-id="${p.id}" aria-selected="${st.sel === p.id}">${coverThumb(p) ? `<img class="lm-th" src="${esc(coverThumb(p))}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : `<span class="lm-thx"><span class="lm-dot" style="background:${TYPES[p.type][1]}"></span></span>`}<span><span class="nm">${esc(p.name)}</span><br><span class="sb">${esc(TYPES[p.type][0])} · ${esc(zones[p.zone!]?.name)}${p.status !== 'open' ? ' · ' + esc(STATUS[p.status]) : ''}</span></span></li>`

@@ -588,57 +588,6 @@
   "group": "other"
  },
  {
-  "id": 9,
-  "name": "Big C Ratchadamri",
-  "type": "hypermarket",
-  "operator": "Big C",
-  "lat": 13.7487,
-  "lng": 100.5404,
-  "station": "BTS Chit Lom",
-  "link": "walk",
-  "status": "open",
-  "opened": null,
-  "tags": [
-   "tourist"
-  ],
-  "segments": [
-   "tourist",
-   "mass"
-  ],
-  "district": "Pathum Wan",
-  "district_th": "ปทุมวัน",
-  "zone": "siam",
-  "file": null,
-  "coord_src": "approx",
-  "nla_sqm": null,
-  "shops": null,
-  "rent_thb_sqm": null,
-  "fnb_gas": null,
-  "verified": false,
-  "photos": {
-   "cover": {
-    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Big_C_Ratchadamri_(I).jpg/500px-Big_C_Ratchadamri_(I).jpg",
-    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Big_C_Ratchadamri_(I).jpg/1280px-Big_C_Ratchadamri_(I).jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Big_C_Ratchadamri_(I).jpg",
-    "author": "Supanut Arunoprayote",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
-   },
-   "album": [
-    {
-     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/BigC-Ratchadamri.jpg/500px-BigC-Ratchadamri.jpg",
-     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/BigC-Ratchadamri.jpg/1280px-BigC-Ratchadamri.jpg",
-     "page": "https://commons.wikimedia.org/wiki/File:BigC-Ratchadamri.jpg",
-     "author": "Poonpun2016",
-     "license": "CC BY-SA 4.0",
-     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-    }
-   ]
-  },
-  "slug": "big-c-ratchadamri",
-  "group": "hyper"
- },
- {
   "id": 10,
   "name": "Platinum Fashion Mall",
   "type": "mall",
@@ -1797,38 +1746,6 @@
   "group": "other"
  },
  {
-  "id": 32,
-  "name": "Lotus's Rama 4",
-  "type": "hypermarket",
-  "operator": "Lotus's",
-  "lat": 13.7205,
-  "lng": 100.556,
-  "station": "MRT Khlong Toei",
-  "link": "walk",
-  "status": "open",
-  "opened": null,
-  "tags": [
-   "24h"
-  ],
-  "segments": [
-   "mass",
-   "family"
-  ],
-  "district": "Khlong Toei",
-  "district_th": "คลองเตย",
-  "zone": "suk1",
-  "file": null,
-  "coord_src": "approx",
-  "nla_sqm": null,
-  "shops": null,
-  "rent_thb_sqm": null,
-  "fnb_gas": null,
-  "verified": false,
-  "photos": null,
-  "slug": "lotuss-rama-4",
-  "group": "hyper"
- },
- {
   "id": 33,
   "name": "The Parq",
   "type": "mixeduse",
@@ -1941,36 +1858,6 @@
   },
   "slug": "w-district",
   "group": "other"
- },
- {
-  "id": 36,
-  "name": "Lotus's On Nut",
-  "type": "hypermarket",
-  "operator": "Lotus's",
-  "lat": 13.705,
-  "lng": 100.6,
-  "station": "BTS On Nut",
-  "link": "walk",
-  "status": "open",
-  "opened": null,
-  "tags": [],
-  "segments": [
-   "mass",
-   "family"
-  ],
-  "district": "Khlong Toei",
-  "district_th": "คลองเตย",
-  "zone": "suk1",
-  "file": null,
-  "coord_src": "approx",
-  "nla_sqm": null,
-  "shops": null,
-  "rent_thb_sqm": null,
-  "fnb_gas": null,
-  "verified": false,
-  "photos": null,
-  "slug": "lotuss-on-nut",
-  "group": "hyper"
  },
  {
   "id": 37,
@@ -2665,46 +2552,6 @@
   },
   "slug": "la-villa-ari",
   "group": "other"
- },
- {
-  "id": 51,
-  "name": "Big C Saphan Khwai",
-  "type": "hypermarket",
-  "operator": "Big C",
-  "lat": 13.792,
-  "lng": 100.548,
-  "station": "BTS Saphan Khwai",
-  "link": "walk",
-  "status": "open",
-  "opened": null,
-  "tags": [],
-  "segments": [
-   "mass",
-   "family"
-  ],
-  "district": "Phaya Thai",
-  "district_th": "พญาไท",
-  "zone": "north1",
-  "file": null,
-  "coord_src": "approx",
-  "nla_sqm": null,
-  "shops": null,
-  "rent_thb_sqm": null,
-  "fnb_gas": null,
-  "verified": false,
-  "photos": {
-   "cover": {
-    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Big_C_Saphan_Khwai.jpg/500px-Big_C_Saphan_Khwai.jpg",
-    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Big_C_Saphan_Khwai.jpg/1280px-Big_C_Saphan_Khwai.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Big_C_Saphan_Khwai.jpg",
-    "author": "Poonpun2016",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
-   },
-   "album": []
-  },
-  "slug": "big-c-saphan-khwai",
-  "group": "hyper"
  },
  {
   "id": 52,
@@ -3671,36 +3518,6 @@
   },
   "slug": "the-mall-lifestore-bangkapi",
   "group": "themall"
- },
- {
-  "id": 67,
-  "name": "Lotus's Bangkapi",
-  "type": "hypermarket",
-  "operator": "Lotus's",
-  "lat": 13.765,
-  "lng": 100.641,
-  "station": "",
-  "link": "none",
-  "status": "open",
-  "opened": null,
-  "tags": [],
-  "segments": [
-   "mass",
-   "family"
-  ],
-  "district": "Bang Kapi",
-  "district_th": "บางกะปิ",
-  "zone": "east1",
-  "file": null,
-  "coord_src": "approx",
-  "nla_sqm": null,
-  "shops": null,
-  "rent_thb_sqm": null,
-  "fnb_gas": null,
-  "verified": false,
-  "photos": null,
-  "slug": "lotuss-bangkapi",
-  "group": "hyper"
  },
  {
   "id": 68,

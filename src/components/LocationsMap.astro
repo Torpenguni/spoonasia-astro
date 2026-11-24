@@ -41,6 +41,7 @@
     </div></div>
   </details>
 
+  <div class="lm-mapwrap">
   <div class="lm-map">
     <svg id="lm-svg" role="img" aria-label="Line map of Bangkok and vicinity with retail projects"></svg>
     <div class="lm-ctl">
@@ -48,8 +49,9 @@
       <button type="button" id="lm-zout" aria-label="Zoom out">−</button>
       <button type="button" id="lm-home" aria-label="Reset view">⌂</button>
     </div>
-    <div class="lm-legend" id="lm-legend"></div>
     <div class="lm-tip" id="lm-tip"></div>
+  </div>
+  <div class="lm-legend" id="lm-legend"></div>
   </div>
 
   <div class="lm-below">
@@ -117,6 +119,7 @@
   .lm-pending .lm-chip { cursor: default; }
   .lm-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; display: inline-block; }
 
+  .lm-mapwrap { position: relative; }
   .lm-map { position: relative; height: clamp(440px, 68vh, 640px); background: var(--paper-pure); border: 1px solid var(--rule); overflow: hidden; }
   #lm-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
   .lm-ctl { position: absolute; right: 10px; top: 10px; display: flex; flex-direction: column; gap: 4px; }
@@ -182,7 +185,7 @@
     .lm-below { grid-template-columns: minmax(0, 1fr); }
     .lm-detail { border-right: 0; padding-right: 0; }
     .lm-rhead, .lm-list li { padding-left: 0; }
-    .lm-legend { right: 10px; }
+    .lm-legend { position: static; width: auto; border: 0; border-bottom: 1px solid var(--rule); background: transparent; padding: 8px 0; font-size: 10px; gap: 3px 10px; }
     .lm-zgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .lm-lb-stage { height: 52vh; }
   }
@@ -280,16 +283,24 @@
   const box = document.querySelector('.lm-map') as HTMLElement;
   const svg = select<SVGSVGElement, unknown>('#lm-svg');
   const root = svg.append('g');
-  const gZ = root.append('g'), gD = root.append('g'), gW = root.append('g'), gR = root.append('g'),
-    gZL = root.append('g'), gP = root.append('g'), gPL = root.append('g');
+  const gProv = root.append('g'), gZ = root.append('g'), gD = root.append('g'), gPB = root.append('g'), gW = root.append('g'), gR = root.append('g'),
+    gZL = root.append('g'), gP = root.append('g');
+  // Project labels live in screen space (outside the zoom transform) so they
+  // can be laid out without overlapping at every zoom level.
+  const gZT = svg.append('g').attr('class', 'lm-zlabels');
+  const gPL = svg.append('g').attr('class', 'lm-plabels');
+  const PROV: Record<string, [string, string]> = {
+    Bangkok: ['#F6EADC', 'กรุงเทพฯ'], Nonthaburi: ['#E6EFDF', 'นนทบุรี'], 'Pathum Thani': ['#E2ECF3', 'ปทุมธานี'],
+    'Samut Prakan': ['#ECE5F2', 'สมุทรปราการ'], 'Samut Sakhon': ['#DFEFEC', 'สมุทรสาคร'], 'Nakhon Pathom': ['#F4EED6', 'นครปฐม'],
+  };
   const proj = geoMercator(), path = geoPath(proj);
   const focus: any = { type: 'MultiPoint', coordinates: [[100.30, 13.56], [100.78, 13.98]] };
   const CORE = new Set(['siam', 'silom', 'old', 'river', 'suk1', 'rama9', 'north1']);
-  let W = 0, H = 0, k = 1;
+  let W = 0, H = 0, k = 1, tf = zoomIdentity;
   const pt = (p: Proj) => proj([p.lng, p.lat]) as [number, number];
 
   const zoom = d3zoom<SVGSVGElement, unknown>().scaleExtent([1, 24]).on('zoom', (e) => {
-    const wasBig = k < 2.2; k = e.transform.k; root.attr('transform', e.transform.toString()); restyle(); if (wasBig !== k < 2.2) legend();
+    const wasBig = k < 2.2; k = e.transform.k; tf = e.transform; root.attr('transform', e.transform.toString()); if (wasBig !== k < 2.2) legend(); restyle();
   });
   svg.call(zoom).on('dblclick.zoom', null);
 
@@ -314,6 +325,10 @@
       .attr('vector-effect', 'non-scaling-stroke').attr('stroke', 'var(--ink)').style('cursor', 'pointer')
       .on('click', (_e, d) => { st.zone = st.zone === d[0] ? '' : d[0]; st.sel = null; zsel.value = st.zone; update(); if (st.zone) zoomTo(d[1].geometry); })
       .on('mousemove', (e, d) => showTip(e, d[1].name)).on('mouseleave', hideTip);
+    gProv.selectAll('path').data((GEO as any).provinces).join('path').attr('d', (d: any) => path(d.geometry))
+      .attr('fill', (d: any) => PROV[d.en]?.[0] || 'transparent').attr('stroke', 'none').attr('pointer-events', 'none');
+    gPB.selectAll('path').data((GEO as any).provinces).join('path').attr('d', (d: any) => path(d.geometry)).attr('fill', 'none')
+      .attr('stroke', 'var(--ink-faint)').attr('stroke-opacity', 0.7).attr('stroke-width', 1.3).attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none');
     gD.selectAll('path').data(GEO.districts).join('path').attr('d', (d: any) => path(d.geometry)).attr('fill', 'none')
       .attr('stroke', 'var(--rule)').attr('stroke-width', 0.8).attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none');
     gW.selectAll('path').data([GEO.river]).join('path').attr('d', (d: any) => path(d)).attr('fill', 'none')
@@ -325,6 +340,106 @@
     update();
   }
 
+  // Long names break onto two lines at the space nearest the middle.
+  function wrapName(n: string): string[] {
+    if (n.length <= 16 || !n.includes(' ')) return [n];
+    const mid = n.length / 2; let best = -1;
+    for (let i = 0; i < n.length; i++) if (n[i] === ' ' && (best < 0 || Math.abs(i - mid) < Math.abs(best - mid))) best = i;
+    return [n.slice(0, best), n.slice(best + 1)];
+  }
+  const measureCtx = document.createElement('canvas').getContext('2d')!;
+  const sizeCache = new Map<number, [number, number]>();
+  function labelSize(d: Proj): [number, number] {
+    let s = sizeCache.get(d.id);
+    if (!s) {
+      measureCtx.font = `700 12px ${getComputedStyle(box).getPropertyValue('--font-sans') || 'sans-serif'}`;
+      const lines = wrapName(d.name);
+      s = [Math.max(...lines.map((l) => measureCtx.measureText(l).width)) + 4, lines.length * 14];
+      sizeCache.set(d.id, s);
+    }
+    return s;
+  }
+  function wrapZone(n: string): string[] {
+    if (n.length <= 14) return [n];
+    const c = n.indexOf(': ');
+    if (c > 0) return [n.slice(0, c + 1), n.slice(c + 2)];
+    if (n.length > 18) {
+      let best = -1; const mid = n.length / 2;
+      for (let i = 0; i < n.length; i++) if (n[i] === '–' && (best < 0 || Math.abs(i - mid) < Math.abs(best - mid))) best = i;
+      if (best > 0) return [n.slice(0, best + 1), n.slice(best + 1)];
+    }
+    return [n];
+  }
+  const zoneSize = new Map<string, [number, number]>();
+  // The legend floats over the bottom of the map on wide screens; keep labels clear of it.
+  function legendBox(): [number, number, number, number][] {
+    const L = document.getElementById('lm-legend'); if (!L || getComputedStyle(L).position !== 'absolute') return [];
+    const a = L.getBoundingClientRect(), b = box.getBoundingClientRect();
+    return [[a.left - b.left - 4, a.top - b.top - 4, a.width + 8, a.height + 8]];
+  }
+  function layoutZoneLabels() {
+    const texts = gZT.selectAll<SVGTextElement, { key: string; lp: number[]; name: string; n: number }>('text');
+    if (k >= 2.2) { texts.attr('display', 'none'); return; }
+    const items = texts.data();
+    const font = getComputedStyle(box).getPropertyValue('--font-sans') || 'sans-serif';
+    const circ = items.filter((d) => d.n).map((d) => { const [x, y] = tf.apply(proj(d.lp as [number, number]) as [number, number]); const r = 8 + Math.sqrt(d.n) * 2.2; return { key: d.key, b: [x - r, y - r, 2 * r, 2 * r] as [number, number, number, number] }; });
+    const placed: [number, number, number, number][] = legendBox();
+    const over = (a: number[], b: number[]) => a[0] < b[0] + b[2] && a[0] + a[2] > b[0] && a[1] < b[1] + b[3] && a[1] + a[3] > b[1];
+    const pos = new Map<string, [number, number] | null>();
+    for (const d of items.slice().sort((a, b) => b.n - a.n)) {
+      let s = zoneSize.get(d.key);
+      if (!s) { measureCtx.font = `500 11px ${font}`; const ls = wrapZone(d.name); s = [Math.max(...ls.map((l) => measureCtx.measureText(l).width)) + 6, ls.length * 13]; zoneSize.set(d.key, s); }
+      const [w, h] = s; const [cx, cy] = tf.apply(proj(d.lp as [number, number]) as [number, number]); const r = d.n ? 8 + Math.sqrt(d.n) * 2.2 : 0;
+      const cands = [[cx - w / 2, cy - r - 3 - h], [cx - w / 2, cy + r + 3], [cx + r + 4, cy - h / 2], [cx - r - 4 - w, cy - h / 2]];
+      const c = cands.find(([x, y]) => x > 2 && y > 2 && x + w < W - 2 && y + h < H - 2
+        && !placed.some((p) => over([x, y, w, h], p)) && !circ.some((o) => o.key !== d.key && over([x, y, w, h], o.b)));
+      pos.set(d.key, c ? [c[0] + w / 2, c[1]] : null);
+      if (c) placed.push([c[0], c[1], w, h]);
+    }
+    texts.attr('display', (d) => (pos.get(d.key) ? null : 'none')).attr('y', (d) => (pos.get(d.key)?.[1] ?? 0) + 10)
+      .attr('x', (d) => pos.get(d.key)?.[0] ?? 0);
+    texts.selectAll<SVGTSpanElement, unknown>('tspan').attr('x', function () {
+      const d = select<SVGTextElement, any>(this.parentNode as SVGTextElement).datum();
+      return pos.get(d.key)?.[0] ?? 0;
+    });
+  }
+
+  const TYPE_RANK: Record<string, number> = { mall: 0, mixeduse: 1, department: 2, community: 3, hypermarket: 4, office: 5 };
+  // Greedy placement: try right, left, above, below each pin; skip a label
+  // rather than let it overlap another label or someone else's pin.
+  function layoutLabels() {
+    const texts = gPL.selectAll<SVGTextElement, Proj>('text');
+    const items = texts.data();
+    const scr = new Map(items.map((d) => [d.id, tf.apply(pt(d))]));
+    const showAll = k >= 3.5;
+    const order = items.slice().sort((a, b) => (a.id === st.sel ? -1 : b.id === st.sel ? 1 : 0)
+      || (a.status === 'open' ? 0 : 1) - (b.status === 'open' ? 0 : 1) || TYPE_RANK[a.type] - TYPE_RANK[b.type]);
+    const placed: [number, number, number, number][] = legendBox();
+    const pos = new Map<number, [number, number] | null>();
+    const hit = (x: number, y: number, w: number, h: number) =>
+      placed.some(([a, b, c, e]) => x < a + c && x + w > a && y < b + e && y + h > b);
+    for (const d of order) {
+      const [sx, sy] = scr.get(d.id)!;
+      if ((!showAll && d.id !== st.sel) || sx < -20 || sy < -20 || sx > W + 20 || sy > H + 20) { pos.set(d.id, null); continue; }
+      const [w, h] = labelSize(d);
+      const cands: [number, number][] = [[sx + 9, sy - h / 2], [sx - 9 - w, sy - h / 2], [sx - w / 2, sy - 10 - h], [sx - w / 2, sy + 10]];
+      const dotHit = (x: number, y: number) => items.some((o) => {
+        if (o.id === d.id) return false; const [ox, oy] = scr.get(o.id)!;
+        return ox > x - 6 && ox < x + w + 6 && oy > y - 6 && oy < y + h + 6;
+      });
+      const c = cands.find(([x, y]) => x > 2 && y > 2 && x + w < W - 2 && y + h < H - 2 && !hit(x, y, w, h) && !dotHit(x, y))
+        ?? (d.id === st.sel ? cands[0] : null);
+      pos.set(d.id, c);
+      if (c) placed.push([c[0], c[1], w, h]);
+    }
+    texts.attr('display', (d) => (pos.get(d.id) ? null : 'none'))
+      .attr('x', (d) => pos.get(d.id)?.[0] ?? 0).attr('y', (d) => (pos.get(d.id)?.[1] ?? 0) + 11);
+    texts.selectAll<SVGTSpanElement, unknown>('tspan').attr('x', function () {
+      const d = select<SVGTextElement, Proj>(this.parentNode as SVGTextElement).datum();
+      return pos.get(d.id)?.[0] ?? 0;
+    });
+  }
+
   function restyle() {
     const big = k < 2.2;
     gW.selectAll('path').attr('stroke-width', Math.max(2, 6 / k));
@@ -332,8 +447,8 @@
     gZL.selectAll<SVGTextElement, any>('text.l').attr('display', (d) => (CORE.has(d.key) && k < 1.6 ? 'none' : null));
     gP.selectAll<SVGCircleElement, Proj>('circle').attr('display', big ? 'none' : null)
       .attr('r', (d) => (st.sel === d.id ? 8 : 5.5) / k).attr('stroke-width', 1.5 / k);
-    gPL.selectAll<SVGTextElement, Proj>('text').attr('display', (d) => (k >= 7 || st.sel === d.id ? null : 'none'))
-      .attr('font-size', 12 / k).attr('x', (d) => pt(d)[0] + 8 / k).attr('y', (d) => pt(d)[1] + 4 / k).attr('stroke-width', 3 / k);
+    layoutLabels();
+    layoutZoneLabels();
   }
 
   function update() {
@@ -346,7 +461,7 @@
       .attr('fill', (d) => {
         if (st.lens === 'rent') { const c = rentClass(d[0]); return c === 'cbd' ? '#E9D3BE' : c === 'fringe' ? '#F4E9DC' : 'transparent'; }
         if (st.lens === 'supply') { const n = byZ.get(d[0]) || 0; return n ? `color-mix(in srgb, var(--accent) ${Math.round(8 + 40 * n / maxZ)}%, transparent)` : 'transparent'; }
-        if (st.lens === 'rings') return st.zone === d[0] ? 'var(--accent-soft)' : RINGS[d[1].ring][1];
+        if (st.lens === 'rings') return st.zone === d[0] ? 'var(--accent-soft)' : d[1].ring === 'vicinity' ? 'transparent' : RINGS[d[1].ring][1];
         return st.zone === d[0] ? 'var(--accent-soft)' : 'transparent';
       });
     const zl = Object.entries(zones).map(([key, z]) => ({ key, lp: z.lp, name: z.name, n: byZ.get(key) || 0 }));
@@ -357,17 +472,27 @@
     g.select('circle').attr('r', (d) => (d.n ? 8 + Math.sqrt(d.n) * 2.2 : 0)).attr('fill', 'var(--ink)');
     g.select('text.c').text((d) => d.n || '').attr('text-anchor', 'middle').attr('dy', '.35em').attr('fill', 'var(--paper)')
       .attr('font-size', 12).attr('font-weight', 700).attr('font-family', 'var(--font-sans)');
-    g.select('text.l').text((d) => d.name).attr('text-anchor', 'middle').attr('y', (d) => (d.n ? -(12 + Math.sqrt(d.n) * 2.2) : 0))
+    g.select('text.l').text('').attr('text-anchor', 'middle').attr('y', (d) => (d.n ? -(12 + Math.sqrt(d.n) * 2.2) : 0))
       .attr('fill', 'var(--ink)').attr('font-size', 11).attr('font-weight', 500).attr('font-family', 'var(--font-sans)')
       .attr('paint-order', 'stroke').attr('stroke', 'var(--paper-pure)').attr('stroke-width', 3);
+    gZT.selectAll<SVGTextElement, (typeof zl)[number]>('text').data(zl, (d) => d.key).join((en) => en.append('text').each(function (d) {
+      const t = select(this);
+      wrapZone(d.name).forEach((line, i) => t.append('tspan').attr('dy', i ? 13 : 0).text(line));
+    })).attr('font-size', 11).attr('font-weight', 500).attr('font-family', 'var(--font-sans)').attr('fill', 'var(--ink)')
+      .attr('text-anchor', 'middle').attr('paint-order', 'stroke').attr('stroke', 'var(--paper-pure)').attr('stroke-width', 3)
+      .attr('stroke-linejoin', 'round').style('cursor', 'pointer')
+      .on('click', (_e, d) => { st.zone = d.key; st.sel = null; zsel.value = d.key; update(); zoomTo(zones[d.key].geometry); });
     gP.selectAll<SVGCircleElement, Proj>('circle').data(vis, (d) => d.id).join('circle')
       .attr('cx', (d) => pt(d)[0]).attr('cy', (d) => pt(d)[1]).attr('fill', (d) => TYPES[d.type][1])
       .attr('fill-opacity', (d) => (d.status === 'open' ? 1 : 0.35)).attr('stroke', (d) => (d.status === 'open' ? 'var(--paper-pure)' : TYPES[d.type][1]))
       .style('cursor', 'pointer')
       .on('click', (_e, d) => selectProj(d.id)).on('mousemove', (e, d) => showTip(e, d.name)).on('mouseleave', hideTip);
-    gPL.selectAll<SVGTextElement, Proj>('text').data(vis, (d) => d.id).join('text').text((d) => d.name)
-      .attr('fill', 'var(--ink)').attr('font-weight', 700).attr('font-family', 'var(--font-sans)')
-      .attr('paint-order', 'stroke').attr('stroke', 'var(--paper-pure)').attr('pointer-events', 'none');
+    gPL.selectAll<SVGTextElement, Proj>('text').data(vis, (d) => d.id).join((en) => en.append('text').each(function (d) {
+      const t = select(this);
+      wrapName(d.name).forEach((line, i) => t.append('tspan').attr('dy', i ? 14 : 0).text(line));
+    })).attr('fill', 'var(--ink)').attr('font-size', 12).attr('font-weight', 700).attr('font-family', 'var(--font-sans)')
+      .attr('paint-order', 'stroke').attr('stroke', 'var(--paper-pure)').attr('stroke-width', 3).attr('stroke-linejoin', 'round').attr('pointer-events', 'none');
+    legend();
     restyle();
 
     $('lm-count').textContent = String(vis.length);
@@ -377,7 +502,7 @@
     $('lm-list').innerHTML = vis.slice().sort((a, b) => a.name.localeCompare(b.name)).map((p) =>
       `<li role="option" tabindex="0" data-id="${p.id}" aria-selected="${st.sel === p.id}">${coverThumb(p) ? `<img class="lm-th" src="${esc(coverThumb(p))}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : `<span class="lm-thx"><span class="lm-dot" style="background:${TYPES[p.type][1]}"></span></span>`}<span><span class="nm">${esc(p.name)}</span><br><span class="sb">${esc(TYPES[p.type][0])} · ${esc(zones[p.zone!]?.name)}${p.status !== 'open' ? ' · ' + esc(STATUS[p.status]) : ''}</span></span></li>`
     ).join('') || '<li style="cursor:default"><span class="sb">No project matches. Loosen a filter or reset.</span></li>';
-    legend(); detail();
+    detail();
   }
 
   function selectProj(id: number) {
@@ -497,8 +622,10 @@
     const types = Object.values(TYPES).map(([n, c]) => `<span><span class="lm-dot" style="background:${c}"></span>${n}</span>`).join('');
     const lens = st.lens === 'rent' ? '<span><span class="lm-dot" style="background:#E9D3BE;border-radius:1px"></span>CBD ฿2,852</span><span><span class="lm-dot" style="background:#F4E9DC;border-radius:1px"></span>Fringe ฿2,230–2,300</span>'
       : st.lens === 'supply' ? '<span>Darker zone = more matching projects</span>'
-      : st.lens === 'rings' ? Object.values(RINGS).map(([n, c]) => `<span><span class="lm-dot" style="background:${c};border-radius:1px;box-shadow:0 0 0 1px var(--rule)"></span>${n}</span>`).join('') : '';
-    L.innerHTML = lens + (k < 2.2 ? '<span>Circle = projects in zone · zoom in for pins</span>' : types) + '<span>- - rail (schematic)</span>';
+      : st.lens === 'rings' ? Object.entries(RINGS).filter(([r]) => r !== 'vicinity').map(([, [n, c]]) => `<span><span class="lm-dot" style="background:${c};border-radius:1px;box-shadow:0 0 0 1px var(--rule)"></span>${n}</span>`).join('') : '';
+    const provs = Object.entries(PROV).filter(([n]) => st.lens !== 'rings' || n !== 'Bangkok')
+      .map(([n, [c, th]]) => `<span><span class="lm-dot" style="background:${c};border-radius:1px;box-shadow:0 0 0 1px var(--rule)"></span>${esc(n)} ${esc(th)}</span>`).join('');
+    L.innerHTML = lens + (k < 2.2 ? provs : "") + (k < 2.2 ? '<span>Circle = projects in zone · zoom in for pins</span>' : types) + '<span>- - rail (schematic)</span>';
   }
 
   document.querySelector('.lm-lens')!.addEventListener('click', (e) => {

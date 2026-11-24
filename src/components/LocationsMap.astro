@@ -67,7 +67,7 @@
     <div class="lm-lb-head"><span id="lm-lb-title"></span><span id="lm-lb-count"></span><button type="button" id="lm-lb-close" aria-label="Close photos">×</button></div>
     <div class="lm-lb-stage">
       <button type="button" class="lm-lb-nav" id="lm-lb-prev" aria-label="Previous photo">‹</button>
-      <img id="lm-lb-img" alt="" />
+      <img id="lm-lb-img" alt="" referrerpolicy="no-referrer" />
       <button type="button" class="lm-lb-nav" id="lm-lb-next" aria-label="Next photo">›</button>
     </div>
     <p class="lm-lb-cap" id="lm-lb-cap"></p>
@@ -80,7 +80,7 @@
     © OpenStreetMap contributors (ODbL), via OpenFreeMap vector tiles, simplified for this map. Rent band is CBRE's Q1 2026
     zone average (CBD ฿2,852; northern fringe ฿2,230; eastern fringe ฿2,300 per sqm per month); which
     of our zones count as CBRE's fringe is our approximation. District boundaries: OpenGISData-Thailand.
-    Photos: Wikimedia Commons and Flickr (open licenses), credited under each image; projects without a freely licensed photo show none.
+    Photos: official images from owners who agreed to let us feature their projects (Central Pattana, The Mall Group, Siam Piwat), shown first; then Wikimedia Commons and Flickr (open licenses). Every image is credited underneath.
   </p>
 </div>
 
@@ -587,17 +587,18 @@
   const dossierLink = (z: string) => { const d = DOSSIER[z]; return d ? `<a href="#zone-${d[1]}">${esc(d[0])} dossier</a>` : '<span class="muted">Dossier not yet written</span>'; };
 
   type Photo = { thumb: string; src: string; page: string; author: string; license: string; licenseUrl: string; via?: string; note?: string };
-  const ownerPhotos = (p: Proj): Photo[] | null => {
+  const ownerPhotos = (p: Proj): Photo[] => {
     const o = (OWNER as Record<string, any>)[p.slug];
-    if (!o || !Array.isArray(o.photos) || !o.photos.length) return null;
-    return o.photos.map((f: { file: string; caption?: string }) => {
-      const url = `/images/locations/projects/${p.slug}/${f.file}`;
-      return { thumb: url, src: url, page: '', author: o.owner, license: '', licenseUrl: '', via: 'owner', note: f.caption };
+    if (!o || !Array.isArray(o.photos)) return [];
+    return o.photos.map((f: { file?: string; url?: string; caption?: string; owner?: string }) => {
+      const url = f.url || `/images/locations/projects/${p.slug}/${f.file}`;
+      return { thumb: url, src: url, page: o.page || '', author: f.owner || o.owner, license: '', licenseUrl: '', via: 'owner', note: f.caption };
     });
   };
-  const photosOf = (p: Proj): Photo[] => ownerPhotos(p) ?? (p.photos ? [p.photos.cover, ...p.photos.album] : []);
+  // Official photos from owners who agreed come first; freely licensed photos follow.
+  const photosOf = (p: Proj): Photo[] => [...ownerPhotos(p), ...(p.photos ? [p.photos.cover, ...p.photos.album] : [])];
   const coverThumb = (p: Proj) => photosOf(p)[0]?.thumb;
-  const credit = (ph: Photo) => ph.via === 'owner' ? `Photo courtesy of ${esc(ph.author)}${ph.note ? ` · ${esc(ph.note)}` : ''}` : `Photo: <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.author)}</a> · ${ph.licenseUrl ? `<a href="${esc(ph.licenseUrl)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)} · ${esc(ph.via || 'Wikimedia Commons')}${ph.note ? ` · ${esc(ph.note)}` : ''}`;
+  const credit = (ph: Photo) => ph.via === 'owner' ? `Photo courtesy of ${ph.page ? `<a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.author)}</a>` : esc(ph.author)}${ph.note ? ` · ${esc(ph.note)}` : ''}` : `Photo: <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.author)}</a> · ${ph.licenseUrl ? `<a href="${esc(ph.licenseUrl)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)} · ${esc(ph.via || 'Wikimedia Commons')}${ph.note ? ` · ${esc(ph.note)}` : ''}`;
 
   const lb = $<HTMLDialogElement>('lm-lb');
   const lbImg = $<HTMLImageElement>('lm-lb-img');
@@ -640,7 +641,7 @@
 
   const coverBlock = (p: Proj) => {
     const ph = photosOf(p);
-    if (!ph.length) return `<div class="lm-nophoto">No freely licensed photo yet</div>`;
+    if (!ph.length) return `<div class="lm-nophoto">No photo yet</div>`;
     return `<button type="button" class="lm-cover" id="lm-open-album" aria-label="Open ${esc(p.name)} photos"><img src="${esc(ph[0].src)}" alt="${esc(p.name)}" referrerpolicy="no-referrer" /><span class="lm-pc">${ph.length > 1 ? `View ${ph.length} photos` : 'View photo'}</span></button><p class="lm-credit">${credit(ph[0])}</p>`;
   };
 

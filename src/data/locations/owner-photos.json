@@ -1,5 +1,5 @@
 {
- "_how_to": "Owner-supplied photos. Add an entry only after the owner has given written permission. Files go in public/images/locations/projects/<slug>/ (webp or jpg, 1600px wide max). The first photo is the cover. These replace the Wikimedia Commons photos for that project.",
+ "_how_to": "Official photos from owners who agreed to SpoonAsia promoting their project. Each entry: owner, page (the owner's page the photos come from), permission, photos[]. A photo is either {url} (hotlinked from the owner's own site/CDN) or {file} (stored in public/images/locations/projects/<slug>/). Official photos come first in the album; any Wikimedia Commons photos follow. Add an entry only after the owner has agreed.",
  "_example": {
   "owner": "Central Pattana",
   "permission": "Email from <name>, <date>",
@@ -11,6 +11,388 @@
    {
     "file": "atrium.webp",
     "caption": "Atrium"
+   }
+  ]
+ },
+ "central-bangna": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/bangna/cover.jpg"
+   }
+  ]
+ },
+ "central-rama-9": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/rama9/cover.jpg"
+   }
+  ]
+ },
+ "central-ladprao": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/lardprao/cover.jpg"
+   }
+  ]
+ },
+ "central-rama-3": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/rama-3/cover.jpg"
+   }
+  ]
+ },
+ "central-pinklao": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/pinklao/cover.jpg"
+   }
+  ]
+ },
+ "central-rama-2": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/rama-II/cover.jpg"
+   }
+  ]
+ },
+ "central-ramindra": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/ramindra/cover.jpg"
+   }
+  ]
+ },
+ "central-westgate": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/westGate/cover.jpg"
+   }
+  ]
+ },
+ "central-northville": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/northville/cover.jpg"
+   }
+  ]
+ },
+ "central-chaengwattana": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/chaengwattana/cover.jpg"
+   }
+  ]
+ },
+ "central-salaya": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/salaya/cover.jpg"
+   }
+  ]
+ },
+ "central-mahachai": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-plaza/mahachai/cover.jpg"
+   }
+  ]
+ },
+ "centralworld": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-world/cover-ctw.jpg"
+   }
+  ]
+ },
+ "central-eastville": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-festival/east-ville/cover.jpg"
+   }
+  ]
+ },
+ "central-village": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center/521/central-village-outlet",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/shopping-center/central-village/cover.jpg"
+   }
+  ]
+ },
+ "dusit-central-park": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center/1349/central-park-bangkok",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/news-project/central-park/cover.jpg"
+   },
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/news-project/central-park/gallery/20250326-093214-2.jpg",
+    "caption": "Artist’s impression"
+   }
+  ]
+ },
+ "the-central-phaholyothin": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralpattana.co.th/en/our-business/shopping-center/1351/the-central",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/news-project/the-central/cover.jpg",
+    "caption": "Artist’s impression"
+   },
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/news-project/the-central/gallery/20250326-103720-1.jpg",
+    "caption": "Artist’s impression"
+   },
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/news-project/the-central/gallery/20250326-103720-2.jpg",
+    "caption": "Artist’s impression"
+   },
+   {
+    "url": "https://www.centralpattana.co.th/storage/our-properties/news-project/the-central/gallery/20250326-103720-3.jpg",
+    "caption": "Artist’s impression"
+   }
+  ]
+ },
+ "the-emquartier": {
+  "owner": "The Mall Group",
+  "page": "https://www.themallgroup.com/en/our-business/em-district",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://media.themallgroup.com/emq1600.webp"
+   }
+  ]
+ },
+ "the-emporium": {
+  "owner": "The Mall Group",
+  "page": "https://www.themallgroup.com/en/our-business/em-district",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://media.themallgroup.com/emp1600.webp"
+   }
+  ]
+ },
+ "emsphere": {
+  "owner": "The Mall Group",
+  "page": "https://www.themallgroup.com/en/our-business/em-district",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://media.themallgroup.com/ems1600.webp"
+   }
+  ]
+ },
+ "the-mall-lifestore-bangkae": {
+  "owner": "The Mall Group",
+  "page": "https://www.themallgroup.com/en/our-business/the-mall-lifestore",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://media.themallgroup.com/M8-1.webp"
+   }
+  ]
+ },
+ "the-mall-lifestore-bangkapi": {
+  "owner": "The Mall Group",
+  "page": "https://www.themallgroup.com/en/our-business/the-mall-lifestore",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://media.themallgroup.com/m8-1600.webp"
+   }
+  ]
+ },
+ "the-mall-lifestore-ngamwongwan": {
+  "owner": "The Mall Group",
+  "page": "https://www.themallgroup.com/en/our-business/the-mall-lifestore",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://media.themallgroup.com/m6-1600.webp"
+   }
+  ]
+ },
+ "the-mall-lifestore-thapra": {
+  "owner": "The Mall Group",
+  "page": "https://www.themallgroup.com/en/our-business/the-mall-lifestore",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://media.themallgroup.com/m5-1600.webp"
+   }
+  ]
+ },
+ "bangkok-mall": {
+  "owner": "The Mall Group",
+  "page": "https://www.themallgroup.com/en/our-business/bangkok-mall",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://media.themallgroup.com/bkkmall.webp",
+    "caption": "Artist’s impression"
+   },
+   {
+    "url": "https://media.themallgroup.com/business4-img-1.webp",
+    "caption": "Artist’s impression"
+   }
+  ]
+ },
+ "siam-paragon": {
+  "owner": "Siam Piwat & The Mall Group",
+  "page": "https://www.siampiwat.com/en/our-business/siamparagon",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://media.themallgroup.com/business2-img-1.webp"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/siam-paragon/SiamParagon02.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/siam-paragon/SiamParagon03.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/siam-paragon/SiamParagon04.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/siam-paragon/SiamParagon05.jpg"
+   }
+  ]
+ },
+ "siam-center": {
+  "owner": "Siam Piwat",
+  "page": "https://www.siampiwat.com/en/our-business/siamcenter",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/home/siam-center.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/siam-center/Siam%20Center%2002.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/siam-center/Siam%20Center%2015.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/siam-center/Siam%20Center%2019.jpg"
+   }
+  ]
+ },
+ "siam-discovery": {
+  "owner": "Siam Piwat",
+  "page": "https://www.siampiwat.com/en/our-business/siamdiscovery",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/home/siam-discovery.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/siam-discovery/Siam%20Discovery%2004.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/siam-discovery/Siam%20Discovery%2006.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/siam-discovery/Siam%20Discovery%2014.jpg"
+   }
+  ]
+ },
+ "iconsiam": {
+  "owner": "Siam Piwat",
+  "page": "https://www.siampiwat.com/en/our-business/iconsiam",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/home/iconsiam.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/ICONSIAM/ICONSIAM%2003.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/ICONSIAM/ICONSIAM%2008.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/ICONSIAM/ICONSIAM%2013.jpg"
+   }
+  ]
+ },
+ "ics": {
+  "owner": "Siam Piwat",
+  "page": "https://www.siampiwat.com/en/our-business/ics",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/ICS/ICS%2002.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/ICS/ICS%2004.jpg"
+   },
+   {
+    "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/ICS/ICS%2005.jpg"
+   }
+  ]
+ },
+ "central-central": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralgroup.com/en/newsroom/corporate-news/741/central-pattana-and-mitsubishi-estate-unveil-central-central-a-new-project-designed-to-strengthen-siam-square-s-position-as-a-global-youth-culture-destination",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralgroup.com/storage/newsroom/corporate-news/2026/07/20260708-131622-7.webp",
+    "caption": "Artist’s impression"
+   },
+   {
+    "url": "https://www.centralgroup.com/storage/newsroom/corporate-news/2026/07/20260708-131622-6.webp",
+    "caption": "Artist’s impression"
    }
   ]
  }

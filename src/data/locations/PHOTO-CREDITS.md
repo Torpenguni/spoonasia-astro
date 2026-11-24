@@ -363,3 +363,7 @@ or Wikipedia. Fill them with landlord-supplied press photos or photos we shoot o
 - Bangkok Mall
 - The Forestias
 - CenTRal cENtrAL
+
+## Official owner photos
+
+Central Pattana, The Mall Group and Siam Piwat agreed to SpoonAsia featuring their projects with official images (confirmed by Tor, Nov 2026). These are hotlinked from each owner's own site/CDN (centralpattana.co.th, media.themallgroup.com, siampiwat.com's CloudFront), listed per project in `owner-photos.json`, shown first in each album and credited "Photo courtesy of <owner>" with a link to the source page. Projects run by Central Retail / Central Group (Central Chidlom, Central Embassy, Robinson Bangrak) are not covered by the Central Pattana agreement and keep their open-licence photos.

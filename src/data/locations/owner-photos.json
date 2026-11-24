@@ -380,5 +380,20 @@
     "url": "https://d31nckwdh33ztz.cloudfront.net/business_content/ICS/ICS%2005.jpg"
    }
   ]
+ },
+ "central-central": {
+  "owner": "Central Pattana",
+  "page": "https://www.centralgroup.com/en/newsroom/corporate-news/741/central-pattana-and-mitsubishi-estate-unveil-central-central-a-new-project-designed-to-strengthen-siam-square-s-position-as-a-global-youth-culture-destination",
+  "permission": "Owner agreed to SpoonAsia using official photos to promote the project (confirmed by Tor, Nov 2026)",
+  "photos": [
+   {
+    "url": "https://www.centralgroup.com/storage/newsroom/corporate-news/2026/07/20260708-131622-7.webp",
+    "caption": "Artist’s impression"
+   },
+   {
+    "url": "https://www.centralgroup.com/storage/newsroom/corporate-news/2026/07/20260708-131622-6.webp",
+    "caption": "Artist’s impression"
+   }
+  ]
  }
 }

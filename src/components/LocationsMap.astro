@@ -73,7 +73,7 @@
     Rail is schematic (BTS Sukhumvit, Silom, MRT Blue, Airport Rail Link). Rent band is CBRE's Q1 2026
     zone average (CBD ฿2,852; northern fringe ฿2,230; eastern fringe ฿2,300 per sqm per month); which
     of our zones count as CBRE's fringe is our approximation. District boundaries: OpenGISData-Thailand.
-    Photos: Wikimedia Commons, credited under each image; projects without a freely licensed photo show none.
+    Photos: Wikimedia Commons and Flickr (open licenses), credited under each image; projects without a freely licensed photo show none.
   </p>
 </div>
 
@@ -373,9 +373,9 @@
   const rentLine = (z: string) => { const r = zones[z]?.rent; return r ? `Zone avg ฿${fmt(r.thb)}/sqm/mo <span class="muted">(CBRE ${esc(r.area)}, Q1 2026)</span>` : '<span class="muted">No public benchmark yet</span>'; };
   const dossierLink = (z: string) => { const d = DOSSIER[z]; return d ? `<a href="#zone-${d[1]}">${esc(d[0])} dossier</a>` : '<span class="muted">Dossier not yet written</span>'; };
 
-  type Photo = { thumb: string; src: string; page: string; author: string; license: string; licenseUrl: string };
+  type Photo = { thumb: string; src: string; page: string; author: string; license: string; licenseUrl: string; via?: string; note?: string };
   const photosOf = (p: Proj): Photo[] => (p.photos ? [p.photos.cover, ...p.photos.album] : []);
-  const credit = (ph: Photo) => `Photo: <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.author)}</a> · ${ph.licenseUrl ? `<a href="${esc(ph.licenseUrl)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)} · Wikimedia Commons`;
+  const credit = (ph: Photo) => `Photo: <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.author)}</a> · ${ph.licenseUrl ? `<a href="${esc(ph.licenseUrl)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)} · ${esc(ph.via || 'Wikimedia Commons')}${ph.note ? ` · ${esc(ph.note)}` : ''}`;
 
   const lb = $<HTMLDialogElement>('lm-lb');
   const lbImg = $<HTMLImageElement>('lm-lb-img');

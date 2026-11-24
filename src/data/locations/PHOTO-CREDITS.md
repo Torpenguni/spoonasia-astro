@@ -1,11 +1,12 @@
 # Project photo credits — src/data/locations/projects.json
 
-All project photos are hotlinked thumbnails from Wikimedia Commons, selected on 2026-11-24.
-Licenses were read from each file's Commons metadata at selection time. Only CC0, public domain,
-CC BY and CC BY-SA files are used — no NC or ND material. The map credits author and license
-under every photo and links to the file page. Images are shown unmodified (CSS crop only).
+Project photos are hotlinked from Wikimedia Commons (and, for Show DC, Flickr), selected on 2026-11-24.
+Licenses were read from each file's metadata at selection time. Only CC0, public domain, CC BY and
+CC BY-SA images are used — no NC or ND material. The map credits author and license under every
+photo and links to the source page. Images are shown unmodified (CSS crop only).
 
-Projects without a photo below have no suitable freely licensed image on Commons yet.
+Projects under "No photo yet" have no freely licensed image we could find on Commons, Flickr (via Openverse)
+or Wikipedia. Fill them with landlord-supplied press photos or photos we shoot ourselves.
 
 ## Siam Paragon
 - Cover: https://commons.wikimedia.org/wiki/File:Siam_Paragon_06.23.jpg — Supanut Arunoprayote — CC BY 4.0
@@ -92,6 +93,10 @@ Projects without a photo below have no suitable freely licensed image on Commons
 ## Park Ventures Ecoplex
 - Cover: https://commons.wikimedia.org/wiki/File:Prada_Tower_View_to_Lumpini_BKK_001.jpg — Hans-Jürgen Neubert — CC BY 4.0
 
+## The Unicorn
+- Cover: https://commons.wikimedia.org/wiki/File:The_Unicorn_Phayathai_(20250318122158).jpg — MikSed — CC BY-SA 4.0
+- Album: https://commons.wikimedia.org/wiki/File:The_Unicorn_Phayathai_(20250318122152).jpg — MikSed — CC BY-SA 4.0
+
 ## Silom Complex
 - Cover: https://commons.wikimedia.org/wiki/File:Silom_Complex_%E0%B8%AA%E0%B8%B5%E0%B8%A5%E0%B8%A1%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B9%87%E0%B8%81%E0%B8%8B%E0%B9%8C_May_2021.jpg — Chainwit — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:True_shop_at_Central_Silom_Complex.jpg — Sry85 — CC BY-SA 4.0
@@ -107,6 +112,10 @@ Projects without a photo below have no suitable freely licensed image on Commons
 ## Robinson Bangrak
 - Cover: https://commons.wikimedia.org/wiki/File:Robinson_Bangrak2019.jpg — Saedang — CC BY-SA 4.0
 
+## Empire Tower
+- Cover: https://commons.wikimedia.org/wiki/File:Empire_Tower_Bangkok.jpg — Supanut Arunoprayote — CC BY-SA 4.0
+- Album: https://commons.wikimedia.org/wiki/File:Empire_Tower_Bangkok_at_night.jpg — Bigcitydata — CC BY-SA 4.0
+
 ## Sathorn Square
 - Cover: https://commons.wikimedia.org/wiki/File:BKK_HaJN_1277.jpg — Hans-Jürgen Neubert — CC BY 4.0
 
@@ -118,6 +127,10 @@ Projects without a photo below have no suitable freely licensed image on Commons
 - Album: https://commons.wikimedia.org/wiki/File:Terminal_21_Asok_(20250325152659).jpg — MikSed — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:Terminal_21_Asok_(20250325152927).jpg — MikSed — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:Terminal_21_Asok_(20250325153004).jpg — MikSed — CC BY-SA 4.0
+
+## Exchange Tower
+- Cover: https://commons.wikimedia.org/wiki/File:Exchange_Tower_Bangkok.jpg — Bigcitydata — CC BY-SA 4.0
+- Album: https://commons.wikimedia.org/wiki/File:Exchange_Tower_Bangkok_01.jpg — Chainwit — CC BY-SA 4.0
 
 ## The EmQuartier
 - Cover: https://commons.wikimedia.org/wiki/File:%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%94%E0%B8%B4_%E0%B9%80%E0%B8%AD%E0%B9%87%E0%B8%A1%E0%B8%84%E0%B8%A7%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%A3%E0%B9%8C_%E0%B9%80%E0%B8%82%E0%B8%95%E0%B8%A7%E0%B8%B1%E0%B8%92%E0%B8%99%E0%B8%B2_%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%A3_The_Emquartier,Vadhana,Bangkok_(2).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
@@ -137,12 +150,26 @@ Projects without a photo below have no suitable freely licensed image on Commons
 - Album: https://commons.wikimedia.org/wiki/File:2017-01-09%E6%B3%B0%E5%9C%8B-snow_town_(32279317871).jpg — fullfen666 — CC BY-SA 2.0
 - Album: https://commons.wikimedia.org/wiki/File:2017-01-09%E6%B3%B0%E5%9C%8B-snow_town_(32279314711).jpg — fullfen666 — CC BY-SA 2.0
 
+## Donki Mall Thonglor
+- Cover: https://commons.wikimedia.org/wiki/File:Don_Don_Donki_Watthana_District,_Bangkok,_Thailand.jpg — Book9416 at Thai Wikipedia — CC BY-SA 3.0
+
+## W District
+- Cover: https://commons.wikimedia.org/wiki/File:W_District_-_panoramio_(1).jpg — mohigan — CC BY-SA 3.0
+- Album: https://commons.wikimedia.org/wiki/File:W_District_-_panoramio.jpg — mohigan — CC BY-SA 3.0
+- Album: https://commons.wikimedia.org/wiki/File:W_District_-_panoramio_(2).jpg — mohigan — CC BY-SA 3.0
+
+## True Digital Park
+- Cover: https://commons.wikimedia.org/wiki/File:True_Digital_Park_Main_Building.JPG — Wikimedia Commons uploader — CC BY-SA 3.0
+
 ## Central Bangna
 - Cover: https://commons.wikimedia.org/wiki/File:%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%A5_%E0%B8%9E%E0%B8%A5%E0%B8%B2%E0%B8%8B%E0%B8%B2_%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%99%E0%B8%B2_Central_Plaza_Bangna_(3).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%A5_%E0%B8%9E%E0%B8%A5%E0%B8%B2%E0%B8%8B%E0%B8%B2_%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%99%E0%B8%B2_Central_Plaza_Bangna_(5).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%A5_%E0%B8%9E%E0%B8%A5%E0%B8%B2%E0%B8%8B%E0%B8%B2_%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%99%E0%B8%B2_Central_Plaza_Bangna_(10).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%A5_%E0%B8%9E%E0%B8%A5%E0%B8%B2%E0%B8%8B%E0%B8%B2_%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%99%E0%B8%B2_Central_Plaza_Bangna_(11).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B8%B1%E0%B8%A5_%E0%B8%9E%E0%B8%A5%E0%B8%B2%E0%B8%8B%E0%B8%B2_%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%99%E0%B8%B2_Central_Plaza_Bangna_(13).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
+
+## Imperial World Samrong
+- Cover: https://commons.wikimedia.org/wiki/File:IMPERIAL_WORLD_SAMRONG_(3).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 
 ## Mega Bangna
 - Cover: https://commons.wikimedia.org/wiki/File:Mega-bangna_picture_1.jpg — Napat Sirithum — CC BY-SA 3.0
@@ -158,11 +185,36 @@ Projects without a photo below have no suitable freely licensed image on Commons
 - Album: https://commons.wikimedia.org/wiki/File:Seacon_Square_Srinagarindra_(12).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:Seacon_Square_Srinagarindra_(9).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 
+## Paradise Park
+- Cover: https://commons.wikimedia.org/wiki/File:Seri_Center_2.jpg — jarcje — CC BY 3.0 — note: Photographed under its former name, Seri Center
+
 ## Central Rama 9
 - Cover: https://commons.wikimedia.org/wiki/File:CentralPlaza_Grand_Rama_IX_-_Entrance.jpg — Magnamonkun (original uploader) — CC BY 3.0
 
+## G Tower
+- Cover: https://commons.wikimedia.org/wiki/File:G_Tower_Bangkok_(The_Grand_Rama_9_(New_CBD)).jpg — Chainwit — CC BY-SA 4.0
+- Album: https://commons.wikimedia.org/wiki/File:G_Tower_et_les_2_gratte-ciel_One_9_Five.jpg — Bienvenue en Thaïlande — CC BY-SA 4.0
+
+## Show DC
+- Cover: https://www.flickr.com/photos/10755942@N02/49062239106 — leebantwan (Flickr) — CC0
+- Album: https://www.flickr.com/photos/10755942@N02/49062459867 — leebantwan (Flickr) — CC0
+- Album: https://www.flickr.com/photos/10755942@N02/49062460082 — leebantwan (Flickr) — CC0
+- Album: https://www.flickr.com/photos/10755942@N02/49062460017 — leebantwan (Flickr) — CC0
+- Album: https://www.flickr.com/photos/10755942@N02/49062238926 — leebantwan (Flickr) — CC0
+
+## La Villa Ari
+- Cover: https://commons.wikimedia.org/wiki/File:La_Villa_Market_Ari.jpg — Thanapas — CC BY-SA 4.0
+- Album: https://commons.wikimedia.org/wiki/File:La_Villa_Market_Ari20260318.jpg — ยุทธนาสาระขันธ์ — CC BY-SA 4.0
+
 ## Big C Saphan Khwai
 - Cover: https://commons.wikimedia.org/wiki/File:Big_C_Saphan_Khwai.jpg — Poonpun2016 — CC BY-SA 4.0
+
+## Central Ladprao
+- Cover: https://commons.wikimedia.org/wiki/File:Refurbished_CentralPlaza_Ladprao.jpg — Khemkhaeng — CC BY-SA 3.0
+- Album: https://commons.wikimedia.org/wiki/File:Front_CentralPlaza_Ladprao.jpg — Khemkhaeng — CC BY-SA 3.0
+- Album: https://commons.wikimedia.org/wiki/File:Atrium_CentralPlaza_Ladprao.JPG — Khemkhaeng — CC BY-SA 3.0
+- Album: https://commons.wikimedia.org/wiki/File:Side_view_CentralPlaza_Ladprao.JPG — Khemkhaeng — CC BY-SA 3.0
+- Album: https://commons.wikimedia.org/wiki/File:Front_Central_Ladprao_Main.JPG — Khemkhaeng — CC BY-SA 3.0
 
 ## Union Mall
 - Cover: https://commons.wikimedia.org/wiki/File:Union_Mall_Bangkok_(2026).jpg — Medelam — CC BY-SA 4.0
@@ -212,6 +264,11 @@ Projects without a photo below have no suitable freely licensed image on Commons
 - Album: https://commons.wikimedia.org/wiki/File:Central_Pinklao,Bangkok_(10).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:Central_Pinklao,Bangkok_(5).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 
+## The Mall Lifestore Thapra
+- Cover: https://commons.wikimedia.org/wiki/File:TheMallLifeStoreThapra.jpg — BenyaRat — CC0
+- Album: https://commons.wikimedia.org/wiki/File:%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A1%E0%B8%AD%E0%B8%A5%E0%B8%A5%E0%B9%8C_%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%9E%E0%B8%A3%E0%B8%B0_The_Mall_Thaphra_(1).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
+- Album: https://commons.wikimedia.org/wiki/File:The_Mall_Thaphra_from_afar.jpg — Bebiezaza — CC BY-SA 4.0
+
 ## The Mall Lifestore Bangkae
 - Cover: https://commons.wikimedia.org/wiki/File:%E0%B8%A1%E0%B8%AD%E0%B8%A5%E0%B8%A5%E0%B9%8C%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B9%81%E0%B8%84.jpg — Phoebus 28 — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:%E0%B8%88%E0%B8%B2%E0%B8%81%E0%B8%8A%E0%B8%B1%E0%B9%89%E0%B8%99_4.jpg — Phoebus 28 — CC BY-SA 4.0
@@ -248,12 +305,19 @@ Projects without a photo below have no suitable freely licensed image on Commons
 - Album: https://commons.wikimedia.org/wiki/File:Fashion_Island,Bangkok_(15).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:Fashion_Island,Bangkok_(18).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 
+## Central Village
+- Cover: https://commons.wikimedia.org/wiki/File:Central-village.jpg — Magnamonkun (original uploader) — CC BY-SA 4.0
+
 ## Central Westgate
 - Cover: https://commons.wikimedia.org/wiki/File:Central_Westgate_(14).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:Central_Westgate_(17).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:Central_Westgate_(21).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:Central_Westgate_(23).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:Central_Westgate_(10).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
+
+## Central Chaengwattana
+- Cover: https://commons.wikimedia.org/wiki/File:Central-Chaengwatthana.jpg — Poonpun2016 — CC BY-SA 4.0
+- Album: https://commons.wikimedia.org/wiki/File:InChaeng.jpg — Ndsman — CC BY-SA 3.0
 
 ## The Mall Lifestore Ngamwongwan
 - Cover: https://commons.wikimedia.org/wiki/File:MLifestoreNgamwongwarn.jpg — Poonpun2016 — CC BY-SA 4.0
@@ -288,37 +352,22 @@ Projects without a photo below have no suitable freely licensed image on Commons
 - Cover: https://commons.wikimedia.org/wiki/File:The_Central_Phaholyothin_20260118_162649.jpg — Jothefiredragon — CC BY-SA 4.0
 
 ## No photo yet
-- The Unicorn
 - Mahanakhon Cube
-- Empire Tower
-- Exchange Tower
 - J Avenue Thonglor
 - The Commons Thonglor
 - Seenspace Thonglor
-- Donki Mall Thonglor
 - Rain Hill
 - Lotus's Rama 4
 - The Parq
 - FYI Center
-- W District
 - Lotus's On Nut
 - Habito Mall
-- True Digital Park
-- Imperial World Samrong
-- Paradise Park
 - Fortune Town
-- G Tower
 - The Street Ratchada
 - Esplanade Ratchada
-- Show DC
-- La Villa Ari
-- Central Ladprao
-- The Mall Lifestore Thapra
 - Lotus's Bangkapi
 - Crystal Design Center
-- Central Village
 - Central NorthVille
-- Central Chaengwattana
 - ICS
 - Cloud 11
 - Bangkok Mall

@@ -946,7 +946,26 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/The_Unicorn_Phayathai_(20250318122158).jpg/500px-The_Unicorn_Phayathai_(20250318122158).jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/The_Unicorn_Phayathai_(20250318122158).jpg/1280px-The_Unicorn_Phayathai_(20250318122158).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:The_Unicorn_Phayathai_(20250318122158).jpg",
+    "author": "MikSed",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+   },
+   "album": [
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/The_Unicorn_Phayathai_(20250318122152).jpg/500px-The_Unicorn_Phayathai_(20250318122152).jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/The_Unicorn_Phayathai_(20250318122152).jpg/1280px-The_Unicorn_Phayathai_(20250318122152).jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:The_Unicorn_Phayathai_(20250318122152).jpg",
+     "author": "MikSed",
+     "license": "CC BY-SA 4.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  }
  },
  {
   "id": 16,
@@ -1168,7 +1187,26 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Empire_Tower_Bangkok.jpg/500px-Empire_Tower_Bangkok.jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Empire_Tower_Bangkok.jpg/1280px-Empire_Tower_Bangkok.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Empire_Tower_Bangkok.jpg",
+    "author": "Supanut Arunoprayote",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+   },
+   "album": [
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Empire_Tower_Bangkok_at_night.jpg/500px-Empire_Tower_Bangkok_at_night.jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Empire_Tower_Bangkok_at_night.jpg/1280px-Empire_Tower_Bangkok_at_night.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Empire_Tower_Bangkok_at_night.jpg",
+     "author": "Bigcitydata",
+     "license": "CC BY-SA 4.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  }
  },
  {
   "id": 21,
@@ -1325,7 +1363,26 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Exchange_Tower_Bangkok.jpg/500px-Exchange_Tower_Bangkok.jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Exchange_Tower_Bangkok.jpg/1280px-Exchange_Tower_Bangkok.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Exchange_Tower_Bangkok.jpg",
+    "author": "Bigcitydata",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+   },
+   "album": [
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Exchange_Tower_Bangkok_01.jpg/500px-Exchange_Tower_Bangkok_01.jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Exchange_Tower_Bangkok_01.jpg/1280px-Exchange_Tower_Bangkok_01.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Exchange_Tower_Bangkok_01.jpg",
+     "author": "Chainwit",
+     "license": "CC BY-SA 4.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  }
  },
  {
   "id": 24,
@@ -1638,7 +1695,17 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Don_Don_Donki_Watthana_District,_Bangkok,_Thailand.jpg/500px-Don_Don_Donki_Watthana_District,_Bangkok,_Thailand.jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Don_Don_Donki_Watthana_District,_Bangkok,_Thailand.jpg/1280px-Don_Don_Donki_Watthana_District,_Bangkok,_Thailand.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Don_Don_Donki_Watthana_District,_Bangkok,_Thailand.jpg",
+    "author": "Book9416 at Thai Wikipedia",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+   },
+   "album": []
+  }
  },
  {
   "id": 31,
@@ -1776,7 +1843,34 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/W_District_-_panoramio_(1).jpg/500px-W_District_-_panoramio_(1).jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/W_District_-_panoramio_(1).jpg/1280px-W_District_-_panoramio_(1).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:W_District_-_panoramio_(1).jpg",
+    "author": "mohigan",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+   },
+   "album": [
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/W_District_-_panoramio.jpg/500px-W_District_-_panoramio.jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/W_District_-_panoramio.jpg/1280px-W_District_-_panoramio.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:W_District_-_panoramio.jpg",
+     "author": "mohigan",
+     "license": "CC BY-SA 3.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/W_District_-_panoramio_(2).jpg/500px-W_District_-_panoramio_(2).jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/W_District_-_panoramio_(2).jpg/1280px-W_District_-_panoramio_(2).jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:W_District_-_panoramio_(2).jpg",
+     "author": "mohigan",
+     "license": "CC BY-SA 3.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+   ]
+  }
  },
  {
   "id": 36,
@@ -1862,7 +1956,17 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/True_Digital_Park_Main_Building.JPG/500px-True_Digital_Park_Main_Building.JPG",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/True_Digital_Park_Main_Building.JPG/1280px-True_Digital_Park_Main_Building.JPG",
+    "page": "https://commons.wikimedia.org/wiki/File:True_Digital_Park_Main_Building.JPG",
+    "author": "Wikimedia Commons uploader",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+   },
+   "album": []
+  }
  },
  {
   "id": 39,
@@ -1966,7 +2070,17 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/IMPERIAL_WORLD_SAMRONG_(3).jpg/500px-IMPERIAL_WORLD_SAMRONG_(3).jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/IMPERIAL_WORLD_SAMRONG_(3).jpg/1280px-IMPERIAL_WORLD_SAMRONG_(3).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:IMPERIAL_WORLD_SAMRONG_(3).jpg",
+    "author": "กสิณธร ราชโอรส",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+   },
+   "album": []
+  }
  },
  {
   "id": 41,
@@ -2140,7 +2254,18 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Seri_Center_2.jpg/500px-Seri_Center_2.jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Seri_Center_2.jpg/1280px-Seri_Center_2.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Seri_Center_2.jpg",
+    "author": "jarcje",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "note": "Photographed under its former name, Seri Center"
+   },
+   "album": []
+  }
  },
  {
   "id": 44,
@@ -2235,7 +2360,26 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/G_Tower_Bangkok_(The_Grand_Rama_9_(New_CBD)).jpg/500px-G_Tower_Bangkok_(The_Grand_Rama_9_(New_CBD)).jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/G_Tower_Bangkok_(The_Grand_Rama_9_(New_CBD)).jpg/1280px-G_Tower_Bangkok_(The_Grand_Rama_9_(New_CBD)).jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:G_Tower_Bangkok_(The_Grand_Rama_9_(New_CBD)).jpg",
+    "author": "Chainwit",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+   },
+   "album": [
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/G_Tower_et_les_2_gratte-ciel_One_9_Five.jpg/500px-G_Tower_et_les_2_gratte-ciel_One_9_Five.jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/G_Tower_et_les_2_gratte-ciel_One_9_Five.jpg/1280px-G_Tower_et_les_2_gratte-ciel_One_9_Five.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:G_Tower_et_les_2_gratte-ciel_One_9_Five.jpg",
+     "author": "Bienvenue en Thaïlande",
+     "license": "CC BY-SA 4.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  }
  },
  {
   "id": 47,
@@ -2323,7 +2467,55 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://live.staticflickr.com/65535/49062239106_83bf726317_z.jpg",
+    "src": "https://live.staticflickr.com/65535/49062239106_83bf726317_b.jpg",
+    "page": "https://www.flickr.com/photos/10755942@N02/49062239106",
+    "author": "leebantwan (Flickr)",
+    "license": "CC0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "via": "Flickr"
+   },
+   "album": [
+    {
+     "thumb": "https://live.staticflickr.com/65535/49062459867_77c62542c5_z.jpg",
+     "src": "https://live.staticflickr.com/65535/49062459867_77c62542c5_b.jpg",
+     "page": "https://www.flickr.com/photos/10755942@N02/49062459867",
+     "author": "leebantwan (Flickr)",
+     "license": "CC0",
+     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+     "via": "Flickr"
+    },
+    {
+     "thumb": "https://live.staticflickr.com/65535/49062460082_f583b2417c_z.jpg",
+     "src": "https://live.staticflickr.com/65535/49062460082_f583b2417c_b.jpg",
+     "page": "https://www.flickr.com/photos/10755942@N02/49062460082",
+     "author": "leebantwan (Flickr)",
+     "license": "CC0",
+     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+     "via": "Flickr"
+    },
+    {
+     "thumb": "https://live.staticflickr.com/65535/49062460017_341a936218_z.jpg",
+     "src": "https://live.staticflickr.com/65535/49062460017_341a936218_b.jpg",
+     "page": "https://www.flickr.com/photos/10755942@N02/49062460017",
+     "author": "leebantwan (Flickr)",
+     "license": "CC0",
+     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+     "via": "Flickr"
+    },
+    {
+     "thumb": "https://live.staticflickr.com/65535/49062238926_d132891abd_z.jpg",
+     "src": "https://live.staticflickr.com/65535/49062238926_d132891abd_b.jpg",
+     "page": "https://www.flickr.com/photos/10755942@N02/49062238926",
+     "author": "leebantwan (Flickr)",
+     "license": "CC0",
+     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+     "via": "Flickr"
+    }
+   ]
+  }
  },
  {
   "id": 50,
@@ -2353,7 +2545,26 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/La_Villa_Market_Ari.jpg/500px-La_Villa_Market_Ari.jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/La_Villa_Market_Ari.jpg/1280px-La_Villa_Market_Ari.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:La_Villa_Market_Ari.jpg",
+    "author": "Thanapas",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+   },
+   "album": [
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/La_Villa_Market_Ari20260318.jpg/500px-La_Villa_Market_Ari20260318.jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/La_Villa_Market_Ari20260318.jpg/1280px-La_Villa_Market_Ari20260318.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:La_Villa_Market_Ari20260318.jpg",
+     "author": "ยุทธนาสาระขันธ์",
+     "license": "CC BY-SA 4.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  }
  },
  {
   "id": 51,
@@ -2422,7 +2633,50 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Refurbished_CentralPlaza_Ladprao.jpg/500px-Refurbished_CentralPlaza_Ladprao.jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Refurbished_CentralPlaza_Ladprao.jpg/1280px-Refurbished_CentralPlaza_Ladprao.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Refurbished_CentralPlaza_Ladprao.jpg",
+    "author": "Khemkhaeng",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+   },
+   "album": [
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Front_CentralPlaza_Ladprao.jpg/500px-Front_CentralPlaza_Ladprao.jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Front_CentralPlaza_Ladprao.jpg/1280px-Front_CentralPlaza_Ladprao.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:Front_CentralPlaza_Ladprao.jpg",
+     "author": "Khemkhaeng",
+     "license": "CC BY-SA 3.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Atrium_CentralPlaza_Ladprao.JPG/500px-Atrium_CentralPlaza_Ladprao.JPG",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Atrium_CentralPlaza_Ladprao.JPG/1280px-Atrium_CentralPlaza_Ladprao.JPG",
+     "page": "https://commons.wikimedia.org/wiki/File:Atrium_CentralPlaza_Ladprao.JPG",
+     "author": "Khemkhaeng",
+     "license": "CC BY-SA 3.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Side_view_CentralPlaza_Ladprao.JPG/500px-Side_view_CentralPlaza_Ladprao.JPG",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Side_view_CentralPlaza_Ladprao.JPG/1280px-Side_view_CentralPlaza_Ladprao.JPG",
+     "page": "https://commons.wikimedia.org/wiki/File:Side_view_CentralPlaza_Ladprao.JPG",
+     "author": "Khemkhaeng",
+     "license": "CC BY-SA 3.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Front_Central_Ladprao_Main.JPG/500px-Front_Central_Ladprao_Main.JPG",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Front_Central_Ladprao_Main.JPG/1280px-Front_Central_Ladprao_Main.JPG",
+     "page": "https://commons.wikimedia.org/wiki/File:Front_Central_Ladprao_Main.JPG",
+     "author": "Khemkhaeng",
+     "license": "CC BY-SA 3.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+   ]
+  }
  },
  {
   "id": 53,
@@ -2992,7 +3246,34 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/TheMallLifeStoreThapra.jpg/500px-TheMallLifeStoreThapra.jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/TheMallLifeStoreThapra.jpg/1280px-TheMallLifeStoreThapra.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:TheMallLifeStoreThapra.jpg",
+    "author": "BenyaRat",
+    "license": "CC0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
+   },
+   "album": [
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A1%E0%B8%AD%E0%B8%A5%E0%B8%A5%E0%B9%8C_%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%9E%E0%B8%A3%E0%B8%B0_The_Mall_Thaphra_(1).jpg/500px-%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A1%E0%B8%AD%E0%B8%A5%E0%B8%A5%E0%B9%8C_%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%9E%E0%B8%A3%E0%B8%B0_The_Mall_Thaphra_(1).jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A1%E0%B8%AD%E0%B8%A5%E0%B8%A5%E0%B9%8C_%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%9E%E0%B8%A3%E0%B8%B0_The_Mall_Thaphra_(1).jpg/1280px-%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A1%E0%B8%AD%E0%B8%A5%E0%B8%A5%E0%B9%8C_%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%9E%E0%B8%A3%E0%B8%B0_The_Mall_Thaphra_(1).jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A1%E0%B8%AD%E0%B8%A5%E0%B8%A5%E0%B9%8C_%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%9E%E0%B8%A3%E0%B8%B0_The_Mall_Thaphra_(1).jpg",
+     "author": "กสิณธร ราชโอรส",
+     "license": "CC BY-SA 4.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/The_Mall_Thaphra_from_afar.jpg/500px-The_Mall_Thaphra_from_afar.jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/The_Mall_Thaphra_from_afar.jpg/1280px-The_Mall_Thaphra_from_afar.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:The_Mall_Thaphra_from_afar.jpg",
+     "author": "Bebiezaza",
+     "license": "CC BY-SA 4.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  }
  },
  {
   "id": 63,
@@ -3473,7 +3754,17 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Central-village.jpg/500px-Central-village.jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Central-village.jpg/1280px-Central-village.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Central-village.jpg",
+    "author": "Magnamonkun (original uploader)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+   },
+   "album": []
+  }
  },
  {
   "id": 72,
@@ -3609,7 +3900,26 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": {
+   "cover": {
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Central-Chaengwatthana.jpg/500px-Central-Chaengwatthana.jpg",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Central-Chaengwatthana.jpg/1280px-Central-Chaengwatthana.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Central-Chaengwatthana.jpg",
+    "author": "Poonpun2016",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+   },
+   "album": [
+    {
+     "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/InChaeng.jpg/500px-InChaeng.jpg",
+     "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/InChaeng.jpg/1280px-InChaeng.jpg",
+     "page": "https://commons.wikimedia.org/wiki/File:InChaeng.jpg",
+     "author": "Ndsman",
+     "license": "CC BY-SA 3.0",
+     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
+   ]
+  }
  },
  {
   "id": 75,

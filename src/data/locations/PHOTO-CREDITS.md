@@ -62,10 +62,6 @@ or Wikipedia. Fill them with landlord-supplied press photos or photos we shoot o
 - Album: https://commons.wikimedia.org/wiki/File:Gaysorn_Village_(38).jpg — กสิณธร ราชโอรส — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:%E0%B9%80%E0%B8%81%E0%B8%A9%E0%B8%A3%E0%B8%A7%E0%B8%B4%E0%B8%A5%E0%B9%80%E0%B8%A5%E0%B8%88_GaySorn_Village_Bangkok_at_night_in_2021.jpg — Chainwit — CC BY-SA 4.0
 
-## Big C Ratchadamri
-- Cover: https://commons.wikimedia.org/wiki/File:Big_C_Ratchadamri_(I).jpg — Supanut Arunoprayote — CC BY 4.0
-- Album: https://commons.wikimedia.org/wiki/File:BigC-Ratchadamri.jpg — Poonpun2016 — CC BY-SA 4.0
-
 ## Platinum Fashion Mall
 - Cover: https://commons.wikimedia.org/wiki/File:Platinum_Fashion_Mall_Pratunam.jpg — coolinsights — CC BY 2.0
 
@@ -205,9 +201,6 @@ or Wikipedia. Fill them with landlord-supplied press photos or photos we shoot o
 ## La Villa Ari
 - Cover: https://commons.wikimedia.org/wiki/File:La_Villa_Market_Ari.jpg — Thanapas — CC BY-SA 4.0
 - Album: https://commons.wikimedia.org/wiki/File:La_Villa_Market_Ari20260318.jpg — ยุทธนาสาระขันธ์ — CC BY-SA 4.0
-
-## Big C Saphan Khwai
-- Cover: https://commons.wikimedia.org/wiki/File:Big_C_Saphan_Khwai.jpg — Poonpun2016 — CC BY-SA 4.0
 
 ## Central Ladprao
 - Cover: https://commons.wikimedia.org/wiki/File:Refurbished_CentralPlaza_Ladprao.jpg — Khemkhaeng — CC BY-SA 3.0
@@ -357,15 +350,12 @@ or Wikipedia. Fill them with landlord-supplied press photos or photos we shoot o
 - The Commons Thonglor
 - Seenspace Thonglor
 - Rain Hill
-- Lotus's Rama 4
 - The Parq
 - FYI Center
-- Lotus's On Nut
 - Habito Mall
 - Fortune Town
 - The Street Ratchada
 - Esplanade Ratchada
-- Lotus's Bangkapi
 - Crystal Design Center
 - Central NorthVille
 - ICS

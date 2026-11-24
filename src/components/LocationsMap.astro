@@ -50,6 +50,7 @@
       <button type="button" id="lm-home" aria-label="Reset view">⌂</button>
     </div>
     <div class="lm-tip" id="lm-tip"></div>
+    <a class="lm-attr" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">Roads © OpenStreetMap contributors</a>
   </div>
   <div class="lm-legend" id="lm-legend"></div>
   </div>
@@ -75,7 +76,8 @@
 
   <p class="lm-note">
     Draft data — pins are approximate and every project is unverified until a landlord confirms it.
-    Rail is schematic (BTS Sukhumvit, Silom, MRT Blue, Airport Rail Link). Rent band is CBRE's Q1 2026
+    Rail is schematic (BTS Sukhumvit, Silom, MRT Blue, Airport Rail Link). Expressways and main roads:
+    © OpenStreetMap contributors (ODbL), via OpenFreeMap vector tiles, simplified for this map. Rent band is CBRE's Q1 2026
     zone average (CBD ฿2,852; northern fringe ฿2,230; eastern fringe ฿2,300 per sqm per month); which
     of our zones count as CBRE's fringe is our approximation. District boundaries: OpenGISData-Thailand.
     Photos: Wikimedia Commons and Flickr (open licenses), credited under each image; projects without a freely licensed photo show none.
@@ -130,6 +132,9 @@
     border: 1px solid var(--rule); padding: 6px 10px; width: fit-content;
   }
   .lm-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .lm-ln { width: 16px; height: 2px; flex: none; display: inline-block; border-radius: 1px; }
+  .lm-attr { position: absolute; left: 6px; top: 4px; font: 9.5px var(--font-sans); color: var(--ink-faint); text-decoration: none; background: color-mix(in srgb, var(--paper-pure) 80%, transparent); padding: 0 3px; }
+  .lm-attr:hover { text-decoration: underline; }
   .lm-tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--paper); font: 12px var(--font-sans); padding: 4px 8px; white-space: nowrap; transform: translate(-50%, -140%); display: none; }
 
   .lm-below { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 0; border-bottom: 1px solid var(--rule); }
@@ -283,16 +288,22 @@
   const box = document.querySelector('.lm-map') as HTMLElement;
   const svg = select<SVGSVGElement, unknown>('#lm-svg');
   const root = svg.append('g');
-  const gProv = root.append('g'), gZ = root.append('g'), gD = root.append('g'), gPB = root.append('g'), gW = root.append('g'), gR = root.append('g'),
+  const gProv = root.append('g'), gZ = root.append('g'), gD = root.append('g'), gPB = root.append('g'), gW = root.append('g'), gRd = root.append('g'), gR = root.append('g'),
     gZL = root.append('g'), gP = root.append('g');
   // Project labels live in screen space (outside the zoom transform) so they
   // can be laid out without overlapping at every zoom level.
+  const gRL = svg.append('g').attr('class', 'lm-rlabels').attr('pointer-events', 'none');
   const gZT = svg.append('g').attr('class', 'lm-zlabels');
   const gPL = svg.append('g').attr('class', 'lm-plabels');
   const PROV: Record<string, [string, string]> = {
     Bangkok: ['#FBF6F0', 'กรุงเทพฯ'], Nonthaburi: ['#F3F7F0', 'นนทบุรี'], 'Pathum Thani': ['#F1F5F9', 'ปทุมธานี'],
     'Samut Prakan': ['#F6F3F9', 'สมุทรปราการ'], 'Samut Sakhon': ['#F0F7F5', 'สมุทรสาคร'], 'Nakhon Pathom': ['#FAF8EC', 'นครปฐม'],
   };
+  type Road = { id: string; name: string; tier: 'x' | 'a' | 'c'; low: boolean; lines: [number, number][][] };
+  const ROADS: Road[] = (GEO as any).roads || [];
+  // x = expressway / motorway, a = main road, c = CBD street (only once zoomed in)
+  const ROAD_C = { x: '#BB8D60', a: '#C2AE97', c: '#CDBDAA' };
+  let roadPx: { r: Road; lines: [number, number][][] }[] = [];
   const proj = geoMercator(), path = geoPath(proj);
   const focus: any = { type: 'MultiPoint', coordinates: [[100.30, 13.56], [100.78, 13.98]] };
   const CORE = new Set(['siam', 'silom', 'old', 'river', 'suk1', 'rama9', 'north1']);
@@ -333,6 +344,16 @@
       .attr('stroke', 'var(--rule)').attr('stroke-width', 0.8).attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none');
     gW.selectAll('path').data([GEO.river]).join('path').attr('d', (d: any) => path(d)).attr('fill', 'none')
       .attr('stroke', '#BCD7E6').attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round').attr('pointer-events', 'none');
+    gRd.selectAll('path').data(ROADS.flatMap((r) => r.lines.map((l) => ({ r, l })))).join('path')
+      .attr('d', (d) => path({ type: 'LineString', coordinates: d.l } as any)).attr('fill', 'none')
+      .attr('stroke', (d) => ROAD_C[d.r.tier]).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
+      .attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none');
+    roadPx = ROADS.map((r) => ({ r, lines: r.lines.map((l) => l.map((p) => proj(p) as [number, number])) }));
+    gRL.selectAll<SVGTextElement, Road>('text').data(ROADS, (d) => d.id).join('text').text((d) => d.name)
+      .attr('text-anchor', 'middle').attr('dy', '.35em').attr('font-family', 'var(--font-sans)')
+      .attr('font-size', (d) => (d.tier === 'x' ? 10.5 : 10)).attr('font-weight', (d) => (d.tier === 'x' ? 600 : 500))
+      .attr('letter-spacing', '.02em').attr('fill', (d) => (d.tier === 'x' ? '#8C6A45' : '#7A6E62'))
+      .attr('paint-order', 'stroke').attr('stroke', 'var(--paper-pure)').attr('stroke-width', 3).attr('stroke-linejoin', 'round');
     gR.selectAll('path').data(Object.entries(GEO.rail)).join('path')
       .attr('d', (d) => path({ type: 'LineString', coordinates: d[1] } as any)).attr('fill', 'none')
       .attr('stroke', 'var(--ink-faint)').attr('stroke-dasharray', '4 3').attr('vector-effect', 'non-scaling-stroke')
@@ -379,7 +400,7 @@
   }
   function layoutZoneLabels() {
     const texts = gZT.selectAll<SVGTextElement, { key: string; lp: number[]; name: string; n: number }>('text');
-    if (k >= 2.2) { texts.attr('display', 'none'); return; }
+    if (k >= 2.2) { texts.attr('display', 'none'); return [] as [number, number, number, number][]; }
     const items = texts.data();
     const font = getComputedStyle(box).getPropertyValue('--font-sans') || 'sans-serif';
     const circ = items.filter((d) => d.n).map((d) => { const [x, y] = tf.apply(proj(d.lp as [number, number]) as [number, number]); const r = 8 + Math.sqrt(d.n) * 2.2; return { key: d.key, b: [x - r, y - r, 2 * r, 2 * r] as [number, number, number, number] }; });
@@ -402,6 +423,7 @@
       const d = select<SVGTextElement, any>(this.parentNode as SVGTextElement).datum();
       return pos.get(d.key)?.[0] ?? 0;
     });
+    return placed.concat(circ.map((c) => c.b));
   }
 
   const TYPE_RANK: Record<string, number> = { mall: 0, mixeduse: 1, department: 2, community: 3, office: 4 };
@@ -438,6 +460,49 @@
       const d = select<SVGTextElement, Proj>(this.parentNode as SVGTextElement).datum();
       return pos.get(d.id)?.[0] ?? 0;
     });
+    if (k >= 2.2) items.forEach((d) => { const [x, y] = scr.get(d.id)!; placed.push([x - 7, y - 7, 14, 14]); });
+    return placed;
+  }
+
+  // Road names run along the road, in screen space, and give way to project and zone labels.
+  const roadSize = new Map<string, [number, number]>();
+  function layoutRoadLabels(placed: [number, number, number, number][]) {
+    const font = getComputedStyle(box).getPropertyValue('--font-sans') || 'sans-serif';
+    const hit = (b: number[]) => placed.some(([a, c, w, h]) => b[0] < a + w && b[0] + b[2] > a && b[1] < c + h && b[1] + b[3] > c);
+    const pos = new Map<string, [number, number, number] | null>();
+    // Well-known arteries first (Sukhumvit, Phahonyothin…), then expressways, then the rest.
+    const rank = (r: Road) => (r.low ? 0 : { x: 1, a: 2, c: 3 }[r.tier]);
+    const order = roadPx.slice().sort((a, b) => rank(a.r) - rank(b.r));
+    for (const { r, lines } of order) {
+      const on = r.tier === 'c' ? k >= 4 : r.tier === 'a' ? k >= 2.2 || r.low : true;
+      pos.set(r.id, null); if (!on) continue;
+      let s = roadSize.get(r.id);
+      if (!s) { measureCtx.font = `${r.tier === 'x' ? 600 : 500} ${r.tier === 'x' ? 10.5 : 10}px ${font}`; s = [measureCtx.measureText(r.name).width * 1.03 + 6, 13]; roadSize.set(r.id, s); }
+      const [w, h] = s;
+      search: for (const line of lines) {
+        const P = line.map((p) => tf.apply(p)); const cum = [0];
+        for (let i = 1; i < P.length; i++) cum.push(cum[i - 1] + Math.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]));
+        const L = cum[cum.length - 1]; if (L < w * 1.2) continue;
+        const at = (d: number): [number, number] => {
+          let i = 1; while (i < cum.length - 1 && cum[i] < d) i++;
+          const t = (d - cum[i - 1]) / (cum[i] - cum[i - 1] || 1);
+          return [P[i - 1][0] + (P[i][0] - P[i - 1][0]) * t, P[i - 1][1] + (P[i][1] - P[i - 1][1]) * t];
+        };
+        for (const f of [0.5, 0.35, 0.65, 0.2, 0.8, 0.1, 0.9]) {
+          const d = f * L; if (d < w / 2 || d > L - w / 2) continue;
+          const a = at(d - w / 2), b = at(d + w / 2), c = at(d);
+          const chord = Math.hypot(b[0] - a[0], b[1] - a[1]); if (chord < w * 0.9) continue; // too curvy here
+          if (c[0] < w / 2 + 4 || c[0] > W - w / 2 - 4 || c[1] < h || c[1] > H - h) continue;
+          const ux = (b[0] - a[0]) / chord, uy = (b[1] - a[1]) / chord, n = Math.max(2, Math.ceil(w / h));
+          const boxes = Array.from({ length: n }, (_, i) => { const o = -w / 2 + h / 2 + (i * (w - h)) / (n - 1); return [c[0] + ux * o - h / 2, c[1] + uy * o - h / 2, h, h]; });
+          if (boxes.some((q) => q[0] < 2 || q[1] < 2 || q[0] + q[2] > W - 2 || q[1] + q[3] > H - 2) || boxes.some(hit)) continue;
+          let ang = (Math.atan2(uy, ux) * 180) / Math.PI; if (ang > 90) ang -= 180; if (ang < -90) ang += 180;
+          pos.set(r.id, [c[0], c[1], ang]); boxes.forEach((bx) => placed.push(bx as [number, number, number, number])); break search;
+        }
+      }
+    }
+    gRL.selectAll<SVGTextElement, Road>('text').attr('display', (d) => (pos.get(d.id) ? null : 'none'))
+      .attr('transform', (d) => { const p = pos.get(d.id); return p ? `translate(${p[0]},${p[1]})rotate(${p[2]})` : null; });
   }
 
   function restyle() {
@@ -447,8 +512,11 @@
     gZL.selectAll<SVGTextElement, any>('text.l').attr('display', (d) => (CORE.has(d.key) && k < 1.6 ? 'none' : null));
     gP.selectAll<SVGCircleElement, Proj>('circle').attr('display', big ? 'none' : null)
       .attr('r', (d) => (st.sel === d.id ? 8 : 5.5) / k).attr('stroke-width', 1.5 / k);
-    layoutLabels();
-    layoutZoneLabels();
+    const sw = { x: big ? 1.8 : k < 5 ? 2.6 : 3.4, a: big ? 1 : k < 5 ? 1.6 : 2.4, c: k < 5 ? 1.2 : 2 };
+    gRd.selectAll<SVGPathElement, { r: Road }>('path').attr('stroke-width', (d) => sw[d.r.tier])
+      .attr('display', (d) => (d.r.tier === 'c' && big ? 'none' : null));
+    const occ = layoutLabels().concat(layoutZoneLabels());
+    layoutRoadLabels(occ);
   }
 
   function update() {
@@ -625,7 +693,8 @@
       : st.lens === 'rings' ? Object.entries(RINGS).filter(([r]) => r !== 'vicinity').map(([, [n, c]]) => `<span><span class="lm-dot" style="background:${c};border-radius:1px;box-shadow:0 0 0 1px var(--rule)"></span>${n}</span>`).join('') : '';
     const provs = Object.entries(PROV).filter(([n]) => st.lens !== 'rings' || n !== 'Bangkok')
       .map(([n, [c, th]]) => `<span><span class="lm-dot" style="background:${c};border-radius:1px;box-shadow:0 0 0 1px var(--rule)"></span>${esc(n)} ${esc(th)}</span>`).join('');
-    L.innerHTML = lens + (k < 2.2 ? provs : "") + (k < 2.2 ? '<span>Circle = projects in zone · zoom in for pins</span>' : types) + '<span>- - rail (schematic)</span>';
+    L.innerHTML = lens + (k < 2.2 ? provs : "") + (k < 2.2 ? '<span>Circle = projects in zone · zoom in for pins</span>' : types) + `<span><span class="lm-ln" style="background:${ROAD_C.x};height:3px"></span>Expressway</span><span><span class="lm-ln" style="background:${ROAD_C.a}"></span>Main road</span>`
+      + '<span>- - rail (schematic)</span>';
   }
 
   document.querySelector('.lm-lens')!.addEventListener('click', (e) => {

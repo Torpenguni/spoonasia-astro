@@ -201,9 +201,9 @@
   type ZoneKey = keyof typeof GEO.zones;
   const zones = GEO.zones as Record<string, { name: string; ring: string; rent: { area: string; thb: number } | null; geometry: any; lp: number[] }>;
   const RINGS: Record<string, [string, string, string]> = {
-    cbd: ['CBD', '#DDBB9B', 'Siam–Ratchaprasong, Silom–Sathorn, lower Sukhumvit'],
-    fringe: ['City fringe', '#EAD5BF', 'Rama 9–Ratchada, Ari–Phahon, upper Sukhumvit, riverside, old town'],
-    suburban: ['Suburban Bangkok', '#F3E8DA', 'East, north, west and south-west Bangkok'],
+    cbd: ['CBD', '#EFDFCF', 'Siam–Ratchaprasong, Silom–Sathorn, lower Sukhumvit'],
+    fringe: ['City fringe', '#F6ECE1', 'Rama 9–Ratchada, Ari–Phahon, upper Sukhumvit, riverside, old town'],
+    suburban: ['Suburban Bangkok', '#FAF4ED', 'East, north, west and south-west Bangkok'],
     vicinity: ['Vicinity (BMR)', '#F8F3EB', 'Nonthaburi, Pathum Thani, Samut Prakan, Samut Sakhon, Nakhon Pathom'],
   };
   const GROUPS: Record<string, string> = {
@@ -290,8 +290,8 @@
   const gZT = svg.append('g').attr('class', 'lm-zlabels');
   const gPL = svg.append('g').attr('class', 'lm-plabels');
   const PROV: Record<string, [string, string]> = {
-    Bangkok: ['#F6EADC', 'กรุงเทพฯ'], Nonthaburi: ['#E6EFDF', 'นนทบุรี'], 'Pathum Thani': ['#E2ECF3', 'ปทุมธานี'],
-    'Samut Prakan': ['#ECE5F2', 'สมุทรปราการ'], 'Samut Sakhon': ['#DFEFEC', 'สมุทรสาคร'], 'Nakhon Pathom': ['#F4EED6', 'นครปฐม'],
+    Bangkok: ['#FBF6F0', 'กรุงเทพฯ'], Nonthaburi: ['#F3F7F0', 'นนทบุรี'], 'Pathum Thani': ['#F1F5F9', 'ปทุมธานี'],
+    'Samut Prakan': ['#F6F3F9', 'สมุทรปราการ'], 'Samut Sakhon': ['#F0F7F5', 'สมุทรสาคร'], 'Nakhon Pathom': ['#FAF8EC', 'นครปฐม'],
   };
   const proj = geoMercator(), path = geoPath(proj);
   const focus: any = { type: 'MultiPoint', coordinates: [[100.30, 13.56], [100.78, 13.98]] };
@@ -328,7 +328,7 @@
     gProv.selectAll('path').data((GEO as any).provinces).join('path').attr('d', (d: any) => path(d.geometry))
       .attr('fill', (d: any) => PROV[d.en]?.[0] || 'transparent').attr('stroke', 'none').attr('pointer-events', 'none');
     gPB.selectAll('path').data((GEO as any).provinces).join('path').attr('d', (d: any) => path(d.geometry)).attr('fill', 'none')
-      .attr('stroke', 'var(--ink-faint)').attr('stroke-opacity', 0.7).attr('stroke-width', 1.3).attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none');
+      .attr('stroke', 'var(--ink-faint)').attr('stroke-opacity', 0.45).attr('stroke-width', 1.2).attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none');
     gD.selectAll('path').data(GEO.districts).join('path').attr('d', (d: any) => path(d.geometry)).attr('fill', 'none')
       .attr('stroke', 'var(--rule)').attr('stroke-width', 0.8).attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none');
     gW.selectAll('path').data([GEO.river]).join('path').attr('d', (d: any) => path(d)).attr('fill', 'none')

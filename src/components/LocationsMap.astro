@@ -132,6 +132,15 @@
     border: 1px solid var(--rule); padding: 6px 10px; width: fit-content;
   }
   .lm-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .lm-about { margin: 10px 0 8px; font-size: 14px; line-height: 1.55; color: var(--ink); }
+  .lm-kf ul, .lm-read ul { margin: 4px 0 0; padding-left: 16px; font-size: 13px; line-height: 1.5; color: var(--ink-soft); }
+  .lm-kf { margin: 0 0 10px; }
+  .lm-read { margin: 0 0 12px; padding: 10px 12px; background: var(--paper); border-left: 2px solid var(--accent); }
+  .lm-read-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
+  .lm-read-cols b { font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); }
+  @media (max-width: 700px) { .lm-read-cols { grid-template-columns: 1fr; } }
+  .lm-src { margin: 10px 0 0; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+  .lm-src a { color: inherit; }
   .lm-ln { width: 16px; height: 2px; flex: none; display: inline-block; border-radius: 1px; }
   .lm-attr { position: absolute; left: 6px; top: 4px; font: 9.5px var(--font-sans); color: var(--ink-faint); text-decoration: none; background: color-mix(in srgb, var(--paper-pure) 80%, transparent); padding: 0 3px; }
   .lm-attr:hover { text-decoration: underline; }
@@ -201,6 +210,7 @@
   import GEO from '../data/locations/geo.json';
   import PROJ from '../data/locations/projects.json';
   import OWNER from '../data/locations/owner-photos.json';
+import PROFILES from '../data/locations/profiles.json';
 
   type Proj = (typeof PROJ)[number];
   type ZoneKey = keyof typeof GEO.zones;
@@ -229,7 +239,6 @@
     suk1: ['Premium CBD', 'sukhumvit'], north1: ['Creator Corridor', 'ari'], suk2: ['Frontier', 'phra-khanong'],
     silom: ['Heritage', 'charoenkrung'], old: ['Heritage', 'charoenkrung'], rama9: ['Local-tier', 'ratchada'],
   };
-  const MALL_TIER = new Set(['The EmQuartier', 'ICONSIAM', 'Central Embassy']);
 
   const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
   const fmt = (n: number) => n.toLocaleString('en-US');
@@ -584,7 +593,7 @@
   list.addEventListener('keydown', (e) => { const li = (e.target as HTMLElement).closest<HTMLElement>('li[data-id]'); if (li && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); selectProj(+li.dataset.id!); } });
 
   const rentLine = (z: string) => { const r = zones[z]?.rent; return r ? `Zone avg ฿${fmt(r.thb)}/sqm/mo <span class="muted">(CBRE ${esc(r.area)}, Q1 2026)</span>` : '<span class="muted">No public benchmark yet</span>'; };
-  const dossierLink = (z: string) => { const d = DOSSIER[z]; return d ? `<a href="#zone-${d[1]}">${esc(d[0])} dossier</a>` : '<span class="muted">Dossier not yet written</span>'; };
+  const dossierLink = (z: string) => { const d = DOSSIER[z]; return d ? `<a href="#zone-${d[1]}">${esc(d[0])} dossier</a>` : '<span class="muted">No zone note yet</span>'; };
 
   type Photo = { thumb: string; src: string; page: string; author: string; license: string; licenseUrl: string; via?: string; note?: string };
   const ownerPhotos = (p: Proj): Photo[] => {
@@ -662,6 +671,7 @@
     const z = p.zone!;
     el.innerHTML = `${coverBlock(p)}<span class="lm-flag">Draft · unverified</span><h3>${esc(p.name)}</h3>
       <p class="dek" style="margin-top:2px">${esc(TYPES[p.type][0])} · ${esc(p.operator)}</p>
+      ${profileTop(p)}
       <dl>
         <dt>Location</dt><dd>${esc(zones[z].name)} · ${esc(RINGS[zones[z].ring][0])}</dd>
         <dt>Landlord</dt><dd>${esc(GROUPS[p.group])}</dd>
@@ -673,11 +683,28 @@
         <dt>F&amp;B spec</dt><dd class="muted">Gas, hood, grease trap — phase 2</dd>
         <dt>Highlights</dt><dd>${p.tags.map((t) => `<span class="lm-tag">${esc(TAGS[t])}</span>`).join('') || '<span class="muted">—</span>'}</dd>
         <dt>Audience</dt><dd>${p.segments.map((t) => `<span class="lm-tag">${esc(SEGS[t])}</span>`).join('')}</dd>
-        <dt>Read</dt><dd>${p.file ? `<a href="/properties/${esc(p.file)}">Property file</a> · ` : ''}${MALL_TIER.has(p.name) ? '<a href="#zone-mall-tier">Mall-tier dossier</a>' : dossierLink(z)}</dd>
+        <dt>Read</dt><dd>${p.file ? `<a href="/properties/${esc(p.file)}">Property file</a> · ` : ''}${dossierLink(z)}</dd>
       </dl>
+      ${profileSources(p)}
       <p style="margin:14px 0 0"><button type="button" class="lm-chip" id="lm-close">Close</button></p>`;
     $('lm-close').onclick = () => { st.sel = null; update(); };
     const oa = document.getElementById('lm-open-album'); if (oa) oa.onclick = () => openAlbum(p, 0);
+  }
+
+  // Editorial profile: what the press says the project is known for, and SpoonAsia's read on who it suits.
+  type Profile = { about: string; known_for?: string[]; suits?: string[]; think_twice?: string[]; sources?: { title: string; url: string }[]; checked?: string };
+  const profileOf = (p: Proj) => (PROFILES as Record<string, Profile>)[p.slug];
+  function profileTop(p: Proj) {
+    const f = profileOf(p); if (!f) return '';
+    const li = (xs?: string[]) => (xs || []).map((x) => `<li>${esc(x)}</li>`).join('');
+    return `<p class="lm-about">${esc(f.about)}</p>
+      ${f.known_for?.length ? `<div class="lm-kf"><span class="lm-lab">Known for</span><ul>${li(f.known_for)}</ul></div>` : ''}
+      ${f.suits?.length || f.think_twice?.length ? `<div class="lm-read"><span class="lm-lab">SpoonAsia read · for F&amp;B operators</span>
+        <div class="lm-read-cols"><div><b>Good fit</b><ul>${li(f.suits)}</ul></div><div><b>Think twice</b><ul>${li(f.think_twice)}</ul></div></div></div>` : ''}`;
+  }
+  function profileSources(p: Proj) {
+    const f = profileOf(p); if (!f?.sources?.length) return '';
+    return `<p class="lm-src">Sources: ${f.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join(' · ')}${f.checked ? ` · checked ${esc(f.checked)}` : ''}. The read is SpoonAsia's own view, not the landlord's.</p>`;
   }
 
   function landlordMix(z: string) {

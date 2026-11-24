@@ -10,12 +10,11 @@ import LocationsMap from '../components/LocationsMap.astro';
 // Photo licensing lives in public/images/locations/CREDITS.md — the credit
 // line on each card satisfies the CC BY / BY-SA attribution requirement.
 const watchlist = [
-  { tag: 'Premium CBD', ring: 'CBD', zone: 'suk1', map: 'sukhumvit' as const, name: 'Sukhumvit — Asoke / Thonglor / Ekkamai', note: 'Rent runs $78–95/sqm. Premium-mall saturation. Foreign-chain flagship belt. Margin compression risk: high.', credit: 'Max221B · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Bangkok_from_sukhumvit.jpg' },
-  { tag: 'Creator Corridor', ring: 'City fringe', zone: 'north1', map: 'ari' as const, name: 'Ari', note: 'BTS Ari corridor. Independent-favored, low-rise zoning, creator-class footprint. Rent $42/sqm — rising fast.', credit: 'Phoebus 28 · CC0', creditHref: 'https://commons.wikimedia.org/wiki/File:Ari_Samphan_Noodles_Stall.jpg' },
-  { tag: 'Frontier', ring: 'City fringe', zone: 'suk2', map: 'phra-khanong' as const, name: 'Phra Khanong', note: 'Emerging F&B zone. Rents up 18% YoY. BTS upgrade Q4 2024. Window-of-entry open through 2026.', credit: 'Suikotei · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Phra_Khanong_Station.jpg' },
-  { tag: 'Heritage', ring: 'City fringe', zone: 'old', map: 'charoenkrung' as const, name: 'Charoenkrung / Talad Noi', note: "Heritage-led, slow burn. Premium-independent only. Mall-tier formats don't survive here.", credit: 'Phoebus 28 · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Talat_Noi_Street_Art.jpg' },
-  { tag: 'Local-tier', ring: 'City fringe', zone: 'rama9', map: 'ratchada' as const, name: 'Ratchada / Huai Khwang', note: 'Underwritten by night-market footfall. Resilient unit economics, lower ceiling.', credit: 'aotaro · CC BY 2.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Train_Night_Market_Ratchada_(34144230042).jpg' },
-  { tag: 'Mall-tier', ring: 'CBD & riverside', zone: '', map: 'mall-tier' as const, name: 'EmQuartier / ICONSIAM / Central Embassy', note: 'Premium mall F&B vacancy at 7-year high. Effective rent down 15–22% vs 2024. Leverage window open.', credit: 'Supanut Arunoprayote · CC BY 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Iconsiam_at_Day_(III).jpg' },
+  { tag: 'Premium CBD', ring: 'CBD', zone: 'suk1', map: 'sukhumvit' as const, name: 'Sukhumvit — Asoke / Thonglor / Ekkamai', note: 'The densest mix of premium malls, community malls and foreign-chain flagships in the city. High spend, heavy competition. Benchmark rent against the CBD average in the overview, then expect the best units to price above it.', credit: 'Max221B · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Bangkok_from_sukhumvit.jpg' },
+  { tag: 'Creator corridor', ring: 'City fringe', zone: 'north1', map: 'ari' as const, name: 'Ari', note: 'Residential neighbourhood on the BTS with a strong independent café and restaurant scene. Building rules keep high-rises out of the smaller sois, which caps new supply — good for independents, tight for anyone needing a large unit.', credit: 'Phoebus 28 · CC0', creditHref: 'https://commons.wikimedia.org/wiki/File:Ari_Samphan_Noodles_Stall.jpg' },
+  { tag: 'Frontier', ring: 'City fringe', zone: 'suk2', map: 'phra-khanong' as const, name: 'Phra Khanong', note: 'The next stretch of Sukhumvit after Ekkamai: a younger, more independent F&B scene than Thonglor, with new supply arriving to the south at Cloud 11 (opened July 2026). Entry costs are lower; so is the brand halo.', credit: 'Suikotei · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Phra_Khanong_Station.jpg' },
+  { tag: 'Heritage', ring: 'City fringe', zone: 'old', map: 'charoenkrung' as const, name: 'Charoenkrung / Talad Noi', note: 'Heritage-led and slow to build. Suits independent concepts with a story that fit shophouse stock; mall-style chain formats rarely do.', credit: 'Phoebus 28 · CC BY-SA 4.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Talat_Noi_Street_Art.jpg' },
+  { tag: 'Local-tier', ring: 'City fringe', zone: 'rama9', map: 'ratchada' as const, name: 'Ratchada / Huai Khwang', note: 'Carried by night markets and late-night trade — The Street Ratchada runs 24 hours — with the Rama 9 office cluster next door. Resilient for value concepts; lower price ceiling.', credit: 'aotaro · CC BY 2.0', creditHref: 'https://commons.wikimedia.org/wiki/File:Train_Night_Market_Ratchada_(34144230042).jpg' },
 ];
 
 // Layer 2 — the supply pipeline. Every mega-project and mixed-use launch
@@ -29,28 +28,29 @@ import { properties } from '../data/properties';
 const signals = [
   {
     tag: 'Transit',
-    name: 'MRT Orange Line (east section) — targeted 2027',
-    note: 'Thailand Cultural Centre to Min Buri. The single biggest re-pricing event pending for Ramkhamhaeng and Bang Kapi — corridors still priced local-tier.',
+    name: 'MRT Orange Line east — trial runs from December 2027',
+    note: 'Thailand Cultural Centre to Min Buri. Civil works are complete; MRTA targets free trial service in December 2027 and full service in early 2028. The west section through Pratunam is targeted for 2030. The biggest pending re-pricing for Ramkhamhaeng and Bang Kapi, corridors still priced local-tier.',
+    src: 'https://www.nationthailand.com/business/economy/40071255',
   },
   {
     tag: 'Transit',
-    name: 'Pink & Yellow monorails — ridership maturing',
-    note: 'Two years in, transfer nodes (Lat Phrao, Samrong) show the compounding footfall. Mid-corridor stations still lag — node-adjacency matters more than line-adjacency.',
+    name: 'Pink & Yellow monorails — watch the nodes',
+    note: 'Both lines opened in 2023. For F&B, the interchange stations (Lat Phrao, Samrong, Min Buri) matter more than mid-line stops: node-adjacency beats line-adjacency.',
   },
   {
     tag: 'Corridor',
     name: 'Rama IV — from pass-through to destination',
-    note: 'One Bangkok + Dusit Central Park + Samyan Mitrtown now anchor a continuous spine. Weekday spend is proven; the open question is whether weekends follow.',
+    note: 'One Bangkok, Dusit Central Park and Samyan Mitrtown now anchor a continuous spine. Weekday office trade is the base; the open question for operators is whether weekend trade follows.',
   },
   {
     tag: 'Rail hub',
-    name: 'Krung Thep Aphiwat (Bang Sue) — slow burn',
-    note: 'Thailand’s largest station still under-indexes on retail spend. The surrounding plots are a land-bank story for now — early F&B entry here is patience capital.',
+    name: 'Krung Thep Aphiwat (Bang Sue) — patience capital',
+    note: 'Thailand’s largest station. The land around it is still a long-term development story, so early F&B entry here is a bet on timing.',
   },
   {
     tag: 'Zoning',
-    name: 'Low-rise caps — the quiet moat',
-    note: 'Where the city plan caps height (Ari and parts of Charoenkrung), supply cannot flood in behind a rent run. Zoning is the most durable protection an operator’s lease can sit behind.',
+    name: 'Low-rise rules — the quiet moat',
+    note: 'Where building rules keep high-rises out, as in Ari’s smaller sois, supply cannot flood in behind a rent run. That is one of the more durable protections a lease can sit behind.',
   },
 ];
 
@@ -58,8 +58,7 @@ const topics = [
   { label: 'Overview', href: '#overview' },
   { label: 'Map', href: '#map' },
   { label: 'Zones', href: '#zones' },
-  { label: 'Supply', href: '#supply' },
-  { label: 'Signals', href: '#signals' },
+  { label: 'What’s changing', href: '#changing' },
   { label: 'Entry playbook', href: '#playbook' },
   { label: 'Glossary', href: '#glossary' },
 ];
@@ -153,11 +152,10 @@ const glossary = [
       ))}
     </div>
 
-    <div class="group-head" id="supply">Supply watch — property files</div>
+    <div class="group-head" id="changing">What’s changing — new supply &amp; transit</div>
     <p class="group-dek">
-      Every project adding meaningful F&B floorplate, one file per property —
-      who should sign, who shouldn't, and when. The three most consequential
-      right now:
+      What will move rents and footfall next: the new projects adding F&amp;B
+      floorplate, and the transit and zoning signals behind them.
     </p>
     <div class="grid3">
       {properties.slice(0, 3).map((p) => (
@@ -171,18 +169,12 @@ const glossary = [
       ))}
     </div>
     <a href="/properties" class="all-link">All {properties.length} property files →</a>
-
-    <div class="group-head" id="signals">Signals — infrastructure &amp; momentum</div>
-    <p class="group-dek">
-      The leading indicators of a rent curve. Logged here first, folded into
-      the zone dossiers as they play out.
-    </p>
-    <div class="watchlist">
+    <div class="watchlist sig-list">
       {signals.map((s) => (
         <article>
           <span class="kicker">{s.tag}</span>
           <h3>{s.name}</h3>
-          <p class="dek">{s.note}</p>
+          <p class="dek">{s.note}{s.src && (<> <a class="sig-src" href={s.src} target="_blank" rel="noopener">Source</a></>)}</p>
         </article>
       ))}
     </div>
@@ -190,7 +182,7 @@ const glossary = [
     <div class="group-head" id="playbook">Entry playbook — which space for which move</div>
     <p class="group-dek">
       For brands coming into Thailand: the seven kinds of space on offer, who
-      controls each, and what it suits. Start here before you start viewing units.
+      controls each, and what it suits — then the three things to settle before you sign.
     </p>
     <div class="pb-wrap">
       <table class="pb-table">
@@ -209,7 +201,7 @@ const glossary = [
       <article>
         <span class="kicker">Rent</span>
         <h3>Fixed, share of sales, or both</h3>
-        <p class="dek">Malls charge fixed rent per sqm, a percentage of sales, or the higher of the two; department stores often work on consignment (GP). Street units usually carry key money plus a deposit. Every figure is negotiated — use the zone benchmarks above as the opening reference, not the answer.</p>
+        <p class="dek">Malls charge fixed rent per sqm, a percentage of sales, or the higher of the two; department stores often work on consignment (GP). Street units usually carry key money plus a deposit. Every figure is negotiated — use the CBRE averages in the overview as the opening reference, not the answer.</p>
       </article>
       <article>
         <span class="kicker">Structure</span>
@@ -252,6 +244,8 @@ const glossary = [
   .ov-rings em { display: block; font: 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); font-style: normal; margin-top: 2px; }
   .ov-note { font-size: 12px; color: var(--ink-faint); margin: 12px 0 0; line-height: 1.55; }
   .ov-note a { color: inherit; }
+  .sig-list { margin-top: 26px; }
+  .sig-src { font-size: 12px; color: var(--ink-faint); }
   .zone-maplink { display: inline-block; margin-top: 10px; font: 500 10px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
   .pb-wrap { overflow-x: auto; margin-top: 10px; }
   .pb-table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.45; }

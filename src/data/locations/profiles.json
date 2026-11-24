@@ -1,0 +1,2363 @@
+{
+ "siam-paragon": {
+  "about": "The flagship of Siam Piwat and The Mall Group at BTS Siam, and one of Thailand's largest malls. It pairs luxury fashion flagships and car showrooms with a big food floor, a gourmet supermarket and family attractions, which makes it a default stop for tourists and affluent Thais alike.",
+  "known_for": [
+   "Gourmet Market and the Paragon Food Hall; the renovated food court brings together more than 100 well-known street-food names",
+   "SEA LIFE Bangkok Ocean World in the basement, which reports more than 2.5 million visitors a year",
+   "Luxury flagships, a 16-screen cineplex, Madame Tussauds and Royal Paragon Hall"
+  ],
+  "suits": [
+   "International and premium brands that want a Bangkok flagship with tourist exposure",
+   "Celebrated Thai street-food names that fit the food-hall format",
+   "Gift and specialty food brands that can sit near Gourmet Market"
+  ],
+  "think_twice": [
+   "First-time or thin-margin concepts: space is landlord-curated and fit-out standards and rents sit at the top of the market",
+   "Concepts that need a quiet, destination feel; peak-hour crowds are heavy"
+  ],
+  "sources": [
+   {
+    "title": "The Nation (Siam Piwat release)",
+    "url": "https://www.nationthailand.com/pr-news/40056084"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://wikipedia.com/wiki/Siam_Paragon"
+   },
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://www.timeout.com/bangkok/shopping/siam-paragon"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "siam-center": {
+  "about": "Siam Piwat's fashion-led mall, opened in 1973 and long the launch pad for Thai designers. A full rebuild in 2013 turned it into a curated, collaborative space where the landlord works with each brand on custom storefronts and exclusive product.",
+  "known_for": [
+   "The country's densest line-up of Thai designer brands",
+   "Custom storefronts and an exclusivity approach agreed with tenants",
+   "Art and design programming, including Bangkok Design Week venues"
+  ],
+  "suits": [
+   "Design-led cafés, dessert and drinks concepts aimed at young adults",
+   "Brands willing to co-create an exclusive store or menu with the landlord"
+  ],
+  "think_twice": [
+   "Large-format family restaurants: units are smaller and the crowd skews young",
+   "Operators who want a standard chain fit-out; the landlord expects a bespoke design"
+  ],
+  "sources": [
+   {
+    "title": "Inside Retail",
+    "url": "https://insideretail.com.au/business/a-slew-of-new-retailers-at-siam-center-202609"
+   },
+   {
+    "title": "Inside Retail Asia",
+    "url": "https://insideretail.asia/?p=2862"
+   },
+   {
+    "title": "Thairath",
+    "url": "https://en.thairath.co.th/plus/subculture/105983"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "siam-discovery": {
+  "about": "A 40,000 sq m Siam Piwat mall rebuilt in 2016 by Japanese studio Nendo as 'The Exploratorium'. Instead of brand-by-brand stores, much of the floor is curated by theme, mixing Thai and Asian designers with global lifestyle names.",
+  "known_for": [
+   "Nendo's interior and exterior redesign, a THB 4 billion overhaul",
+   "Curated 'lab' floors where a large share of space is run by Siam Piwat itself",
+   "Concept stores such as Loft and Issey Miyake, linked by bridges to Siam Center and MBK"
+  ],
+  "suits": [
+   "Concept F&B with a retail or design angle (coffee plus merchandise, collaborations)",
+   "Pop-ups and launches that benefit from a design-conscious audience"
+  ],
+  "think_twice": [
+   "Destination restaurants that rely on heavy evening footfall: before the rebuild the mall was known mostly as a walkway between MBK and Siam Center, so check traffic on your floor"
+  ],
+  "sources": [
+   {
+    "title": "Dezeen",
+    "url": "https://www.dezeen.com/?p=929094"
+   },
+   {
+    "title": "Inside Retail Asia",
+    "url": "https://insideretail.asia/?p=16575"
+   },
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/30279978"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "mbk-center": {
+  "about": "Opened in 1985 as Mahboonkrong, MBK is an eight-storey, market-style mall with around 2,000 shops on land leased from Chulalongkorn University. It is Bangkok's best-known value mall, famous for its phone floor, souvenirs and a cheap food court, with Don Don Donki added in 2021.",
+  "known_for": [
+   "Bargain fashion, souvenirs and the mobile-phone floor",
+   "A large, low-priced food court popular with tourists",
+   "A renovation plan that raised the share of space given to food and beverage"
+  ],
+  "suits": [
+   "Value and quick-service concepts, Thai street food and desserts",
+   "Tourist-facing snacks and takeaway with high volume and low ticket size"
+  ],
+  "think_twice": [
+   "Premium or fine-dining brands: the mall's identity is value-first",
+   "Concepts that need a polished, modern environment"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post (via PressReader)",
+    "url": "https://www.pressreader.com/thailand/bangkok-post/20201015/282037624638247"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://www.Wikipedia.com/wiki/MBK_Center"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "siam-square-one": {
+  "about": "A seven-storey mall in Siam Square run by Chulalongkorn University's property office (PMCU), built on the site of the old Siam cinema. The upper floors are mostly restaurants and cafés, and in 2026 PMCU began repositioning it around global experience stores to revive Siam as the city's meeting point.",
+  "known_for": [
+   "A dense cluster of buffet, shabu, Korean, Japanese and Thai restaurants on the upper floors",
+   "Affordable fashion on the lower floors for students and young shoppers",
+   "New experience stores such as ASICS and the first Thai branch of niko and ..."
+  ],
+  "suits": [
+   "Youth-focused casual dining: buffets, Korean and Japanese, cafés and desserts",
+   "Brands targeting students and first-jobbers from the Chula and Siam area"
+  ],
+  "think_twice": [
+   "Luxury or fine dining: the crowd and price points are mass-to-mid",
+   "Me-too concepts: competition between similar restaurants on the same floors is intense"
+  ],
+  "sources": [
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/property/40066660"
+   },
+   {
+    "title": "Coconuts Bangkok",
+    "url": "https://coconuts.co/?p=262783"
+   },
+   {
+    "title": "Wikipedia (Siam Square)",
+    "url": "https://en.wikipedia.com/wiki/Siam_Square"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "centralworld": {
+  "about": "Central Pattana's flagship at Ratchaprasong, opened in 1989 as the World Trade Center and expanded in 2006 into one of the world's largest shopping complexes. Its forecourt hosts Bangkok's New Year countdown, and the complex includes offices, a hotel and a convention centre.",
+  "known_for": [
+   "Sheer scale and a central location between BTS Siam and Chit Lom",
+   "A revamped 6,500 sq m Central Food Hall with a take-home zone of 40+ eateries",
+   "Groove, repositioned as an all-day outdoor courtyard of restaurants and bars"
+  ],
+  "suits": [
+   "Chains and international brands that need volume and visibility",
+   "Casual dining and dessert brands targeting office workers, Thai shoppers and tourists",
+   "Take-home and grab-and-go formats that fit the food-hall zone"
+  ],
+  "think_twice": [
+   "Niche concepts that rely on a curated, quiet setting; the mall is big and busy",
+   "Operators who cannot keep pace with the competition from hundreds of outlets in the same complex"
+  ],
+  "sources": [
+   {
+    "title": "Wikipedia",
+    "url": "https://www.Wikipedia.org/wiki/CentralWorld"
+   },
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://www.timeout.com/bangkok/news/you-can-now-enjoy-services-endless-choices-of-food-and-products-offered-at-centralworlds-revamped-central-food-hall-051719"
+   },
+   {
+    "title": "Central Pattana",
+    "url": "https://www.centralpattana.co.th/en/shopping/shopping-update/lifestyle-activities/1554/groove-centralworld-reinvents-itself-as-bangkoks-all-day-urban-courtyard-emerging-as-a-new-downtown-hangout-that-reflects-a-global-urban-lifestyle"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-chidlom": {
+  "about": "Central Department Store's flagship, opened in 1974 and relaunched in December 2024 as 'The Store of Bangkok' after a THB 4 billion renovation. Central Retail positions it as Thailand's leading luxury department store, aimed at the group's top spenders, families, Gen Y/Z, expats and tourists.",
+  "known_for": [
+   "About 500 luxury brands across 60,000 sq m, around 10% of them exclusive",
+   "Food outlets tripled to more than 60 after the renovation, alongside the remodelled Central Food Hall",
+   "Average spend per visit reported at about twice the chain average"
+  ],
+  "suits": [
+   "Premium cafés, patisseries and gifting brands that want a luxury, high-spend audience",
+   "Chef-led or hotel-linked counters that fit a department-store food floor"
+  ],
+  "think_twice": [
+   "Value or mass concepts: the store is built around high-spend customers",
+   "Operators who need their own frontage and long hours; this is a department store with the landlord's rules on look and timing"
+  ],
+  "sources": [
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/corporate/40044131"
+   },
+   {
+    "title": "IGDS",
+    "url": "https://igds.org/igds-members/upgrading-central-chidlom"
+   },
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/general/2765681/store-of-bangkok-set-for-december-launch"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "gaysorn-village": {
+  "about": "Gaysorn Property's freehold cluster at the Ratchaprasong intersection: Gaysorn Centre (Thailand's first luxury mall), Gaysorn Tower and Gaysorn Amarin, the former Amarin Plaza rebuilt from 2022 and relaunched with mostly luxury and watch brands. The landlord pitches it as a 'placemaking' lifestyle village linked by skywalks.",
+  "known_for": [
+   "Luxury fashion and watch boutiques, including concept stores",
+   "Gaysorn Amarin, reopened after a roughly THB 1 billion makeover",
+   "Office towers on site and a skywalk network to BTS Chit Lom"
+  ],
+  "suits": [
+   "Upscale cafés, wellness food and premium F&B for office workers and luxury shoppers",
+   "Brands that want a Ratchaprasong address without the scale of the big malls"
+  ],
+  "think_twice": [
+   "Mass-market concepts: footfall is smaller and skews high-income",
+   "Concepts that depend on evening crowds; much of the traffic is daytime office and shopping"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://bangkokpost.com/business/general/2757014/gaysorn-amarin-to-create-income-boost"
+   },
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/property/2554726/gaysorn-sets-out-bangkok-expansion-plans"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Gaysorn_Amarin"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "platinum-fashion-mall": {
+  "about": "A wholesale and retail fashion mall in Pratunam run by The Platinum Group, opened in 2000 and often described as an indoor Chatuchak. More than 2,000 vendors sell to bargain hunters, resellers and buyers from other ASEAN countries, and the owner is betting on the Orange Line's Pratunam station to lift the district further; the line's western section, which includes Pratunam, is now targeted for 2030.",
+  "known_for": [
+   "Wholesale fashion, with discounts for buying several pieces",
+   "The sixth-floor food centre: cheap Thai, Indian, Chinese and halal dishes",
+   "Pratunam's dense tourist and trader traffic, with a growing live-commerce scene"
+  ],
+  "suits": [
+   "Fast, low-ticket Thai food, drinks and snacks for shoppers and traders",
+   "Halal and South Asian concepts serving Pratunam's international buyers"
+  ],
+  "think_twice": [
+   "Sit-down or premium dining: visitors come to shop fast and spend little on food",
+   "Concepts that need evening trade; the mall keeps early-closing wholesale hours"
+  ],
+  "sources": [
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/economy/40047218"
+   },
+   {
+    "title": "Inside Retail",
+    "url": "https://insideretail.com.au/?p=52727"
+   },
+   {
+    "title": "Thairath",
+    "url": "https://www.thairath.co.th/news/local/2963458"
+   },
+   {
+    "title": "Khaosod English",
+    "url": "https://www.khaosodenglish.com/news/transpo/2026/10/19/bangkoks-orange-line-may-begin-trial-runs-in-december-2027/"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-embassy": {
+  "about": "Central Group's ultra-luxury mall on the former British Embassy gardens on Ploenchit Road, with the Park Hyatt Bangkok in the tower above. Beyond luxury flagships it is known for Eathai, a basement Thai food hall, and Open House, a 7,000 sq m top-floor space mixing restaurants, a bookshop and co-working.",
+  "known_for": [
+   "Luxury flagships under an AL_A-designed facade",
+   "Eathai, a Thai street-food hall with English menus",
+   "Open House: dining, books, art and co-working on the top floor"
+  ],
+  "suits": [
+   "Chef-driven and hotel-quality restaurants, premium cafés and bars",
+   "Thai street-food brands that can meet Eathai's standards for a tourist audience"
+  ],
+  "think_twice": [
+   "Mass-market concepts: the mall is designed for affluent locals and Park Hyatt guests",
+   "Brands that need high daily volume; luxury malls have lower footfall than CentralWorld or Siam"
+  ],
+  "sources": [
+   {
+    "title": "Inside Retail Asia",
+    "url": "https://insideretail.asia/?p=26056"
+   },
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/30314643"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.com/wiki/Central_Embassy"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "dusit-central-park": {
+  "about": "The Dusit Thani and Central Pattana mixed-use scheme at the Silom–Rama IV corner, on the site of the old Dusit Thani hotel. Its Central Park mall opened on 4 September 2025 and drew more than 70,000 visitors on day one, next to a new Dusit Thani hotel, residences and the Central Park Offices tower.",
+  "known_for": [
+   "A roughly 7-rai roof park facing Lumpini Park",
+   "Parkside Food Hall with first-in-Thailand cafés and the flagship Tops Food Hall",
+   "Direct links to BTS Sala Daeng and MRT Si Lom"
+  ],
+  "suits": [
+   "International brands making their Thai debut; the landlord curates for 'firsts'",
+   "Premium casual dining and cafés for Silom office workers and affluent residents",
+   "Michelin-listed and well-known street-food names"
+  ],
+  "think_twice": [
+   "Me-too or value concepts: the tenant mix is curated for novelty and quality",
+   "Operators who need a proven trading history; the mall is new and still settling"
+  ],
+  "sources": [
+   {
+    "title": "Khaosod English",
+    "url": "https://www.khaosodenglish.com/news/business/2025/09/06/central-park-the-latest-game-changer-in-bangkoks-downtown-scene/"
+   },
+   {
+    "title": "TAT News",
+    "url": "https://www.tatnews.org/2025/09/central-park-shopping-centre-opens-as-bangkoks-newest-world-class-landmark/"
+   },
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/news/1654740/dusit-thani-central-plan-b37bn-mixed-use-project"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-pinklao": {
+  "about": "Central Pattana's Thonburi-side mall at the foot of Pinklao Bridge, rebuilt with an investment of more than THB 1.7 billion. CPN says traffic rose to about 80,000 visitors a day and sales by around 30% after the renovation, serving a high-spending residential catchment of more than 3 million people.",
+  "known_for": [
+   "A Greek-column-inspired facade and naturally lit atrium",
+   "The 'Urban Living Room' food floor with Michelin-recognised and street-food names",
+   "An upgraded Tops Food Hall"
+  ],
+  "suits": [
+   "Family casual dining and Thai favourites for an established, affluent residential catchment",
+   "Street-food and Michelin-listed brands expanding beyond the CBD"
+  ],
+  "think_twice": [
+   "Tourist-led concepts: the trade is mostly local residents",
+   "Late-night formats; it is a neighbourhood mall, not a nightlife district"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://scour.ing/@ghholt/p/https://www.bangkokpost.com/business/general/3181998/cpn-invested-b17bn-to-update-central-pinklao"
+   },
+   {
+    "title": "Kaohoon International",
+    "url": "https://www.kaohooninternational.com/markets/575272"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "samyan-mitrtown": {
+  "about": "A mixed-use complex at the Sam Yan intersection on Rama IV, on Chulalongkorn University land, opened in 2019 and now run by Frasers Property Thailand. It was the first CBD mall with a 24-hour zone, built around food and learning for students, office workers and the surrounding Samyan community.",
+  "known_for": [
+   "A 24-hour zone with cafés, diners and the free Samyan Co-op study space",
+   "A student and office-worker crowd from Chula and the Rama IV corridor",
+   "Easy MRT access next to the Banthat Thong street-food strip"
+  ],
+  "suits": [
+   "All-day and late-night casual dining, cafés and dessert spots",
+   "Value-to-mid price concepts aimed at students and young workers"
+  ],
+  "think_twice": [
+   "Premium sit-down dining: the core crowd is price-sensitive",
+   "Concepts that compete head-on with the Banthat Thong street-food strip next door"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/general/2651343/samyan-mitrtown-thriving-in-retails-new-era"
+   },
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/news/1684864/golden-land-goes-sleepless"
+   },
+   {
+    "title": "Frasers Property",
+    "url": "https://www.frasersproperty.com/th/our-portfolio/commercial/samyan-mitrtown"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "one-bangkok": {
+  "about": "Frasers Property's mixed-use district on Rama IV facing Lumpini Park, opened on 25 October 2024. Its retail runs across three linked zones, Parade, The Storeys and the luxury POST 1928 still to come, with offices, The Ritz-Carlton and Andaz hotels on site. The landlord reported more than 40 million visits and 96% retail occupancy by September 2026.",
+  "known_for": [
+   "The 'Food Loop': around 250 dining options from fine dining to street food, including Thai debuts",
+   "Mitsukoshi Depachika food hall in Parade",
+   "A large office population on site to support weekday trade"
+  ],
+  "suits": [
+   "International restaurant brands entering Thailand that want a flagship next to a big office base",
+   "Premium casual dining, bars and all-day cafés for office workers and hotel guests"
+  ],
+  "think_twice": [
+   "Concepts that would be one of many similar restaurants; analysts have noted the dining mix overlaps with other big malls",
+   "Brands needing weekend family volume; much of the trade is weekday office-led"
+  ],
+  "sources": [
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/corporate/40071053"
+   },
+   {
+    "title": "Real Estate Asia",
+    "url": "https://realestateasia.com/news/frasers-property-unveils-one-bangkok"
+   },
+   {
+    "title": "Kaohoon International",
+    "url": "https://kaohooninternational.com/?p=546641"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "park-ventures-ecoplex": {
+  "about": "A LEED Platinum office and hotel tower at the Ploenchit–Wireless corner, completed in 2011 for TCC-linked Univentures, with the Okura Prestige Bangkok on its upper floors. A quarter of the site is landscaped green space, and the small retail podium links to BTS Phloen Chit.",
+  "known_for": [
+   "Grade A offices with a sustainability label",
+   "The Okura Prestige hotel and its restaurants",
+   "A direct skywalk to BTS Phloen Chit"
+  ],
+  "suits": [
+   "Grab-and-go coffee, bakery and healthy lunch formats for office tenants",
+   "Premium breakfast and lunch concepts targeting Ploenchit offices"
+  ],
+  "think_twice": [
+   "Evening and weekend concepts: trade drops when offices close",
+   "Large-format restaurants; podium space is limited"
+  ],
+  "sources": [
+   {
+    "title": "CTBUH Skyscraper Center",
+    "url": "https://skyscrapercenter.com/building/park-ventures/12421"
+   },
+   {
+    "title": "TALA",
+    "url": "https://www.tala.or.th/professional_detail.php?id=42"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-unicorn": {
+  "about": "BTS Group's 51-storey mixed-use tower on Phaya Thai Road, opened in May 2023 with a direct link to BTS Phaya Thai and the Airport Rail Link. It combines Grade A offices, a retail podium with a food hub, an auditorium and the Eastin Grand Hotel Phayathai.",
+  "known_for": [
+   "Direct connection to both BTS and the Airport Rail Link",
+   "A podium food hub serving office workers and hotel guests",
+   "LEED Gold-rated offices"
+  ],
+  "suits": [
+   "Quick-service lunch, coffee and grab-and-go formats for office and commuter traffic",
+   "Airport-traveller and hotel-guest snacks and casual dining"
+  ],
+  "think_twice": [
+   "Destination dining: the podium is a convenience stop, not a leisure destination",
+   "Concepts relying on weekend crowds"
+  ],
+  "sources": [
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/more/pr-news/40027860"
+   },
+   {
+    "title": "Cushman & Wakefield",
+    "url": "https://www.cushmanwakefield.com/en/thailand/properties/for-lease/office/ratchathewi-district/bangkok/phayathai-road-thung-phayathai/the-unicorn-l"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "silom-complex": {
+  "about": "A Central Group office-and-retail complex at 191 Silom Road, opened in the early 1990s, with a Central Department Store, a Tops supermarket and a five-storey retail plaza. It is linked by skywalk to BTS Sala Daeng and is a short walk from MRT Si Lom, and travel guides describe it as the only mall on Silom Road.",
+  "known_for": [
+   "Central Department Store and Tops supermarket for Silom office workers",
+   "Casual chains such as After You, Bonchon and Wine Connection",
+   "Direct BTS access in the heart of the original CBD"
+  ],
+  "suits": [
+   "Lunch and after-work casual dining for Silom office workers",
+   "Dessert, coffee and takeaway brands that live on commuter flow"
+  ],
+  "think_twice": [
+   "Concepts hoping for destination traffic: the mall is compact and described as quiet outside peak hours",
+   "Premium flagships, which now have a stronger option at Central Park across the road"
+  ],
+  "sources": [
+   {
+    "title": "Hotels.com Go Guides",
+    "url": "https://www.hoteles.com/go/thailand/silom-complex"
+   },
+   {
+    "title": "Cushman & Wakefield",
+    "url": "https://www.cushmanwakefield.com/en/thailand/properties/for-lease/office/silom/bangkok/191-silom-road/silom-complex-l"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "robinson-bangrak": {
+  "about": "A Robinson department store on Charoen Krung Road, a short walk from BTS Saphan Taksin, in a 'sailboat' building by architect Sumet Jumsai that also holds a hotel. Robinson is Central Retail's mid-market chain; this branch serves riverside residents, hotel guests and office staff with a Tops supermarket and a food court.",
+  "known_for": [
+   "Mid-market fashion, beauty and household goods",
+   "A Tops supermarket and a small food court",
+   "Location between the riverside hotels and the Sathorn–Silom CBD"
+  ],
+  "suits": [
+   "Value-to-mid chains and quick-service brands for residents and hotel guests",
+   "Grocery-adjacent takeaway and bakery formats"
+  ],
+  "think_twice": [
+   "Premium or destination dining: the store is mid-market and modest in footfall",
+   "Concepts that need a modern mall environment; the building is older"
+  ],
+  "sources": [
+   {
+    "title": "Hotels.com Go Guides",
+    "url": "https://www.hoteis.com/go/thailand/robinson-bangrak"
+   },
+   {
+    "title": "Chula iMArch",
+    "url": "https://www.imarch.arch.chula.ac.th/showcases/robinson-bangkok"
+   },
+   {
+    "title": "Wikipedia (Robinson)",
+    "url": "https://www.wikipedia.org/wiki/Robinson_Department_Store"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "mahanakhon-cube": {
+  "about": "The six-storey retail block at the foot of King Power Mahanakhon, the 314 m tower by Ole Scheeren at BTS Chong Nonsi. King Power, which bought the retail, hotel and observatory parts in 2018, has turned the Cube into a food stop: Thai Taste Hub upstairs and Mahanakhon Eatery on the ground floor.",
+  "known_for": [
+   "Thai Taste Hub: a curated set of legendary street-food and Michelin-recommended Thai restaurants",
+   "Mahanakhon Eatery, a shared dining hall of about eight restaurants",
+   "Footfall from the Mahanakhon SkyWalk observation deck"
+  ],
+  "suits": [
+   "Well-known Thai street-food brands looking for a CBD branch with tourist traffic",
+   "Quick casual dining for Sathorn–Silom office workers"
+  ],
+  "think_twice": [
+   "Large-format restaurants: the Cube's floor plates are small",
+   "Brands that cannot join King Power's curated hall format"
+  ],
+  "sources": [
+   {
+    "title": "King Power Mahanakhon",
+    "url": "https://kingpowermahanakhon.co.th/about-us/mahanakhon-cube"
+   },
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://www.timeout.com/bangkok/news/thai-taste-hub-mahanakhon-cube-opens-its-door-for-the-best-art-and-culinary-experience-100520"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://wikipedia.com/wiki/MahaNakhon"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "empire-tower": {
+  "about": "Asset World Corporation's 'The Empire' at the Sathorn–Narathiwat corner: three linked office towers of up to 58 storeys, completed in 1998 and described by AWC as Thailand's largest office complex. A skybridge connects it to BTS Chong Nonsi and BRT Sathorn, and the podium holds a supermarket, restaurants, cafés and a large food pavilion.",
+  "known_for": [
+   "Tens of thousands of office workers in one complex",
+   "A food pavilion, supermarket and convenience retail for tenants",
+   "Skybridge links to BTS Chong Nonsi and BRT Sathorn"
+  ],
+  "suits": [
+   "Breakfast, lunch and coffee formats that live on office headcount",
+   "Food-pavilion stalls and grab-and-go concepts with fast turnover"
+  ],
+  "think_twice": [
+   "Evening and weekend concepts: trade is tied to office hours",
+   "Destination or leisure dining; the podium serves tenants first"
+  ],
+  "sources": [
+   {
+    "title": "The Empire (AWC)",
+    "url": "https://www.empirebuilding.co/en/about"
+   },
+   {
+    "title": "Asset World Corp",
+    "url": "https://assetworldcorp-th.com/en/portfolio/commercials/74/the-empire"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "sathorn-square": {
+  "about": "Frasers Property's 40-storey Grade A office tower at the Sathorn–Narathiwat corner, completed in 2011 with a direct link to BTS Chong Nonsi. Frasers revamped the building in 2024, adding health-food and international restaurants and hangout space to the podium.",
+  "known_for": [
+   "Direct BTS Chong Nonsi link at the CBD's main office junction",
+   "A 2024 asset-enhancement revamp of the podium",
+   "Neighbours include King Power Mahanakhon and W Bangkok"
+  ],
+  "suits": [
+   "Healthy lunch, coffee and premium grab-and-go for office tenants",
+   "After-work bars and casual dining tied to the Sathorn office crowd"
+  ],
+  "think_twice": [
+   "Weekend-led concepts: the trade is weekday office traffic",
+   "Large or family-format restaurants; the podium is small"
+  ],
+  "sources": [
+   {
+    "title": "Frasers Property",
+    "url": "https://www.frasersproperty.com/th/press-releases/2024/august/fpct-unveils-sathorn-square-2024"
+   },
+   {
+    "title": "Cushman & Wakefield",
+    "url": "https://www.cushmanwakefield.com/en/thailand/properties/for-lease/office/bangrak-district/bangkok/north-sathorn-road-silom/sathorn-square-l"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "terminal-21-asok": {
+  "about": "An airport-themed mall at the Asok interchange, opened in 2011, where each floor is styled after a world city. It sits under Grande Centre Point Sukhumvit, connects to BTS Asok and MRT Sukhumvit, and holds around 600 shops, a cinema and Gourmet Market.",
+  "known_for": [
+   "Pier 21, one of central Bangkok's cheapest and busiest food courts",
+   "City-themed floors that make it a tourist photo stop",
+   "Direct links to BTS Asok and MRT Sukhumvit"
+  ],
+  "suits": [
+   "Affordable Thai and Asian food stalls with very high turnover",
+   "Casual, family-friendly chains and dessert brands for tourists and office workers"
+  ],
+  "think_twice": [
+   "Premium dining: the mall's food draw is value",
+   "Concepts competing on price with Pier 21; food-court prices set expectations in the building"
+  ],
+  "sources": [
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://www.timeout.com/bangkok/shopping/terminal21"
+   },
+   {
+    "title": "Hotels.com Go Guides",
+    "url": "https://www.hoteles.com/go/thailand/terminal-21-bangkok"
+   },
+   {
+    "title": "HoneyKids Asia",
+    "url": "https://honeykidsasia.com/thailand/terminal-21-asok-bangkok/"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "exchange-tower": {
+  "about": "A 42-storey office tower at the Asok–Sukhumvit intersection, completed in 2006, with a five-storey retail podium linked by a covered skybridge to BTS Asok. The podium mixes banks and services with cafés and international restaurants for the tower's corporate tenants.",
+  "known_for": [
+   "Direct skybridge to BTS Asok, a short walk from MRT Sukhumvit",
+   "Multinational office tenants and serviced offices",
+   "A small podium of cafés, restaurants and services"
+  ],
+  "suits": [
+   "Coffee, breakfast and quick lunch formats for office workers",
+   "Business-lunch restaurants near the Asok interchange"
+  ],
+  "think_twice": [
+   "Weekend or leisure concepts: Terminal 21 next door captures that traffic",
+   "Large-footprint restaurants; the podium is modest"
+  ],
+  "sources": [
+   {
+    "title": "Cushman & Wakefield",
+    "url": "https://www.cushmanwakefield.com/en/thailand/properties/for-lease/office/khlongtoei-district/bangkok/388-sukhumvit-rd-khlongtoei/exchange-tower-l"
+   },
+   {
+    "title": "Coworking Hub",
+    "url": "https://www.coworkinghub.com/th_bangkok/en/building/exchange-tower/15919"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-emquartier": {
+  "about": "The Mall Group's second EM District mall, opened in May 2015 opposite Emporium at BTS Phrom Phong. It is split into the Glass, Helix and Waterfall Quartiers; the spiralling Helix holds around 50 restaurants, and the mall adds Gourmet Market, a food hall, an IMAX cinema and an indoor garden.",
+  "known_for": [
+   "The Helix dining spiral with roughly 50 restaurants",
+   "Gourmet Market and Quartier Food Hall",
+   "Luxury fashion and a 40 m indoor waterfall"
+  ],
+  "suits": [
+   "Premium casual and chef-led restaurants targeting Sukhumvit's affluent Thais, expats and tourists",
+   "Japanese, Korean and international chains seeking a flagship in the EM District"
+  ],
+  "think_twice": [
+   "Value concepts: price points and fit-out standards are high",
+   "Brands that would sit on the upper Helix floors without a draw; footfall thins as you climb"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/life/social-and-lifestyle/517355/birth-of-bangkok-shopping-quarter"
+   },
+   {
+    "title": "Malls.com",
+    "url": "https://www.malls.com/malls/emquartier/"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.com/wiki/EmQuartier"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-emporium": {
+  "about": "The first EM District mall, opened by The Mall Group in 1997 beside Benjasiri Park at BTS Phrom Phong. It is the district's most department-store-like building, with luxury brands, an upscale food hall and Gourmet Market serving Sukhumvit's established affluent and expatriate residents.",
+  "known_for": [
+   "Luxury brands and The Emporium department store",
+   "Emporium Food Hall and Gourmet Market",
+   "A long-standing customer base of affluent locals and expats"
+  ],
+  "suits": [
+   "Premium cafés, bakeries and refined casual dining for mature, high-income shoppers",
+   "Gourmet and specialty food brands that fit the Gourmet Market audience"
+  ],
+  "think_twice": [
+   "Youth-led or trend concepts: the crowd is older than at EmQuartier or EmSphere",
+   "Mass-market brands"
+  ],
+  "sources": [
+   {
+    "title": "TAT News",
+    "url": "https://www.tatnews.org/2015/02/bangkok-gets-new-em-district/"
+   },
+   {
+    "title": "Hotels.com Go Guides",
+    "url": "https://vi.hotels.com/see/go/thailand/the-em-district-bangkok"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "emsphere": {
+  "about": "The third EM District mall, opened by The Mall Group on 1 December 2023 between Sukhumvit Soi 22 and 24, opposite EmQuartier. Its glass-dome design houses retail, entertainment and dining zones such as Em Market, and the landlord has pushed late-night trade to make the district a 'city that never sleeps'.",
+  "known_for": [
+   "A large, new building of roughly 200,000 sq m",
+   "Em Market food zone and dining-led floors",
+   "Late-night entertainment programming across the EM District"
+  ],
+  "suits": [
+   "Trend-led and late-night F&B, bars and dessert concepts for young adults",
+   "International brands making a Bangkok debut close to EmQuartier"
+  ],
+  "think_twice": [
+   "Concepts that need a long trading history before committing; the mall is still building its pattern",
+   "Value brands; the EM District is positioned premium"
+  ],
+  "sources": [
+   {
+    "title": "Retail Insight Network",
+    "url": "https://www.retail-insight-network.com/?p=80575"
+   },
+   {
+    "title": "Tatler Asia",
+    "url": "https://www.tatlerasia.com/places/em-district"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "gateway-ekamai": {
+  "about": "A Japanese-themed mall opened in 2012 at BTS Ekkamai, now owned by TCC's Asset World Corporation. Its eight floors hold around 400 shops, with a Japanese Town dining zone that introduced several original Japanese brands to Thailand, plus a supermarket, an IT zone and family-oriented learning centres.",
+  "known_for": [
+   "Japanese restaurants and cafés on floor M",
+   "Direct skybridge to BTS Ekkamai",
+   "Family services: tutoring, an indoor playground and a supermarket"
+  ],
+  "suits": [
+   "Japanese restaurant brands entering Thailand, especially mid-priced chains",
+   "Family casual dining for the Ekkamai and Sukhumvit residential catchment"
+  ],
+  "think_twice": [
+   "Concepts that need strong upper-floor traffic: reviewers describe the upper floors as quiet",
+   "Fashion-led or premium concepts; the mall's draw is food and daily needs"
+  ],
+  "sources": [
+   {
+    "title": "Asset World Corp",
+    "url": "https://assetworldcorp-th.com/en/portfolio/retails-and-wholesales/80/gateway-ekamai"
+   },
+   {
+    "title": "BK Magazine",
+    "url": "https://bk.asia-city.com/node/52011"
+   },
+   {
+    "title": "Coconuts Bangkok",
+    "url": "https://coconuts.co/bangkok/food-drink/drinking-and-dining-a-gateway-to-japanese-culture-not-really-but-there-are-some-good-food-options"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "j-avenue-thonglor": {
+  "about": "One of Bangkok's earliest community malls, at the mouth of Thonglor Soi 15, serving the area's affluent Thai and Japanese residents. It is small and food-led, with long-running names such as Greyhound Cafe and After You alongside a supermarket, banks and services.",
+  "known_for": [
+   "A loyal neighbourhood crowd in one of Bangkok's wealthiest districts",
+   "Popular cafés, dessert shops and Japanese restaurants",
+   "Late-opening supermarket and everyday services"
+  ],
+  "suits": [
+   "Dessert, café and casual Japanese concepts aimed at affluent residents",
+   "Brands testing a Thonglor address before a mall roll-out"
+  ],
+  "think_twice": [
+   "Concepts that need rail traffic: it is a long walk from BTS Thong Lo",
+   "Large-format restaurants; units are small"
+  ],
+  "sources": [
+   {
+    "title": "BK Magazine",
+    "url": "https://bk.asia-city.com/node/47720"
+   },
+   {
+    "title": "BKK Kids",
+    "url": "https://www.bkkkids.com/?p=4006"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-commons-thonglor": {
+  "about": "A four-level, open-air community mall on Thonglor Soi 17, opened by the siblings behind Roast and Roots Coffee. The founders wanted 'a community first, then a mall', so the ground-floor Market works like a curated food hall of artisan and home-grown vendors, with Roast on the top floor.",
+  "known_for": [
+   "The Market: independent food and drink vendors around shared seating",
+   "Roast and Roots Coffee as anchors",
+   "No big chains; a curated, neighbourhood feel"
+  ],
+  "suits": [
+   "Independent and chef-led concepts that fit a curated market format",
+   "Specialty coffee, bakery and dessert brands for Thonglor's affluent crowd"
+  ],
+  "think_twice": [
+   "Chains: the landlord avoids them by design",
+   "Brands that need mall-style air-conditioned comfort; much of the space is open-air"
+  ],
+  "sources": [
+   {
+    "title": "Asia Bars & Restaurants",
+    "url": "https://asia-bars.com/?p=73731"
+   },
+   {
+    "title": "theCOMMONS",
+    "url": "https://www.thecommonsbkk.com/thonglor/about-us"
+   },
+   {
+    "title": "BK Magazine",
+    "url": "https://www.bkmagazine.com/shop/commons/"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "seenspace-thonglor": {
+  "about": "An early Thonglor community mall on Soi 13, built around an open courtyard of restaurants, bars and cafés that made it a pre-club hangout for the neighbourhood's young, affluent crowd. Parts of the complex have since been re-launched with new concepts, such as Pirate Saloon on the first floor.",
+  "known_for": [
+   "A courtyard where diners order from several bars and restaurants",
+   "An evening and nightlife crowd of Thais and expats rather than tourists",
+   "Re-launches of space as the mall ages"
+  ],
+  "suits": [
+   "Bars, casual dining and late-night concepts aimed at Thonglor's young professionals",
+   "Operators who can create their own pull rather than relying on mall traffic"
+  ],
+  "think_twice": [
+   "Daytime or family concepts: the trade skews to evenings",
+   "Brands that need a busy, well-maintained mall around them; newer Thonglor malls compete hard"
+  ],
+  "sources": [
+   {
+    "title": "BK Magazine",
+    "url": "https://bk.asia-city.com/node/28559"
+   },
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://www.timeout.com/bangkok/restaurants/pirate-saloon"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "donki-mall-thonglor": {
+  "about": "A Japanese-themed mall on Ekkamai Soi 5 that opened in February 2019 as the home of Thailand's first Don Don Donki, the Japanese discount store, with over 30 Japanese-origin tenants. Donki has since closed some other Bangkok branches, but the Thong Lor flagship is reported as still trading.",
+  "known_for": [
+   "Don Don Donki's Thai flagship, with a late-night Japanese food zone",
+   "Japanese restaurants, cafés, drugstores and an indoor sports centre",
+   "A Japanese and Thai residential catchment in Thonglor–Ekkamai"
+  ],
+  "suits": [
+   "Japanese food brands and grab-and-go concepts that benefit from Donki's traffic",
+   "Late-night snack and drink formats"
+  ],
+  "think_twice": [
+   "Non-Japanese concepts that would feel out of place in the tenant mix",
+   "Operators who need rail access; the mall sits off the main road between BTS stations"
+  ],
+  "sources": [
+   {
+    "title": "Kyodo / PPIH release",
+    "url": "https://kyodonewsprwire.jp/release/201902143178"
+   },
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/corporate/40049806"
+   },
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://timeout.com/bangkok/shopping/donki-mall-thonglor"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "rain-hill": {
+  "about": "A six-level, open-air community mall on Sukhumvit at Soi 47, between BTS Phrom Phong and Thong Lo, styled around a tropical vertical garden. Its tenants lean towards Japanese and Western dining, wine bars and cafés for the surrounding residents and office workers.",
+  "known_for": [
+   "A vertical-garden, open-air design on the main road",
+   "Japanese restaurants, Wine Connection and cafés",
+   "Evening trade from the Thonglor–Phrom Phong residential belt"
+  ],
+  "suits": [
+   "Japanese and Western casual dining, wine and dessert concepts for affluent locals and expats",
+   "Neighbourhood cafés and after-work dining"
+  ],
+  "think_twice": [
+   "Concepts that need climate-controlled comfort or heavy daytime traffic; Inside Retail noted community malls like this struggled to recover after the pandemic"
+  ],
+  "sources": [
+   {
+    "title": "Inside Retail Asia",
+    "url": "https://insideretail.asia/2022/08/09/the-hidden-jewels-of-bangkoks-thonglor/"
+   },
+   {
+    "title": "BK Magazine",
+    "url": "https://bk.asia-city.com/node/44173"
+   },
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://www.timeout.com/bangkok/things-to-do/rain-hill"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-parq": {
+  "about": "A THB 20 billion office-and-retail scheme by TCC Assets and Frasers Property at the Rama IV–Ratchadaphisek corner, next to the Queen Sirikit National Convention Center and Benjakitti Park. Its retail podium, The PARQ Life, opened in September 2020 with about 12,000 sq m and more than 60 shops, about 60% of them restaurants and cafés.",
+  "known_for": [
+   "LEED and WELL-certified Grade A offices, with healthy-eating options",
+   "Restaurants and cafés making up most of the podium",
+   "Proximity to QSNCC and Benjakitti Forest Park"
+  ],
+  "suits": [
+   "Healthy lunch, salad and coffee concepts for office tenants",
+   "Event-driven trade from conventions at QSNCC next door"
+  ],
+  "think_twice": [
+   "Weekend-dependent concepts: trade follows the office and convention calendar",
+   "Tourist-led formats; visitors are mostly workers and event-goers"
+  ],
+  "sources": [
+   {
+    "title": "Frasers Property",
+    "url": "https://www.frasersproperty.com/press-releases/2020/september/live-a-more-balanced-life-at-the-parq"
+   },
+   {
+    "title": "Bangkok Post",
+    "url": "https://bangkokpost.com/thailand/pr/1982471/the-parq-celebrates-opening-of-the-parq-life-–-bangkoks-new-retail-space-for-a-life-well-balanced-lifestyle"
+   },
+   {
+    "title": "Brand Buffet",
+    "url": "https://www.brandbuffet.in.th/2020/09/the-parq-life-lifestyle-retail/"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "fyi-center": {
+  "about": "A TCC Group office building on Rama IV by MRT Queen Sirikit, one of the first pieces of the group's office and convention node around QSNCC, alongside ThaiBev Quarter and The PARQ. Its ground-level retail serves the building's office workers and convention visitors.",
+  "known_for": [
+   "Office population on the Rama IV corridor",
+   "Short walk to MRT and the Queen Sirikit National Convention Center"
+  ],
+  "suits": [
+   "Coffee, breakfast and lunch formats for office workers",
+   "Grab-and-go for convention visitors"
+  ],
+  "think_twice": [
+   "Evening and weekend concepts",
+   "Anything needing a large dining room; retail space is limited"
+  ],
+  "sources": [
+   {
+    "title": "Frasers Property",
+    "url": "https://www.frasersproperty.com/press-releases/2020/september/live-a-more-balanced-life-at-the-parq"
+   },
+   {
+    "title": "Property Report",
+    "url": "https://www.magzter.com/stories/Business/Property-Report/Healthy-Working-Culture"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "w-district": {
+  "about": "A mixed community site at Sukhumvit Soi 71 by BTS Phra Khanong, completed in late 2014, anchored by condominium towers and known above all for W Market, an open-air evening food court with dozens of stalls and bars. Its owners have not ruled out redeveloping the market site for condos.",
+  "known_for": [
+   "W Market's international street food and live music at weekends",
+   "An expat and middle-class Thai crowd",
+   "A short walk from BTS Phra Khanong"
+  ],
+  "suits": [
+   "Street-food and bar concepts testing demand at low cost",
+   "International food stalls aimed at expats"
+  ],
+  "think_twice": [
+   "Any long fit-out investment: the market's long-term future is uncertain",
+   "Daytime concepts; the market comes alive after 6 pm"
+  ],
+  "sources": [
+   {
+    "title": "Coconuts Bangkok",
+    "url": "https://coconuts.co/bangkok/news/whats-up-with-w-district-popular-hangouts-future-up-in-the-air"
+   },
+   {
+    "title": "Hotels.com Go Guides",
+    "url": "https://uk.hotels.com/go/thailand/w-district"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "habito-mall": {
+  "about": "Sansiri's first community mall, at the centre of its T77 neighbourhood on Sukhumvit 77 (On Nut), opened in 2016 with about 10,000 sq m of retail. It serves around 5,000 households in Sansiri's surrounding condos plus the Bangkok Prep international school campus, with a shuttle to BTS On Nut.",
+  "known_for": [
+   "A planned residential community with a Japanese-influenced mix of tenants",
+   "Restaurants, cafés, a food court and food trucks",
+   "A co-working and co-creation space and seasonal markets"
+  ],
+  "suits": [
+   "Neighbourhood casual dining, Japanese and café concepts for young residents and families",
+   "Brands testing a captive residential catchment at moderate rent"
+  ],
+  "think_twice": [
+   "Concepts that need walk-in rail traffic; access relies on a shuttle from BTS On Nut",
+   "Destination or premium dining; the trade is local"
+  ],
+  "sources": [
+   {
+    "title": "Sansiri",
+    "url": "https://www.sansiri.com/en/news/getting-to-know-t77-a-perfect-community-in-onnut-area-357"
+   },
+   {
+    "title": "Thailand-Property",
+    "url": "https://www.thailand-property.com/blog/?p=4219"
+   },
+   {
+    "title": "BK Magazine",
+    "url": "https://bk.asia-city.com/node/121835"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "true-digital-park": {
+  "about": "CP Group's tech and start-up campus beside BTS Punnawithi on Sukhumvit 101, billed as Southeast Asia's largest start-up hub. The East phase opened in 2019 and the West in 2022; the lifestyle and retail floors were later revamped by CP Future City to serve office tenants and the surrounding Bangkok CyberTech District.",
+  "known_for": [
+   "A large daytime workforce of tech companies and start-ups",
+   "Retail and dining on floors 1–3 with pop-up events",
+   "Direct access from BTS Punnawithi"
+  ],
+  "suits": [
+   "Coffee, healthy lunch and casual dining for tech workers",
+   "Food-tech and new-concept pilots that fit the start-up audience"
+  ],
+  "think_twice": [
+   "Weekend and family concepts: traffic follows the working week",
+   "Premium destination dining; the area is still emerging"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/tech/1694064/true-digital-park-lures-startups"
+   },
+   {
+    "title": "True Digital Park",
+    "url": "https://mellowmellowhq.com/truedigitalpark/staging/en/about"
+   },
+   {
+    "title": "The Story Thailand",
+    "url": "https://www.thestorythailand.com/?p=141184"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-bangna": {
+  "about": "Central Pattana's veteran mall on Bang Na–Trat Road, now in its biggest transformation in three decades. CPN is turning the 50-rai site into a mixed-use district of about 300,000 sq m with offices and housing, with 'The New Central Bangna' due by the end of 2026; CPN says more than 85% of its customers are affluent families.",
+  "known_for": [
+   "An affluent family customer base, per CPN's loyalty data",
+   "A Tops Food Hall ranked among the chain's top five by sales",
+   "A Food Patio of Michelin-listed and long-established Thai eateries"
+  ],
+  "suits": [
+   "Family casual dining, Thai favourites and dessert brands for Bangna's affluent households",
+   "Brands that want to open with the relaunch and its fresh tenant mix"
+  ],
+  "think_twice": [
+   "Operators who cannot cope with construction disruption during the transformation",
+   "Tourist-led concepts; the catchment is residential"
+  ],
+  "sources": [
+   {
+    "title": "Central Group newsroom",
+    "url": "https://www.centralgroup.com/en/newsroom/corporate-news/713/central-pattana-unveils-a-future-led-ecosystem-vision-to-accelerate-nationwide-mega-scale-developments-building-districts-shaping-cities-and-propelling-thailand-s-future-with-a-thb-110-billion-investment-plan"
+   },
+   {
+    "title": "Kaohoon",
+    "url": "https://www.kaohoon.com/news/865623"
+   },
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/property/40068309"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "imperial-world-samrong": {
+  "about": "An older multi-level shopping complex on Sukhumvit in Samrong, Samut Prakan, run by the Imperial Group and reached by skywalk from BTS Samrong. It serves the local working and residential population with budget shops, food courts and a cinema, next to the busy Samrong market.",
+  "known_for": [
+   "Budget retail and two food courts",
+   "Skywalk access from BTS Samrong",
+   "A dense local market area around the mall"
+  ],
+  "suits": [
+   "Value Thai food, quick-service and snack kiosks",
+   "Brands targeting Samut Prakan's working households"
+  ],
+  "think_twice": [
+   "Premium or trend-led concepts: the customer base is value-driven",
+   "Concepts relying on a modern mall environment; the building is dated"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/general/385360/major-facelift-for-imperial-samrong"
+   },
+   {
+    "title": "Wanderlog",
+    "url": "https://wanderlog.com/place/details/282493/imperial-world-samrong"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "mega-bangna": {
+  "about": "A low-rise super-regional mall on Bang Na–Trat Road at km 8, opened in 2012 around Thailand's first IKEA. It is now an equal joint venture between Central Pattana and IKEA's Ikano group, which reported a record 60 million visits in 2025, full occupancy, and a THB 6 billion expansion due by Q3 2028.",
+  "known_for": [
+   "Anchors: IKEA, Central Department Store, HomePro, Big C and Mega Cineplex",
+   "About 165,000 visitors a day, per the owners",
+   "A planned 2,000 sq m 'Mega Loft' social dining zone in the expansion"
+  ],
+  "suits": [
+   "Family chains and casual dining that need car-borne weekend volume",
+   "Brands expanding east toward Suvarnabhumi with a big-box anchor next door"
+  ],
+  "think_twice": [
+   "Concepts that depend on rail: the mall is car-oriented",
+   "Small independents that cannot match chain marketing in a 1,000-brand mall"
+  ],
+  "sources": [
+   {
+    "title": "Inside Retail Asia",
+    "url": "https://insideretail.asia/?p=88705"
+   },
+   {
+    "title": "Thairath",
+    "url": "https://en.thairath.co.th/money/business_marketing/trends/2941556"
+   },
+   {
+    "title": "Mega Bangna",
+    "url": "https://www.mega-bangna.com/en/news-pr/Megabangna-announces-a-THB-6-billion-EUR-158-million*-expansion-as-part-of-a-THB-70-billion-EUR-1-86-billion*-long-term-mixed-use-masterplan-to-redefine-the-future-of-Eastern-Bangkok/1853"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "seacon-square-srinakarin": {
+  "about": "One of Bangkok's largest indoor malls, opened in 1994 on Srinakarin Road and run by Seacon Development. A five-year, THB 5 billion plan is reworking it, turning the former Robinson wing into MunMun, an art and craft 'department store', and adding the MyScape zones, including a food and lifestyle area, due by the end of 2026.",
+  "known_for": [
+   "Sheer size and a big parking capacity on the Srinakarin–Bangna corridor",
+   "MunMun Srinakarin: art and craft retail and exhibitions",
+   "A food zone, 'My Bite n Boost', in the MyScape redevelopment"
+  ],
+  "suits": [
+   "Family chains and casual dining for the east-Bangkok suburbs",
+   "Brands joining the MyScape relaunch with fresh space"
+  ],
+  "think_twice": [
+   "Premium concepts: the mall competes with newer, more upscale neighbours such as Central Bangna and Mega Bangna",
+   "Operators uneasy with ongoing renovation"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://bangkokpost-xkgxtn.cdn.byteark.com/business/general/2981366/seacon-sinks-b5bn-into-revamping-malls"
+   },
+   {
+    "title": "Thairath",
+    "url": "https://en.thairath.co.th/money/business_marketing/trends/2947531"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.com/wiki/Seacon_Square"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "paradise-park": {
+  "about": "A mall on Srinakarin Road, the former Seri Center, bought by an MBK–Siam Piwat joint venture in 2008 and reopened as Paradise Park in 2010; MBK now runs it. After Tokyu closed, MBK spent about THB 1 billion repositioning it as a 'shopping centre with health and wellness', anchored by a Ramathibodi Hospital health space, reflecting an older local customer base.",
+  "known_for": [
+   "Ramathibodi Health Space clinics inside the mall",
+   "Banks, tutoring schools and daily-needs services",
+   "A residential catchment around Srinakarin and Suan Luang"
+  ],
+  "suits": [
+   "Healthy, family and senior-friendly casual dining",
+   "Everyday Thai food, bakery and café formats for local residents"
+  ],
+  "think_twice": [
+   "Trend or youth-led concepts: the core customer is older and local",
+   "Premium brands; nearby Seacon Square and Central Bangna pull more traffic"
+  ],
+  "sources": [
+   {
+    "title": "Brand Inside",
+    "url": "https://brandinside.asia/mbk-paradise-park-renovate"
+   },
+   {
+    "title": "Malls.com",
+    "url": "https://www.malls.com/malls/seri-center/"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Paradise_Park_(mall)"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-rama-9": {
+  "about": "Central Pattana's mall at the Rama IX–Ratchadaphisek junction, opened in December 2011 and now branded Central GR9, at the heart of the Rama 9 'new CBD'. It links underground to MRT Phra Ram 9 and to the G Tower offices, with two dining floors, a food patio, Tops Food Hall, a cinema and an ice rink.",
+  "known_for": [
+   "Direct MRT Phra Ram 9 link and an office-heavy surrounding district",
+   "Dining floors with many Japanese and Asian chains",
+   "Jodd Fairs night market next door"
+  ],
+  "suits": [
+   "Chains and casual dining serving office workers by day and residents by night",
+   "Japanese, Korean and value-premium concepts for young professionals"
+  ],
+  "think_twice": [
+   "Premium destination dining: the mall is mid-market",
+   "Me-too chains; the dining floors are already dense"
+  ],
+  "sources": [
+   {
+    "title": "Coconuts Bangkok",
+    "url": "https://coconuts.co/bangkok/news/news-new-central-mall-opens-at-corner-of-rama-9-and-ratchada"
+   },
+   {
+    "title": "Hotels.com Go Guides",
+    "url": "https://ca.hotels.com/go/thailand/central-rama9"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://wikiwand.com/en/articles/CentralPlaza_Grand_Rama_IX"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "fortune-town": {
+  "about": "An IT mall at the Ratchada–Rama IX corner, connected to MRT Phra Ram 9 and the Grand Mercure Fortune hotel, now managed by CP Land. Its upper floors are devoted to computers, cameras and gadgets, while the ground floor has a Lotus's supermarket, food courts and fast-food outlets.",
+  "known_for": [
+   "Computers, cameras and phone repairs on floors 2–4",
+   "A Lotus's supermarket and food courts",
+   "Direct access from MRT Phra Ram 9"
+  ],
+  "suits": [
+   "Quick-service and food-court stalls for shoppers and nearby office workers",
+   "Value grab-and-go at the station entrance"
+  ],
+  "think_twice": [
+   "Sit-down or premium concepts: the IT-mall format brings short, task-driven visits",
+   "Brands that need evening leisure traffic; Central Rama 9 across the road captures it"
+  ],
+  "sources": [
+   {
+    "title": "Hotels.com Go Guides",
+    "url": "https://hu.hotels.com/see/go/thailand/fortune-town-it-mall-bangkok"
+   },
+   {
+    "title": "Daily News",
+    "url": "https://www.dailynews.co.th/news/6113514/"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "g-tower": {
+  "about": "Grand Canal Land's G-shaped office building in the Grand Rama 9 project, completed in 2016–2017, with north and south towers of 36 and 26 floors and about 134,000 sq m of office and retail space. It connects to Central Rama 9 and MRT Phra Ram 9, and its podium has cafés and Asian restaurants for tenants.",
+  "known_for": [
+   "A large office population in the Rama 9 'new CBD'",
+   "Podium cafés and restaurants, including Japanese and Korean",
+   "Links to Central Rama 9 and MRT Phra Ram 9"
+  ],
+  "suits": [
+   "Lunch, coffee and after-work formats for office tenants",
+   "Asian casual dining with quick service"
+  ],
+  "think_twice": [
+   "Weekend concepts: trade follows office hours",
+   "Destination dining; Central Rama 9 next door absorbs leisure trips"
+  ],
+  "sources": [
+   {
+    "title": "Cushman & Wakefield",
+    "url": "https://www.cushmanwakefield.com/en/thailand/properties/for-lease/office/huai-khwang-district/bangkok/9-rama-9-rd-huai-khwang/gtower-l"
+   },
+   {
+    "title": "BK Magazine",
+    "url": "https://bk.asia-city.com/city-living/news/guide-to-good-life-around-mrt-rama-9"
+   },
+   {
+    "title": "FazWaz",
+    "url": "https://www.fazwaz.com/projects/thailand/bangkok/huai-khwang/huai-khwang/g-tower"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-street-ratchada": {
+  "about": "A lifestyle mall on Ratchadaphisek Road, about 450 m from MRT Thailand Cultural Centre, that opened in early 2016 as Bangkok's first mall to run 24 hours. The owner says more than half its shops now trade late or round the clock, including restaurants, cafés, a supermarket, pharmacy and fitness, serving shift workers, students and night owls.",
+  "known_for": [
+   "24/7 zones with restaurants and a supermarket",
+   "Two food courts and franchise restaurants",
+   "An e-sports arena and game zone on the top floors"
+  ],
+  "suits": [
+   "Late-night quick-service, Chinese, dessert and drinks concepts",
+   "Value casual dining for students and young office workers"
+  ],
+  "think_twice": [
+   "Premium or tourist-led concepts: the crowd is local and price-conscious",
+   "Daytime-only formats that would miss the 24-hour trade"
+  ],
+  "sources": [
+   {
+    "title": "Brand Buffet",
+    "url": "https://www.brandbuffet.in.th/?p=303242"
+   },
+   {
+    "title": "Marketeer",
+    "url": "https://marketeeronline.co/archives/476747"
+   },
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://www.timeout.com/bangkok/shopping/the-street-ratchada"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "esplanade-ratchada": {
+  "about": "A seven-storey shopping and entertainment complex on Ratchadaphisek Road, opened in December 2006 with about 105,000 sq m of floor area; Wikipedia lists Central Pattana as owner and manager. It is anchored by the Esplanade Cineplex and a theatre, and draws a mix of residents, office workers and visitors to the Ratchada nightlife strip.",
+  "known_for": [
+   "Esplanade Cineplex and a performance theatre",
+   "A mid-market mix of chains and restaurants",
+   "Location on the Ratchada corridor near MRT Thailand Cultural Centre"
+  ],
+  "suits": [
+   "Casual dining and dessert chains tied to cinema and show traffic",
+   "Evening dining for residents and office workers"
+  ],
+  "think_twice": [
+   "Premium flagships: the mall is mid-market and older",
+   "Concepts needing heavy daytime footfall; traffic peaks around shows and evenings"
+  ],
+  "sources": [
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/The_Esplanade_(Bangkok)"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "show-dc": {
+  "about": "An entertainment-led mall behind the RCA nightlife strip off Rama IX Road, opened in April 2017 with a 60:40 entertainment-to-shopping concept and a Korean 'K-District' built with partners from Korea. It was planned with a 5,000-seat performance hall and a rooftop club, and sits about 1.7 km from MRT Phra Ram 9.",
+  "known_for": [
+   "Korean fashion, beauty, groceries and celebrity-linked restaurants",
+   "A large concert hall and a rooftop club",
+   "Duty-free and tourist-group facilities"
+  ],
+  "suits": [
+   "Korean food and drink brands targeting K-culture fans",
+   "Event-night F&B tied to concerts in the hall"
+  ],
+  "think_twice": [
+   "Concepts that need everyday walk-in traffic: the mall is off the rail line and event-driven",
+   "Operators who need steady weekday trade"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/general/1072040/show-dcs-k-district-complex-nears-grand-opening"
+   },
+   {
+    "title": "Inside Retail Asia",
+    "url": "https://insideretail.asia/?p=16499"
+   },
+   {
+    "title": "Fashion Network (Reuters)",
+    "url": "https://uk.fashionnetwork.com/news/Korean-themed-mall-opens-in-Bangkok,815180.html"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "la-villa-ari": {
+  "about": "A three-storey, open-air community mall on Phahonyothin Road right next to BTS Ari, one of Bangkok's best-known neighbourhood malls. It serves Ari's residents, civil servants and office workers with Villa Market, Fuji Super, Japanese restaurants, cafés and chains such as Greyhound.",
+  "known_for": [
+   "Location at the foot of BTS Ari",
+   "Villa Market and Fuji Super for imported groceries",
+   "Japanese restaurants and cafés"
+  ],
+  "suits": [
+   "Japanese, café and casual concepts aimed at Ari's affluent residents and office workers",
+   "Neighbourhood brands that value a BTS-front address"
+  ],
+  "think_twice": [
+   "Large-format restaurants: units are small",
+   "Concepts that clash with Ari's independent-café scene, which competes strongly nearby"
+  ],
+  "sources": [
+   {
+    "title": "Wanderlog",
+    "url": "https://wanderlog.com/place/details/3766116/la-villa"
+   },
+   {
+    "title": "Sansiri area guide",
+    "url": "https://www.sansiri.com/en/discover-thailand/bangkok/phahonyothin"
+   },
+   {
+    "title": "Monocle",
+    "url": "https://monocle.com/magazine/issues/30/ari"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-ladprao": {
+  "about": "Thailand's first mixed-use development, opened by Central in the early 1980s at the Phahonyothin–Lat Phrao junction, where brands such as Fuji, MK, Swensen's and Bar-B-Q Plaza first launched. CPN says it averaged more than 110,000 visitors a day in the first half of 2026; the State Railway renewed its land lease for 30 years and CPN plans a major transformation alongside The Central Phahonyothin next door.",
+  "known_for": [
+   "Heavy daily footfall at the MRT Phahon Yothin and BTS junction",
+   "A long record as a launch pad for restaurant chains",
+   "The planned 'Central District' with The Central Phahonyothin"
+  ],
+  "suits": [
+   "Chains and casual dining that need volume from a dense, upper-middle catchment",
+   "Brands planning to follow the area's upgrade"
+  ],
+  "think_twice": [
+   "Operators who cannot handle redevelopment disruption over the next few years",
+   "Niche premium concepts; the mall is mass-to-mid"
+  ],
+  "sources": [
+   {
+    "title": "Thairath",
+    "url": "https://en.thairath.co.th/money/business_marketing/business_strategy/2954027"
+   },
+   {
+    "title": "Thairath",
+    "url": "https://en.thairath.co.th/news/governmentpolicy/2908041"
+   },
+   {
+    "title": "Thaiger",
+    "url": "https://thethaiger.com/guides/best-of/lifestyle/central-pattana-sets-out-33-mixed-use-projects-under-110-billion-baht-plan-for-2026-to-2030"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-central-phaholyothin": {
+  "about": "Central Pattana's THB 21 billion retail-led mixed-use project on Phahonyothin Road, next to Central Ladprao, scheduled for Q4 2026. It covers about 49 rai with some 460,000 sq m of building area, and CPN pitches it as the flagship for global brands in a 'Next CBD' with a catchment of about 2.5 million people.",
+  "known_for": [
+   "A flagship-brand strategy CPN compares with centralwOrld",
+   "A catchment heavy in upper-segment housing",
+   "Pairing with Central Ladprao as 'The Central District'"
+  ],
+  "suits": [
+   "International brands seeking a northern-Bangkok flagship at launch",
+   "Premium casual and family dining for the affluent Ladprao–Phahonyothin catchment"
+  ],
+  "think_twice": [
+   "Operators who need a trading history before committing",
+   "Value concepts; the positioning is flagship and premium"
+  ],
+  "sources": [
+   {
+    "title": "Khaosod English",
+    "url": "https://www.khaosodenglish.com/news/business/2025/10/10/central-phahonyothin-aims-to-create-bangkoks-new-business-hub/"
+   },
+   {
+    "title": "Central Pattana",
+    "url": "https://www.centralpattana.co.th/en/our-business/shopping-center/1351/the-central"
+   },
+   {
+    "title": "FTN News",
+    "url": "https://ftnnews.com/?p=66887"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "union-mall": {
+  "about": "A bright-yellow, eight-storey fashion mall at the Lat Phrao intersection, opened in February 2006 opposite Central Ladprao, with more than a thousand small shops. It targets students and young workers with affordable clothing, and links by skywalk to MRT Phahon Yothin and BTS Ha Yaek Lat Phrao.",
+  "known_for": [
+   "Affordable teen and young-adult fashion in small units",
+   "A food court and casual eateries",
+   "An evening open-air market outside"
+  ],
+  "suits": [
+   "Value snacks, drinks, desserts and food-court concepts for students",
+   "Trend-led, low-ticket street food"
+  ],
+  "think_twice": [
+   "Premium or sit-down dining: spend per visit is low",
+   "Concepts needing an older or family crowd"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://bangkokpost.com/business/1225004/union-mall-completes-massive-renovation"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.com/wiki/Union_Mall"
+   },
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://www.timeout.com/bangkok/shopping/union-mall"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "major-ratchayothin": {
+  "about": "Major Cineplex Group's original entertainment complex on Phahonyothin Road, opened in 1998 around what was then Thailand's first IMAX. It is a cinema-first building with shops and restaurants added around the multiplex, plus Villa Market and Thai and Japanese casual dining; the cinema was renovated in 2025.",
+  "known_for": [
+   "A large multiplex with IMAX",
+   "Villa Market and a food floor of casual chains",
+   "A residential and office catchment around the Ratchayothin junction"
+  ],
+  "suits": [
+   "Casual chains and desserts tied to cinema traffic",
+   "Family dining for the surrounding neighbourhood"
+  ],
+  "think_twice": [
+   "Concepts that need all-day traffic: footfall peaks around showtimes and weekends",
+   "Premium formats; the complex is ageing and mid-market"
+  ],
+  "sources": [
+   {
+    "title": "Malls.com",
+    "url": "https://www.malls.com/malls/major-cineplex-ratchayothin/"
+   },
+   {
+    "title": "Bangkok Post",
+    "url": "https://bangkokpost.com/business/general/2997169/major-cineplex-upbeat-on-expansion"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "gateway-bangsue": {
+  "about": "An 11-storey community shopping mall in Bang Sue, opened in November 2018 by TCC's Asset World Corporation with an investment of more than THB 4 billion and about 40,000 sq m of retail. It serves a dense residential and student catchment near the Bang Sue transport hub, linked by skywalk to MRT Bang Pho.",
+  "known_for": [
+   "Family-oriented daily-needs retail",
+   "Skywalk to MRT Bang Pho, near the Chao Phraya pier",
+   "A large residential catchment around Bang Sue and Tao Poon"
+  ],
+  "suits": [
+   "Family casual dining and value chains for local residents",
+   "Student-friendly cafés and desserts"
+  ],
+  "think_twice": [
+   "Tourist or premium concepts: the trade is local",
+   "Brands needing strong evening crowds; the area is residential and quieter at night"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post (via PressReader)",
+    "url": "https://www.pressreader.com/thailand/bangkok-post/20181005/282059097944007"
+   },
+   {
+    "title": "Asset World Corp",
+    "url": "https://www.assetworldcorp-th.com/en/portfolio/retails-and-wholesales/79/gateway-at-bangsue"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "iconsiam": {
+  "about": "Siam Piwat's riverside mega-mall on Charoen Nakhon Road, opened in 2018 with Magnolia and Charoen Pokphand partners, linked by boat shuttles and the BTS Gold Line. It was built as a destination rather than a neighbourhood mall: SookSiam recreates Thailand's regional markets indoors, and the Songkran festival alone drew 1.47 million visitors in 2026.",
+  "known_for": [
+   "SookSiam, an indoor floating-market food hall representing all regions of Thailand",
+   "Luxury flagships and riverside attractions",
+   "Huge event-driven tourist traffic"
+  ],
+  "suits": [
+   "Regional Thai food brands and heritage names that can sell 'authentic Thailand' to tourists",
+   "Premium restaurants with river views and flagship ambitions",
+   "Gift and specialty food for international visitors"
+  ],
+  "think_twice": [
+   "Concepts that rely on everyday local repeat visits; the mall is a destination",
+   "Small operators unable to handle festival peaks and high fit-out standards"
+  ],
+  "sources": [
+   {
+    "title": "Siam Piwat",
+    "url": "https://www.siampiwat.com/en/news/512"
+   },
+   {
+    "title": "Malls.com",
+    "url": "https://www.malls.com/malls/iconsiam/"
+   },
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/corporate/40055958"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "asiatique-the-riverfront": {
+  "about": "Asset World Corporation's open-air riverside destination on Charoen Krung Road, opened almost 15 years ago in restored warehouses, known for its night market, Ferris wheel and river boat access. AWC is investing more than THB 8 billion to transform it, adding a Blue Dome events venue in Q4 2026, a cross-river cable car, MONA Bangkok and an Avatar experience in 2027.",
+  "known_for": [
+   "Evening tourist traffic with riverside dining",
+   "The Ferris wheel and free river shuttles",
+   "A large redevelopment pipeline of attractions"
+  ],
+  "suits": [
+   "Tourist-facing Thai and seafood restaurants with river frontage",
+   "Bars, desserts and snacks for evening visitors"
+  ],
+  "think_twice": [
+   "Daytime or local-repeat concepts: visitors come in the evening and are mainly tourists",
+   "Operators who cannot ride out construction during the transformation"
+  ],
+  "sources": [
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/property/40068522"
+   },
+   {
+    "title": "The Star",
+    "url": "https://www.thestar.com.my/business/business-news/2026/08/04/chao-phraya-attracts-new-hotels-mega-projects"
+   },
+   {
+    "title": "Asset World Corp",
+    "url": "https://www.assetworldcorp-th.com/en/newsroom/news-activities/1108"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-rama-3": {
+  "about": "Central Pattana's mall on Ratchadaphisek–Rama 3 Road, opened in October 1997 and renovated for its 20th anniversary. It is a family-oriented regional mall near the head offices of several major banks, now positioned around a green 'nature meets urban living' interior.",
+  "known_for": [
+   "Weekend family traffic from the Rama 3 and Yan Nawa catchment",
+   "Office workers from nearby bank headquarters on weekdays",
+   "Central department store, Tops, cinema and food court anchors"
+  ],
+  "suits": [
+   "Family casual dining and mid-priced chains",
+   "Weekday lunch formats for the banking office crowd"
+  ],
+  "think_twice": [
+   "Tourist-led concepts: the trade is local",
+   "Concepts that duplicate brands already at the newer Terminal 21 Rama 3 nearby"
+  ],
+  "sources": [
+   {
+    "title": "Central (official store page)",
+    "url": "https://www.central.co.th/en/store/central-rama-3"
+   },
+   {
+    "title": "Khaosod English",
+    "url": "https://www.khaosodenglish.com/life/shopping/2017/06/05/central-rama-iii-partially-close-december/"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.com/wiki/Central_Rama_3"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "terminal-21-rama-3": {
+  "about": "LH Mall & Hotel's fourth Terminal 21, opened on 20 October 2022 on the Chao Phraya riverfront off Rama 3 Road after a Covid delay. A THB 6 billion project with themed 'city' floors and a clock tower, it repeats the chain's formula of a very cheap Pier 21 food court plus a large food market of well-known street-food names.",
+  "known_for": [
+   "Pier 21 food court with low prices",
+   "A food market of 100+ shops featuring famous street-food vendors",
+   "Riverside setting and themed floors"
+  ],
+  "suits": [
+   "Famous street-food and heritage vendors that can trade at food-court price points",
+   "Affordable chains targeting families and residents of Rama 3"
+  ],
+  "think_twice": [
+   "Premium sit-down dining: the mall's traffic is driven by cheap food",
+   "Operators who need rail access; the site relies on cars and buses"
+  ],
+  "sources": [
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/corporate/40021215"
+   },
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/2419306/terminal-21-expansion-to-focus-on-capital"
+   },
+   {
+    "title": "Marketing Oops",
+    "url": "https://www.marketingoops.com/news/biz-news/terminal-21-rama-3"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-old-siam-plaza": {
+  "about": "A plaza in Bangkok's old town opened in 1993 by Siam Sindhorn on the 13.6-rai site of the former Ming Mueang market, bordered by Pahurat, Tri Phet, Charoen Krung and Burapha roads. Known for wholesale gold shops, jewellery, Thai silk and a ground floor of traditional Thai desserts, it is being refreshed after about 30 years, including a renovated third-floor food court.",
+  "known_for": [
+   "Traditional Thai desserts and snacks rarely found elsewhere",
+   "Thai silk and fabric shops",
+   "An old-town location between Pahurat, Sampeng and Yaowarat"
+  ],
+  "suits": [
+   "Heritage Thai dessert and snack makers",
+   "Grab-and-go concepts for old-town shoppers and culture-minded visitors"
+  ],
+  "think_twice": [
+   "Modern lifestyle or café concepts aimed at young urban shoppers: the crowd skews older",
+   "Evening trade: the plaza closes early"
+  ],
+  "sources": [
+   {
+    "title": "Matichon",
+    "url": "https://www.matichon.co.th/economy/news_3932341"
+   },
+   {
+    "title": "InfoQuest",
+    "url": "https://www.infoquest.co.th/?p=293896"
+   },
+   {
+    "title": "TrueID Travel",
+    "url": "https://travel.trueid.net/detail/6WlLpvxvOjwW"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-mall-lifestore-thapra": {
+  "about": "The Mall Group's Tha Phra branch on the Thonburi side, reopened in late 2021 as the second 'The Mall Lifestore' after a revamp the company put at about THB 3 billion. The redesign aimed to modernise an ageing mall for a broad local catchment.",
+  "known_for": [
+   "Gourmet Market and Gourmet Eat food hall",
+   "A family and neighbourhood customer base in Thonburi",
+   "Access from MRT Tha Phra"
+  ],
+  "suits": [
+   "Family casual dining and mid-priced chains",
+   "Neighbourhood brands expanding into Thonburi"
+  ],
+  "think_twice": [
+   "Premium or tourist concepts: the catchment is local",
+   "Concepts competing head-on with Central Pinklao's newly renovated offer nearby"
+  ],
+  "sources": [
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/The_Mall_Lifestore_Tha_Phra"
+   },
+   {
+    "title": "Bangkok Post (via inkl)",
+    "url": "https://www.inkl.com/news/the-mall-alters-revamp-plan"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-mall-lifestore-bangkae": {
+  "about": "The Mall Group's Bang Khae branch on Phetkasem Road, reopened in 2024 after a renovation that began in 2020, positioned as a destination for every generation in west Bangkok. A skywalk links it to MRT Lak Song, the end of the Blue Line.",
+  "known_for": [
+   "A large west-Bangkok catchment with limited mall competition",
+   "Skywalk to MRT Lak Song",
+   "Year-round events and Gourmet Market"
+  ],
+  "suits": [
+   "Chains expanding to west Bangkok's suburban families",
+   "Family and value-casual dining"
+  ],
+  "think_twice": [
+   "Premium or tourist concepts: spend is suburban",
+   "Operators expecting central-Bangkok weekday office traffic"
+  ],
+  "sources": [
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/The_Mall_Lifestore_Bangkae"
+   },
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/more/pr-news/40036855"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-mall-lifestore-bangkapi": {
+  "about": "The Mall Group's Bang Kapi branch, relaunched as a 'Lifestore' at the end of 2023 and positioned as an east-Bangkok landmark with a Japanese-brand focus such as Uniqlo and a large Muji with café. It links to Bangkapi Market and NIDA, with boat and skywalk access and new rail lines planned nearby.",
+  "known_for": [
+   "A Japanese fashion and food cluster",
+   "Dense student and residential catchment around Bang Kapi",
+   "Canal boat and skywalk access"
+  ],
+  "suits": [
+   "Japanese and Japanese-style casual food concepts",
+   "Student-friendly and family chains"
+  ],
+  "think_twice": [
+   "Premium destination dining: the trade is local and price-aware",
+   "Brands dependent on rail access before the planned lines open"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/general/2700881/bang-kapis-lifestore-unveiled"
+   },
+   {
+    "title": "IADS",
+    "url": "https://www.iads.org/iads-member-news/the-mall-group-transforms-the-mall-life-store-bangkapi-and-bang-khae-0ce77"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-mall-lifestore-ngamwongwan": {
+  "about": "The Mall Group's Ngamwongwan branch on the Bangkok–Nonthaburi border, the first mall rebuilt under the 'Lifestore' concept with an investment the company put at about THB 4 billion. The Mall Group now pitches it as a northern-zone landmark offering city-centre standards close to home.",
+  "known_for": [
+   "The first Lifestore format",
+   "A long-standing customer base in north Bangkok and Nonthaburi",
+   "Gourmet Market and Gourmet Eat"
+  ],
+  "suits": [
+   "Mid-priced chains and family dining for north Bangkok and Nonthaburi",
+   "Brands testing a suburban flagship"
+  ],
+  "think_twice": [
+   "Tourist-led concepts",
+   "Concepts that need rail at the door"
+  ],
+  "sources": [
+   {
+    "title": "Thairath",
+    "url": "https://en.thairath.co.th/lifestyle/life/2938220"
+   },
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/2017495/"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-rama-2": {
+  "about": "Central Pattana's regional mall on Rama 2 Road, opened in December 2002, which CPN renovated with a THB 1.2 billion makeover to be the leading regional mall for southern Bangkok. The revamp added green spaces, a revamped food hall and supermarket, and aimed to draw more affluent shoppers.",
+  "known_for": [
+   "The main regional mall for the Rama 2 corridor",
+   "A revamped Central Food Hall and Tops",
+   "Family weekend traffic from suburban housing estates"
+  ],
+  "suits": [
+   "Family casual dining and chains serving south-Bangkok suburbs",
+   "Brands targeting car-borne households"
+  ],
+  "think_twice": [
+   "Concepts that rely on public transport traffic",
+   "Tourist-facing formats"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://bangkokpost.com/thailand/pr/2404313/central-rama-2-to-celebrate-new-look-highlighting-itself-as-no-1-regional-mall-by-investing"
+   },
+   {
+    "title": "Thailand Construction",
+    "url": "https://thailand-construction.com/?p=23888"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-westgate": {
+  "about": "Central Pattana's super-regional mall at the Bang Yai intersection in Nonthaburi, opened on 28 August 2015 at a cost of over THB 10 billion, and later joined by IKEA. Including IKEA its gross floor area is about 550,000 sq m, and it is served by MRT Talad Bang Yai on the Purple Line.",
+  "known_for": [
+   "One of Thailand's largest malls by floor area",
+   "IKEA and SB Design Square home anchors",
+   "A road-and-highway hub for west Nonthaburi"
+  ],
+  "suits": [
+   "Chains needing a high-volume west-side flagship",
+   "Family dining tied to home-shopping trips"
+  ],
+  "think_twice": [
+   "Small independents that can't stand out in a very large food offer",
+   "Concepts built on walk-in urban trade"
+  ],
+  "sources": [
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Central_WestGate"
+   },
+   {
+    "title": "Inside Retail Asia",
+    "url": "https://insideretail.asia/?p=831"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-ramindra": {
+  "about": "Central Pattana's second-ever mall, on Ram Intra Road in Bang Khen, relaunched in January 2023 after a THB 2 billion overhaul — its largest in 30 years — under an 'Everyday Good Vibes' neighbourhood-mall concept. MRT Pink Line's Ram Inthra 3 station, open since November 2023, sits right beside it, and CPN aimed the revamp at the area's higher-spending residents.",
+  "known_for": [
+   "A neighbourhood 'third place' with green public space",
+   "A stated goal to be Ram Intra's best food destination",
+   "Pink Line access at the door"
+  ],
+  "suits": [
+   "Everyday casual dining and cafés for Ram Intra's growing middle-class housing",
+   "Brands following the Pink Line's new residential catchment"
+  ],
+  "think_twice": [
+   "Destination or tourist concepts: this is a neighbourhood mall",
+   "Large-footprint flagships; the mall is mid-sized"
+  ],
+  "sources": [
+   {
+    "title": "Central Group newsroom",
+    "url": "https://www.centralgroup.com/en/newsroom/corporate-news/526/bringing-vibrancy-to-ramindra-central-ramindra-unveils-its-brand-new-look-to-be-the-newest-and-hippest-landmark-with-total-investment-of-2-billion-baht-in-response-to-high-purchasing-power-customers-and-connecting-strategic-ring-extension"
+   },
+   {
+    "title": "Central Pattana",
+    "url": "https://www.centralpattana.co.th/en/our-business/shopping-center/380/central-ramindra"
+   },
+   {
+    "title": "art4d",
+    "url": "https://art4d.com/en/2023/02/central-ramindra"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-eastville": {
+  "about": "Central Pattana's semi-outdoor lifestyle mall on Pradit Manutham (Ekamai–Ram Intra) Road, opened in late 2015 with an investment of over THB 6 billion. Inspired by districts such as Covent Garden and the Meatpacking District, it opened with around 100 restaurants, late-night bars and bistros, and became known as one of Bangkok's most pet-friendly malls.",
+  "known_for": [
+   "Semi-outdoor design with a park and pet-friendly policy",
+   "A large restaurant and bar-and-bistro zone open late",
+   "An affluent car-owning catchment along the Ekamai–Ram Intra corridor"
+  ],
+  "suits": [
+   "Lifestyle casual dining, bistros and cafés for affluent families",
+   "Pet-friendly and outdoor-terrace concepts"
+  ],
+  "think_twice": [
+   "Concepts relying on rail commuters: access is mainly by car",
+   "Budget concepts, which don't match the mall's lifestyle positioning"
+  ],
+  "sources": [
+   {
+    "title": "Central Pattana",
+    "url": "https://www.centralpattana.co.th/en/our-business/shopping-center/383/central-eastville"
+   },
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/general/737200/cpn-refreshes-central-festival-brand"
+   },
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://timeout.com/bangkok/shopping/central-eastville"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "crystal-design-center": {
+  "about": "A design and home-furnishing district on Pradit Manutham (Ekamai–Ram Intra) Road, opened in 2010 and now marking its 15th year, with showrooms spread over many low-rise buildings. Alongside furniture and building-material showrooms it has upscale restaurants, cafés and bars that draw affluent drive-in residents, and architects RIOS have designed a redevelopment into a mixed-use destination of about 170,000 sq m.",
+  "known_for": [
+   "Furniture, décor and building-material showrooms",
+   "Design-led cafés and restaurants in an open-plan setting",
+   "Events, weddings and a ballroom"
+  ],
+  "suits": [
+   "Destination cafés and design-forward restaurants for affluent drive-in customers",
+   "Bars and evening dining for nearby residents"
+  ],
+  "think_twice": [
+   "Concepts needing public transport or tourist flow: access is by car only",
+   "High-volume QSR; footfall is spread across a large campus",
+   "Long commitments before the redevelopment timetable is clear"
+  ],
+  "sources": [
+   {
+    "title": "RIOS (architect)",
+    "url": "https://www.rios.com/projects/crystal-design-center/"
+   },
+   {
+    "title": "ThaiPR",
+    "url": "https://www.thaipr.net/?p=3543575"
+   },
+   {
+    "title": "Tasty Thailand",
+    "url": "https://tastythailand.com/?p=1214"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-village": {
+  "about": "Central Pattana's THB 5 billion luxury outlet near Suvarnabhumi Airport, opened on 31 August 2019 as Thailand's first international luxury outlet, with Thai-inspired architecture and daily discounts of 35–70%. CPN targeted a mix of about two-thirds Thai shoppers and one-third international tourists, with free shuttles from CentralWorld, BTS Udom Suk and the airport area.",
+  "known_for": [
+   "Outlet stores of international brands",
+   "A stopover for travellers on the way to or from the airport",
+   "Thai-style village architecture"
+  ],
+  "suits": [
+   "Thai food concepts that work as a tourist's first or last meal",
+   "Quick, reliable casual dining for long shopping trips"
+  ],
+  "think_twice": [
+   "Concepts needing residential repeat visits: the outlet is a drive-to occasion",
+   "Premium fine dining; outlet shoppers are value-minded"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/1734535/central-village-to-cut-ribbon-on-aug-31"
+   },
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/noname/30375120"
+   },
+   {
+    "title": "Time Out Bangkok",
+    "url": "https://www.timeout.com/bangkok/shopping/central-village"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-chaengwattana": {
+  "about": "Central Pattana's first mall in Nonthaburi, opened in 2008 on Chaeng Watthana Road with a seven-storey mall and an office tower on a 24-rai site. It serves a catchment of government offices, universities, banks and hospitals around the Chaeng Watthana Government Complex, and is served by the MRT Pink Line.",
+  "known_for": [
+   "Weekday office and civil-servant traffic",
+   "A large residential catchment in Pak Kret and north Bangkok",
+   "Pink Line access"
+  ],
+  "suits": [
+   "Weekday lunch formats and value chains for office workers",
+   "Family casual dining at weekends"
+  ],
+  "think_twice": [
+   "Tourist concepts",
+   "Late-night formats: the area quiets in the evening"
+  ],
+  "sources": [
+   {
+    "title": "Central (official store page)",
+    "url": "https://www.central.co.th/en/store/central-chaengwattana"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Central_Chaengwattana"
+   },
+   {
+    "title": "Cushman & Wakefield",
+    "url": "https://www.cushmanwakefield.com/en/thailand/properties/for-lease/office/pakkret-district/nonthaburi/99999-chaengwattana-road-pakkret/central-chaengwattana-office-tower-l"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "fashion-island": {
+  "about": "A large regional mall on Ram Intra Road in Khan Na Yao, opened on 15 June 1995 and extended with The Promenade lifestyle wing in 2012; it is part of the Land and Houses group's retail arm, which also runs Terminal 21. Since November 2023 the MRT Pink Line's Outer Ring Road–Ram Inthra station has served it, adding rail access to a car-borne east-Bangkok catchment.",
+  "known_for": [
+   "A very large floor area anchored by department store, hypermarket and home stores",
+   "Food Island food court and a food market",
+   "Don Don Donki and a Japanese supermarket presence"
+  ],
+  "suits": [
+   "Value and family chains serving east Bangkok's large housing catchment",
+   "Food-court and quick-service formats with high volume"
+  ],
+  "think_twice": [
+   "Premium or tourist concepts",
+   "Small brands that struggle to be found in a very large, sprawling floor plan"
+  ],
+  "sources": [
+   {
+    "title": "Wikipedia",
+    "url": "https://wikiwand.com/en/articles/Fashion_Island_(Thailand)"
+   },
+   {
+    "title": "Bangkok Post (via inkl)",
+    "url": "https://www.inkl.com/news/terminal-21-expansion-to-focus-on-capital"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "future-park-rangsit": {
+  "about": "A very large regional mall on Phahonyothin Road in Pathum Thani, opened in 1995 by the Wanglee family's Rangsit Plaza and expanded in 2015 with the THB 4 billion Zpell wing. Its trade is almost entirely local, drawn from Pathum Thani and the northern gateway to Bangkok; CPN's planned 750-rai mega-project nearby will add a major competitor.",
+  "known_for": [
+   "Huge local footfall, especially on holidays",
+   "Zpell, the younger lifestyle wing",
+   "A catchment spanning Pathum Thani, Rangsit universities and industrial estates"
+  ],
+  "suits": [
+   "Mass-market and value chains needing volume",
+   "Student-friendly snacks, drinks and desserts"
+  ],
+  "think_twice": [
+   "Premium or tourist-led concepts",
+   "Long-lease commitments without weighing the coming CPN Rangsit competition"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/general/780161/future-park-rangsit-to-evolve-into-future-city"
+   },
+   {
+    "title": "Inside Retail Asia",
+    "url": "https://insideretail.asia/?p=14537"
+   },
+   {
+    "title": "Thairath",
+    "url": "https://en.thairath.co.th/money/economics/thai_economics/2927170"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-salaya": {
+  "about": "Central Pattana's mall on Borommaratchachonnani Road in Nakhon Pathom, opened on 12 August 2014 as CPN's first theme mall, with a 'contemporary botanical' design. It serves the western edge of Greater Bangkok, including Salaya's university community around Mahidol University and Phutthamonthon.",
+  "known_for": [
+   "A botanical-garden themed building",
+   "A student and staff catchment around Mahidol's Salaya campus",
+   "Car-borne suburban families from west Bangkok"
+  ],
+  "suits": [
+   "Student-friendly cafés, desserts and value casual dining",
+   "Family chains for the western suburbs"
+  ],
+  "think_twice": [
+   "Premium concepts: spend is suburban and student-driven",
+   "Concepts needing rail access"
+  ],
+  "sources": [
+   {
+    "title": "Central Pattana",
+    "url": "https://www.centralpattana.co.th/en/our-business/shopping-center/395/central-salaya"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.com/wiki/Central_Salaya"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-mahachai": {
+  "about": "Central Pattana's THB 4.75 billion mall on Rama 2 Road in Samut Sakhon, opened on 23 November 2017, with a building designed around the province's harbour and fishing identity. It serves Samut Sakhon and Samut Songkhram residents and Rama 2 commuters, and has an 'Eatalay' zone selling fresh seafood.",
+  "known_for": [
+   "Eatalay seafood zone linked to the Mahachai seafood trade",
+   "The main modern mall for Samut Sakhon",
+   "Rama 2 road traffic heading south-west"
+  ],
+  "suits": [
+   "Seafood and Thai restaurants that can use local supply",
+   "Family chains entering Samut Sakhon"
+  ],
+  "think_twice": [
+   "Premium urban concepts: the market is provincial",
+   "Concepts relying on tourists or rail"
+  ],
+  "sources": [
+   {
+    "title": "Central Pattana",
+    "url": "https://www.centralpattana.co.th/en/our-business/shopping-center/369/central-mahachai"
+   },
+   {
+    "title": "Coconuts Bangkok",
+    "url": "https://coconuts.co/bangkok/lifestyle/new-central-mahachai-open-southwest-bangkok"
+   },
+   {
+    "title": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Central_Mahachai"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "bangkok-mall": {
+  "about": "The Mall Group's planned mega-mall at the Bang Na intersection, which Monocle reports is slated to open in 2028 as part of a new wave of Bangkok mall development. It is not yet trading, so there is no footfall record to judge.",
+  "known_for": [
+   "A large The Mall Group project at the Sukhumvit–Bang Na junction",
+   "A catchment shared with Central Bangna, Mega Bangna and the new Bangna-area projects"
+  ],
+  "suits": [
+   "Brands that want an early-stage conversation about a 2028 opening",
+   "Operators already strong in Bang Na and Samut Prakan"
+  ],
+  "think_twice": [
+   "Anyone needing a trading track record before signing",
+   "Concepts that would face direct competition from Central Bangna and Mega Bangna nearby"
+  ],
+  "sources": [
+   {
+    "title": "Monocle",
+    "url": "https://monocle.com/business/bangkoks-shopping-centres-and-malls-are-on-the-up/"
+   },
+   {
+    "title": "The Nation",
+    "url": "https://nationthailand.com/business/trade/40041921"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-northville": {
+  "about": "Central Pattana's redevelopment of its 20-year-old Rattanathibet mall in Nonthaburi into a mixed-use project, opened on 3 July 2026 after a THB 4.5 billion investment. CPN describes it as the largest mixed-use development in the heart of Nonthaburi, on a 59-rai site.",
+  "known_for": [
+   "A newly rebuilt mall with residential and mixed-use components",
+   "A large established Nonthaburi catchment",
+   "Purple Line access along Rattanathibet Road"
+  ],
+  "suits": [
+   "Chains and casual dining wanting fresh space in Nonthaburi",
+   "Family dining for the surrounding residential neighbourhoods"
+  ],
+  "think_twice": [
+   "Operators wanting long trading history: the new format opened in mid-2026",
+   "Concepts that overlap with Central WestGate and The Mall Ngamwongwan nearby"
+  ],
+  "sources": [
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/40068309"
+   },
+   {
+    "title": "Mitihoon (CPN plan)",
+    "url": "https://www.mitihoon.com/2026/03/25/628444/"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "central-central": {
+  "about": "A THB 11 billion mixed-use project by Central Pattana with Mitsubishi Estate, branded CenTRal cENtrAL, with its retail component planned to open in Q2 2027. The developers highlight more than 3,400 sq m of social public space as part of the scheme.",
+  "known_for": [
+   "A Central Pattana–Mitsubishi Estate partnership",
+   "A large share of public, social space",
+   "Planned retail opening in Q2 2027"
+  ],
+  "suits": [
+   "Brands seeking a pre-opening slot in a new mixed-use scheme",
+   "Concepts that work with public space and events"
+  ],
+  "think_twice": [
+   "Operators who need proven footfall before signing",
+   "Concepts dependent on tourist traffic until the project's catchment is clear"
+  ],
+  "sources": [
+   {
+    "title": "Central Group newsroom",
+    "url": "https://www.centralgroup.com/en/newsroom/corporate-news/741/"
+   },
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/40068317"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "ics": {
+  "about": "A 29-storey mixed-use tower on Charoen Nakhon Road opposite ICONSIAM, built by the same Siam Piwat, MQDC and CP partners and opened on 11 January 2023. It links to BTS Gold Line Charoen Nakhon station and ICONSIAM, and combines Lotus's Privé premium supermarket, a Siriraj health centre, offices, a Hilton Garden Inn and about 80 restaurant brands, some opening their first branch there.",
+  "known_for": [
+   "Everyday-needs retail and restaurants next to ICONSIAM",
+   "Office and hotel traffic in the same building",
+   "Direct BTS Gold Line access"
+  ],
+  "suits": [
+   "Casual dining and quick lunch formats for office workers and residents",
+   "Brands wanting Charoen Nakhon exposure at lower intensity than ICONSIAM"
+  ],
+  "think_twice": [
+   "Destination concepts that need ICONSIAM-level tourist traffic",
+   "Concepts duplicating ICONSIAM's huge food offer next door"
+  ],
+  "sources": [
+   {
+    "title": "Bangkok Post",
+    "url": "https://www.bangkokpost.com/business/2365910/iconsiam-plans-new-project"
+   },
+   {
+    "title": "Khaosod English",
+    "url": "https://www.khaosodenglish.com/sponsored/2023/01/12/iconsiam-marks-another-milestone-of-success-with-an-addition-of-thonburis-new-landmark-the-launch-of-ics-and-lotuss-prive-to-kick-start-2023/"
+   },
+   {
+    "title": "Marketing Oops",
+    "url": "https://www.marketingoops.com/?p=302374"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "cloud-11": {
+  "about": "MQDC's creator-economy district on Sukhumvit between BTS Punnawithi and Udom Suk, officially opened on 15 July 2026 on about 27 rai with roughly 254,000 sq m of floor area. It combines studios, an events hall, offices, retail and Bangkok's largest sky park, with theCOMMONS Cloud 11 as a food and community anchor.",
+  "known_for": [
+   "Studios and venues for content creators",
+   "theCOMMONS Cloud 11 food hall",
+   "A large public sky park for South Sukhumvit residents"
+  ],
+  "suits": [
+   "Creator-friendly cafés and casual concepts with strong visual identity",
+   "Event-night and weekend F&B tied to the hall and park"
+  ],
+  "think_twice": [
+   "Concepts needing proven footfall: the project only opened in mid-2026",
+   "Value mass-market chains that don't fit the creative positioning"
+  ],
+  "sources": [
+   {
+    "title": "MQDC",
+    "url": "https://mqdc.com/news/809-mqdc-unveils-cloud-11-a-new-creative-landmark-transforming-south-sukhumvit-into-asia-s-next-hub-for-innovation-and-the-creative-economy"
+   },
+   {
+    "title": "MQDC",
+    "url": "https://mqdc.com/news/677-cloud-11-gets-set-to-open-by-year-end"
+   },
+   {
+    "title": "Thairath",
+    "url": "https://www.thairath.co.th/lifestyle/food/2954739"
+   }
+  ],
+  "checked": "Nov 2026"
+ },
+ "the-forestias": {
+  "about": "MQDC's 'forest in the city' township on Bangna–Trad Km 7, built around a 30-rai forest with residences for several generations, with the residential zone scheduled for completion in 2026. At its front, CP Axtra opened Happitat, a THB 15 billion family-oriented shopping complex on about 60 rai, on 21 August 2026.",
+  "known_for": [
+   "A large affluent residential township in Bang Na",
+   "Happitat, a new family and edutainment retail destination",
+   "Green space and forest-themed design"
+  ],
+  "suits": [
+   "Family and premium-casual dining for the new Bang Na residential base",
+   "Healthy, nature-led and kid-friendly concepts"
+  ],
+  "think_twice": [
+   "Operators needing settled footfall: retail opened in August 2026 and residents are still moving in",
+   "Concepts entering a crowded Bang Na market with Mega Bangna and Central Bangna nearby"
+  ],
+  "sources": [
+   {
+    "title": "The Nation",
+    "url": "https://www.nationthailand.com/business/40069996"
+   },
+   {
+    "title": "SCB",
+    "url": "https://www.scb.co.th/en/about-us/news/aug-2025/scb-supports-mqdc"
+   },
+   {
+    "title": "MQDC",
+    "url": "https://mqdc.com/news/817-mqdc-launches-mulberry-grove-the-forestias-condominiums-a-6-building-super-luxury-development-now-ready-for-move-in"
+   }
+  ],
+  "checked": "Nov 2026"
+ }
+}

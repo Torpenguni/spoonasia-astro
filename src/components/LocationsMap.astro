@@ -189,6 +189,7 @@
   import { select, geoMercator, geoPath, zoom as d3zoom, zoomIdentity, rollup, max } from 'd3';
   import GEO from '../data/locations/geo.json';
   import PROJ from '../data/locations/projects.json';
+  import OWNER from '../data/locations/owner-photos.json';
 
   type Proj = (typeof PROJ)[number];
   type ZoneKey = keyof typeof GEO.zones;
@@ -355,7 +356,7 @@
     const nActive = (st.types.size < 6 ? 1 : 0) + (st.rent !== 'any' ? 1 : 0) + st.segs.size + st.tags.size + (st.direct ? 1 : 0) + (st.openonly ? 1 : 0);
     $('lm-active').textContent = nActive ? `· ${nActive} active` : '';
     $('lm-list').innerHTML = vis.slice().sort((a, b) => a.name.localeCompare(b.name)).map((p) =>
-      `<li role="option" tabindex="0" data-id="${p.id}" aria-selected="${st.sel === p.id}">${p.photos ? `<img class="lm-th" src="${esc(p.photos.cover.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : `<span class="lm-thx"><span class="lm-dot" style="background:${TYPES[p.type][1]}"></span></span>`}<span><span class="nm">${esc(p.name)}</span><br><span class="sb">${esc(TYPES[p.type][0])} · ${esc(zones[p.zone!]?.name)}${p.status !== 'open' ? ' · ' + esc(STATUS[p.status]) : ''}</span></span></li>`
+      `<li role="option" tabindex="0" data-id="${p.id}" aria-selected="${st.sel === p.id}">${coverThumb(p) ? `<img class="lm-th" src="${esc(coverThumb(p))}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : `<span class="lm-thx"><span class="lm-dot" style="background:${TYPES[p.type][1]}"></span></span>`}<span><span class="nm">${esc(p.name)}</span><br><span class="sb">${esc(TYPES[p.type][0])} · ${esc(zones[p.zone!]?.name)}${p.status !== 'open' ? ' · ' + esc(STATUS[p.status]) : ''}</span></span></li>`
     ).join('') || '<li style="cursor:default"><span class="sb">No project matches. Loosen a filter or reset.</span></li>';
     legend(); detail();
   }
@@ -374,8 +375,17 @@
   const dossierLink = (z: string) => { const d = DOSSIER[z]; return d ? `<a href="#zone-${d[1]}">${esc(d[0])} dossier</a>` : '<span class="muted">Dossier not yet written</span>'; };
 
   type Photo = { thumb: string; src: string; page: string; author: string; license: string; licenseUrl: string; via?: string; note?: string };
-  const photosOf = (p: Proj): Photo[] => (p.photos ? [p.photos.cover, ...p.photos.album] : []);
-  const credit = (ph: Photo) => `Photo: <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.author)}</a> · ${ph.licenseUrl ? `<a href="${esc(ph.licenseUrl)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)} · ${esc(ph.via || 'Wikimedia Commons')}${ph.note ? ` · ${esc(ph.note)}` : ''}`;
+  const ownerPhotos = (p: Proj): Photo[] | null => {
+    const o = (OWNER as Record<string, any>)[p.slug];
+    if (!o || !Array.isArray(o.photos) || !o.photos.length) return null;
+    return o.photos.map((f: { file: string; caption?: string }) => {
+      const url = `/images/locations/projects/${p.slug}/${f.file}`;
+      return { thumb: url, src: url, page: '', author: o.owner, license: '', licenseUrl: '', via: 'owner', note: f.caption };
+    });
+  };
+  const photosOf = (p: Proj): Photo[] => ownerPhotos(p) ?? (p.photos ? [p.photos.cover, ...p.photos.album] : []);
+  const coverThumb = (p: Proj) => photosOf(p)[0]?.thumb;
+  const credit = (ph: Photo) => ph.via === 'owner' ? `Photo courtesy of ${esc(ph.author)}${ph.note ? ` · ${esc(ph.note)}` : ''}` : `Photo: <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.author)}</a> · ${ph.licenseUrl ? `<a href="${esc(ph.licenseUrl)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)} · ${esc(ph.via || 'Wikimedia Commons')}${ph.note ? ` · ${esc(ph.note)}` : ''}`;
 
   const lb = $<HTMLDialogElement>('lm-lb');
   const lbImg = $<HTMLImageElement>('lm-lb-img');
@@ -411,8 +421,8 @@
   lbImg.addEventListener('touchend', (e) => { const dx = e.changedTouches[0].clientX - touchX; if (Math.abs(dx) > 40) lbShow(lbIdx + (dx < 0 ? 1 : -1)); });
 
   const zoneGrid = (z: string) => {
-    const ps = PROJ.filter((p) => p.zone === z && p.photos && pass(p)).slice(0, 6);
-    return ps.length ? `<div class="lm-zgrid">${ps.map((p) => `<button type="button" data-pid="${p.id}"><img src="${esc(p.photos!.cover.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer" />${esc(p.name)}</button>`).join('')}</div>` : '';
+    const ps = PROJ.filter((p) => p.zone === z && coverThumb(p) && pass(p)).slice(0, 6);
+    return ps.length ? `<div class="lm-zgrid">${ps.map((p) => `<button type="button" data-pid="${p.id}"><img src="${esc(coverThumb(p)!)}" alt="" loading="lazy" referrerpolicy="no-referrer" />${esc(p.name)}</button>`).join('')}</div>` : '';
   };
   const bindZoneGrid = () => $('lm-detail').querySelectorAll<HTMLElement>('.lm-zgrid button').forEach((b) => { b.onclick = () => selectProj(+b.dataset.pid!); });
 

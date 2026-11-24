@@ -80,7 +80,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "siam-paragon"
  },
  {
   "id": 2,
@@ -145,7 +146,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "siam-center"
  },
  {
   "id": 3,
@@ -226,7 +228,8 @@
      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
     }
    ]
-  }
+  },
+  "slug": "siam-discovery"
  },
  {
   "id": 4,
@@ -285,7 +288,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
     }
    ]
-  }
+  },
+  "slug": "mbk-center"
  },
  {
   "id": 5,
@@ -356,7 +360,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "siam-square-one"
  },
  {
   "id": 6,
@@ -432,7 +437,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
     }
    ]
-  }
+  },
+  "slug": "centralworld"
  },
  {
   "id": 7,
@@ -488,7 +494,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-chidlom"
  },
  {
   "id": 8,
@@ -569,7 +576,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "gaysorn-village"
  },
  {
   "id": 9,
@@ -618,7 +626,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "big-c-ratchadamri"
  },
  {
   "id": 10,
@@ -659,7 +668,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0/"
    },
    "album": []
-  }
+  },
+  "slug": "platinum-fashion-mall"
  },
  {
   "id": 11,
@@ -733,7 +743,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-embassy"
  },
  {
   "id": 12,
@@ -807,7 +818,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "samyan-mitrtown"
  },
  {
   "id": 13,
@@ -881,7 +893,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "one-bangkok"
  },
  {
   "id": 14,
@@ -918,7 +931,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
    },
    "album": []
-  }
+  },
+  "slug": "park-ventures-ecoplex"
  },
  {
   "id": 15,
@@ -965,7 +979,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "the-unicorn"
  },
  {
   "id": 16,
@@ -1037,7 +1052,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "silom-complex"
  },
  {
   "id": 17,
@@ -1092,7 +1108,8 @@
      "licenseUrl": ""
     }
    ]
-  }
+  },
+  "slug": "dusit-central-park"
  },
  {
   "id": 18,
@@ -1132,7 +1149,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
    },
    "album": []
-  }
+  },
+  "slug": "robinson-bangrak"
  },
  {
   "id": 19,
@@ -1160,7 +1178,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "mahanakhon-cube"
  },
  {
   "id": 20,
@@ -1206,7 +1225,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "empire-tower"
  },
  {
   "id": 21,
@@ -1243,7 +1263,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
    },
    "album": []
-  }
+  },
+  "slug": "sathorn-square"
  },
  {
   "id": 22,
@@ -1336,7 +1357,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "terminal-21-asok"
  },
  {
   "id": 23,
@@ -1382,7 +1404,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "exchange-tower"
  },
  {
   "id": 24,
@@ -1440,7 +1463,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "the-emquartier"
  },
  {
   "id": 25,
@@ -1497,7 +1521,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "the-emporium"
  },
  {
   "id": 26,
@@ -1578,7 +1603,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
     }
    ]
-  }
+  },
+  "slug": "gateway-ekamai"
  },
  {
   "id": 27,
@@ -1608,7 +1634,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "j-avenue-thonglor"
  },
  {
   "id": 28,
@@ -1636,7 +1663,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "the-commons-thonglor"
  },
  {
   "id": 29,
@@ -1664,7 +1692,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "seenspace-thonglor"
  },
  {
   "id": 30,
@@ -1705,7 +1734,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
    },
    "album": []
-  }
+  },
+  "slug": "donki-mall-thonglor"
  },
  {
   "id": 31,
@@ -1732,7 +1762,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "rain-hill"
  },
  {
   "id": 32,
@@ -1762,7 +1793,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "lotuss-rama-4"
  },
  {
   "id": 33,
@@ -1789,7 +1821,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "the-parq"
  },
  {
   "id": 34,
@@ -1816,7 +1849,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "fyi-center"
  },
  {
   "id": 35,
@@ -1870,7 +1904,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
     }
    ]
-  }
+  },
+  "slug": "w-district"
  },
  {
   "id": 36,
@@ -1898,7 +1933,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "lotuss-on-nut"
  },
  {
   "id": 37,
@@ -1926,7 +1962,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "habito-mall"
  },
  {
   "id": 38,
@@ -1966,7 +2003,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
    },
    "album": []
-  }
+  },
+  "slug": "true-digital-park"
  },
  {
   "id": 39,
@@ -2040,7 +2078,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-bangna"
  },
  {
   "id": 40,
@@ -2080,7 +2119,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
    },
    "album": []
-  }
+  },
+  "slug": "imperial-world-samrong"
  },
  {
   "id": 41,
@@ -2154,7 +2194,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "mega-bangna"
  },
  {
   "id": 42,
@@ -2227,7 +2268,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "seacon-square-srinakarin"
  },
  {
   "id": 43,
@@ -2265,7 +2307,8 @@
     "note": "Photographed under its former name, Seri Center"
    },
    "album": []
-  }
+  },
+  "slug": "paradise-park"
  },
  {
   "id": 44,
@@ -2306,7 +2349,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0/"
    },
    "album": []
-  }
+  },
+  "slug": "central-rama-9"
  },
  {
   "id": 45,
@@ -2333,7 +2377,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "fortune-town"
  },
  {
   "id": 46,
@@ -2379,7 +2424,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "g-tower"
  },
  {
   "id": 47,
@@ -2408,7 +2454,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "the-street-ratchada"
  },
  {
   "id": 48,
@@ -2438,7 +2485,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "esplanade-ratchada"
  },
  {
   "id": 49,
@@ -2515,7 +2563,8 @@
      "via": "Flickr"
     }
    ]
-  }
+  },
+  "slug": "show-dc"
  },
  {
   "id": 50,
@@ -2564,7 +2613,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "la-villa-ari"
  },
  {
   "id": 51,
@@ -2602,7 +2652,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
    },
    "album": []
-  }
+  },
+  "slug": "big-c-saphan-khwai"
  },
  {
   "id": 52,
@@ -2676,7 +2727,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
     }
    ]
-  }
+  },
+  "slug": "central-ladprao"
  },
  {
   "id": 53,
@@ -2731,7 +2783,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "union-mall"
  },
  {
   "id": 54,
@@ -2771,7 +2824,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
    },
    "album": []
-  }
+  },
+  "slug": "major-ratchayothin"
  },
  {
   "id": 55,
@@ -2821,7 +2875,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
     }
    ]
-  }
+  },
+  "slug": "gateway-bangsue"
  },
  {
   "id": 56,
@@ -2905,7 +2960,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "iconsiam"
  },
  {
   "id": 57,
@@ -2977,7 +3033,8 @@
      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/"
     }
    ]
-  }
+  },
+  "slug": "asiatique-the-riverfront"
  },
  {
   "id": 58,
@@ -3051,7 +3108,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-rama-3"
  },
  {
   "id": 59,
@@ -3093,7 +3151,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
    },
    "album": []
-  }
+  },
+  "slug": "terminal-21-rama-3"
  },
  {
   "id": 60,
@@ -3150,7 +3209,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "the-old-siam-plaza"
  },
  {
   "id": 61,
@@ -3216,7 +3276,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-pinklao"
  },
  {
   "id": 62,
@@ -3273,7 +3334,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "the-mall-lifestore-thapra"
  },
  {
   "id": 63,
@@ -3347,7 +3409,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "the-mall-lifestore-bangkae"
  },
  {
   "id": 64,
@@ -3421,7 +3484,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-rama-2"
  },
  {
   "id": 65,
@@ -3479,7 +3543,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-ramindra"
  },
  {
   "id": 66,
@@ -3538,7 +3603,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "the-mall-lifestore-bangkapi"
  },
  {
   "id": 67,
@@ -3566,7 +3632,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "lotuss-bangkapi"
  },
  {
   "id": 68,
@@ -3631,7 +3698,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-eastville"
  },
  {
   "id": 69,
@@ -3658,7 +3726,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "crystal-design-center"
  },
  {
   "id": 70,
@@ -3724,7 +3793,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "fashion-island"
  },
  {
   "id": 71,
@@ -3764,7 +3834,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
    },
    "album": []
-  }
+  },
+  "slug": "central-village"
  },
  {
   "id": 72,
@@ -3838,7 +3909,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-westgate"
  },
  {
   "id": 73,
@@ -3869,7 +3941,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "central-northville"
  },
  {
   "id": 74,
@@ -3919,7 +3992,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
     }
    ]
-  }
+  },
+  "slug": "central-chaengwattana"
  },
  {
   "id": 75,
@@ -3977,7 +4051,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "the-mall-lifestore-ngamwongwan"
  },
  {
   "id": 76,
@@ -4028,7 +4103,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "future-park-rangsit"
  },
  {
   "id": 77,
@@ -4094,7 +4170,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-salaya"
  },
  {
   "id": 78,
@@ -4168,7 +4245,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
    ]
-  }
+  },
+  "slug": "central-mahachai"
  },
  {
   "id": 79,
@@ -4241,7 +4319,8 @@
      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
     }
    ]
-  }
+  },
+  "slug": "emsphere"
  },
  {
   "id": 80,
@@ -4271,7 +4350,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "ics"
  },
  {
   "id": 81,
@@ -4299,7 +4379,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "cloud-11"
  },
  {
   "id": 82,
@@ -4327,7 +4408,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "bangkok-mall"
  },
  {
   "id": 83,
@@ -4355,7 +4437,8 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "the-forestias"
  },
  {
   "id": 84,
@@ -4393,7 +4476,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
    },
    "album": []
-  }
+  },
+  "slug": "the-central-phaholyothin"
  },
  {
   "id": 85,
@@ -4421,6 +4505,7 @@
   "rent_thb_sqm": null,
   "fnb_gas": null,
   "verified": false,
-  "photos": null
+  "photos": null,
+  "slug": "central-central"
  }
 ]

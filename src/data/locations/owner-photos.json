@@ -1,0 +1,17 @@
+{
+ "_how_to": "Owner-supplied photos. Add an entry only after the owner has given written permission. Files go in public/images/locations/projects/<slug>/ (webp or jpg, 1600px wide max). The first photo is the cover. These replace the Wikimedia Commons photos for that project.",
+ "_example": {
+  "owner": "Central Pattana",
+  "permission": "Email from <name>, <date>",
+  "photos": [
+   {
+    "file": "cover.webp",
+    "caption": "Main entrance"
+   },
+   {
+    "file": "atrium.webp",
+    "caption": "Atrium"
+   }
+  ]
+ }
+}

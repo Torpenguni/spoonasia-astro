@@ -57,11 +57,23 @@
     </section>
   </div>
 
+  <dialog class="lm-lb" id="lm-lb" aria-label="Project photos">
+    <div class="lm-lb-head"><span id="lm-lb-title"></span><span id="lm-lb-count"></span><button type="button" id="lm-lb-close" aria-label="Close photos">×</button></div>
+    <div class="lm-lb-stage">
+      <button type="button" class="lm-lb-nav" id="lm-lb-prev" aria-label="Previous photo">‹</button>
+      <img id="lm-lb-img" alt="" />
+      <button type="button" class="lm-lb-nav" id="lm-lb-next" aria-label="Next photo">›</button>
+    </div>
+    <p class="lm-lb-cap" id="lm-lb-cap"></p>
+    <div class="lm-lb-strip" id="lm-lb-strip"></div>
+  </dialog>
+
   <p class="lm-note">
     Draft data — pins are approximate and every project is unverified until a landlord confirms it.
     Rail is schematic (BTS Sukhumvit, Silom, MRT Blue, Airport Rail Link). Rent band is CBRE's Q1 2026
     zone average (CBD ฿2,852; northern fringe ฿2,230; eastern fringe ฿2,300 per sqm per month); which
     of our zones count as CBRE's fringe is our approximation. District boundaries: OpenGISData-Thailand.
+    Photos: Wikimedia Commons and Flickr (open licenses), credited under each image; projects without a freely licensed photo show none.
   </p>
 </div>
 
@@ -132,6 +144,32 @@
   .lm-list li:hover, .lm-list li[aria-selected='true'] { background: var(--accent-soft); }
   .lm-list .nm { font-weight: 600; font-size: 14px; }
   .lm-list .sb { font-size: 12px; color: var(--ink-faint); }
+  .lm-cover { position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; background: var(--well); border: 0; padding: 0; margin: 0 0 6px; cursor: zoom-in; overflow: hidden; }
+  .lm-cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+  .lm-cover:hover img { transform: scale(1.02); }
+  .lm-cover .lm-pc { position: absolute; right: 8px; bottom: 8px; background: rgba(18, 17, 16, .8); color: #fff; font: 500 10px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; padding: 6px 9px; }
+  .lm-credit { font: 10px/1.5 var(--font-mono); letter-spacing: .03em; color: var(--ink-faint); margin: 0 0 12px; }
+  .lm-credit a, .lm-lb-cap a { color: inherit; border-bottom: 1px solid currentColor; text-decoration: none; }
+  .lm-nophoto { aspect-ratio: 16 / 10; background: var(--well); display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; margin: 0 0 12px; font: 500 10px/1.6 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .lm-list .lm-th { width: 54px; height: 40px; object-fit: cover; flex: none; background: var(--well); display: block; }
+  .lm-list .lm-thx { width: 54px; height: 40px; flex: none; background: var(--well); display: flex; align-items: center; justify-content: center; }
+  .lm-zgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+  .lm-zgrid button { border: 0; padding: 0; background: none; text-align: left; cursor: pointer; font: 600 12px/1.3 var(--font-sans); color: var(--ink); }
+  .lm-zgrid img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; margin-bottom: 4px; background: var(--well); }
+  .lm-lb { border: 0; padding: 0; background: #11100F; color: #F1EDE4; width: min(1120px, 96vw); max-height: 94vh; overflow: hidden; }
+  .lm-lb::backdrop { background: rgba(10, 9, 8, .82); }
+  .lm-lb-head { display: flex; align-items: center; gap: 12px; padding: 10px 12px 10px 18px; font: 600 15px var(--font-sans); }
+  #lm-lb-count { font: 500 10px var(--font-mono); letter-spacing: .12em; color: #A39D92; margin-right: auto; }
+  #lm-lb-close { width: 40px; height: 40px; border: 0; background: transparent; color: #F1EDE4; font-size: 26px; cursor: pointer; }
+  .lm-lb-stage { position: relative; display: flex; align-items: center; justify-content: center; background: #000; height: min(66vh, 640px); }
+  .lm-lb-stage img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+  .lm-lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 64px; border: 0; background: rgba(0, 0, 0, .45); color: #fff; font-size: 30px; cursor: pointer; }
+  #lm-lb-prev { left: 0; } #lm-lb-next { right: 0; }
+  .lm-lb-cap { font: 11px/1.5 var(--font-mono); color: #A39D92; margin: 0; padding: 10px 18px 4px; }
+  .lm-lb-strip { display: flex; gap: 6px; overflow-x: auto; padding: 8px 18px 14px; }
+  .lm-lb-strip button { flex: none; border: 2px solid transparent; padding: 0; background: none; cursor: pointer; opacity: .6; }
+  .lm-lb-strip button[aria-current='true'] { border-color: var(--accent); opacity: 1; }
+  .lm-lb-strip img { width: 84px; height: 56px; object-fit: cover; display: block; }
   .lm-note { font-size: 12px; line-height: 1.55; color: var(--ink-faint); margin: 12px 0 0; max-width: 680px; }
   .lmap button:focus-visible, .lmap input:focus-visible, .lmap select:focus-visible, .lm-list li:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -142,6 +180,8 @@
     .lm-detail { border-right: 0; padding-right: 0; }
     .lm-rhead, .lm-list li { padding-left: 0; }
     .lm-legend { right: 10px; }
+    .lm-zgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lm-lb-stage { height: 52vh; }
   }
 </style>
 
@@ -149,6 +189,7 @@
   import { select, geoMercator, geoPath, zoom as d3zoom, zoomIdentity, rollup, max } from 'd3';
   import GEO from '../data/locations/geo.json';
   import PROJ from '../data/locations/projects.json';
+  import OWNER from '../data/locations/owner-photos.json';
 
   type Proj = (typeof PROJ)[number];
   type ZoneKey = keyof typeof GEO.zones;
@@ -315,7 +356,7 @@
     const nActive = (st.types.size < 6 ? 1 : 0) + (st.rent !== 'any' ? 1 : 0) + st.segs.size + st.tags.size + (st.direct ? 1 : 0) + (st.openonly ? 1 : 0);
     $('lm-active').textContent = nActive ? `· ${nActive} active` : '';
     $('lm-list').innerHTML = vis.slice().sort((a, b) => a.name.localeCompare(b.name)).map((p) =>
-      `<li role="option" tabindex="0" data-id="${p.id}" aria-selected="${st.sel === p.id}"><span class="lm-dot" style="background:${TYPES[p.type][1]}"></span><span><span class="nm">${esc(p.name)}</span><br><span class="sb">${esc(TYPES[p.type][0])} · ${esc(zones[p.zone!]?.name)}${p.status !== 'open' ? ' · ' + esc(STATUS[p.status]) : ''}</span></span></li>`
+      `<li role="option" tabindex="0" data-id="${p.id}" aria-selected="${st.sel === p.id}">${coverThumb(p) ? `<img class="lm-th" src="${esc(coverThumb(p))}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : `<span class="lm-thx"><span class="lm-dot" style="background:${TYPES[p.type][1]}"></span></span>`}<span><span class="nm">${esc(p.name)}</span><br><span class="sb">${esc(TYPES[p.type][0])} · ${esc(zones[p.zone!]?.name)}${p.status !== 'open' ? ' · ' + esc(STATUS[p.status]) : ''}</span></span></li>`
     ).join('') || '<li style="cursor:default"><span class="sb">No project matches. Loosen a filter or reset.</span></li>';
     legend(); detail();
   }
@@ -333,12 +374,71 @@
   const rentLine = (z: string) => { const r = zones[z]?.rent; return r ? `Zone avg ฿${fmt(r.thb)}/sqm/mo <span class="muted">(CBRE ${esc(r.area)}, Q1 2026)</span>` : '<span class="muted">No public benchmark yet</span>'; };
   const dossierLink = (z: string) => { const d = DOSSIER[z]; return d ? `<a href="#zone-${d[1]}">${esc(d[0])} dossier</a>` : '<span class="muted">Dossier not yet written</span>'; };
 
+  type Photo = { thumb: string; src: string; page: string; author: string; license: string; licenseUrl: string; via?: string; note?: string };
+  const ownerPhotos = (p: Proj): Photo[] | null => {
+    const o = (OWNER as Record<string, any>)[p.slug];
+    if (!o || !Array.isArray(o.photos) || !o.photos.length) return null;
+    return o.photos.map((f: { file: string; caption?: string }) => {
+      const url = `/images/locations/projects/${p.slug}/${f.file}`;
+      return { thumb: url, src: url, page: '', author: o.owner, license: '', licenseUrl: '', via: 'owner', note: f.caption };
+    });
+  };
+  const photosOf = (p: Proj): Photo[] => ownerPhotos(p) ?? (p.photos ? [p.photos.cover, ...p.photos.album] : []);
+  const coverThumb = (p: Proj) => photosOf(p)[0]?.thumb;
+  const credit = (ph: Photo) => ph.via === 'owner' ? `Photo courtesy of ${esc(ph.author)}${ph.note ? ` · ${esc(ph.note)}` : ''}` : `Photo: <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.author)}</a> · ${ph.licenseUrl ? `<a href="${esc(ph.licenseUrl)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)} · ${esc(ph.via || 'Wikimedia Commons')}${ph.note ? ` · ${esc(ph.note)}` : ''}`;
+
+  const lb = $<HTMLDialogElement>('lm-lb');
+  const lbImg = $<HTMLImageElement>('lm-lb-img');
+  let lbList: Photo[] = [], lbIdx = 0;
+  function lbShow(i: number) {
+    lbIdx = (i + lbList.length) % lbList.length;
+    const ph = lbList[lbIdx];
+    lbImg.onerror = () => { if (lbImg.src !== ph.thumb) lbImg.src = ph.thumb; };
+    lbImg.src = ph.src;
+    $('lm-lb-count').textContent = `${lbIdx + 1} / ${lbList.length}`;
+    $('lm-lb-cap').innerHTML = credit(ph);
+    $('lm-lb-strip').querySelectorAll('button').forEach((b, j) => b.setAttribute('aria-current', String(j === lbIdx)));
+    ($('lm-lb-strip').children[lbIdx] as HTMLElement | undefined)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    const multi = lbList.length > 1;
+    $('lm-lb-prev').style.display = multi ? '' : 'none'; $('lm-lb-next').style.display = multi ? '' : 'none';
+  }
+  function openAlbum(p: Proj, i = 0) {
+    lbList = photosOf(p); if (!lbList.length) return;
+    $('lm-lb-title').textContent = p.name;
+    lbImg.alt = p.name;
+    $('lm-lb-strip').innerHTML = lbList.map((ph, j) => `<button type="button" data-j="${j}" aria-label="Photo ${j + 1}"><img src="${esc(ph.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer" /></button>`).join('');
+    if (!lb.open) lb.showModal();
+    lbShow(i);
+  }
+  $('lm-lb-strip').addEventListener('click', (e) => { const b = (e.target as HTMLElement).closest<HTMLElement>('button[data-j]'); if (b) lbShow(+b.dataset.j!); });
+  $('lm-lb-prev').onclick = () => lbShow(lbIdx - 1);
+  $('lm-lb-next').onclick = () => lbShow(lbIdx + 1);
+  $('lm-lb-close').onclick = () => lb.close();
+  lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+  lb.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') lbShow(lbIdx - 1); if (e.key === 'ArrowRight') lbShow(lbIdx + 1); });
+  let touchX = 0;
+  lbImg.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  lbImg.addEventListener('touchend', (e) => { const dx = e.changedTouches[0].clientX - touchX; if (Math.abs(dx) > 40) lbShow(lbIdx + (dx < 0 ? 1 : -1)); });
+
+  const zoneGrid = (z: string) => {
+    const ps = PROJ.filter((p) => p.zone === z && coverThumb(p) && pass(p)).slice(0, 6);
+    return ps.length ? `<div class="lm-zgrid">${ps.map((p) => `<button type="button" data-pid="${p.id}"><img src="${esc(coverThumb(p)!)}" alt="" loading="lazy" referrerpolicy="no-referrer" />${esc(p.name)}</button>`).join('')}</div>` : '';
+  };
+  const bindZoneGrid = () => $('lm-detail').querySelectorAll<HTMLElement>('.lm-zgrid button').forEach((b) => { b.onclick = () => selectProj(+b.dataset.pid!); });
+
+  const coverBlock = (p: Proj) => {
+    const ph = photosOf(p);
+    if (!ph.length) return `<div class="lm-nophoto">No freely licensed photo yet</div>`;
+    return `<button type="button" class="lm-cover" id="lm-open-album" aria-label="Open ${esc(p.name)} photos"><img src="${esc(ph[0].src)}" alt="${esc(p.name)}" referrerpolicy="no-referrer" /><span class="lm-pc">${ph.length > 1 ? `View ${ph.length} photos` : 'View photo'}</span></button><p class="lm-credit">${credit(ph[0])}</p>`;
+  };
+
   function detail() {
     const el = $('lm-detail');
     if (!st.sel) {
       if (st.zone) {
         el.innerHTML = `<span class="lm-flag">Zone</span><h3>${esc(zones[st.zone].name)}</h3>
-          <dl><dt>Rent band</dt><dd>${rentLine(st.zone)}</dd><dt>Projects</dt><dd>${PROJ.filter((p) => p.zone === st.zone).length} in the draft list</dd><dt>Read</dt><dd>${dossierLink(st.zone)}</dd></dl>`;
+          <dl><dt>Rent band</dt><dd>${rentLine(st.zone)}</dd><dt>Projects</dt><dd>${PROJ.filter((p) => p.zone === st.zone).length} in the draft list</dd><dt>Read</dt><dd>${dossierLink(st.zone)}</dd></dl>${zoneGrid(st.zone)}`;
+        bindZoneGrid();
       } else {
         el.innerHTML = `<span class="lm-flag">How to read it</span><h3>Pick a zone or a pin</h3>
           <p class="dek">Zoomed out, each dark circle counts the projects in a zone that match your filters. Click a zone or zoom in to see each project. Faded pins are not open yet. The shading switch colours zones by rent benchmark or by matching supply.</p>`;
@@ -347,7 +447,7 @@
     }
     const p = PROJ.find((x) => x.id === st.sel)!;
     const z = p.zone!;
-    el.innerHTML = `<span class="lm-flag">Draft · unverified</span><h3>${esc(p.name)}</h3>
+    el.innerHTML = `${coverBlock(p)}<span class="lm-flag">Draft · unverified</span><h3>${esc(p.name)}</h3>
       <p class="dek" style="margin-top:2px">${esc(TYPES[p.type][0])} · ${esc(p.operator)}</p>
       <dl>
         <dt>Zone</dt><dd>${esc(zones[z].name)}</dd>
@@ -363,6 +463,7 @@
       </dl>
       <p style="margin:14px 0 0"><button type="button" class="lm-chip" id="lm-close">Close</button></p>`;
     $('lm-close').onclick = () => { st.sel = null; update(); };
+    const oa = document.getElementById('lm-open-album'); if (oa) oa.onclick = () => openAlbum(p, 0);
   }
 
   function legend() {

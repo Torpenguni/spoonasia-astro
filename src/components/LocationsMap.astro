@@ -239,7 +239,6 @@ import PROFILES from '../data/locations/profiles.json';
     suk1: ['Premium CBD', 'sukhumvit'], north1: ['Creator Corridor', 'ari'], suk2: ['Frontier', 'phra-khanong'],
     silom: ['Heritage', 'charoenkrung'], old: ['Heritage', 'charoenkrung'], rama9: ['Local-tier', 'ratchada'],
   };
-  const MALL_TIER = new Set(['The EmQuartier', 'ICONSIAM', 'Central Embassy']);
 
   const esc = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
   const fmt = (n: number) => n.toLocaleString('en-US');
@@ -594,7 +593,7 @@ import PROFILES from '../data/locations/profiles.json';
   list.addEventListener('keydown', (e) => { const li = (e.target as HTMLElement).closest<HTMLElement>('li[data-id]'); if (li && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); selectProj(+li.dataset.id!); } });
 
   const rentLine = (z: string) => { const r = zones[z]?.rent; return r ? `Zone avg ฿${fmt(r.thb)}/sqm/mo <span class="muted">(CBRE ${esc(r.area)}, Q1 2026)</span>` : '<span class="muted">No public benchmark yet</span>'; };
-  const dossierLink = (z: string) => { const d = DOSSIER[z]; return d ? `<a href="#zone-${d[1]}">${esc(d[0])} dossier</a>` : '<span class="muted">Dossier not yet written</span>'; };
+  const dossierLink = (z: string) => { const d = DOSSIER[z]; return d ? `<a href="#zone-${d[1]}">${esc(d[0])} dossier</a>` : '<span class="muted">No zone note yet</span>'; };
 
   type Photo = { thumb: string; src: string; page: string; author: string; license: string; licenseUrl: string; via?: string; note?: string };
   const ownerPhotos = (p: Proj): Photo[] => {
@@ -684,7 +683,7 @@ import PROFILES from '../data/locations/profiles.json';
         <dt>F&amp;B spec</dt><dd class="muted">Gas, hood, grease trap — phase 2</dd>
         <dt>Highlights</dt><dd>${p.tags.map((t) => `<span class="lm-tag">${esc(TAGS[t])}</span>`).join('') || '<span class="muted">—</span>'}</dd>
         <dt>Audience</dt><dd>${p.segments.map((t) => `<span class="lm-tag">${esc(SEGS[t])}</span>`).join('')}</dd>
-        <dt>Read</dt><dd>${p.file ? `<a href="/properties/${esc(p.file)}">Property file</a> · ` : ''}${MALL_TIER.has(p.name) ? '<a href="#zone-mall-tier">Mall-tier dossier</a>' : dossierLink(z)}</dd>
+        <dt>Read</dt><dd>${p.file ? `<a href="/properties/${esc(p.file)}">Property file</a> · ` : ''}${dossierLink(z)}</dd>
       </dl>
       ${profileSources(p)}
       <p style="margin:14px 0 0"><button type="button" class="lm-chip" id="lm-close">Close</button></p>`;
